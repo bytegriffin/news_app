@@ -1,0 +1,136 @@
+name: news_app
+description: A new Flutter application.
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  dio: ^3.0.7
+  webview_flutter: ^0.3.18+1
+  flutter_staggered_grid_view: ^0.3.0
+  flutter_screenutil: ^0.7.0
+  cached_network_image: ^1.1.3
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^0.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/men.jpg
+    - assets/bjrb.jpg
+    - assets/cctv.jpg
+    - assets/ckxx.jpg
+    - assets/dycj.jpg
+    - assets/gjzx.jpg
+    - assets/gmw.jpg
+    - assets/hqw.jpg
+    - assets/hw.jpg
+    - assets/ifanr.jpg
+    - assets/jm.jpg
+    - assets/lysjg.jpg
+    - assets/rmrb.jpg
+    - assets/shfb.jpg
+    - assets/xhs.jpg
+    - assets/xhw.jpg
+    - assets/xmwb.jpg
+    - assets/yo.jpg
+    - assets/zgjjw.jpg
+    - assets/zgxww.jpg
+    - assets/zjsb.jpg
+    - assets/zol.jpg
+    - assets/chinadaily.jpg
+    - assets/tmtpost.jpg
+    - assets/xjb.jpg
+    - assets/cnr.jpg
+    - assets/hqsb.jpg
+    - assets/mrjjxw.jpg
+    - assets/zgqnb.jpg
+    - assets/lfw.jpg
+    - assets/zjxw.jpg
+    - assets/jjrb.jpg
+    - assets/zxjw.jpg
+    - assets/jjgcb.jpg
+    - assets/ysxw.jpg
+    - assets/ppxw.jpg
+    - assets/rmzxw.jpg
+    - assets/jjzs.jpg
+    - assets/kkxw.jpg
+    - assets/zgqnw.jpg
+    - assets/rmw.jpg
+    - assets/jkgy.jpg
+    - assets/bwxsjw.jpg
+    - assets/zjzx.jpg
+    - assets/cnbeta.jpg
+    - assets/jrj.jpg
+    - assets/zgjyfww.jpg
+    - assets/jszg.jpg
+    - assets/dzrb.jpg
+    - assets/aicjs.jpg
+    - assets/fmxw.jpg
+    - assets/xlcj.jpg
+    - assets/qjwb.jpg
+    - assets/it168.jpg
+    - assets/thscj.jpg
+    - assets/hxsb.jpg
+    - assets/zbgat.jpg
+    - assets/cctv4.jpg
+    - assets/zgjsw.jpg
+    - assets/xhsty.jpg
+#    - assets/woman.jpg
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware.
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
