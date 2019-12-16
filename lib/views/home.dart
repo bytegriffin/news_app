@@ -18,10 +18,12 @@ class _HomePageState extends State<HomePage> {
   _getMoreData(){
     HttpClient.request(NEWS_API).then((res){
       Map<String,dynamic> subjects  = json.decode(res.data) as Map;
-      setState(() {
-        this.newslist = NewsList.fromJson(subjects);
-        this.size = newslist.result.length;
-      });
+      if(mounted){
+        setState(() {
+          this.newslist = NewsList.fromJson(subjects);
+          this.size = newslist.result.length;
+        });
+      }
     });
   }
 
@@ -52,7 +54,6 @@ class _HomePageState extends State<HomePage> {
       body: new RefreshIndicator(
         onRefresh: _onRefresh,
         child: new ListView.separated(
-          //_items.length + 1是为了给最后一行的加载loading留出位置
           itemCount: size,
            physics: BouncingScrollPhysics(),
           itemBuilder: (context, index){

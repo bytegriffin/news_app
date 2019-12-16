@@ -12,7 +12,8 @@ class DrawerPage extends StatelessWidget {
             accountName: Text('张三', style: TextStyle(fontWeight: FontWeight.bold),),
             accountEmail: Text('zhangsan@abc.com'),
             currentAccountPicture: CircleAvatar( // 个人头像
-              backgroundImage: NetworkImage('https://b-ssl.duitang.com/uploads/item/201804/22/20180422070953_xNYLU.thumb.700_0.jpeg'),
+              radius: 36,
+              backgroundImage: AssetImage('assets/avatar.jpg')
             ),
 //                decoration: BoxDecoration( //背景图
 //                    color:Colors.red[400],

@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import '../net/httpclient.dart';
 import '../net/http_config.dart';
 import '../models/news.dart';
-import 'news_list.dart';
 import 'dart:convert';
 import 'news_detail.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../util/imageutil.dart';
 
 class VideoListPage extends StatefulWidget {
@@ -84,18 +81,19 @@ class _VideoListPageState extends State<VideoListPage>{
                         Row(
                           children: <Widget>[
                             CircleAvatar(
-                              child: getAvatar(videolist.result[index].source),
-                              maxRadius: 12.0,
-                              minRadius:1.0,
+                              radius: 11.0,
+                              backgroundImage: AssetImage(getAvatarPath(videolist.result[index].source))
                             ),
+                            Text(' ',style: TextStyle(fontSize:18),),
                             Text(videolist.result[index].authorName,
                               style: TextStyle(fontSize:18),),
                           ],
                         ),
+                        Text('',style: TextStyle(fontSize:18),),
                         Text("${videolist.result[index].playCount}次播放",
                           style: TextStyle(fontSize:18),),
                       ],
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                     ),
 
 //                  Icon(Icons.people),
@@ -119,21 +117,6 @@ class _VideoListPageState extends State<VideoListPage>{
     //return buildGridView();
   }
 
-  Widget buildGridView(){
-    return StaggeredGridView.countBuilder(
-      crossAxisCount: 4,
-      mainAxisSpacing: 4.0,
-      crossAxisSpacing: 4.0,
-      itemCount: size,
-      itemBuilder: (BuildContext context, int index) => Container(
-          color: Colors.white,
-          child: new Container(
-            child: Image.network(videolist.result[index].image),
-          )),
-      staggeredTileBuilder: (int index) =>
-          StaggeredTile.count(2, index.isEven ? 2 : 1),
-    );
-  }
 
 
 

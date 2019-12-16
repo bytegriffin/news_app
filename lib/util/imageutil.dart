@@ -1,7 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+
+// 获取缓存图片
+Widget getCachedImage(String imageSrc){
+  return Container(
+    child: CachedNetworkImage(
+      width: 100,
+      height: 150,
+      fit: BoxFit.cover,
+      imageUrl: imageSrc,
+      placeholder: (context, url) => CircularProgressIndicator(
+
+      ),
+      errorWidget: (context, url, error) => Icon(Icons.error),
+    ),
+  );
+}
 
 // 根据发布者获取精准的头像
-Image getAvatar(String source){
+String getAvatarPath(String source){
   String image_str;
   switch(source){
     case "CCTV":
@@ -18,6 +35,9 @@ Image getAvatar(String source){
       break;
     case "央视新闻":
       image_str = "assets/ysxw.jpg";
+      break;
+    case "央视财经":
+      image_str = "assets/yscj.jpg";
       break;
     case "新华网":
       image_str = "assets/xhw.jpg";
@@ -206,8 +226,8 @@ Image getAvatar(String source){
       image_str = "assets/xhsty.jpg";
       break;
     default:
-      image_str = "assets/men.jpg";
+      image_str = "assets/avatar.jpg";
       break;
   }
-  return Image.asset(image_str);
+  return image_str;
 }
