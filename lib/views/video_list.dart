@@ -81,7 +81,7 @@ class _VideoListPageState extends State<VideoListPage>{
                         Row(
                           children: <Widget>[
                             CircleAvatar(
-                              radius: 11.0,
+                              radius: 10.0,
                               backgroundImage: AssetImage(getAvatarPath(videolist.result[index].source))
                             ),
                             Text(' ',style: TextStyle(fontSize:18),),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './views/bottom.dart';
+import './views/splash.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
           highlightColor: Color.fromRGBO(255, 255, 255, 0.5),
           splashColor: Colors.white //水波纹
       ),
-      home: BottomNavigator(),
+      home: SplashPage(),
     );
   }
 }

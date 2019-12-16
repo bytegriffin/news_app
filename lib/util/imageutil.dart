@@ -57,6 +57,9 @@ String getAvatarPath(String source){
     case "新华社客户端":
       image_str = "assets/xhw.jpg";
       break;
+    case "新华社图片":
+      image_str = "assets/xhw.jpg";
+      break;
     case "第一财经":
       image_str = "assets/dycj.jpg";
       break;
@@ -224,6 +227,147 @@ String getAvatarPath(String source){
       break;
     case "新华社体育":
       image_str = "assets/xhsty.jpg";
+      break;
+    case "东方财富网":
+      image_str = "assets/dfcfw.jpg";
+      break;
+    case "河北新闻网":
+      image_str = "assets/hbxww.jpg";
+      break;
+    case "中国经济周刊":
+      image_str = "assets/zgjjzk.jpg";
+      break;
+    case "虎嗅APP":
+      image_str = "assets/hx.jpg";
+      break;
+    case "大众网":
+      image_str = "assets/dzw.jpg";
+      break;
+    case "广西日报":
+      image_str = "assets/gxrb.jpg";
+      break;
+    case "驱动中国":
+      image_str = "assets/qdzg.jpg";
+      break;
+    case "观察者网":
+      image_str = "assets/gczw.jpg";
+      break;
+    case "上观新闻":
+      image_str = "assets/sgxw.jpg";
+      break;
+    case "农视网":
+      image_str = "assets/nsw.jpg";
+      break;
+    case "太平洋电脑网":
+      image_str = "assets/pconline.jpg";
+      break;
+    case "PingWest品玩":
+      image_str = "assets/pingwest.jpg";
+      break;
+    case "直新闻":
+      image_str = "assets/zhinews.jpg";
+      break;
+    case "36氪":
+      image_str = "assets/36kr.jpg";
+      break;
+    case "中国商网":
+      image_str = "assets/zgsw.jpg";
+      break;
+    case "长江日报":
+      image_str = "assets/cjrb.jpg";
+      break;
+    case "华声在线":
+      image_str = "assets/hszx.jpg";
+      break;
+    case "直播吧":
+      image_str = "assets/zhibo8.jpg";
+      break;
+    case "红星新闻":
+      image_str = "assets/hxxw.jpg";
+      break;
+    case "房天下":
+      image_str = "assets/ftx.jpg";
+      break;
+    case "哈尔滨新闻网":
+      image_str = "assets/my399.jpg";
+      break;
+    case "华尔街见闻":
+      image_str = "assets/hejjw.jpg";
+      break;
+    case "DoNews":
+      image_str = "assets/donews.jpg";
+      break;
+    case "新浪科技":
+      image_str = "assets/xlkj.jpg";
+      break;
+    case "手机中国网":
+      image_str = "assets/sjzgw.jpg";
+      break;
+    case "三湘都市报":
+      image_str = "assets/sxdsb.jpg";
+      break;
+    case "PP体育篮球":
+      image_str = "assets/pptylq.jpg";
+      break;
+    case "政事儿":
+      image_str = "assets/zse.jpg";
+      break;
+    case "移民帮":
+      image_str = "assets/ymb.jpg";
+      break;
+    case "广州日报":
+      image_str = "assets/gzrb.jpg";
+      break;
+    case "长安街知事":
+      image_str = "assets/cajzs.jpg";
+      break;
+    case "四川新闻网":
+      image_str = "assets/scxww.jpg";
+      break;
+    case "信网":
+      image_str = "assets/xw.jpg";
+      break;
+    case "财经郎眼":
+      image_str = "assets/cjly.jpg";
+      break;
+    case "懂个球":
+      image_str = "assets/dgq.jpg";
+      break;
+    case "青海新闻网":
+      image_str = "assets/qhxww.jpg";
+      break;
+    case "纵相新闻":
+      image_str = "assets/zxxw.jpg";
+      break;
+    case "快科技":
+      image_str = "assets/kkj.jpg";
+      break;
+    case "掌上春城":
+      image_str = "assets/zscc.jpg";
+      break;
+    case "太平洋汽车网":
+      image_str = "assets/tpyqcw.jpg";
+      break;
+    case "体坛+":
+      image_str = "assets/ttj.jpg";
+      break;
+    case "证券日报":
+      image_str = "assets/zjrb.jpg";
+      break;
+    case "中国气象爱好者":
+      image_str = "assets/zgqxahz.jpg";
+      break;
+    case "上游新闻":
+      image_str = "assets/syxw.jpg";
+      break;
+    case "中国江西网":
+      image_str = "assets/zgjxw.jpg";
+      break;
+    case "金十数据":
+      image_str = "assets/jssj.jpg";
+      break;
+    case "河北网信管理执法":
+      image_str = "assets/hbwx.jpg";
       break;
     default:
       image_str = "assets/avatar.jpg";

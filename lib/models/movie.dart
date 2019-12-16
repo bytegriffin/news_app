@@ -17,7 +17,7 @@ class Movie {
     this.genres = json["genres"]==null? "" :json["genres"].toString();
     this.durations = json['durations'].toString().replaceAll("[", "").replaceAll("]", "");
     this.image = json['images']['small'].toString();
-    this.pubdates = json['pubdates'].toString();
+    this.pubdates = json['pubdates'].toString().replaceAll("[", "").replaceAll("]", "");
     List<String> dlist = List<String>();
     json['directors'].forEach((v){
       dlist.add(v['name']);

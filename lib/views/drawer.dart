@@ -28,17 +28,17 @@ class DrawerPage extends StatelessWidget {
 //                ),
           ),
           ListTile(
-            title: Text('message', textAlign: TextAlign.right,),
-            trailing: Icon(Icons.message, color:Colors.black12, size: 22.0,),
+            title: Text('我的消息', textAlign: TextAlign.left,),
+            leading: Icon(Icons.message, color:Colors.black12, size: 22.0,),
             onTap: () => Navigator.pop(context),
           ),
           ListTile(
-            title: Text('message', textAlign: TextAlign.right,),
-            trailing: Icon(Icons.favorite, color:Colors.black12, size: 22.0,),
+            title: Text('我的收藏', textAlign: TextAlign.left,),
+            leading: Icon(Icons.favorite, color:Colors.black12, size: 22.0,),
           ),
           ListTile(
-            title: Text('settings', textAlign: TextAlign.right,),
-            trailing: Icon(Icons.settings, color:Colors.black12, size: 22.0,),
+            title: Text('设置', textAlign: TextAlign.left,),
+            leading: Icon(Icons.settings, color:Colors.black12, size: 22.0,),
           ),
         ],
       ),

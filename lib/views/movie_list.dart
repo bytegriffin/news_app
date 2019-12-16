@@ -84,19 +84,23 @@ class _MovieListPageState extends State<MovieListPage> {
                       maxLines: 1,
                     ),
                     Text(
-                      "类型：${movie.genres}",
+                      "类型：${movie.genres} ",
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
                     ),
                     getMovieRatingWidget(movie.rating),
                     Text(
-                        "时长：${movie.durations}"
-                    ),
-                    Text(
                         "导演：${movie.directors}"
                     ),
                     Text(
-                        '演员：${movie.casts}'
+                        "上映日期：${movie.pubdates}",
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                    ),
+                    Text(
+                        '演员：${movie.casts}',
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
                     ),
                   ],
                 ),
@@ -113,6 +117,7 @@ class _MovieListPageState extends State<MovieListPage> {
   Widget getMovieRatingWidget(String score){
     return Row(
       children: <Widget>[
+        Text('豆瓣评分：'),
         StarRating(
           rating: double.parse(score),
           size:20,

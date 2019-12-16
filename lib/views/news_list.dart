@@ -3,7 +3,7 @@ import '../models/news.dart';
 import 'news_detail.dart';
 import '../util/imageutil.dart';
 
-// 列表页面
+// 新闻列表页面
 class NewsListPage extends StatelessWidget {
   News news;
   NewsListPage(this.news);
@@ -24,8 +24,7 @@ class NewsListPage extends StatelessWidget {
             children: <Widget>[
               CircleAvatar(
                 backgroundImage: AssetImage(getAvatarPath(news.source)),
-                maxRadius: 11.0,
-                minRadius:0.0,
+                radius: 10.0,
               ),
               Text(news.authorName),
             ],
