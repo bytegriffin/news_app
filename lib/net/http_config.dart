@@ -8,12 +8,20 @@ const NEWS_API = "https://www.hao123.com/feedData/data?type=rec&app_from=pc_tuij
 
 const VIDEO_API = "https://www.hao123.com/feedData/data?rn=20&pn=3&type=video&ctype=video&app_from=pc_tuijian";
 
+//豆瓣API
+//https://douban.uieee.com
+//https://douban-api.uieee.com
+//https://douban-api.now.sh
+//https://douban-api.zce.now.sh
+//https://douban-api-git-master.zce.now.sh
+
+
 //即将上映
 const COMMING_SOON_MOVIE = "https://douban.uieee.com/v2/movie/coming_soon";
 //正在上映
-const THEATERS_MOVIE = "https://douban.uieee.com/v2/movie/in_theaters";
+const THEATERS_MOVIE = "https://douban-api.uieee.com/v2/movie/in_theaters";
 //北美票房榜
-const US_MOVIE = "https://douban.uieee.com/v2/movie/us_box";
+const US_MOVIE = "https://douban-api.uieee.com/v2/movie/us_box";
 // 文学
 const LIFE_BOOK = "https://douban.uieee.com/v2/book/search?q='文学'&start=0&count=20";
 // 技术

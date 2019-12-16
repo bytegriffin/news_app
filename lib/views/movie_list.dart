@@ -15,13 +15,23 @@ class _MovieListPageState extends State<MovieListPage> {
   int size = 0;
 
   _getMoreData(){
-    HttpClient.request(THEATERS_MOVIE).then((res){
+//    HttpClient.request(THEATERS_MOVIE).then((res){
+//      if(mounted){
+//        setState(() {
+//          this.movieList = MovieList.fromJson(res.data);
+//          this.size = movieList.subjects.length;
+//        });
+//      }
+//    });
+    HttpClient.get(THEATERS_MOVIE, (result){
       if(mounted){
         setState(() {
-          this.movieList = MovieList.fromJson(res.data);
+          this.movieList = MovieList.fromJson(result);
           this.size = movieList.subjects.length;
         });
       }
+    },errorCallBack: (error){
+      print(error);
     });
   }
 

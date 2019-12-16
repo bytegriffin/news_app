@@ -16,11 +16,15 @@ class _BookListPageState extends State<BookListPage> {
   int size = 0;
 
   _getMoreData(){
-    HttpClient.request(TECH_BOOK).then((res){
-      setState(() {
-        this.bookList = BookList.fromJson(res.data);
-        this.size = bookList.books.length;
-      });
+    HttpClient.get(TECH_BOOK, (result){
+      if(mounted){
+        setState(() {
+          this.bookList = BookList.fromJson(result);
+          this.size = bookList.books.length;
+        });
+      }
+    },errorCallBack: (error){
+      print(error);
     });
   }
 

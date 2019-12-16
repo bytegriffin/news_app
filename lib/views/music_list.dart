@@ -14,21 +14,16 @@ class _MusicListPageState extends State<MusicListPage> {
   int size = 0;
 
   _getMoreData(){
-    HttpClient.request(NEW_MUSIC).then((res){
+    HttpClient.get(NEW_MUSIC, (result){
+      if(mounted){
         setState(() {
-          this.musicList = MusicList.fromJson(res.data);
+          this.musicList = MusicList.fromJson(result);
           this.size = musicList.result.length;
         });
+      }
+    },errorCallBack: (error){
+        print(error);
     });
-
-//    HttpClient.get(NEW_MUSIC, (result){
-//      setState(() {
-//        this.musicList = MusicList.fromJson(result);
-//        this.size = musicList.result.length;
-//      });
-//    },errorCallBack: (error){
-//        print(error);
-//    });
   }
 
   @override

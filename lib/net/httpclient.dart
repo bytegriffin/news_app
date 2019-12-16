@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'http_config.dart';
+import 'dart:convert';
 
 class HttpClient {
 
   static final Dio _dio = Dio(
     BaseOptions(
-        baseUrl: NEWS_API,
         connectTimeout: HTTP_CONNECT_TIMEOUT,
         receiveTimeout: HTTP_RECEIVE_TIMEOUT
     )
@@ -49,11 +49,16 @@ class HttpClient {
 
     try {
       Response response;
-      if (params != null && params.isNotEmpty) {
-        response = await Dio().post(url, data: params);
-      } else {
-        response = await Dio().post(url);
+      if(method == "get"){
+        response = await _dio.get(url);
+      } else if(method == "post"){
+        if (params != null && params.isNotEmpty) {
+          response = await _dio.post(url, data: params);
+        } else {
+          response = await _dio.post(url);
+        }
       }
+
       statusCode = response.statusCode;
 
       //处理错误部分
@@ -65,7 +70,6 @@ class HttpClient {
 
       if (callBack != null) {
         callBack(response.data);
-        print("<net> response data:" + response.data);
       }
     } catch (exception) {
       _handError(errorCallBack, exception.toString());
