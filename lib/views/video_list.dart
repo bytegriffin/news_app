@@ -54,7 +54,7 @@ class _VideoListPageState extends State<VideoListPage>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: new EasyRefresh(
+      body: EasyRefresh(
         header: PhoenixHeader(),
         footer: PhoenixFooter(),
         onRefresh: _onRefresh,
