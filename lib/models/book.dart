@@ -1,6 +1,6 @@
 class Book {
   String title;//书名
-  Map<String, dynamic> rating;//打分
+  String rating;//打分
   String author;//作家
   List<dynamic> translator; //翻译
   String image;//图书图片
@@ -14,7 +14,7 @@ class Book {
 
   Book.fromJson(Map<String, dynamic> json){
     this.title = json['title']==null?json['subtitle']:json['title'];
-    this.rating = json['rating'];
+    this.rating = json['rating']['average'].toString();
     this.author = json["author"]==null? json["author"] :json["author"].toString();
     this.translator = json['translator'];
     this.price = json['price'];

@@ -64,15 +64,23 @@ class _VideoListPageState extends State<VideoListPage>{
                 );
               },
               child: Card(
-                margin: EdgeInsets.all(0),
+                margin: EdgeInsets.only(left: 5,right: 5,top: 0,bottom: 0),
                 child: Column(
                   children: <Widget>[
                     Container(
                       child: Stack(
                         children: <Widget>[
-                          Image.network(videolist.result[index].image, fit: BoxFit.cover),
-                          Text(videolist.result[index].title,
-                            style: TextStyle(fontSize:18,color: Colors.white)),
+                          Container(
+                              child: Image.network(videolist.result[index].image, fit: BoxFit.fill),
+                              decoration: BoxDecoration(color: Colors.black54)
+                          ),
+                          Container(
+                            child: Text(videolist.result[index].title,
+                              style: TextStyle(fontSize:20,color: Colors.white,shadows:[
+                                BoxShadow(color: Colors.black54,offset: Offset(0.1,0.1), blurRadius: 5.0)
+                              ])),
+                          )
+
                         ],
                       )
                     ),
@@ -103,8 +111,6 @@ class _VideoListPageState extends State<VideoListPage>{
                   ],
                 ),
               ),
-
-
             );
           },
           separatorBuilder: (context, index) {

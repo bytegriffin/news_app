@@ -88,7 +88,7 @@ class _MovieListPageState extends State<MovieListPage> {
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
                     ),
-                    getMovieRatingWidget(movie.rating),
+                    getRatingWidget(movie.rating),
                     Text(
                         "导演：${movie.directors}"
                     ),
@@ -113,22 +113,6 @@ class _MovieListPageState extends State<MovieListPage> {
       child: row,
     );
   }
-
-  Widget getMovieRatingWidget(String score){
-    return Row(
-      children: <Widget>[
-        Text('豆瓣评分：'),
-        StarRating(
-          rating: double.parse(score),
-          size:20,
-          selectedColor:Colors.orange,
-          unselectedColor: Colors.grey,
-        ),
-        Text(score)
-      ],
-    );
-  }
-
 
 }
 

@@ -3,6 +3,7 @@ import '../net/httpclient.dart';
 import '../net/http_config.dart';
 import '../models/book.dart';
 import '../util/imageutil.dart';
+import '../components/star_rating.dart';
 
 class BookListPage extends StatefulWidget {
   @override
@@ -87,6 +88,7 @@ class _BookListPageState extends State<BookListPage> {
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
                     ),
+                    getRatingWidget(book.rating),
                     Text(
                       '作者：${book.author}',
                       overflow: TextOverflow.ellipsis,

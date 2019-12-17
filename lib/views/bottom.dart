@@ -5,6 +5,7 @@ import 'other.dart';
 import 'profile.dart';
 import 'drawer.dart';
 
+
 class BottomNavigator extends StatefulWidget {
   @override
   _BottomNavigatorState createState() => _BottomNavigatorState();
@@ -12,6 +13,7 @@ class BottomNavigator extends StatefulWidget {
 
 class _BottomNavigatorState extends State<BottomNavigator> {
   var _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +48,7 @@ class _BottomNavigatorState extends State<BottomNavigator> {
         items: [
           BottomNavigationBarItem(
               title:Text('首页'),
-              icon: Icon(Icons.home)
+              icon: Icon(Icons.home),
           ),
           BottomNavigationBarItem(
               title:Text('视频'),

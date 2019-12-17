@@ -1,5 +1,21 @@
 import 'package:flutter/material.dart';
 
+// 获得评分
+Widget getRatingWidget(String score){
+  return Row(
+    children: <Widget>[
+      Text('豆瓣评分：'),
+      Text('${score}   '),
+      StarRating(
+        rating: double.parse(score),
+        size:20,
+        selectedColor:Colors.orange,
+        unselectedColor: Colors.grey,
+      ),
+    ],
+  );
+}
+
 class StarRating extends StatefulWidget {
   final double rating; // 当前评分
   final double maxRating; // 最高评分

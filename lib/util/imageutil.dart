@@ -369,6 +369,15 @@ String getAvatarPath(String source){
     case "河北网信管理执法":
       image_str = "assets/hbwx.jpg";
       break;
+    case "中国经济时报":
+      image_str = "assets/zgjjsb.jpg";
+      break;
+    case "贵阳网":
+      image_str = "assets/gyw.jpg";
+      break;
+    case "全景网":
+      image_str = "assets/qjw.jpg";
+      break;
     default:
       image_str = "assets/avatar.jpg";
       break;
