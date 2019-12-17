@@ -23,7 +23,7 @@ class NewsListPage extends StatelessWidget {
           Row(
             children: <Widget>[
               CircleAvatar(
-                backgroundImage: AssetImage(getAvatarPath(news.source)),
+                backgroundImage: NetworkImage(getAvatarPath(news.source)),
                 radius: 10.0,
               ),
               Text(news.authorName),

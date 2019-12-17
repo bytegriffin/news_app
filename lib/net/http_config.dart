@@ -1,5 +1,5 @@
 const HTTP_CONNECT_TIMEOUT = 5000;
-const HTTP_RECEIVE_TIMEOUT = 3000;
+const HTTP_RECEIVE_TIMEOUT = 5000;
 
 const NEWS_API = "https://www.hao123.com/feedData/data?type=rec&app_from=pc_tuijian&rn=20&pn=2";
  //   "http://c.m.163.com/nc/article/headline/T1348647853363/0-10.html";

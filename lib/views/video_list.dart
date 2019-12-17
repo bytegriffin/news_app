@@ -9,7 +9,7 @@ import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_easyrefresh/phoenix_header.dart';
 import 'package:flutter_easyrefresh/phoenix_footer.dart';
 
-
+//视频页面
 class VideoListPage extends StatefulWidget {
   @override
   _VideoListPageState createState() => _VideoListPageState();
@@ -63,62 +63,7 @@ class _VideoListPageState extends State<VideoListPage>{
           itemCount: size,
           physics: BouncingScrollPhysics(),
           itemBuilder: (context, index){
-            return GestureDetector(
-              onTap: (){
-                 Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => new NewsDetailPage(news:videolist.result[index])
-                 )
-                );
-              },
-              child: Card(
-                margin: EdgeInsets.only(left: 5,right: 5,top: 0,bottom: 0),
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      child: Stack(
-                        children: <Widget>[
-                          Container(
-                              child: Image.network(videolist.result[index].image, fit: BoxFit.fill),
-                              decoration: BoxDecoration(color: Colors.black54)
-                          ),
-                          Container(
-                            child: Text(videolist.result[index].title,
-                              style: TextStyle(fontSize:20,color: Colors.white,shadows:[
-                                BoxShadow(color: Colors.black54,offset: Offset(0.1,0.1), blurRadius: 5.0)
-                              ])),
-                          )
-
-                        ],
-                      )
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            CircleAvatar(
-                              radius: 10.0,
-                              backgroundImage: AssetImage(getAvatarPath(videolist.result[index].source))
-                            ),
-                            Text(' ',style: TextStyle(fontSize:18),),
-                            Text(videolist.result[index].authorName,
-                              style: TextStyle(fontSize:18),),
-                          ],
-                        ),
-                        Text('',style: TextStyle(fontSize:18),),
-                        Text("${videolist.result[index].playCount}次播放",
-                          style: TextStyle(fontSize:18),),
-                      ],
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    ),
-
-//                  Icon(Icons.people),
-//                  Text(newslist.result[index].authorName,
-//                    overflow: TextOverflow.ellipsis,
-//                    style: TextStyle(fontSize:18),)
-                  ],
-                ),
-              ),
-            );
+            return buildItem(index);
           },
           separatorBuilder: (context, index) {
             return Divider();
@@ -131,7 +76,58 @@ class _VideoListPageState extends State<VideoListPage>{
   }
 
 
+  Widget buildItem(int index){
+   return GestureDetector(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(
+            builder: (context) => new NewsDetailPage(news:videolist.result[index])
+        )
+        );
+      },
+      child: Card(
+        margin: EdgeInsets.only(left: 5,right: 5,top: 0,bottom: 0),
+        child: Column(
+          children: <Widget>[
+            Container(
+              child: Stack(
+                children: <Widget>[
+                  Image.network(videolist.result[index].image, fit: BoxFit.cover),
+                  Text(videolist.result[index].title,
+                    style: TextStyle(fontSize:20,color: Colors.white,shadows:[
+                      BoxShadow(color: Colors.black54,offset: Offset(0.1,0.1), blurRadius: 5.0)
+                    ])),
+                ],
+              )
+            ),
+            Row(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    CircleAvatar(
+                        radius: 10.0,
+                        backgroundImage: NetworkImage(getAvatarPath(videolist.result[index].source))
+                    ),
+                    Text(' ',style: TextStyle(fontSize:18),),
+                    Text(videolist.result[index].authorName,
+                      style: TextStyle(fontSize:18),),
+                  ],
+                ),
+                Text('',style: TextStyle(fontSize:18),),
+                Text("${videolist.result[index].playCount}次播放",
+                  style: TextStyle(fontSize:18),),
+              ],
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+            ),
 
+//                  Icon(Icons.people),
+//                  Text(newslist.result[index].authorName,
+//                    overflow: TextOverflow.ellipsis,
+//                    style: TextStyle(fontSize:18),)
+          ],
+        ),
+      ),
+    );
+  }
 
 }
 
