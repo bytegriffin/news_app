@@ -4,6 +4,9 @@ import '../net/http_config.dart';
 import '../models/news.dart';
 import 'news_list.dart';
 import 'dart:convert';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:flutter_easyrefresh/phoenix_header.dart';
+import 'package:flutter_easyrefresh/phoenix_footer.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -51,11 +54,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: new RefreshIndicator(
-        onRefresh: _onRefresh,
+      body: EasyRefresh(
+        header: PhoenixHeader(),
+        footer: PhoenixFooter(),
         child: new ListView.separated(
           itemCount: size,
-           physics: BouncingScrollPhysics(),
+          physics: BouncingScrollPhysics(),
           itemBuilder: (context, index){
             return NewsListPage(newslist.result[index]);
           },
@@ -63,6 +67,8 @@ class _HomePageState extends State<HomePage> {
             return Divider();
           },
         ),
+        onRefresh: _onRefresh,
+        onLoad: _onRefresh
       ),
     );
 

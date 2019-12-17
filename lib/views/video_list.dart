@@ -5,6 +5,10 @@ import '../models/news.dart';
 import 'dart:convert';
 import 'news_detail.dart';
 import '../util/imageutil.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:flutter_easyrefresh/phoenix_header.dart';
+import 'package:flutter_easyrefresh/phoenix_footer.dart';
+
 
 class VideoListPage extends StatefulWidget {
   @override
@@ -50,8 +54,11 @@ class _VideoListPageState extends State<VideoListPage>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: new RefreshIndicator(
+      body: new EasyRefresh(
+        header: PhoenixHeader(),
+        footer: PhoenixFooter(),
         onRefresh: _onRefresh,
+        onLoad: _onRefresh,
         child: new ListView.separated(
           itemCount: size,
           physics: BouncingScrollPhysics(),
