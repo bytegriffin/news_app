@@ -19,11 +19,25 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin{
   TabController controller;
 
+  List<Tab> tabs = [
+    new Tab(child:Text('推荐')),
+    new Tab(child:Text('国内')),
+    new Tab(child:Text('国外')),
+    new Tab(child:Text('科技')),
+    new Tab(child:Text('财经')),
+    new Tab(child:Text('历史')),
+    new Tab(child:Text('汽车')),
+    new Tab(child:Text('体育')),
+    new Tab(child:Text('游戏')),
+    new Tab(child:Text('时尚')),
+    new Tab(child:Text('娱乐')),
+  ];
+
   @override
   void initState() {
     super.initState();
     // initialIndex 表示默认选中第一个
-    controller = TabController(initialIndex: 0, length: 11, vsync: this);
+    controller = TabController(initialIndex: 0, length: tabs.length, vsync: this);
   }
 
   @override
@@ -35,28 +49,15 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   @override
   Widget build(BuildContext context) {
     return new DefaultTabController(
-      length: 11,
+      length: tabs.length,
       child: new Scaffold(
         appBar: new TabBar(
-          controller: controller,
+          // controller: controller,
           isScrollable: true, //是否滚动
           labelColor: Colors.red,
           unselectedLabelColor: Color(0xff666666),
           labelStyle: TextStyle(fontSize: 16.0),
-          tabs: <Widget>[
-            new Tab(child: Text('推荐')),
-            new Tab(child: Text('国内')),
-            new Tab(child:Text('国外')),
-            new Tab(child:Text('科技')),
-            new Tab(child:Text('财经')),
-            new Tab(child:Text('历史')),
-            new Tab(child:Text('汽车')),
-            new Tab(child:Text('体育')),
-            new Tab(child:Text('游戏')),
-            new Tab(child:Text('时尚')),
-            new Tab(child:Text('娱乐')),
-          ],
-          //controller: _tabController,
+          tabs: tabs,
         ),
         body: new TabBarView(
           children: <Widget>[
