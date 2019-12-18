@@ -6,8 +6,8 @@ import 'dart:convert';
 import 'news_detail.dart';
 import '../util/imageutil.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:flutter_easyrefresh/phoenix_header.dart';
-import 'package:flutter_easyrefresh/phoenix_footer.dart';
+import 'package:flutter_easyrefresh/ball_pulse_header.dart';
+import 'package:flutter_easyrefresh/ball_pulse_footer.dart';
 
 //视频页面
 class VideoListPage extends StatefulWidget {
@@ -55,8 +55,8 @@ class _VideoListPageState extends State<VideoListPage>{
   Widget build(BuildContext context) {
     return Scaffold(
       body: EasyRefresh(
-        header: PhoenixHeader(),
-        footer: PhoenixFooter(),
+        header: BallPulseHeader(),
+        footer: BallPulseFooter(),
         onRefresh: _onRefresh,
         onLoad: _onRefresh,
         child: new ListView.separated(

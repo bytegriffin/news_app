@@ -10,11 +10,12 @@ class BookListPage extends StatefulWidget {
   _BookListPageState createState() => _BookListPageState();
 }
 
-class _BookListPageState extends State<BookListPage> {
-
-  ScrollController _scrollController = ScrollController();
+class _BookListPageState extends State<BookListPage> with AutomaticKeepAliveClientMixin{
   BookList bookList;
   int size = 0;
+
+  @override
+  bool get wantKeepAlive => true;
 
   _getMoreData(){
     HttpClient.get(TECH_BOOK, (result){
@@ -37,12 +38,12 @@ class _BookListPageState extends State<BookListPage> {
 
   @override
   void dispose() {
-    _scrollController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       body: new ListView.separated(
         itemCount: size,

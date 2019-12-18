@@ -816,6 +816,12 @@ String getAvatarPath(String source){
     case "世界邦旅行网":
       image_str = "https://tvax3.sinaimg.cn/crop.0.0.750.750.180/b6f2f6cdly8g4efe7c3ghj20ku0kut95.jpg";
       break;
+    case "安徽网":
+      image_str = "https://tva2.sinaimg.cn/crop.0.0.296.296.180/6ba09194jw8elz29ivgmwj2088088mxg.jpg";
+      break;
+    case "中国搜索":
+      image_str = "https://tvax3.sinaimg.cn/crop.0.0.919.919.180/005vofNuly8fy4xju80yrj30pk0pkjst.jpg";
+      break;
     case "远景智联":
       image_str = "http://inews.gtimg.com/newsapp_ls/0/10487507309_200200/0";
       break;

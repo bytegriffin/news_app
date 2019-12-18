@@ -3,10 +3,10 @@ import '../models/news.dart';
 import 'news_detail.dart';
 import '../util/imageutil.dart';
 
-// 新闻列表页面
-class NewsListPage extends StatelessWidget {
+// 新闻列表每项设置
+class NewsListItemPage extends StatelessWidget {
   News news;
-  NewsListPage(this.news);
+  NewsListItemPage(this.news);
 
   @override
   Widget build(BuildContext context) {
@@ -26,14 +26,14 @@ class NewsListPage extends StatelessWidget {
                 backgroundImage: NetworkImage(getAvatarPath(news.source)),
                 radius: 10.0,
               ),
-              Text(news.authorName),
+              Text(news.authorName,maxLines: 1,overflow: TextOverflow.fade,),
             ],
           ),
-          Text(news.time),
+          Text(news.time,maxLines: 1,overflow: TextOverflow.fade),
         ],
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
       ),
-      trailing: Icon(Icons.chevron_right),
+      //trailing: Icon(Icons.chevron_right),
       onTap: (){
         Navigator.push(context, MaterialPageRoute(
             builder: (context) => new NewsDetailPage(news:news)

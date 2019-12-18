@@ -10,9 +10,12 @@ class MovieListPage extends StatefulWidget {
   _MovieListPageState createState() => _MovieListPageState();
 }
 
-class _MovieListPageState extends State<MovieListPage> {
+class _MovieListPageState extends State<MovieListPage> with AutomaticKeepAliveClientMixin{
   MovieList movieList;
   int size = 0;
+
+  @override
+  bool get wantKeepAlive => true;
 
   _getMoreData(){
 //    HttpClient.request(THEATERS_MOVIE).then((res){
@@ -43,6 +46,7 @@ class _MovieListPageState extends State<MovieListPage> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       body: new ListView.separated(
         itemCount: size,

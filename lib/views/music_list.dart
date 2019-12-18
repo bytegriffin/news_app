@@ -9,9 +9,12 @@ class MusicListPage extends StatefulWidget {
   _MusicListPageState createState() => _MusicListPageState();
 }
 
-class _MusicListPageState extends State<MusicListPage> {
+class _MusicListPageState extends State<MusicListPage> with AutomaticKeepAliveClientMixin{
   MusicList musicList;
   int size = 0;
+
+  @override
+  bool get wantKeepAlive => true;
 
   _getMoreData(){
     HttpClient.get(NEW_MUSIC, (result){
@@ -34,6 +37,7 @@ class _MusicListPageState extends State<MusicListPage> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       body: new ListView.separated(
         itemCount: size,
