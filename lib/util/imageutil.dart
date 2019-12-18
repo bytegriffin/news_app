@@ -822,6 +822,102 @@ String getAvatarPath(String source){
     case "中国搜索":
       image_str = "https://tvax3.sinaimg.cn/crop.0.0.919.919.180/005vofNuly8fy4xju80yrj30pk0pkjst.jpg";
       break;
+    case "河南商报":
+      image_str = "https://tva2.sinaimg.cn/crop.0.0.176.176.180/657fef28jw8eswl25wqxlj204w04wjrg.jpg";
+      break;
+    case "叮咚体坛":
+      image_str = "https://tva3.sinaimg.cn/crop.0.15.1242.1242.180/006ivIdqjw8fd48dytmaoj30yi0zdq4w.jpg";
+      break;
+    case "猎云网":
+      image_str = "https://tvax1.sinaimg.cn/crop.46.68.724.724.180/a8401473ly8fdi1v5y1n1j20m80m8dhq.jpg";
+      break;
+    case "锌刻度":
+      image_str = "https://tvax4.sinaimg.cn/crop.0.424.2048.2048.180/4b72f345ly1fwtphhxue5j21kw28hh43.jpg";
+      break;
+    case "深响":
+      image_str = "https://tvax4.sinaimg.cn/crop.40.45.518.518.180/0075xkuFly1g8aj1c2sgkj30go0gomx5.jpg";
+      break;
+    case "17173游戏网":
+      image_str = "https://tva3.sinaimg.cn/crop.21.35.354.354.180/70e08490jw8f5q4z5ieucj20b40b4wep.jpg";
+      break;
+    case "大电竞":
+      image_str = "https://tvax2.sinaimg.cn/crop.1.0.509.509.180/006mEiMGly8fmvejoi57oj30e80e574f.jpg";
+      break;
+    case "游戏十三哥":
+      image_str = "https://tvax3.sinaimg.cn/crop.35.0.307.307.180/8e14313bly8fopk9pihivj20fd0d6djm.jpg";
+      break;
+    case "GameRes游资网":
+      image_str = "https://tvax3.sinaimg.cn/crop.0.0.1024.1024.180/547f46d9ly8fet8ttboduj20sg0sgmya.jpg";
+      break;
+    case "极电竞":
+      image_str = "https://tvax1.sinaimg.cn/crop.0.0.360.360.180/007VU6Qsly1g5osjhiayoj30a00a0wep.jpg";
+      break;
+    case "大象游媒":
+      image_str = "https://tvax4.sinaimg.cn/crop.8.0.591.591.180/007PZrBOly1g3w7f1jfvfj30go0gogmy.jpg";
+      break;
+    case "3DMGAME":
+      image_str = "https://tvax4.sinaimg.cn/crop.0.0.500.500.180/80f256c3ly8foq7is27zvj20dw0dwmyc.jpg";
+      break;
+    case "叶子猪游戏网":
+      image_str = "https://tva3.sinaimg.cn/crop.0.0.180.180.180/53a25401gw1e7bu6kv3efj2050050mx8.jpg";
+      break;
+    case "迅游游戏":
+      image_str = "https://tvax1.sinaimg.cn/crop.0.0.594.594.180/007emlX1ly1fu29d98axbj30hs0hsq3r.jpg";
+      break;
+    case "搜狐财经":
+      image_str = "https://tvax3.sinaimg.cn/crop.52.0.400.400.180/738a0158ly8fz78gwkv04j20dw0b4t9t.jpg";
+      break;
+    case "科学网":
+      image_str = "https://tva4.sinaimg.cn/crop.9.9.159.159.180/670eab70jw8f51i1ee1smj205004zjrg.jpg";
+      break;
+    case "Tech星球":
+      image_str = "https://tvax3.sinaimg.cn/crop.0.0.640.640.180/81c848f7ly1g6hqlnlv6lj20hs0hswfm.jpg";
+      break;
+    case "搜狐科技":
+      image_str = "https://tvax2.sinaimg.cn/crop.89.56.470.470.180/6b234a40ly8fwi8zgu754j20iq0frmxn.jpg";
+      break;
+    case "牛弹琴":
+      image_str = "https://tva3.sinaimg.cn/crop.1.12.240.240.180/4c1e905cjw1f74u83ab82j206u07kq42.jpg";
+      break;
+    case "北京商报":
+      image_str = "https://tva4.sinaimg.cn/crop.0.0.830.830.180/768850e7jw8evym3xgylcj20n50n20wt.jpg";
+      break;
+    case "市界":
+      image_str = "https://tvax4.sinaimg.cn/crop.0.0.1575.1575.180/0073JeVely1fnsu14okc0j317r17rq72.jpg";
+      break;
+    case "脑洞历史观":
+      image_str = "https://tvax3.sinaimg.cn/crop.0.0.512.512.180/407915b5ly8g7d5qdl8foj20e80e874k.jpg";
+      break;
+    case "游研社":
+      image_str = "https://tvax4.sinaimg.cn/crop.0.0.996.996.180/9d0d09ably8foq7clnhjwj20ro0ro3yv.jpg";
+      break;
+    case "游戏攻略社":
+      image_str = "https://tvax1.sinaimg.cn/crop.0.0.200.200.180/007oEoxcly8g1imcign21j305k05kdfz.jpg";
+      break;
+    case "正经说游戏":
+      image_str = "https://tvax1.sinaimg.cn/crop.0.0.599.599.180/c466114bly1ga00aumf3fj20gn0gowf4.jpg";
+      break;
+    case "9分游戏":
+      image_str = "https://tvax3.sinaimg.cn/crop.0.0.192.192.180/007yAV0aly8fz0kkhhoffj305g05dmx8.jpg";
+      break;
+    case "TapTap":
+      image_str = "https://tva3.sinaimg.cn/crop.0.0.512.512.180/006ww0fFjw8f5mq9n5jnuj30e80e80ta.jpg";
+      break;
+    case "18183手游网":
+      image_str = "https://tva2.sinaimg.cn/crop.0.0.180.180.180/b96172c5jw1e8qgp5bmzyj2050050aa8.jpg";
+      break;
+    case "网上车市":
+      image_str = "https://tvax4.sinaimg.cn/crop.5.40.750.750.180/6a16e19bly1g89bt0je0aj20m80m8tap.jpg";
+      break;
+    case "autocarweekly":
+      image_str = "https://tva3.sinaimg.cn/crop.0.0.1242.1242.180/c8a5945cjw8f24qj6w163j20yi0yi0v9.jpg";
+      break;
+    case "当乐手游":
+      image_str = "https://tvax1.sinaimg.cn/crop.215.0.305.305.180/695c9405ly8g1h5jbwozsj20fa09jwha.jpg";
+      break;
+    case "车讯网":
+      image_str = "https://tvax1.sinaimg.cn/crop.0.0.873.873.180/6fe7793fly8fq65kfit1fj20oa0oataf.jpg";
+      break;
     case "远景智联":
       image_str = "http://inews.gtimg.com/newsapp_ls/0/10487507309_200200/0";
       break;
@@ -857,6 +953,12 @@ String getAvatarPath(String source){
       break;
     case "体坛哪些事儿":
       image_str = "https://pic.rmb.bdstatic.com/7c50a83b4a40ad1f4ffd52c2455e3daf.jpeg";
+      break;
+    case "雷帝触网":
+      image_str = "https://pic.rmb.bdstatic.com/95126ed7b5eead8d4724dc0afe88e0b2.jpeg";
+      break;
+    case "潮闻知天下":
+      image_str = "https://timg01.bdimg.com/timg?pacompress&imgtype=0&sec=1439619614&autorotate=1&di=88f3a04b524ba5e8dea521eff23a948b&quality=90&size=b200_200&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2F152001063259d6cff6fc1fbfbe25f9e427b7c582cf.jpeg";
       break;
     case "天外居":
       image_str = "https://timg01.bdimg.com/timg?pacompress=&imgtype=0&sec=1439619614&di=26dfc95529c117366893c654118b5fec&quality=90&size=b870_10000&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2F3ba27d62fbf0925c8b9421a377a1c977.jpeg";

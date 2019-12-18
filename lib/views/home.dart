@@ -37,9 +37,6 @@ class HomePage extends StatelessWidget {
                 child:Text('科技')
             ),
             new Tab(
-                child:Text('体育')
-            ),
-            new Tab(
                 child:Text('财经')
             ),
             new Tab(
@@ -47,6 +44,9 @@ class HomePage extends StatelessWidget {
             ),
             new Tab(
                 child:Text('汽车')
+            ),
+            new Tab(
+                child:Text('体育')
             ),
             new Tab(
                 child:Text('游戏')
@@ -66,11 +66,10 @@ class HomePage extends StatelessWidget {
             new Center(child: GNNewsListPage()),
             new Center(child: GJNewsListPage()),
             new Center(child: TechNewsListPage()),
-            new Center(child: SportNewsListPage()),
             new Center(child: FinanceNewsListPage()),
-
             new Center(child: HistoryNewsListPage()),
             new Center(child: CarNewsListPage()),
+            new Center(child: SportNewsListPage()),
             new Center(child: GameNewsListPage()),
             new Center(child: FashionNewsListPage()),
             new Center(child: EntNewsListPage()),
