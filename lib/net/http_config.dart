@@ -27,7 +27,15 @@ const FASHION_NEWS_API = "https://www.hao123.com/feedData/data?type=fashion&app_
 // 娱乐
 const ENT_NEWS_API = "https://tuijian.hao123.com/headnew_timeline?pagesize=20&key=ent";
 
+// 搜索suggest
+// https://www.baidu.com/sugrec?wd=国庆节&prod=pc_hao123
+
 //新闻分页URL  https://tuijian.hao123.com/headnew_timeline?page=1&pagesize=10&key=ent
+
+// 实时热点新闻  https://m.hao123.com/hao123_api/api/top/getBuzzTop?cate=热点&buzz=实时热点
+
+// 头条api https://www.toutiao.com/api/pc/feed/?category=__all__
+
 
 //   "http://c.m.163.com/nc/article/headline/T1348647853363/0-10.html";
 // 聚合新闻api http://v.juhe.cn/toutiao/index?type=top&key=3dc86b09a2ee2477a5baa80ee70fcdf5

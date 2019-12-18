@@ -11,7 +11,26 @@ import 'game_news_list.dart';
 import 'ent_news_list.dart';
 import 'fashion_news_list.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin{
+  TabController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    // initialIndex 表示默认选中第一个
+    controller = TabController(initialIndex: 0, length: 11, vsync: this);
+  }
+
+  @override
+  void dispose(){
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,44 +38,23 @@ class HomePage extends StatelessWidget {
       length: 11,
       child: new Scaffold(
         appBar: new TabBar(
+          controller: controller,
           isScrollable: true, //是否滚动
           labelColor: Colors.red,
           unselectedLabelColor: Color(0xff666666),
           labelStyle: TextStyle(fontSize: 16.0),
           tabs: <Widget>[
-            new Tab(
-                child: Text('推荐')
-            ),
-            new Tab(
-                child: Text('国内')
-            ),
-            new Tab(
-                child:Text('国外')
-            ),
-            new Tab(
-                child:Text('科技')
-            ),
-            new Tab(
-                child:Text('财经')
-            ),
-            new Tab(
-                child:Text('历史')
-            ),
-            new Tab(
-                child:Text('汽车')
-            ),
-            new Tab(
-                child:Text('体育')
-            ),
-            new Tab(
-                child:Text('游戏')
-            ),
-            new Tab(
-                child:Text('时尚'),
-            ),
-            new Tab(
-              child:Text('娱乐'),
-            ),
+            new Tab(child: Text('推荐')),
+            new Tab(child: Text('国内')),
+            new Tab(child:Text('国外')),
+            new Tab(child:Text('科技')),
+            new Tab(child:Text('财经')),
+            new Tab(child:Text('历史')),
+            new Tab(child:Text('汽车')),
+            new Tab(child:Text('体育')),
+            new Tab(child:Text('游戏')),
+            new Tab(child:Text('时尚')),
+            new Tab(child:Text('娱乐')),
           ],
           //controller: _tabController,
         ),
@@ -78,7 +76,6 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-
 }
 
 
