@@ -28,7 +28,8 @@ const FASHION_NEWS_API = "https://www.hao123.com/feedData/data?type=fashion&app_
 const ENT_NEWS_API = "https://tuijian.hao123.com/headnew_timeline?pagesize=20&key=ent";
 
 // 搜索suggest
-// https://www.baidu.com/sugrec?wd=国庆节&prod=pc_hao123
+// https://www.baidu.com/sugrec?prod=pc_hao123&wd=
+const SUGGUEST = "https://www.baidu.com/sugrec?prod=pc_hao123&wd=";
 
 //新闻分页URL  https://tuijian.hao123.com/headnew_timeline?page=1&pagesize=10&key=ent
 
@@ -36,8 +37,7 @@ const ENT_NEWS_API = "https://tuijian.hao123.com/headnew_timeline?pagesize=20&ke
 
 // 头条api https://www.toutiao.com/api/pc/feed/?category=__all__
 
-
-//   "http://c.m.163.com/nc/article/headline/T1348647853363/0-10.html";
+// "http://c.m.163.com/nc/article/headline/T1348647853363/0-10.html";
 // 聚合新闻api http://v.juhe.cn/toutiao/index?type=top&key=3dc86b09a2ee2477a5baa80ee70fcdf5
 // https://www.hao123.com/feedData/data?callback=jQuery18206683182829139738_1576235945849&type=rec&app_from=pc_tuijian&rn=10&pn=2
 
@@ -50,17 +50,57 @@ const VIDEO_API = "https://www.hao123.com/feedData/data?rn=20&pn=3&type=video&ct
 //https://douban-api.zce.now.sh
 //https://douban-api-git-master.zce.now.sh
 
+// 默认的豆瓣base api
+const doubanBaseApi = "https://douban.uieee.com";
+//默认分配第一个，之后第二个，最后一个时，重新置为0
+int index = 0;
 
-//即将上映
-const COMMING_SOON_MOVIE = "https://douban.uieee.com/v2/movie/coming_soon";
-//正在上映
-const THEATERS_MOVIE = "https://douban-api.uieee.com/v2/movie/in_theaters";
-//北美票房榜
-const US_MOVIE = "https://douban-api.uieee.com/v2/movie/us_box";
+// 根据传入的url，重新分配一个不受访问限制的api地址
+String getAvaliableUrl(String url){
+//  String preffixUrl = url.substring(0,url.indexOf("/v"));
+  String suffixUrl = url.substring(url.indexOf("/v"), url.length);
+  List<String> urlPool = [
+    "https://douban-api.uieee.com",
+    "https://douban-api.now.sh",
+    "https://douban-api.zce.now.sh",
+    "https://douban-api-git-master.zce.now.sh"
+  ];
+  if(index == urlPool.length - 1){
+    index = 0;
+  }
+  String newUrl = urlPool[index] + suffixUrl;
+  index = index + 1;
+  return newUrl;
+}
+
+// 最近热门电视剧
+const HOT_TV = "https://movie.douban.com/j/search_subjects?type=tv&tag=%E7%83%AD%E9%97%A8&page_limit=20&page_start=0";
+// 最近热门电影
+const HOT_MOVIE="https://movie.douban.com/j/search_subjects?type=movie&tag=%E7%83%AD%E9%97%A8&page_limit=20&page_start=0";
+// 即将上映
+const COMMING_SOON_MOVIE = doubanBaseApi + "/v2/movie/coming_soon";
+// 正在热映
+const THEATERS_MOVIE = doubanBaseApi + "/v2/movie/in_theaters";
+// 北美票房榜
+const US_MOVIE = doubanBaseApi + "/v2/movie/us_box";
+
+
+const GET_BOOK = doubanBaseApi + "/v2/book/";
 // 文学
-const LIFE_BOOK = "https://douban.uieee.com/v2/book/search?q='文学'&start=0&count=20";
+const LIFE_BOOK = doubanBaseApi + "/v2/book/search?q='文学'&start=0&count=20";
 // 技术
-const TECH_BOOK = "https://douban.uieee.com/v2/book/search?q='编程'&start=0&count=20";
+const TECH_BOOK = doubanBaseApi + "/v2/book/search?q='编程'&start=0&count=20";
+
+// 图书畅销榜
+const TOP_SALE_BOOK = "https://read.douban.com/j/index//charts?type=sales&index=ebook&verbose=1";
+// 最新读书榜
+const TOP_NEW_BOOK = "https://read.douban.com/j/index//charts?type=newly_published_sales&index=ebook&verbose=1";
+// 套装书榜
+const TOP_BUNDLE_BOOK="https://read.douban.com/j/index//charts?type=bundle_sales&index=ebook&verbose=1";
+// 好评书榜
+const HIGH_RATE_BOOK="https://read.douban.com/j/index//charts?type=highly_rated_sales&index=ebook&verbose=1";
+
 // 音乐
 const NEW_MUSIC = "http://musicapi.leanapp.cn/personalized/newsong";
 // const NEW_MUSIC = "https://music.jeeas.cn/v1/personalized/newsong?from=music";
+

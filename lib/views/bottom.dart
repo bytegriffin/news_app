@@ -4,7 +4,7 @@ import 'home.dart';
 import 'other.dart';
 import 'profile.dart';
 import 'drawer.dart';
-
+import 'search_bar.dart';
 
 class BottomNavigator extends StatefulWidget {
   @override
@@ -18,12 +18,12 @@ class _BottomNavigatorState extends State<BottomNavigator> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-//        actions: <Widget>[
-//          IconButton(
-//            icon:Icon(Icons.search),
-//            tooltip: "搜索",
-//          ),
-//        ],
+        // actions: <Widget>[
+        //   IconButton(
+        //     icon: Icon(Icons.search),
+        //     onPressed:(){showSearch(context: context, delegate: SearchBarDelegate());}
+        //   )
+        // ],
         elevation: 0.0,
       ),
       body: IndexedStack( // 页面切换

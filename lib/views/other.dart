@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'book_list.dart';
+import 'book_index.dart';
 import 'movie_list.dart';
 import 'music_list.dart';
 
@@ -15,9 +15,9 @@ class OtherPage extends StatelessWidget {
           tabs: <Widget>[
             new Tab(child: Row(
               children: <Widget>[
-                Icon(Icons.book, color: Colors.redAccent),
+                Icon(Icons.library_books, color: Colors.redAccent),
                 Text(' '),
-                Text('推荐阅读')
+                Text('图书资讯')
               ],
               mainAxisAlignment: MainAxisAlignment.center,
              ),
@@ -26,7 +26,7 @@ class OtherPage extends StatelessWidget {
               children: <Widget>[
                 Icon(Icons.movie, color: Colors.redAccent),
                 Text(' '),
-                Text('最新上映')
+                Text('电影资讯')
               ],
               mainAxisAlignment: MainAxisAlignment.center,
             ),
@@ -35,7 +35,7 @@ class OtherPage extends StatelessWidget {
               children: <Widget>[
                 Icon(Icons.music_video, color: Colors.redAccent),
                 Text(' '),
-                Text('最新音乐')
+                Text('音乐资讯')
               ],
               mainAxisAlignment: MainAxisAlignment.center,
             ),
@@ -45,7 +45,7 @@ class OtherPage extends StatelessWidget {
         ),
         body: new TabBarView(
           children: <Widget>[
-            new Center(child: BookListPage()),
+            new Center(child: BookIndexPage()),
             new Center(child: MovieListPage()),
             new Center(child: MusicListPage()),
           ],

@@ -11,14 +11,14 @@ class NewsDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(news.title),
-        ),
-        body:WebView(
-          initialUrl: news.url,
-          //JS执行模式 是否允许JS执行
-          javascriptMode: JavascriptMode.unrestricted,
-        )
+      appBar: AppBar(
+        title: Text(news.title),
+      ),
+      body:WebView(
+        initialUrl: news.url,
+        //JS执行模式 是否允许JS执行
+        javascriptMode: JavascriptMode.unrestricted,
+      )
     );
   }
 }

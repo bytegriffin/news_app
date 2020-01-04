@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/views/home.dart';
 import 'bottom.dart';
 
 //闪屏页
@@ -17,7 +16,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
     super.initState();
     _controller = AnimationController(
         vsync:this,
-      duration: Duration(milliseconds: 3000)
+      duration: Duration(milliseconds: 1000)
     );
     _animation = Tween(begin: 0.0, end: 1.0).animate(_controller);
 

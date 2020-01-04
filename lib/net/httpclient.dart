@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'http_config.dart';
-import 'dart:convert';
 
 class HttpClient {
 
@@ -22,14 +21,20 @@ class HttpClient {
     }
   }
 
-  //get请求
+
+  static Future<Response> getUrl(String url) async{
+    Response response = await _dio.get(url);
+    return response.data;
+  }
+
+  //异步get请求
   static void get(String url, Function callBack,
       {Map<String, String> params, Function errorCallBack}) async {
     _request(url, callBack,
         method: "get", params: params, errorCallBack: errorCallBack);
   }
 
-  //post请求
+  //异步post请求
   static void post(String url, Function callBack,
       {Map<String, String> params, Function errorCallBack}) async {
     _request(url, callBack,

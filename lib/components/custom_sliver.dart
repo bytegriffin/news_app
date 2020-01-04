@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// 构建一个SliverList
+// 构建一个SliverList,防止产生overflow超出屏幕异常
 Widget buildSliverList(Widget wrap){
   return CustomScrollView(
     slivers: <Widget>[

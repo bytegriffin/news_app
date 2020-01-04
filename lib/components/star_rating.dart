@@ -2,13 +2,19 @@ import 'package:flutter/material.dart';
 
 // 获得评分
 Widget getRatingWidget(String score){
+  if(score == ""){
+    score = "0.0";
+  }
   return Row(
     children: <Widget>[
-      Text('豆瓣评分：'),
-      Text('${score}   '),
+      Text('豆瓣评分：',
+      style: TextStyle(
+        fontSize: 14,
+      ),),
+      Text('$score   '),
       StarRating(
         rating: double.parse(score),
-        size:20,
+        size:24,
         selectedColor:Colors.orange,
         unselectedColor: Colors.grey,
       ),

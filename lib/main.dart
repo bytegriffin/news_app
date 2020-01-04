@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import './views/bottom.dart';
 import './views/splash.dart';
 
 void main() => runApp(MyApp());
@@ -10,7 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter',
+      title: '新闻App',
       theme: ThemeData(
           primarySwatch: Colors.red,
           highlightColor: Color.fromRGBO(255, 255, 255, 0.5),

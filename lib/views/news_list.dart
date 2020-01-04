@@ -5,7 +5,7 @@ import '../util/imageutil.dart';
 
 // 新闻列表每项设置
 class NewsListItemPage extends StatelessWidget {
-  News news;
+  final News news;
   NewsListItemPage(this.news);
 
   @override
