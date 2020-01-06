@@ -135,7 +135,7 @@ class _CastDetailPageState extends State<CastDetailPage>{
               maxCrossAxisExtent: 100.0,
               mainAxisSpacing: 5.0,
               crossAxisSpacing: 3.0,
-              childAspectRatio: 10 / 13,
+              childAspectRatio: 8 / 13,
             ),
             delegate: SliverChildBuilderDelegate(
                   (BuildContext context, int index) {
@@ -146,7 +146,7 @@ class _CastDetailPageState extends State<CastDetailPage>{
                         borderRadius: BorderRadius.circular(5.0),
                         child: getCachedImage(cast?.relatedMovieList[index]?.image??defaultCastImage, width: 110, height: 100)
                     ),
-                    Text(cast?.relatedMovieList[index]?.title??"",overflow: TextOverflow.ellipsis,maxLines: 1)
+                    Text(cast?.relatedMovieList[index]?.title??"",overflow: TextOverflow.ellipsis,maxLines: 2)
                   ],
                 );
                 var onclick = GestureDetector(
@@ -157,7 +157,10 @@ class _CastDetailPageState extends State<CastDetailPage>{
                     ));
                   },
                 );
-                return getBoxCard(onclick);
+                return Container(
+                  margin: EdgeInsets.all(2),
+                    child: onclick
+                );
               },
               childCount: cast?.relatedMovieList?.length??0,
             ),
@@ -222,14 +225,17 @@ class _CastDetailPageState extends State<CastDetailPage>{
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
             ),
-            Text(
-              "出生地：${cast?.bornPlace??""}",
-              style: TextStyle(
-                fontSize: 16,
-                  color: detailPagePropTextColor
+            Container(
+              width: 210,
+              child: Text(
+                "出生地：${cast?.bornPlace??""}",
+                style: TextStyle(
+                  fontSize: 16,
+                    color: detailPagePropTextColor
+                ),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
               ),
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
             ),
             Text(
               "职业：${cast?.professions??""}",

@@ -86,7 +86,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> with AutomaticKeepAli
               maxCrossAxisExtent: 90.0,
               mainAxisSpacing: 5.0,
               crossAxisSpacing: 5.0,
-              childAspectRatio: 3 / 5,
+              childAspectRatio: 2.5 / 5,
             ),
             delegate: SliverChildBuilderDelegate(
                   (BuildContext context, int index) {
@@ -97,11 +97,14 @@ class _MovieDetailPageState extends State<MovieDetailPage> with AutomaticKeepAli
                         borderRadius: BorderRadius.circular(5.0),
                         child: getCachedImage(movie?.directors[index]?.avatar??defaultCastImage, width: 110, height: 100)
                     ),
-                    Text(movie?.directors[index]?.name??"",overflow: TextOverflow.ellipsis,maxLines: 1),
+                    Text(movie?.directors[index]?.name??"",overflow: TextOverflow.ellipsis,maxLines: 2),
                   ],
                 );
                 return GestureDetector(
-                  child: getBoxCard(column),
+                  child: Container(
+                    margin: EdgeInsets.all(2),
+                    child: column,
+                  ),
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(
                         builder: (context) => CastDetailPage(movie?.directors[index]?.id??"")
@@ -128,7 +131,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> with AutomaticKeepAli
               maxCrossAxisExtent: 90.0,
               mainAxisSpacing: 5.0,
               crossAxisSpacing: 5.0,
-              childAspectRatio: 3 / 5,
+              childAspectRatio: 2.5  / 5,
             ),
             delegate: SliverChildBuilderDelegate(
                   (BuildContext context, int index) {
@@ -139,11 +142,14 @@ class _MovieDetailPageState extends State<MovieDetailPage> with AutomaticKeepAli
                         borderRadius: BorderRadius.circular(5.0),
                         child: getCachedImage(movie?.casts[index]?.avatar??defaultCastImage, width: 110, height: 100)
                     ),
-                    Text(movie?.casts[index]?.name??"",overflow: TextOverflow.ellipsis,maxLines: 1)
+                    Text(movie?.casts[index]?.name??"",overflow: TextOverflow.ellipsis,maxLines: 2)
                   ],
                 );
                 return GestureDetector(
-                  child: getBoxCard(column),
+                  child: Container(
+                    margin: EdgeInsets.all(2),
+                    child: column,
+                  ),
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(
                         builder: (context) => CastDetailPage(movie?.casts[index]?.id??"")
@@ -171,7 +177,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> with AutomaticKeepAli
               maxCrossAxisExtent: 90.0,
               mainAxisSpacing: 5.0,
               crossAxisSpacing: 5.0,
-              childAspectRatio: 3 / 5,
+              childAspectRatio: 2.5 / 5,
             ),
             delegate: SliverChildBuilderDelegate(
                   (BuildContext context, int index) {
@@ -182,11 +188,14 @@ class _MovieDetailPageState extends State<MovieDetailPage> with AutomaticKeepAli
                         borderRadius: BorderRadius.circular(5.0),
                         child: getCachedImage(movie?.writers[index]?.avatar??defaultCastImage, width: 110, height: 100)
                     ),
-                    Text(movie?.writers[index]?.name??"",overflow: TextOverflow.ellipsis,maxLines: 1)
+                    Text(movie?.writers[index]?.name??"",overflow: TextOverflow.ellipsis,maxLines: 2)
                   ],
                 );
                 return GestureDetector(
-                  child: getBoxCard(column),
+                  child: Container(
+                    margin: EdgeInsets.all(2),
+                    child: column,
+                  ),
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(
                         builder: (context) => CastDetailPage(movie?.writers[index]?.id??"")
@@ -246,11 +255,15 @@ class _MovieDetailPageState extends State<MovieDetailPage> with AutomaticKeepAli
   //是否显示影片时长
   Widget _displayDuration() {
     if (movie !=null && movie.durations.isNotEmpty) {
-      return Text(
-        "片长：${movie?.durations??""}",
-        style: TextStyle(
-          fontSize: 16,
-            color: detailPagePropTextColor
+      return Container(
+        width: 230,
+        child: Text(
+          "片长：${movie?.durations??""}",
+          style: TextStyle(
+            fontSize: 16,
+              color: detailPagePropTextColor
+          ),
+         overflow: TextOverflow.ellipsis,maxLines: 2
         ),
       );
     }
@@ -261,10 +274,24 @@ class _MovieDetailPageState extends State<MovieDetailPage> with AutomaticKeepAli
   Widget _displayType() {
     if (movie !=null && movie.type.isNotEmpty) {
       //如果数据不为空，则显示Text
-       return Text(
+      return Text(
         "类型：${movie?.type??""} ",
         style: TextStyle(
-          fontSize: 16,
+            fontSize: 16,
+            color: detailPagePropTextColor
+        ),
+      );
+    }
+    return Container(height:0.0,width:0.0);
+  }
+
+  Widget _displayYear() {
+    if (movie !=null && movie.year.isNotEmpty) {
+      //如果数据不为空，则显示Text
+      return Text(
+        " (${movie?.year??""})",
+        style: TextStyle(
+            fontSize: 16,
             color: detailPagePropTextColor
         ),
       );
@@ -276,55 +303,80 @@ class _MovieDetailPageState extends State<MovieDetailPage> with AutomaticKeepAli
   Widget getItem() {
     var row = Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text(
-              movie?.originalTitle??"",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20.0,
-                  color: detailPagePropTextColor
-              ),
+            Container(
+              width: 200,
+              child: Text(
+                movie?.title??"",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.0,
+                    color: detailPagePropTextColor
+                ),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+              )
             ),
-            Text(
-              "电影名称：${movie?.title??""}",
-              style: TextStyle(
-                fontSize: 16,
-                  color: detailPagePropTextColor
-              ),
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
+//            Container(
+//              width: 200,
+//              child: Text(
+//                "原名：${movie?.originalTitle??""}",
+//                style: TextStyle(
+//                  fontSize: 16,
+//                    color: detailPagePropTextColor
+//                ),
+//                overflow: TextOverflow.ellipsis,
+//                maxLines: 1,
+//              ),
+//            ),
+            Container(
+              child: getRatingWidget(movie?.rating??"0.0",detailPageBGColor,ratingTextColor),
+              width: 230,
             ),
-            getRatingWidget(movie?.rating??"0.0",detailPageBGColor,ratingTextColor),
             _displayType(),
             _displayDuration(),
-            Text(
-              "制片国家/地区：${movie?.country??""}",
-              style: TextStyle(
-                fontSize: 16,
-                  color: detailPagePropTextColor
+            Container(
+              width: 240,
+              child: Text(
+                "制片国家：${movie?.country??""}",
+                style: TextStyle(
+                  fontSize: 16,
+                    color: detailPagePropTextColor
+                ),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
               ),
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
             ),
-            Text(
-              "语言：${movie?.language??""}",
-              style: TextStyle(
-                fontSize: 16,
-                  color: detailPagePropTextColor
+            Container(
+              width: 200,
+              child: Text(
+                "语言：${movie?.language??""}",
+                style: TextStyle(
+                  fontSize: 16,
+                    color: detailPagePropTextColor
+                ),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
               ),
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
             ),
           ],
         ),
         ClipRRect(
             borderRadius: BorderRadius.circular(5.0),
-            child: getCachedImage(movie?.image??defaultCastImage, width: 110, height: 160)
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                getCachedImage(movie?.image??defaultCastImage, width: 110, height: 160),
+                _displayYear()
+              ],
+            )
         ),
       ],
     );

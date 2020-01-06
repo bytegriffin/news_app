@@ -17,13 +17,15 @@ class SearchMovie {
   List<String> tags;//标签
   String summary;//电影简介
   List<String> trailerUrls;//预告片
+  String year;//上映年份
 
-  SearchMovie(this.id,this.title,this.rating,this.casts,this.durations,this.tags,this.summary,
+  SearchMovie(this.id,this.title,this.rating,this.casts,this.durations,this.tags,this.summary,this.year,
       this.directors,this.image,this.pubDates,this.type,this.language,this.country,this.trailerUrls);
 
   SearchMovie.fromJson(Map<String, dynamic> json){
     this.id = json['id'].toString();
     this.title = json['title'];
+    this.year = json['year'];
     this.originalTitle = json['original_title'];
     this.casts = RelatedCasts.fromJson(json['casts']).casts;
     this.directors = RelatedCasts.fromJson(json['directors']).casts;

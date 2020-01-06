@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 const detailPageBGColor = Colors.brown;
 
@@ -20,5 +21,9 @@ const ratingCountColor = Colors.deepOrange;
 // tag文字颜色
 const tagTextColor = Colors.teal;
 
+
+getRandomColor(){
+  return Color.fromARGB(255, Random.secure().nextInt(255), Random.secure().nextInt(255), Random.secure().nextInt(255));
+}
 
 

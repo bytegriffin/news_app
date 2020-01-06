@@ -66,7 +66,8 @@ class _BookDetailPageState extends State<BookDetailPage> {
               Divider(height: 10.0,indent: 0.0,color: detailPageBGColor),
               getAuthroIntro(),
               Divider(height: 10.0,indent: 0.0,color: detailPageBGColor),
-              getCatalog()
+              getCatalog(),
+              Container(height:20.0,width:0.0)
             ],
           ),
         )
@@ -75,11 +76,14 @@ class _BookDetailPageState extends State<BookDetailPage> {
 
   Widget _displaySubtitle(){
     if (book?.subtitle != ""){
-      return Text(
-        "副标题：${book?.subtitle??""}",
-        style: TextStyle(
-          fontSize: 15,
-          color:detailPagePropTextColor
+      return Container(
+        width: 230,
+        child: Text(
+          "副标题：${book?.subtitle??""}",
+          style: TextStyle(
+            fontSize: 15,
+            color:detailPagePropTextColor
+          ),
         ),
       );
     }
@@ -94,34 +98,43 @@ class _BookDetailPageState extends State<BookDetailPage> {
       margin: EdgeInsets.all(0.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
            Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(
-                book?.title??"",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20.0,
-                  color: detailPagePropTextColor
+              Container(
+                width: 230,
+                child: Text(
+                  book?.title??"",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.0,
+                    color: detailPagePropTextColor
+                  ),
                 ),
               ),
               _displaySubtitle(),
               getRatingWidget(book?.rating??"0.0",detailPageBGColor,ratingTextColor),
-              Text(
-                '作者：${book?.author??""}',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: detailPagePropTextColor
+              Container(
+                width: 230,
+                child: Text(
+                  '作者：${book?.author??""}',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: detailPagePropTextColor
+                  ),
                 ),
               ),
-              Text(
-                "出版社：${book?.publisher??""} ",
-                style: TextStyle(
-                  fontSize: 16,
-                    color: detailPagePropTextColor
+              Container(
+                width: 230,
+                child: Text(
+                  "出版社：${book?.publisher??""} ",
+                  style: TextStyle(
+                    fontSize: 16,
+                      color: detailPagePropTextColor
+                  ),
                 ),
               ),
               Text(

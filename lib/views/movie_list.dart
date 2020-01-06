@@ -51,36 +51,32 @@ class _MovieListPageState extends State<MovieListPage> with AutomaticKeepAliveCl
             snap: false,
           ),
           SliverGrid(
-              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 200,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount:3,
                 mainAxisSpacing:0.0,
                 crossAxisSpacing:0.0,
-                childAspectRatio: 6 / 9,
+                childAspectRatio: 10 / 16,
               ),
               delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
                   return GestureDetector(
-                    child: Card(
+                    child: Container(
+                       margin: EdgeInsets.all(2),
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Container(
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(5.0),
                                 child: getCachedImage(movieList[index].image),
                               ),
-                              height: 160,
+                              height: 170,
                               width: 200,
                             ),
-                            Container(
-                              child: Text(movieList[index].title,overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0,)),
-                            ),
-                            getMovieRatingWidget(movieList[index]?.rate??"0.0")
+                            Text(movieList[index].title, overflow: TextOverflow.ellipsis, maxLines: 1,
+                                style: TextStyle(fontSize: 16.0,color: Colors.black,decoration: TextDecoration.none))
                           ],
                         )
-                    ),
+                    ),//getMovieRatingWidget(movie?.rate??"0.0")
                     onTap: (){
                       Navigator.push(context, MaterialPageRoute(
                           builder: (context) => MovieDetailPage(movieList[index].id)

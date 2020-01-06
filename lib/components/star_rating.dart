@@ -8,7 +8,7 @@ Widget getRatingWidget(String score, Color bgColor, Color textColor){
   }
   return Row(
     children: <Widget>[
-      Text('豆瓣评分：',
+      Text('评分：',
       style: TextStyle(
         fontSize: 16,
         color: textColor

@@ -22,7 +22,7 @@ class _TopMovieListPageState extends State<TopMovieListPage>{
   List<SearchMovie> usboxList; //北美票房榜和好评榜json格式比较特殊，因此需要单独出来
 
   _getBooks(){
-    //Top250 / 口碑榜
+    //Top250 / 口碑榜 。。。
     HttpClient.get(widget?.url, (result){
       if(mounted){
         setState(() {

@@ -92,9 +92,9 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
 
   //构建轮播图
   Widget _buildSwiper(){
-    return Container(
+    var con = Container(
       height: 120,
-      width: MediaQuery.of(context).size.width,
+      width: MediaQuery.of(context).size.width/ 1.1,
       child: Swiper(
         //autoplayDisableOnInteraction: false,
         pagination: new SwiperPagination(margin: new EdgeInsets.all(1.0)),
@@ -102,7 +102,10 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
         autoplay: true,
         itemBuilder: (c, i) {
           return GestureDetector(
-            child: Image.asset(swMovieList[i]?.image??"",fit: BoxFit.cover),
+            child: ClipRRect(
+                borderRadius: BorderRadius.circular(5.0),
+                child: Image.asset(swMovieList[i]?.image??"",fit: BoxFit.cover),
+              ),
             onTap: (){
               Navigator.push(context, MaterialPageRoute(
                   builder: (context) => TopMovieListPage(swMovieList[i]?.title??"",swMovieList[i]?.image??"", swMovieList[i]?.url??"")
@@ -112,12 +115,17 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
         },
       ),
     );
+    return Card(
+      elevation: 4,
+      child: con,
+    );
   }
 
   //构建类别按钮
   Widget _buildButton(){
-    return getBoxCard(
-      Row(
+    return Container(
+      margin: EdgeInsets.all(10),
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           GestureDetector(
