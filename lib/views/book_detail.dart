@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import '../models/search_book.dart';
-import '../util/imageutil.dart';
+import '../util/image_util.dart';
 import '../components/star_rating.dart';
 import '../components/text_tag.dart';
 import '../components/custom_sliver.dart';
 import '../net/httpclient.dart';
-import '../net/http_config.dart';
+import '../net/http_router.dart';
+import '../components/expandable_text.dart';
+import '../util/color_util.dart';
 
 class BookDetailPage extends StatefulWidget {
   final String id;
@@ -25,7 +27,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
   });
 
   _getBooks(){
-    HttpClient.get(GET_BOOK+widget.id, (result){
+    HttpClient.get(getBookUrl+widget.id, (result){
       if(mounted){
         setState(() {
           this.book = SearchBook.fromJson(result);
@@ -50,202 +52,212 @@ class _BookDetailPageState extends State<BookDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(book?.title??""),
+          //title: Text(book?.title??""),
+          backgroundColor: detailPageBGColor,
+          elevation:0
         ),
         body: buildSliverList(
           Column(
             children: <Widget>[
-              getItem(book),
-              getTags(book),
-              getSummary(book),
-              getAuthroIntro(book),
-              getCatalog(book)
+              getItem(),
+              getTags(),
+              Divider(height: 10.0,indent: 0.0,color: detailPageBGColor),
+              getSummary(),
+              Divider(height: 10.0,indent: 0.0,color: detailPageBGColor),
+              getAuthroIntro(),
+              Divider(height: 10.0,indent: 0.0,color: detailPageBGColor),
+              getCatalog()
             ],
           ),
         )
     );
   }
 
+  Widget _displaySubtitle(){
+    if (book?.subtitle != ""){
+      return Text(
+        "副标题：${book?.subtitle??""}",
+        style: TextStyle(
+          fontSize: 15,
+          color:detailPagePropTextColor
+        ),
+      );
+    }
+    return Container(height:0.0,width:0.0);
+  }
+
   // 获取书籍简介
-  Widget getItem(SearchBook book) {
+  Widget getItem() {
     var row = Container(
-      margin: EdgeInsets.all(4.0),
+      color: detailPageBGColor,
+      height: 200,
+      margin: EdgeInsets.all(0.0),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+           Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                book?.title??"",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.0,
+                  color: detailPagePropTextColor
+                ),
+              ),
+              _displaySubtitle(),
+              getRatingWidget(book?.rating??"0.0",detailPageBGColor,ratingTextColor),
+              Text(
+                '作者：${book?.author??""}',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: detailPagePropTextColor
+                ),
+              ),
+              Text(
+                "出版社：${book?.publisher??""} ",
+                style: TextStyle(
+                  fontSize: 16,
+                    color: detailPagePropTextColor
+                ),
+              ),
+              Text(
+                "出版时间：${book?.pubDate??""}",
+                style: TextStyle(
+                  fontSize: 16,
+                  color: detailPagePropTextColor
+                ),
+              ),
+              Text(
+                "价格：${book?.price??""}",
+                style: TextStyle(
+                  fontSize: 16,
+                  color: detailPagePropTextColor
+                ),
+              ),
+            ],
+          ),
           ClipRRect(
               borderRadius: BorderRadius.circular(5.0),
               child: getCachedImage(book?.image??defaultBookImage, width: 110, height: 160)
           ),
-          Expanded(
-              child: Container(
-                margin: EdgeInsets.only(left: 8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      book?.title??"",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0,
-                      ),
-                    ),
-                    Text(
-                      "副标题：${book?.subtitle??""}",
-                      style: TextStyle(
-                        fontSize: 15,
-                      ),
-                    ),
-                    getRatingWidget(book?.rating??"0.0"),
-                    Text(
-                      '作者：${book?.author??""}',
-                      style: TextStyle(
-                        fontSize: 14,
-                      ),
-                    ),
-                    Text(
-                      "出版社：${book?.publisher??""} ",
-                      style: TextStyle(
-                        fontSize: 14,
-                      ),
-                    ),
-                    Text(
-                      "出版时间：${book?.pubDate??""}",
-                      style: TextStyle(
-                        fontSize: 14,
-                      ),
-                    ),
-                    Text(
-                      "价格：${book?.price??""}",
-                      style: TextStyle(
-                        fontSize: 14,
-                      ),
-                    ),
-                  ],
-                ),
-              )
-          )
         ],
       ),
     );
-    return Card(
-      child: row,
-    );
+    return row;
   }
 
   // 获取书籍标签
-  Widget getTags(SearchBook book) {
-    return Card(
-      child: Container(
-        width: 400,
-        margin: EdgeInsets.all(4.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text("常用的标签： ",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.0,
-                )
-            ),
-            TextTags(list:this.tags),
-          ],
-        ),
+  Widget getTags() {
+    if(tags == null){
+      return Container(height:0.0,width:0.0);
+    }
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      margin: EdgeInsets.all(4.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(" 标签  · · · · · ·",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16.0,
+                color: detailPageTitleTextColor
+              )
+          ),
+          TextTags(list:this.tags),
+      ],
       ),
     );
   }
 
   // 获取书籍内容概要
-  Widget getSummary(SearchBook book) {
-    var row = Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text("摘要： ",
+  Widget getSummary() {
+    if(summary == ""){
+      return Container(height:0.0,width:0.0);
+    }
+    var column = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(" 摘要  · · · · · ·",
             style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18.0,
-            )
-          ),
-          Text(summary,
-              style: TextStyle(
-                fontWeight: FontWeight.w400,
+                fontWeight: FontWeight.bold,
                 fontSize: 16.0,
-              ))
-//         由于是异步请求，当summary为空时，就会很快的传给ExpandableText，因此不起作用
-//          ExpandableText(
-//            text: summary,
-//            maxLines: 5,
-//            style: TextStyle(fontSize: 16, color: Colors.black),
-//          )
-        ],
-      ),
+                color: detailPageTitleTextColor
+            )
+        ),
+        ExpandableText(
+          text: summary,
+          maxLines: 5,
+          style: TextStyle(fontSize: 16, color: Colors.black),
+        )
+      ],
     );
-    return Card(
-      child: row,
+    return Container(
+        width: MediaQuery.of(context).size.width,
+        margin: EdgeInsets.all(4.0),
+        child: column
     );
   }
 
   // 获取作者简介
-  Widget getAuthroIntro(SearchBook book) {
-    var row = Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text("作者简介： ",
-              style: TextStyle(
+  Widget getAuthroIntro() {
+    if(authorIntro == ""){
+      return Container(height:0.0,width:0.0);
+    }
+    var column = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(" 作者简介  · · · · · ·",
+            style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 18.0,
-              )
-          ),
-          Text(authorIntro,
-              style: TextStyle(
-                fontWeight: FontWeight.w400,
                 fontSize: 16.0,
-              ))
-//         由于是异步请求，当summary为空时，就会很快的传给ExpandableText，因此不起作用
-//          ExpandableText(
-//            text: summary,
-//            maxLines: 5,
-//            style: TextStyle(fontSize: 16, color: Colors.black),
-//          )
-        ],
-      ),
+                color: detailPageTitleTextColor
+            )
+        ),
+        ExpandableText(
+          text: summary,
+          maxLines: 5,
+          style: TextStyle(fontSize: 16, color: Colors.black),
+        )
+      ],
     );
-    return Card(
-      child: row,
+    return Container(
+        width: MediaQuery.of(context).size.width,
+        margin: EdgeInsets.all(4.0),
+        child: column
     );
   }
 
   // 获取目录
-  Widget getCatalog(SearchBook book) {
-    var row = Container(
-      width: 400,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text("目录： ",
-              style: TextStyle(
+  Widget getCatalog() {
+    if(catalog == ""){
+      return Container(height:0.0,width:0.0);
+    }
+    var column = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(" 目录  · · · · · ·",
+            style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 18.0,
-              )
-          ),
-          Text(catalog,
-              style: TextStyle(
-                fontWeight: FontWeight.w400,
                 fontSize: 16.0,
-              ))
-//         由于是异步请求，当summary为空时，就会很快的传给ExpandableText，因此不起作用
-//          ExpandableText(
-//            text: summary,
-//            maxLines: 5,
-//            style: TextStyle(fontSize: 16, color: Colors.black),
-//          )
-        ],
-      ),
+                color: detailPageTitleTextColor
+            )
+        ),
+        ExpandableText(
+          text: summary,
+          maxLines: 5,
+          style: TextStyle(fontSize: 16, color: Colors.black),
+        )
+      ],
     );
-    return Card(
-      child: row,
+    return Container(
+        width: MediaQuery.of(context).size.width,
+        margin: EdgeInsets.all(4.0),
+        child: column
     );
   }
 

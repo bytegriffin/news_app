@@ -3,8 +3,8 @@ import 'package:news_app/views/book_list.dart';
 import '../models/top_book.dart';
 import '../net/http_config.dart';
 import '../net/httpclient.dart';
-import '../util/imageutil.dart';
-import '../components/row_card.dart';
+import '../util/image_util.dart';
+import '../components/custom_card.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
 // 阅读首页

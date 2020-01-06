@@ -26,6 +26,7 @@ dependencies:
   flutter_easyrefresh: ^2.0.8
   flutter_swiper: ^1.1.6
   flutter_screenutil: ^0.7.0
+  photo_view: ^0.9.0
 #  path_provider: ^1.5.1
 #  audioplayers: ^0.13.5
 #  flutter_staggered_grid_view: ^0.3.0
@@ -55,9 +56,13 @@ flutter:
   assets:
     - assets/splash.jpg
     - assets/avatar.jpg
-    - assets/newbook.jpg
-    - assets/salesbook.jpg
-    - assets/recbook.jpg
+    - assets/new_book.jpg
+    - assets/sales_book.jpg
+    - assets/rec_book.jpg
+    - assets/search_movie.jpg
+    - assets/top_movie.jpg
+    - assets/weekly_movie.jpg
+    - assets/classic_movie.jpg
 #    - assets/men.jpg
 #    - assets/woman.jpg
 

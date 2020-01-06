@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import '../util/color_util.dart';
 
-// 获得评分
-Widget getRatingWidget(String score){
+// 获得详情页评分
+Widget getRatingWidget(String score, Color bgColor, Color textColor){
   if(score == ""){
     score = "0.0";
   }
@@ -9,12 +10,31 @@ Widget getRatingWidget(String score){
     children: <Widget>[
       Text('豆瓣评分：',
       style: TextStyle(
-        fontSize: 14,
+        fontSize: 16,
+        color: textColor
       ),),
-      Text('$score   '),
+      Text('$score   ',style: TextStyle(color: ratingCountColor),),
       StarRating(
         rating: double.parse(score),
         size:24,
+        selectedColor:Colors.orange,
+        unselectedColor: Colors.grey,
+        backgroundColor: bgColor,
+      ),
+    ],
+  );
+}
+
+Widget getMovieRatingWidget(String score){
+  if(score == ""){
+    score = "0.0";
+  }
+  return Row(
+    children: <Widget>[
+      Text('$score ',style: TextStyle(color: Colors.orange),),
+      StarRating(
+        rating: double.parse(score),
+        size:14,
         selectedColor:Colors.orange,
         unselectedColor: Colors.grey,
       ),
@@ -31,10 +51,11 @@ class StarRating extends StatefulWidget {
   final double size; // 大小
   final Color unselectedColor; // 默认icon时，未选中图标的颜色
   final Color selectedColor; // 默认icon时，选中图标的颜色
+  final Color backgroundColor; //背景颜色
 
   StarRating({@required this.rating, this.maxRating=10, Widget unselectedImage,
     Widget selectedImage,this.count=5, this.size=30, this.unselectedColor = const Color(0xff0000ff),
-    this.selectedColor= const Color(0xffff0000)}): unselectedImage = unselectedImage ??
+    this.selectedColor= const Color(0xffff0000),this.backgroundColor=Colors.white}): unselectedImage = unselectedImage ??
       Icon(Icons.star, size: size,color: unselectedColor),selectedImage = selectedImage ??
       Icon(Icons.star, size: size,color: selectedColor);
 
@@ -46,7 +67,7 @@ class _StarRatingState extends State<StarRating> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: widget.backgroundColor,
       child: Stack(
         children: <Widget>[
           getUnselectedStar(),

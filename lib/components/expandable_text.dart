@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../util/color_util.dart';
 
 //收回/全文显示 文本
 class ExpandableText extends StatefulWidget {
@@ -42,7 +43,7 @@ class _ExpandableTextState extends State<ExpandableText> {
                   padding: EdgeInsets.only(top: 2),
                   child:Text(expand ? '收起' : '全文', style: TextStyle(
                     fontSize: style != null ? style.fontSize : null,
-                    color: Colors.blue)
+                    color: expanedTextColor)
                   ),
                 ),
                 onTap: (){

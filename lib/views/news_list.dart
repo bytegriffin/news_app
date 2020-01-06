@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/news.dart';
 import 'news_detail.dart';
-import '../util/imageutil.dart';
+import '../util/image_util.dart';
 
 // 新闻列表每项设置
 class NewsListItemPage extends StatelessWidget {

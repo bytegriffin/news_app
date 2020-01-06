@@ -55,7 +55,7 @@ class SearchBarDelegate extends SearchDelegate<String>{
 
   List<String> _getSugguestList(){
     List<String> list;
-    Future f = HttpClient.getUrl(SUGGUEST+"$query");
+    Future f = HttpClient.request(SUGGUEST+"$query");
     Sugguest sugguests = Sugguest.fromJson(json.decode(''));
     list = sugguests.g.sublist(0,2);
     return list;

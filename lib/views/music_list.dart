@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../net/httpclient.dart';
 import '../net/http_config.dart';
 import '../models/music.dart';
-import '../util/imageutil.dart';
+import '../util/image_util.dart';
 
 class MusicListPage extends StatefulWidget {
   @override
@@ -17,7 +17,7 @@ class _MusicListPageState extends State<MusicListPage> with AutomaticKeepAliveCl
   bool get wantKeepAlive => true;
 
   _getMoreData(){
-    HttpClient.get(NEW_MUSIC, (result){
+    HttpClient.get(NEW_MUSIC_URL, (result){
       if(mounted){
         setState(() {
           this.musicList = MusicList.fromJson(result);

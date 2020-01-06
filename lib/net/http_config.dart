@@ -53,7 +53,7 @@ const VIDEO_API = "https://www.hao123.com/feedData/data?rn=20&pn=3&type=video&ct
 // 默认的豆瓣base api
 const doubanBaseApi = "https://douban.uieee.com";
 //默认分配第一个，之后第二个，最后一个时，重新置为0
-int index = 0;
+int urlIndex = 0;
 
 // 根据传入的url，重新分配一个不受访问限制的api地址
 String getAvaliableUrl(String url){
@@ -65,31 +65,21 @@ String getAvaliableUrl(String url){
     "https://douban-api.zce.now.sh",
     "https://douban-api-git-master.zce.now.sh"
   ];
-  if(index == urlPool.length - 1){
-    index = 0;
+  if(urlIndex == urlPool.length - 1){
+    urlIndex = 0;
   }
-  String newUrl = urlPool[index] + suffixUrl;
-  index = index + 1;
+  String newUrl = urlPool[urlIndex] + suffixUrl;
+  urlIndex = urlIndex + 1;
   return newUrl;
 }
 
-// 最近热门电视剧
-const HOT_TV = "https://movie.douban.com/j/search_subjects?type=tv&tag=%E7%83%AD%E9%97%A8&page_limit=20&page_start=0";
-// 最近热门电影
-const HOT_MOVIE="https://movie.douban.com/j/search_subjects?type=movie&tag=%E7%83%AD%E9%97%A8&page_limit=20&page_start=0";
-// 即将上映
-const COMMING_SOON_MOVIE = doubanBaseApi + "/v2/movie/coming_soon";
-// 正在热映
-const THEATERS_MOVIE = doubanBaseApi + "/v2/movie/in_theaters";
-// 北美票房榜
-const US_MOVIE = doubanBaseApi + "/v2/movie/us_box";
+
+// 热门电视剧
+const HOT_TV = "https://movie.douban.com/j/search_subjects?type=tv&tag=%E7%83%AD%E9%97%A8&page_limit=21&page_start=0";
+// 热门电影
+const HOT_MOVIE="https://movie.douban.com/j/search_subjects?type=movie&tag=%E7%83%AD%E9%97%A8&page_limit=21&page_start=0";
 
 
-const GET_BOOK = doubanBaseApi + "/v2/book/";
-// 文学
-const LIFE_BOOK = doubanBaseApi + "/v2/book/search?q='文学'&start=0&count=20";
-// 技术
-const TECH_BOOK = doubanBaseApi + "/v2/book/search?q='编程'&start=0&count=20";
 
 // 图书畅销榜
 const TOP_SALE_BOOK = "https://read.douban.com/j/index//charts?type=sales&index=ebook&verbose=1";
@@ -101,6 +91,48 @@ const TOP_BUNDLE_BOOK="https://read.douban.com/j/index//charts?type=bundle_sales
 const HIGH_RATE_BOOK="https://read.douban.com/j/index//charts?type=highly_rated_sales&index=ebook&verbose=1";
 
 // 音乐
-const NEW_MUSIC = "http://musicapi.leanapp.cn/personalized/newsong";
+const NEW_MUSIC_URL = "http://musicapi.leanapp.cn/personalized/newsong";
 // const NEW_MUSIC = "https://music.jeeas.cn/v1/personalized/newsong?from=music";
+// 网友最新歌单
+const PLAYLIST_URL = "/top/playlist?limit=10&order=new";
+// 网友最新歌单详情
+const PLAYLIST_DETAIL_URL = "http://musicapi.leanapp.cn/playlist/detail?id=24381616";
+// 音乐搜索
+const SEARCH_URL = "http://musicapi.leanapp.cn/search?keywords=";
+// 歌曲详情
+const SONG_DETAIL_URL = "http://musicapi.leanapp.cn/song/detail?ids=347230";
+// 专辑内容
+const ALBUM_URL = "http://musicapi.leanapp.cn/album?id=32311";
+// 获得歌手单曲
+const ARTIST_SONG_URL = "http://musicapi.leanapp.cn/artists?id=6452";
+// 获得歌手单曲
+const ARTIST_ALBUM_URL = "http://musicapi.leanapp.cn/artist/album?id=6452&limit=30";
+// 获得歌手描述
+const ARTIST_DESC_URL = "http://musicapi.leanapp.cn/artist/album?id=6452&limit=30";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

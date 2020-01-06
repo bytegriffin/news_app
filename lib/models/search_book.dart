@@ -5,12 +5,12 @@ class SearchBook {
   String author;//作家
   String authorIntro;//作者简介
   List<dynamic> translator; //翻译
-  String image;//图书图片
+  String image;//书图片
   String price;//价格
   String subtitle;//副标题
   String pubDate;//发布时间
   String publisher;//出版社
-  String summary="";//书的简介
+  String summary="";//书简介
   List<String> tags;//标签
   String catalog;//目录
 

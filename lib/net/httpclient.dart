@@ -21,12 +21,6 @@ class HttpClient {
     }
   }
 
-
-  static Future<Response> getUrl(String url) async{
-    Response response = await _dio.get(url);
-    return response.data;
-  }
-
   //异步get请求
   static void get(String url, Function callBack,
       {Map<String, String> params, Function errorCallBack}) async {
@@ -77,15 +71,15 @@ class HttpClient {
         callBack(response.data);
       }
     } catch (exception) {
-      _handError(errorCallBack, exception.toString());
+      _handError(errorCallBack, exception);
     }
   }
 
   //处理异常
-  static void _handError(Function errorCallback, String errorMsg) {
+  static void _handError(Function errorCallback, errorMsg) {
     if (errorCallback != null) {
-      errorCallback(errorMsg);
+      errorCallback(errorMsg.toString());
     }
-    print("<net> errorMsg :" + errorMsg);
+    print("<net> errorMsg :" + errorMsg.toString());
   }
 }

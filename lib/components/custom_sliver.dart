@@ -17,3 +17,20 @@ Widget buildSliverList(Widget wrap){
     ],
   );
 }
+
+Widget buildMovieSliverList(Widget wrap){
+  return CustomScrollView(
+    slivers: <Widget>[
+      SliverList(
+          delegate: SliverChildBuilderDelegate(
+                  (BuildContext context, int index){
+                if(index == 0){
+                  return wrap;
+                }
+                return null;
+              }
+          )
+      )
+    ],
+  );
+}

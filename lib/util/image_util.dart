@@ -4,13 +4,24 @@ import 'package:cached_network_image/cached_network_image.dart';
 // 默认书籍背景图
 const String defaultBookImage = "https://cdn.pixabay.com/photo/2014/04/02/14/06/book-306178_960_720.png";
 // 最新书籍背景图
-const topNewBookImage = "assets/newbook.jpg";
+const topNewBookImage = "assets/new_book.jpg";
 // 畅销书籍背景图
-const topSalesBookImage = "assets/salesbook.jpg";
+const topSalesBookImage = "assets/sales_book.jpg";
 // 畅销书籍背景图
-const topRecBookImage = "assets/salesbook.jpg";
+const topRecBookImage = "assets/sales_book.jpg";
 // 推荐书籍轮播图
-const recBookImage = "assets/recbook.jpg";
+const recBookImage = "assets/rec_book.jpg";
+// 默认影人照片
+const defaultCastImage = "https://img3.doubanio.com/f/movie/8dd0c794499fe925ae2ae89ee30cd225750457b4/pics/movie/celebrity-default-medium.png";
+// 搜索电影列表背景图
+const searchMovieImage = "assets/search_movie.jpg";
+// 首页电影列表背景图
+const topMovieImage = "assets/top_movie.jpg";
+// 经典电影列表背景图
+const classicMovieImage = "assets/classic_movie.jpg";
+// 好评电影列表背景图
+const weeklyMovieImage = "assets/weekly_movie.jpg";
+
 
 // 获取缓存图片
 Widget getCachedImage(String imageSrc,{double width=100,double height=150}){

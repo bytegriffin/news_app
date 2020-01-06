@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../util/color_util.dart';
 
 //文本标签
 class TextTags extends StatelessWidget {
@@ -39,7 +40,7 @@ class TagItem extends StatelessWidget {
       color: Colors.white70,
       child: Padding(
         padding: const EdgeInsets.all(4.0),
-        child: Text(this.text,style: TextStyle(fontSize: 14 )),
+        child: Text(this.text,style: TextStyle(fontSize: 14 ,color: tagTextColor)),
       ),
     );
   }
@@ -51,7 +52,7 @@ Widget buildBorderText(String text){
     alignment: Alignment(0, 0),//居中
     height: 20,
     decoration: new BoxDecoration( //边框设置
-      color: Colors.teal,
+      color: tagTextColor,
       //设置四周圆角 角度 这里的角度应该为 父Container height 的一半
       borderRadius: BorderRadius.all(Radius.circular(25.0)),
       //设置四周边框

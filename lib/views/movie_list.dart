@@ -1,120 +1,98 @@
 import 'package:flutter/material.dart';
-import '../net/httpclient.dart';
-import '../net/http_config.dart';
-import '../models/movie.dart';
 import '../components/star_rating.dart';
-import '../util/imageutil.dart';
+import '../util/image_util.dart';
+import '../models/top_movie.dart';
+import '../components/custom_card.dart';
+import 'movie_detail.dart';
 
 class MovieListPage extends StatefulWidget {
+  final String title;
+  final String backgroundImage;
+  final List<TopMovie> topMovieList;
+  MovieListPage(this.title, this.backgroundImage,this.topMovieList);
   @override
   _MovieListPageState createState() => _MovieListPageState();
 }
 
 class _MovieListPageState extends State<MovieListPage> with AutomaticKeepAliveClientMixin{
-  MovieList movieList;
-  int size = 0;
+  List<TopMovie> movieList;
 
   @override
   bool get wantKeepAlive => true;
 
-  _getMoreData(){
-//    HttpClient.request(THEATERS_MOVIE).then((res){
-//      if(mounted){
-//        setState(() {
-//          this.movieList = MovieList.fromJson(res.data);
-//          this.size = movieList.subjects.length;
-//        });
-//      }
-//    });
-    HttpClient.get(THEATERS_MOVIE, (result){
-      if(mounted){
-        setState(() {
-          this.movieList = MovieList.fromJson(result);
-          this.size = movieList.subjects.length;
-        });
-      }
-    },errorCallBack: (error){
-      print(error);
-    });
-  }
-
   @override
   void initState(){
     super.initState();
-    _getMoreData();
+    movieList =widget.topMovieList;
+  }
+
+  List<Widget> getHotMovieList() {
+    return movieList.map((item) => getMovieRowItem(context, item)).toList();
   }
 
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return Scaffold(
-      body: new ListView.separated(
-        itemCount: size,
-        physics: BouncingScrollPhysics(),
-        itemBuilder: (context, index){
-          return Container(
-            child: getItem(movieList.subjects[index]),
-          );
-        },
-        separatorBuilder: (context, index) {
-          return Divider();
-        },
-      ),
-    );
-  }
-
-  Widget getItem(Movie movie) {
-    var row = Container(
-      margin: EdgeInsets.all(4.0),
-      child: Row(
-        children: <Widget>[
-          ClipRRect(
-            borderRadius: BorderRadius.circular(4.0),
-            child: getCachedImage(movie.image),
+    return Container(
+      color: Colors.white,
+      child: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            actions: <Widget>[
+            ],
+//            backgroundColor: Theme.of(context).primaryColor,
+            expandedHeight: 180.0,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text(widget.title),
+              background: Image.asset(widget.backgroundImage, fit:BoxFit.cover,),
+            ),
+            pinned: true,
+            floating: false,
+            snap: false,
           ),
-          Expanded(
-              child: Container(
-                margin: EdgeInsets.only(left: 8.0),
-                height: 150.0,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      movie.title,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0,
-                      ),
-                      maxLines: 1,
+          SliverGrid(
+              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 200,
+                mainAxisSpacing:0.0,
+                crossAxisSpacing:0.0,
+                childAspectRatio: 6 / 9,
+              ),
+              delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                  return GestureDetector(
+                    child: Card(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Container(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(5.0),
+                                child: getCachedImage(movieList[index].image),
+                              ),
+                              height: 160,
+                              width: 200,
+                            ),
+                            Container(
+                              child: Text(movieList[index].title,overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0,)),
+                            ),
+                            getMovieRatingWidget(movieList[index]?.rate??"0.0")
+                          ],
+                        )
                     ),
-                    Text(
-                      "类型：${movie.genres} ",
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
-                    ),
-                    getRatingWidget(movie.rating),
-                    Text(
-                        "导演：${movie.directors}"
-                    ),
-                    Text(
-                        "上映日期：${movie.pubdates}",
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
-                    ),
-                    Text(
-                        '演员：${movie.casts}',
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                    ),
-                  ],
-                ),
-              )
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => MovieDetailPage(movieList[index].id)
+                      ));
+                    },
+                  );
+                },
+                childCount: movieList.length,
+              ),
           )
         ],
       ),
-    );
-    return Card(
-      child: row,
     );
   }
 

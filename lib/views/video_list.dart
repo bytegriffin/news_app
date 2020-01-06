@@ -4,7 +4,7 @@ import '../net/http_config.dart';
 import '../models/news.dart';
 import 'dart:convert';
 import 'news_detail.dart';
-import '../util/imageutil.dart';
+import '../util/image_util.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_easyrefresh/ball_pulse_header.dart';
 import 'package:flutter_easyrefresh/ball_pulse_footer.dart';

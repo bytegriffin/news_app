@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'book_index.dart';
-import 'movie_list.dart';
+import 'movie_index.dart';
 import 'music_list.dart';
 
 class OtherPage extends StatelessWidget {
@@ -46,7 +46,7 @@ class OtherPage extends StatelessWidget {
         body: new TabBarView(
           children: <Widget>[
             new Center(child: BookIndexPage()),
-            new Center(child: MovieListPage()),
+            new Center(child: MovieIndexPage()),
             new Center(child: MusicListPage()),
           ],
         ),

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import '../util/imageutil.dart';
+import '../util/image_util.dart';
 import '../models/top_book.dart';
 import 'book_detail.dart';
 
 class BookListPage extends StatefulWidget {
   final String title;
-  final String backgroupImage;
+  final String backgroundImage;
   final List<TopBook> topBookList;
-  BookListPage(this.title, this.backgroupImage,this.topBookList);
+  BookListPage(this.title, this.backgroundImage,this.topBookList);
   @override
   _BookListPageState createState() => _BookListPageState();
 }
@@ -22,7 +22,6 @@ class _BookListPageState extends State<BookListPage> with AutomaticKeepAliveClie
     bookList = widget.topBookList;
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +43,7 @@ class _BookListPageState extends State<BookListPage> with AutomaticKeepAliveClie
             expandedHeight: 180.0,
             flexibleSpace: FlexibleSpaceBar(
               title: Text(widget.title),
-              background: Image.asset(widget.backgroupImage, fit:BoxFit.cover,),
+              background: Image.asset(widget.backgroundImage, fit:BoxFit.cover,),
             ),
             pinned: true,
             floating: false,
