@@ -8,15 +8,24 @@ class NewsListItemPage extends StatelessWidget {
   final News news;
   NewsListItemPage(this.news);
 
+  Widget displayImage(){
+    String netImage = news.image;
+    Image image;
+    if(netImage != null){
+      image = Image.network(netImage);
+      return ClipRRect(
+        borderRadius: BorderRadius.circular(5.0),
+        child: image,
+      );
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
-    String netimg = news.image;
-    Image image;
-    if(netimg != null){
-      image = Image.network(news.image);
-    }
+
     return ListTile(
-      leading: image,
+      leading: displayImage(),
       title: Text(news.title),
       subtitle: Row(
         children: <Widget>[

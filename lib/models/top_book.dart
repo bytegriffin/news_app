@@ -76,7 +76,7 @@ class TopBookList{
     this.fullName = json['fullName'];
     this.type = json['type'];
     this.channel = json['channel'];
-    if(json['list'] != null&& json['list'].length > 0){
+    if(json['list'] != null && json['list'].length > 0){
       this.list = List<TopBook>();
       json['list'].forEach((v) {
         this.list.add(TopBook.fromJson(v));

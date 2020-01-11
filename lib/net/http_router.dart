@@ -17,7 +17,6 @@ var getMovieUrl = getRouterUrl() + "/v2/movie/subject/";
 // 获取单个电影人员信息
 var getCastUrl = getRouterUrl() + "/v2/movie/celebrity/";
 
-
 // 获取单个图书信息
 var getBookUrl = getRouterUrl() + "/v2/book/";
 // 文学
@@ -27,13 +26,13 @@ var techBookUrl = getRouterUrl() + "/v2/book/search?q='编程'&start=0&count=20"
 
 //为了避免过多访问同一个api地址而导致访问次数受限，
 //每次访问前可将其路由到不同的api地址来减少访问同一个api的次数
+List<String> urlPool = [
+  "https://douban.uieee.com",
+  "https://douban-api.uieee.com",
+  "https://douban-api.now.sh",
+  "https://douban-api.zce.now.sh",
+  // "https://douban-api-git-master.zce.now.sh"
+];
 String getRouterUrl(){
-  List<String> urlPool = [
-    "https://douban.uieee.com",
-    "https://douban-api.uieee.com",
-    "https://douban-api.now.sh",
-    "https://douban-api.zce.now.sh",
-   // "https://douban-api-git-master.zce.now.sh"
-  ];
   return urlPool[Random().nextInt(urlPool.length)];
 }

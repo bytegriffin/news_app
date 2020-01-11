@@ -39,7 +39,7 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
 
   _getMovies(){
     //热门电影
-    HttpClient.get(HOT_MOVIE, (result){
+    HttpClient.get(HOT_MOVIE_URL, (result){
       if(mounted){
         setState(() {
           this.hotMovieList = TopMovieList.fromJson(result).subjects;
@@ -49,7 +49,7 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
       print(error);
     });
     //热门电视剧
-    HttpClient.get(HOT_TV, (result){
+    HttpClient.get(HOT_TV_URL, (result){
       if(mounted){
         setState(() {
           this.hotTvList = TopMovieList.fromJson(result).subjects;

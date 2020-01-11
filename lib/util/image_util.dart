@@ -21,7 +21,10 @@ const topMovieImage = "assets/top_movie.jpg";
 const classicMovieImage = "assets/classic_movie.jpg";
 // 好评电影列表背景图
 const weeklyMovieImage = "assets/weekly_movie.jpg";
-
+// 默认音乐图片
+const defaultMusicImage = defaultCastImage;
+// 最新音乐背景图
+const topNewMusicImage = "assets/new_music.jpg";
 
 // 获取缓存图片
 Widget getCachedImage(String imageSrc,{double width=100,double height=150}){
@@ -31,9 +34,9 @@ Widget getCachedImage(String imageSrc,{double width=100,double height=150}){
       height: height,
       fit: BoxFit.cover,
       imageUrl: imageSrc,
-      placeholder: (context, url) => CircularProgressIndicator(
-        
-      ),
+//      placeholder: (context, url) => CircularProgressIndicator(
+//
+//      ),
       errorWidget: (context, url, error) => Icon(Icons.error),
     ),
   );

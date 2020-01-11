@@ -60,6 +60,7 @@ class _VideoListPageState extends State<VideoListPage>{
         onRefresh: _onRefresh,
         onLoad: _onRefresh,
         child: new ListView.separated(
+          padding: EdgeInsets.only(top:5),
           itemCount: size,
           physics: BouncingScrollPhysics(),
           itemBuilder: (context, index){
@@ -87,11 +88,16 @@ class _VideoListPageState extends State<VideoListPage>{
       child: Card(
         margin: EdgeInsets.only(left: 5,right: 5,top: 0,bottom: 0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Container(
               child: Stack(
                 children: <Widget>[
-                  Image.network(videolist.result[index].image, fit: BoxFit.cover),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(5.0),
+                    child: getCachedImage(videolist.result[index].image,width: 500,height: 200),
+                  ),
                   Text(videolist.result[index].title,
                     style: TextStyle(fontSize:20,color: Colors.white,shadows:[
                       BoxShadow(color: Colors.black54,offset: Offset(0.1,0.1), blurRadius: 5.0)

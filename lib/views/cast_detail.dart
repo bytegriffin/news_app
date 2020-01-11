@@ -8,6 +8,7 @@ import 'movie_detail.dart';
 import '../components/expandable_text.dart';
 import '../util/color_util.dart';
 import '../components/photo_view.dart';
+import '../components/nav_button.dart';
 
 //影人详情页
 class CastDetailPage extends StatefulWidget {
@@ -63,7 +64,10 @@ class _CastDetailPageState extends State<CastDetailPage>{
       appBar: AppBar(
        // title: Text(cast?.name??""),
           backgroundColor: detailPageBGColor,
-          elevation:0
+          elevation:0,
+          actions: <Widget>[
+            buildHomeNavButton(context)
+          ],
       ),
       body: CustomScrollView(
         slivers: <Widget>[
@@ -177,13 +181,13 @@ class _CastDetailPageState extends State<CastDetailPage>{
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
               "${cast?.name??""}",
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 18,
                   color: detailPagePropTextColor
               ),
               overflow: TextOverflow.ellipsis,

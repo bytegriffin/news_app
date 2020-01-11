@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../components/star_rating.dart';
 import '../util/image_util.dart';
 import '../models/top_movie.dart';
 import '../components/custom_card.dart';

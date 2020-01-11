@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'book_index.dart';
 import 'movie_index.dart';
-import 'music_list.dart';
+import 'music_index.dart';
 
 class OtherPage extends StatelessWidget {
 
@@ -47,7 +47,7 @@ class OtherPage extends StatelessWidget {
           children: <Widget>[
             new Center(child: BookIndexPage()),
             new Center(child: MovieIndexPage()),
-            new Center(child: MusicListPage()),
+            new Center(child: MusicIndexPage()),
           ],
         ),
       ),

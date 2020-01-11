@@ -18,13 +18,13 @@ class _BookIndexPageState extends State<BookIndexPage> with AutomaticKeepAliveCl
   TopBookList salesTopBookList;
   TopBookList highRateTopBookList;
 
-  List<TopBook> newBookList= List.generate(4, (index) {
+  List<TopBook> newBookList= List.generate(6, (index) {
     return TopBook("","$index","","",defaultBookImage,"内容加载中。。。","0字","");
   });
-  List<TopBook> salesBookList= List.generate(4, (index) {
+  List<TopBook> salesBookList= List.generate(6, (index) {
     return TopBook("","$index","","",defaultBookImage,"内容加载中。。。","0字","");
   });
-  List<TopBook> hightRateBookList= List.generate(4, (index) {
+  List<TopBook> hightRateBookList= List.generate(6, (index) {
     return TopBook("","$index","","",defaultBookImage,"内容加载中。。。","0字","");
   });
 
@@ -90,14 +90,17 @@ class _BookIndexPageState extends State<BookIndexPage> with AutomaticKeepAliveCl
   }
 
   Widget buildSwiper(){
-    return Container(
-      height: 120,
-        width: 420,
+    var con =  Container(
+        height: 120,
+      width: MediaQuery.of(context).size.width/ 1.1,
         child: Swiper(
           //autoplayDisableOnInteraction: false,
           itemBuilder: (c, i) {
             return GestureDetector(
-              child: Image.asset(recBookImage,fit: BoxFit.cover),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(5.0),
+              child: Image.asset(recBookImage??"",fit: BoxFit.cover),
+            ),
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(
                     builder: (context) => BookListPage("推荐作品",recBookImage, hightRateBookList)
@@ -108,6 +111,10 @@ class _BookIndexPageState extends State<BookIndexPage> with AutomaticKeepAliveCl
           //pagination: new SwiperPagination(margin: new EdgeInsets.all(1.0)),
           itemCount: 1,
         ),
+    );
+    return Card(
+      elevation: 4,
+      child: con,
     );
   }
 

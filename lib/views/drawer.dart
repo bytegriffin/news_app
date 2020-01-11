@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 class DrawerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Drawer( // 左侧抽屉
+    var drawer = Drawer( // 左侧抽屉
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
           UserAccountsDrawerHeader(
-            accountName: Text('张三', style: TextStyle(fontWeight: FontWeight.bold),),
-            accountEmail: Text('zhangsan@abc.com'),
+            accountName: Text('测试账户', style: TextStyle(fontWeight: FontWeight.bold),),
+            accountEmail: Text('test@test.com'),
             currentAccountPicture: CircleAvatar( // 个人头像
               radius: 36,
               backgroundImage: AssetImage('assets/avatar.jpg')
@@ -42,6 +42,10 @@ class DrawerPage extends StatelessWidget {
           ),
         ],
       ),
+    );
+    return Container(
+      color: Colors.brown,
+        child: drawer
     );
   }
 }

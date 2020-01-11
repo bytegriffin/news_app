@@ -8,6 +8,7 @@ import '../net/httpclient.dart';
 import '../net/http_router.dart';
 import '../components/expandable_text.dart';
 import '../util/color_util.dart';
+import '../components/nav_button.dart';
 
 class BookDetailPage extends StatefulWidget {
   final String id;
@@ -54,7 +55,10 @@ class _BookDetailPageState extends State<BookDetailPage> {
         appBar: AppBar(
           //title: Text(book?.title??""),
           backgroundColor: detailPageBGColor,
-          elevation:0
+          elevation:0,
+          actions: <Widget>[
+            buildHomeNavButton(context)
+          ],
         ),
         body: buildSliverList(
           Column(

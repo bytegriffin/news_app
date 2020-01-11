@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/components/custom_card.dart';
 import '../models/search_movie.dart';
 import '../util/image_util.dart';
 import '../components/star_rating.dart';
@@ -9,6 +8,7 @@ import '../net/http_router.dart';
 import 'cast_detail.dart';
 import '../components/expandable_text.dart';
 import '../util/color_util.dart';
+import '../components/nav_button.dart';
 
 class MovieDetailPage extends StatefulWidget {
   final String id;
@@ -17,12 +17,9 @@ class MovieDetailPage extends StatefulWidget {
   _MovieDetailPageState createState() => _MovieDetailPageState();
 }
 
-class _MovieDetailPageState extends State<MovieDetailPage> with AutomaticKeepAliveClientMixin{
+class _MovieDetailPageState extends State<MovieDetailPage>{
   SearchMovie movie;
   String summary = "";
-
-  @override
-  bool get wantKeepAlive => true;
 
   List<String> tags=List<String>.generate(1, (index){
     return "标签";
@@ -50,12 +47,14 @@ class _MovieDetailPageState extends State<MovieDetailPage> with AutomaticKeepAli
 
   @override
   Widget build(BuildContext context) {
-    super.build(context);
     return Scaffold(
         appBar: AppBar(
           //title: Text(movie?.title??""),
-            backgroundColor: detailPageBGColor,
-            elevation:0
+          backgroundColor: detailPageBGColor,
+          elevation:0,
+          actions: <Widget>[
+            buildHomeNavButton(context)
+          ],
         ),
       body: CustomScrollView(
         slivers: <Widget>[

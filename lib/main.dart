@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
 import './views/splash.dart';
+import 'dart:io';
+import 'package:flutter/services.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+  // 设置android状态栏为透明的沉浸。写在组件渲染之后，是为了在渲染后进行set赋值，
+  // 如果写在渲染之前MaterialApp组件会覆盖掉它。
+  if (Platform.isAndroid) {
+    SystemUiOverlayStyle systemUiOverlayStyle =
+    SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+    SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
+  }
+}
 
 class MyApp extends StatelessWidget {
 
