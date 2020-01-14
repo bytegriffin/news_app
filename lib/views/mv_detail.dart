@@ -20,8 +20,6 @@ class MVDetailPage extends StatefulWidget {
 class _MVDetailPageState extends State<MVDetailPage>{
   MV mv = MV("1","测试",defaultMusicImage,"");
   IjkMediaController _controller = IjkMediaController();
-  // final FijkPlayer player = FijkPlayer();
-
 
   List<MV> similarMVs= List.generate(5, (index) {
     return MV("$index","测试",defaultMusicImage,"");
@@ -29,6 +27,10 @@ class _MVDetailPageState extends State<MVDetailPage>{
 
   @override
   void initState(){
+    if(_controller.isPlaying){
+      print("=====================================");
+      _controller.dispose();
+    }
     super.initState();
     HttpClient.get(MV_DETAIL_URL+widget.id, (result){
       if(mounted){
@@ -50,14 +52,13 @@ class _MVDetailPageState extends State<MVDetailPage>{
     },errorCallBack: (error){
       print(error);
     });
-
   }
 
   @override
   void dispose() {
-    super.dispose();
     _controller.dispose();
-   //  player.release();
+    _controller = null;
+    super.dispose();
   }
 
   Widget buildIjkPlayer() {
@@ -88,24 +89,24 @@ class _MVDetailPageState extends State<MVDetailPage>{
           ),
           SliverToBoxAdapter(
             child: new Container(
-                padding: EdgeInsets.all(5),
-                child:  Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      mv.name,
-                      style: new TextStyle(fontWeight: FontWeight.bold,fontSize: 18),
-                    ),
-                    buildInfo(),
-                    buildButton(),
-                    Divider(height: 10.0,indent: 0.0,color: detailPageBGColor),
-                    Text(
-                      " 相关视频  · · · · · ·",
-                      style: new TextStyle(fontWeight: FontWeight.bold,fontSize: 18),
-                    ),
-                  ],
-                )
+              padding: EdgeInsets.all(5),
+              child:  Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    mv.name,
+                    style: new TextStyle(fontWeight: FontWeight.bold,fontSize: 18),
+                  ),
+                  buildInfo(),
+                  buildButton(),
+                  Divider(height: 10.0,indent: 0.0,color: detailPageBGColor),
+                  Text(
+                    " 相关视频  · · · · · ·",
+                    style: new TextStyle(fontWeight: FontWeight.bold,fontSize: 18),
+                  ),
+                ],
+              )
             ),
           ),
           SliverFixedExtentList(

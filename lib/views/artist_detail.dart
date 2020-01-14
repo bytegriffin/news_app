@@ -11,6 +11,7 @@ import 'album_detail.dart';
 import '../components/nav_button.dart';
 import '../models/mv.dart';
 import 'mv_detail.dart';
+import '../components/sliver_appbar_delegate.dart';
 
 class ArtistDetailPage extends StatefulWidget {
   final String id;
@@ -113,7 +114,7 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
             snap: false,
           ),
           SliverPersistentHeader(
-            delegate: _SliverAppBarDelegate(TabBar(
+            delegate: SliverAppBarDelegate(TabBar(
               labelColor: Colors.red,
               unselectedLabelColor: Colors.grey,
               tabs: [
@@ -331,30 +332,4 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
     );
   }
 
-}
-
-
-class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
-  _SliverAppBarDelegate(this._tabBar);
-
-  final TabBar _tabBar;
-
-  @override
-  double get minExtent => _tabBar.preferredSize.height;
-
-  @override
-  double get maxExtent => _tabBar.preferredSize.height;
-
-  @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return Container(
-      child: _tabBar,
-    );
-  }
-
-  @override
-  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
-    return false;
-  }
 }

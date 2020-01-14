@@ -9,19 +9,22 @@ import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_easyrefresh/ball_pulse_header.dart';
 import 'package:flutter_easyrefresh/ball_pulse_footer.dart';
 
-//视频页面
-class VideoListPage extends StatefulWidget {
+//新闻视频页面
+class NewsVideoListPage extends StatefulWidget {
   @override
-  _VideoListPageState createState() => _VideoListPageState();
+  _NewsVideoListPageState createState() => _NewsVideoListPageState();
 }
 
-class _VideoListPageState extends State<VideoListPage>{
+class _NewsVideoListPageState extends State<NewsVideoListPage> with AutomaticKeepAliveClientMixin{
   ScrollController _scrollController = ScrollController();
   NewsList videolist;
   int size = 0;
 
+  @override
+  bool get wantKeepAlive => true;
+
   _getMoreData(){
-    HttpClient.request(VIDEO_API).then((res){
+    HttpClient.request(NEWS_VIDEO_URL).then((res){
       Map<String,dynamic> subjects  = json.decode(res.data) as Map;
       setState(() {
         this.videolist = NewsList.fromJson(subjects);
@@ -53,6 +56,7 @@ class _VideoListPageState extends State<VideoListPage>{
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       body: EasyRefresh(
         header: BallPulseHeader(),

@@ -80,7 +80,7 @@ class _TopPlayListPageState extends State<TopPlayListPage>{
               Container(
                 width: 230,
                 child: Text("${allTopList[index].name??''}",
-                    style: TextStyle(fontSize:16, fontWeight: FontWeight.w700),overflow: TextOverflow.ellipsis, maxLines: 1),
+                    style: TextStyle(fontSize:16, fontWeight: FontWeight.w700),overflow: TextOverflow.ellipsis, maxLines: 2),
               ),
               Container(
                 width: 230,

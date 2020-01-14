@@ -36,7 +36,6 @@ class _GNNewsListPageState extends State<GNNewsListPage> with AutomaticKeepAlive
   Future<void> _onRefresh() async {
     await Future.delayed(Duration(seconds: 1)).then((e){
       setState(() {
-        //  newslist.result.clear();
         _getMoreData();
       });
     });

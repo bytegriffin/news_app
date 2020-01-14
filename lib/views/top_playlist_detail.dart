@@ -25,7 +25,7 @@ class _TopPlayListDetailPageState extends State<TopPlayListDetailPage> {
   int count = 0;
 
   List<Track> tracks= List.generate(4, (index) {
-    return Track("$index","测试");
+    return Track("$index","");
   });
 
   _getMusics(){

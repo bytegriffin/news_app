@@ -88,7 +88,7 @@ Widget buildRowMVCard(BuildContext context,String typeName,Widget page, List<MV>
       ),
       SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        reverse: true,
+        // reverse: true,
         //padding: EdgeInsets.all(0.0),
         physics: BouncingScrollPhysics(),
         child: Row(
@@ -382,8 +382,6 @@ Widget buildRowBookCard(BuildContext context,String typeName,Widget page, List<T
       ),
       SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        reverse: true,
-        //padding: EdgeInsets.all(0.0),
         physics: BouncingScrollPhysics(),
         child: Row(
           children: <Widget>[

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'video_list.dart';
+import 'video_index.dart';
 import 'home.dart';
 import 'other.dart';
 import 'profile.dart';
 import 'drawer.dart';
-import 'search_bar.dart';
+// import 'search_bar.dart';
 
 class BottomNavigator extends StatefulWidget {
   final int index;
@@ -115,7 +115,7 @@ class _BottomNavigatorState extends State<BottomNavigator> {
         index: _currentIndex,
         children: <Widget>[
           HomePage(),
-          VideoListPage(),
+          VideoIndexPage(),
           OtherPage(),
           ProfilePage(),
         ],

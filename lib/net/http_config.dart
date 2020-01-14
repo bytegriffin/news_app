@@ -41,9 +41,44 @@ const SUGGUEST = "https://www.baidu.com/sugrec?prod=pc_hao123&wd=";
 // 聚合新闻api http://v.juhe.cn/toutiao/index?type=top&key=3dc86b09a2ee2477a5baa80ee70fcdf5
 // https://www.hao123.com/feedData/data?callback=jQuery18206683182829139738_1576235945849&type=rec&app_from=pc_tuijian&rn=10&pn=2
 
-const BAIDU_VIDEO_URL = "http://v.baidu.com/channel/short/newamuse?format=json";
+// 搞笑视频
+const AMUSE_VIDEO_URL = "http://v.baidu.com/channel/short/newamuse?format=json";
+// 明星视频
+const STAR_VIDEO_URL = "http://v.baidu.com/channel/short/newstar?format=json";
+// 影视视频
+const BOMB_VIDEO_URL = "http://v.baidu.com/channel/short/newbomb?format=json";
 
-const VIDEO_API = "https://www.hao123.com/feedData/data?rn=20&pn=3&type=video&ctype=video&app_from=pc_tuijian";
+
+const REFRESH_VIDEO_COUNT = 30;
+
+// 新闻
+const NEWS_VIDEO_URL = "https://www.hao123.com/feedData/data?rn=$REFRESH_VIDEO_COUNT&pn=3&type=video&ctype=video&app_from=pc_tuijian";
+// 影视
+const YINGSHI_VIDEO_URL = "http://www.hao123.com/feedData/haokanfeed?tab=yingshi_new&video_type=1&nums=$REFRESH_VIDEO_COUNT";
+// 音乐
+const YINYUE_VIDEO_URL = "http://www.hao123.com/feedData/haokanfeed?tab=yinyue_new&video_type=1&nums=$REFRESH_VIDEO_COUNT";
+// 动漫
+const DONGMAN_VIDEO_URL = "http://www.hao123.com/feedData/haokanfeed?tab=dongman_new&video_type=1&nums=$REFRESH_VIDEO_COUNT";
+// 游戏
+const YOUXI_VIDEO_URL = "http://www.hao123.com/feedData/haokanfeed?tab=youxi_new&video_type=1&nums=$REFRESH_VIDEO_COUNT";
+// 综艺
+const ZONGYI_VIDEO_URL = "http://www.hao123.com/feedData/haokanfeed?tab=zongyi_new&video_type=1&nums=$REFRESH_VIDEO_COUNT";
+// 文化
+const WENHUA_VIDEO_URL = "http://www.hao123.com/feedData/haokanfeed?tab=wenhua_new&video_type=1&nums=$REFRESH_VIDEO_COUNT";
+// 美食
+const MEISHI_VIDEO_URL = "http://www.hao123.com/feedData/haokanfeed?tab=meishi_new&video_type=1&nums=$REFRESH_VIDEO_COUNT";
+// 时尚
+const SHISHANG_VIDEO_URL = "http://www.hao123.com/feedData/haokanfeed?tab=shishang_new&video_type=1&nums=$REFRESH_VIDEO_COUNT";
+// 搞笑
+const GAOXIAO_VIDEO_URL = "http://www.hao123.com/feedData/haokanfeed?tab=gaoxiao_new&video_type=1&nums=$REFRESH_VIDEO_COUNT";
+// 宠物
+const CHONGWU_VIDEO_URL = "http://www.hao123.com/feedData/haokanfeed?tab=chongwu_new&video_type=1&nums=$REFRESH_VIDEO_COUNT";
+// 汽车
+const QICHE_VIDEO_URL = "http://www.hao123.com/feedData/haokanfeed?tab=qiche_new&video_type=1&nums=$REFRESH_VIDEO_COUNT";
+// 体育
+const TIYU_VIDEO_URL = "http://www.hao123.com/feedData/haokanfeed?tab=tiyu_new&video_type=1&nums=$REFRESH_VIDEO_COUNT";
+
+
 
 //豆瓣API
 //https://douban.uieee.com
