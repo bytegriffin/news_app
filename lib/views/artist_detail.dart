@@ -12,6 +12,7 @@ import '../components/nav_button.dart';
 import '../models/mv.dart';
 import 'mv_detail.dart';
 import '../components/sliver_appbar_delegate.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ArtistDetailPage extends StatefulWidget {
   final String id;
@@ -118,7 +119,7 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
               labelColor: Colors.red,
               unselectedLabelColor: Colors.grey,
               tabs: [
-                Tab(text: '歌曲 (热门)'),
+                Tab(text: '热门歌曲'),
                 Tab(text: '专辑'),
                 Tab(text: 'MV'),
                 Tab(text: '简介'),
@@ -243,7 +244,7 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              width: 250,
+              width: ScreenUtil().setWidth(400),
               child: Text(artistMVs[index]?.name??"",
                 style: TextStyle(fontSize:16),),
             ),

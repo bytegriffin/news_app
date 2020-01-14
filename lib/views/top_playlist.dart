@@ -5,6 +5,7 @@ import '../net/httpclient.dart';
 import '../models/play_list.dart';
 import '../util/color_util.dart';
 import 'top_playlist_detail.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TopPlayListPage extends StatefulWidget {
   final String title;
@@ -78,12 +79,12 @@ class _TopPlayListPageState extends State<TopPlayListPage>{
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
-                width: 230,
+                width: ScreenUtil().setWidth(380),
                 child: Text("${allTopList[index].name??''}",
                     style: TextStyle(fontSize:16, fontWeight: FontWeight.w700),overflow: TextOverflow.ellipsis, maxLines: 2),
               ),
               Container(
-                width: 230,
+                width: ScreenUtil().setWidth(380),
                 child: Text("${allTopList[index].playCount}次播放",
                     style: TextStyle(fontSize:16),overflow: TextOverflow.ellipsis, maxLines: 1),
               ),

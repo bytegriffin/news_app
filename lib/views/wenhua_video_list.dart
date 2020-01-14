@@ -86,6 +86,7 @@ class WenhuaVideoListPageState extends State<WenhuaVideoListPage> with Automatic
           crossAxisSpacing: 4.0,
           itemBuilder: (context, index) => VideoTileCard(
             haoKanVideo: datas[index],
+            index: index,
             worksAspectRatio: index == 0 ? 2.5 : 3,
           ),
           staggeredTileBuilder: (int index) =>

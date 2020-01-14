@@ -7,23 +7,36 @@ import '../views/video_detail.dart';
 class VideoTileCard extends StatelessWidget {
   final HaoKanVideo haoKanVideo;
   final double worksAspectRatio;
+  final int index;
 
-  VideoTileCard({this.haoKanVideo,this.worksAspectRatio});
+  VideoTileCard({this.haoKanVideo,this.worksAspectRatio, this .index});
+
+  double dheight;
 
   @override
   Widget build(BuildContext context) {
-    var card =  Card(
-      elevation: 1.0,
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
+    // 动态计算图片高度，第一个要小一些
+    if(index  == 0 ){
+      dheight =  ScreenUtil().setWidth(460);
+    } else {
+      dheight = ScreenUtil().setWidth(555);
+    }
+    var card =  Container(
+      padding: EdgeInsets.all(1),
+     // elevation: 1.0,
+      //shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Stack(
             children: <Widget>[
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10.0),
-                child: getCachedImage(haoKanVideo.cover??defaultMusicImage,width: ScreenUtil().setWidth(400), height: worksAspectRatio * 99),
+              Container(
+                height: dheight,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(5.0),
+                  child: getCachedImage(haoKanVideo.cover??defaultMusicImage,width: ScreenUtil().setWidth(400), height: worksAspectRatio * 90),
+                ),
               ),
               Positioned(
                 left: 10,

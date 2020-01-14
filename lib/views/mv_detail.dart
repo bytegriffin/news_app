@@ -7,6 +7,7 @@ import '../components/expandable_text.dart';
 import '../util/color_util.dart';
 import '../components/nav_button.dart';
 import 'package:flutter_ijkplayer/flutter_ijkplayer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 //MV详情页
@@ -28,7 +29,6 @@ class _MVDetailPageState extends State<MVDetailPage>{
   @override
   void initState(){
     if(_controller.isPlaying){
-      print("=====================================");
       _controller.dispose();
     }
     super.initState();
@@ -207,8 +207,8 @@ class _MVDetailPageState extends State<MVDetailPage>{
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
-                width: 250,
-                child: Text(mv?.name??"",
+                width: ScreenUtil().setWidth(400),
+                child: Text(mv?.name??"",overflow: TextOverflow.ellipsis, maxLines: 2,
                   style: TextStyle(fontSize:16),),
               ),
               Text( "${mv.artistName} - ${mv?.duration} ", overflow: TextOverflow.ellipsis, maxLines: 1,

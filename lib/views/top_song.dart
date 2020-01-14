@@ -5,6 +5,7 @@ import '../net/httpclient.dart';
 import '../models/top_song.dart';
 import '../util/color_util.dart';
 import 'top_song_list.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TopSongPage extends StatefulWidget {
   final String title;
@@ -194,22 +195,22 @@ class _TopSongPageState extends State<TopSongPage>{
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
-                width: 230,
+                width: ScreenUtil().setWidth(380),
                 child: Text("${allTopList[index].name??''}",
                     style: TextStyle(fontSize:16, fontWeight: FontWeight.w700),overflow: TextOverflow.ellipsis, maxLines: 1),
               ),
               Container(
-                width: 230,
+                width: ScreenUtil().setWidth(380),
                 child: Text("1.${allTopList[index].tracks[0]?.artistNames??''} - ${allTopList[index].tracks[0]?.songName??''}",
                   style: TextStyle(fontSize:16),overflow: TextOverflow.ellipsis, maxLines: 1),
               ),
               Container(
-                width: 230,
+                width: ScreenUtil().setWidth(380),
                 child: Text("2.${allTopList[index].tracks[1]?.artistNames??''} - ${allTopList[index].tracks[1]?.songName??''}",
                   style: TextStyle(fontSize:16),overflow: TextOverflow.ellipsis, maxLines: 1),
               ),
               Container(
-                width: 230,
+                width: ScreenUtil().setWidth(380),
                 child: Text("3.${allTopList[index].tracks[2]?.artistNames??''} - ${allTopList[index].tracks[2]?.songName??''}",
                   style: TextStyle(fontSize:16),overflow: TextOverflow.ellipsis, maxLines: 1),
               ),
