@@ -344,7 +344,7 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
       _buildButton("Red Bull TV",REDBULLTV),
       _buildButton("AllSports",ALLSPORTS),
       _buildButton("Rede Atividade",READATIVIDADE),
-      _buildButton("Rede TV",REDETV),
+//      _buildButton("Rede TV",REDETV),
       _buildButton("Radio Bruno",RB),
       _buildButton("NBC News",NBCNEWS),
     ];

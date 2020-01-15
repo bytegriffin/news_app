@@ -1,6 +1,0 @@
-
-
-String getLiveImage(String source){
-
-
-}

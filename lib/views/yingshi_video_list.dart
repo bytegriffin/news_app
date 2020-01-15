@@ -27,13 +27,13 @@ class YingshiVideoListPageState extends State<YingshiVideoListPage> with Automat
 
   // 下拉刷新数据
   Future<Null> _refreshData() async {
-  //  _page = 0;
+    //  _page = 0;
     _getNewData(false);
   }
 
   // 上拉加载数据
   Future<Null> _addMoreData() async {
-   // _page++;
+    // _page++;
     _getNewData(true);
   }
 
@@ -90,7 +90,7 @@ class YingshiVideoListPageState extends State<YingshiVideoListPage> with Automat
             worksAspectRatio: index == 0 ? 2.5 : 3,
           ),
           staggeredTileBuilder: (int index) =>
-               StaggeredTile.count(2, index == 0 ? 2.5 : 3),
+              StaggeredTile.count(2, index == 0 ? 2.5 : 3),
         ),
       ),
     );

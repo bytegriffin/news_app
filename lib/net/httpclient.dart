@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'http_config.dart';
-import 'dart:math';
+import 'http_router.dart';
 
 class HttpClient {
 
@@ -22,12 +22,14 @@ class HttpClient {
     }
   }
 
+
   // 访问好看视频需要在httpheader中设置cookie值，当使用浏览器中访问YINGSHI_VIDEO_URL后查看Cookies值发现过期时间太短
-  // 此时需要手工删除掉，重新请求YINGSHI_VIDEO_URL后得到一个期限为1年的cookie值，将其取出即可
+  // 此时需要手工删除掉，重新请求YINGSHI_VIDEO_URL后得到一个期限为1年的cookie值，将其取出即可，
+  // 生成cookies的在线地址 http://coolaf.com/tool/gp
   static void getVideoApi(String url, Function callBack,
       {Map<String, String> params, Function errorCallBack}) async {
     var httpHeaders={
-      "Cookie":  "BAIDUID=8052A7D29423F8D41725A6033E7D08F0:FG=1"
+      "Cookie":  getVideoCookies()
     };
     _dio.options.headers = httpHeaders;
     _request(url, callBack,

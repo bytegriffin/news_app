@@ -45,11 +45,11 @@ class ProfilePage extends StatelessWidget {
             children: <Widget>[
               ListTile(
                 leading: Icon(Icons.account_circle),
-                title: Text('姓名：zhangsan'),
+                title: Text('姓名：test'),
               ),
               ListTile(
                 leading: Icon(Icons.email),
-                title: Text('邮箱：zhangsan@abc.com'),
+                title: Text('邮箱：test@test.com'),
               ),
             ],
           ),
