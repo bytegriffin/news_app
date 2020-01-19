@@ -4,7 +4,6 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_ijkplayer/flutter_ijkplayer.dart';
 import '../models/haokan_video.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../util/image_util.dart';
 
 //视频详情页面
 class VideoDetailPage extends StatefulWidget {

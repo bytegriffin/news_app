@@ -9,6 +9,7 @@ import '../net/http_router.dart';
 import '../components/expandable_text.dart';
 import '../util/color_util.dart';
 import '../components/nav_button.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BookDetailPage extends StatefulWidget {
   final String id;
@@ -98,14 +99,14 @@ class _BookDetailPageState extends State<BookDetailPage> {
   Widget getItem() {
     var row = Container(
       color: detailPageBGColor,
-      height: 200,
+      height: ScreenUtil().setHeight(430),
       margin: EdgeInsets.all(0.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
            Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(

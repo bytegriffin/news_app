@@ -21,6 +21,15 @@ const FYJC = "rtmp://ivi.bupt.edu.cn:1935/livetv/fyjctv";
 const FYZJ = "rtmp://ivi.bupt.edu.cn:1935/livetv/fyzqtv";
 const FYYY = "rtmp://ivi.bupt.edu.cn:1935/livetv/fyyytv";
 const SJDL = "rtmp://ivi.bupt.edu.cn:1935/livetv/sjdltv";
+const token = "&protocol=hls&accesstoken=R5E244F36U3197804BKB36A3D4DI583ADC3CP8M3067712V0Z334B7W15EB4A61BEFC9FEE&playtoken=ABCDEFGH&verifycode=3010084173&rate=org";
+const SHUHUA = "http://httpdvb.slave.bfgd.com.cn:13164/playurl?playtype=live$token&programid=4200000076.m3u8";
+const LIANGZHUANG = "http://httpdvb.slave.bfgd.com.cn:13164/playurl?playtype=live$token&programid=4200000060.m3u8";
+const CHA = "http://httpdvb.slave.bfgd.com.cn:13164/playurl?playtype=live$token&programid=4200000069.m3u8";
+const LANQIU = "http://httpdvb.slave.bfgd.com.cn:13164/playurl?playtype=live$token&programid=4200000038.m3u8";
+const CHEMI = "http://httpdvb.slave.bfgd.com.cn:13164/playurl?playtype=live$token&programid=4200000041.m3u8";
+const RENWU = "http://httpdvb.slave.bfgd.com.cn:13164/playurl?playtype=live$token&programid=4200000050.m3u8";
+const JTLC = "http://httpdvb.slave.bfgd.com.cn:13164/playurl?playtype=live$token&programid=4200000175.m3u8";
+
 
 //   以下为 卫视台  //
 const BJWS_HD = "rtmp://ivi.bupt.edu.cn:1935/livetv/btv1hd";
@@ -128,8 +137,15 @@ const XADS = "http://stream2.xiancity.cn/xatv2/sd/live.m3u8";
 const XASW = "http://stream2.xiancity.cn/xatv3/sd/live.m3u8";
 const XAYS = "http://stream2.xiancity.cn/xatv4/sd/live.m3u8";
 const XASL = "http://stream2.xiancity.cn/xatv5/sd/live.m3u8 ";
+const CZ1 = "http://streaming.czgd.cn:8084/4b0bcd8509d748358b4450921fc3443b/h264_300k_ts/index.m3u8?type=hls_live_redirect";
+const CZ2 = "http://streaming.czgd.cn:8084/7223161a96984d81b711d762d7e7fdd1/h264_300k_ts/index.m3u8?type=hls_live_redirect";
+const CZ3 = "http://streaming.czgd.cn:8084/2b7f0174d0f44c34bf466fc0ab801a3a/h264_300k_ts/index.m3u8?type=hls_live_redirect";
+const CZX = "http://live.czmarathon.net/AppName/StreamName.m3u8?auth_key=1523524277-0-0-3d506be8cf5a3528296495cfe6788553";
+
 
 //   以下为 港澳台  //
+const WXPD = "http://mobile.ccdntech.com/transcoder/_definst_/vod164_Live/live/playlist.m3u8";
+const HKS = "http://zhibo.hkstv.tv/livestream/mutfysrq/playlist.m3u8";
 const FHZW_HD = "rtmp://ivi.bupt.edu.cn:1935/livetv/fhzw";
 const FHZX_HD = "rtmp://ivi.bupt.edu.cn:1935/livetv/fhzx";
 const FHDY_HD = "rtmp://ivi.bupt.edu.cn:1935/livetv/fhdy";
@@ -185,30 +201,35 @@ const HISTORY = "http://pili-live-hdl.qhmywl.com:80/dsdtv/998ce23199bda769000246
 const CINEMAX = "http://pili-live-hdl.qhmywl.com:80/dsdtv/9bece52b2f72795cc2f588f3d9e4eed3.m3u8";
 const CinemaWorld  ="http://pili-live-hdl.qhmywl.com:80/dsdtv/357252de83720e30d40c00bfba69c497.m3u8";
 const AXN = "http://pili-live-hdl.qhmywl.com:80/dsdtv/c762110b3eef8bcccce5863643dd66aa.m3u8";
-const HBO = "http://pili-live-hdl.qhmywl.com:80/dsdtv/13e83b20bc716e68221da438d761d352.m3u8";
 
 
 //   以下为 国外  //
+const HBO = "http://hbo.epub.fun/live/hbo/hbo.m3u8";
 const START_SPORT = "rtmp://ivi.bupt.edu.cn:1935/livetv/starsports";
 const CHANNELV = "rtmp://ivi.bupt.edu.cn:1935/livetv/channelv";
 const DISCOVERY = "rtmp://ivi.bupt.edu.cn:1935/livetv/discovery";
-const TRTWORLD = "http://trtcanlitv-lh.akamaihd.net/i/TRTWORLD_1@321783/master.m3u8";
+// const TRTWORLD = "http://trtcanlitv-lh.akamaihd.net/i/TRTWORLD_1@321783/master.m3u8";
 const VOA = "https://voa-lh.akamaihd.net/i/voapnn_7@72817/index_0288_av-b.m3u8";
 const VOTV = "http://hls.cdn.ua/vo.org.ua_live/_definst_/online-ru-hotbird-high/chunklist.m3u8";
 const FRANCE = "http://f24hls-i.akamaihd.net/hls/live/221192/F24_FR_LO_HLS/master_900.m3u8";
 const CGTN = "http://live.cgtn.com/1000/prog_index.m3u8";
+const CGNTV = "http://cgntv-glive.ofsdelivery.net/live/_definst_/cgntv_jp/playlist.m3u8";
 const BUFFALO = "http://na-all15.secdn.net/pegstream3-live/play/c3e1e4c4-7f11-4a54-8b8f-c590a95b4ade/playlist.m3u8";
 const CBSNEWS = "http://cbsnewshd-lh.akamaihd.net/i/CBSNHD_7@199302/master.m3u8";
 const Newsmax = "http://nmxlive.akamaized.net/hls/live/529965/Live_1/index.m3u8";
 const REDBULLTV = "http://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master_1660.m3u8";
 const ALLSPORTS = "http://173.236.10.10:1935/dgrau/dgrau/playlist.m3u8";
 const READATIVIDADE = "http://173.236.10.10:1935/redeatividade/redeatividade/playlist.m3u8";
-const REDETV = "http://evpp.mm.uol.com.br/redetv1/redetv1/chunklist_w1483436880.m3u8";
 const RB = "http://37.48.83.34:80/radiobrunotv/radiobrunotv/playlist.m3u8";
 const QVC = "http://cdn-live1.qvc.jp/iPhone/800/800.m3u8";
 const NBCNEWS = "http://kntvlive-f.akamaihd.net/i/kntvb2_1@15530/index_1286_av-p.m3u8";
-
-
+const GOODTV = "http://mobliestream.c3tv.com:554/live/goodtv.sdp/playlist.m3u8";
+const GSTV = "https://gemstv.wide-stream.net/gemstv01/smil:gemstv01.smil/chunklist.m3u8";
+const NHK = "https://nhkwlive-xjp.akamaized.net/hls/live/2003458/nhkwlive-xjp/index_600k.m3u8";
+const AlHurra = "http://mbnhls-lh.akamaihd.net/i/MBN_1@118619/master.m3u8";
+const WBRZ = "http://cms-wowza.lunabyte.io/wbrz-live-1/_definst_/smil:wbrz-live.smil/chunklist_b1300000.m3u8";
+const CBN = "http://bcliveunivsecure-lh.akamaihd.net/i/news_1@500579/index_150_av-p.m3u8";
+const History2 = "http://livecdnh1.tvanywhere.ae:80/hls/h2/05.m3u8";
 
 //   以下为 专辑  //
 const ZXC = "http://tx.hls.huya.com/huyalive/94525224-2460685313-10568562945082523648-2789274524-10057-A-0-1.m3u8";
@@ -221,3 +242,24 @@ const HB = "http://aldirect.hls.huya.com/huyalive/30765679-2554414680-1097112751
 const ZRF = "https://aldirect.hls.huya.com/huyalive/94525224-2460685774-10568564925062447104-2789253840-10057-A-0-1_1200.m3u8";
 const ZZD = "http://aldirect.hls.huya.com/huyalive/29169025-2686219938-11537226783573147648-2847699096-10057-A-1524024759-1_1200.m3u8";
 const HLW = "http://aldirect.hls.huya.com/huyalive/30765679-2484192572-10669525853706125312-2847687498-10057-A-0-1_1200.m3u8";
+const XZ = "https://aldirect.hls.huya.com/huyalive/30765679-2689675828-11552069718101721088-3048991626-10057-A-0-1_1200.m3u8";
+const KHXL = "https://aldirect.hls.huya.com/huyalive/28466698-2689656864-11551988268341919744-2847699194-10057-A-0-1_1200.m3u8";
+const ST = "http://tx.hls.huya.com/huyalive/29141112-2689675756-11552069408864075776-3048959626-10057-A-0-1.m3u8";
+const BIGBANG = "http://aldirect.hls.huya.com/huyalive/29169025-2686221732-11537234488744476672-2847699168-10057-A-0-1.m3u8";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

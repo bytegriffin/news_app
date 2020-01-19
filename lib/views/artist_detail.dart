@@ -174,7 +174,7 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
 
   Widget getSongs(int index){
     Song song = hotSongs[index];
-    return ListTile(
+    var tile = ListTile(
       leading: ClipRRect(
         borderRadius: BorderRadius.circular(5.0),
         child: getCachedImage(song?.album?.picUrl??defaultMusicImage,width: 60),
@@ -196,6 +196,14 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
         ],
       ),
       trailing: Icon(Icons.more_vert),
+    );
+    return GestureDetector(
+      child: tile,
+      onTap: (){
+//        Navigator.push(context, MaterialPageRoute(
+//            builder: (context) => MusicPlayer(song)
+//        ));
+      },
     );
   }
 

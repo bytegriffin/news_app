@@ -79,38 +79,6 @@ const QICHE_VIDEO_URL = "http://www.hao123.com/feedData/haokanfeed?tab=qiche_new
 const TIYU_VIDEO_URL = "http://www.hao123.com/feedData/haokanfeed?tab=tiyu_new&video_type=1&nums=$REFRESH_VIDEO_COUNT";
 
 
-
-//豆瓣API
-//https://douban.uieee.com
-//https://douban-api.uieee.com
-//https://douban-api.now.sh
-//https://douban-api.zce.now.sh
-//https://douban-api-git-master.zce.now.sh
-
-// 默认的豆瓣base api
-const doubanBaseApi = "https://douban.uieee.com";
-//默认分配第一个，之后第二个，最后一个时，重新置为0
-int urlIndex = 0;
-
-// 根据传入的url，重新分配一个不受访问限制的api地址
-String getAvaliableUrl(String url){
-//  String preffixUrl = url.substring(0,url.indexOf("/v"));
-  String suffixUrl = url.substring(url.indexOf("/v"), url.length);
-  List<String> urlPool = [
-    "https://douban-api.uieee.com",
-    "https://douban-api.now.sh",
-    "https://douban-api.zce.now.sh",
-    "https://douban-api-git-master.zce.now.sh"
-  ];
-  if(urlIndex == urlPool.length - 1){
-    urlIndex = 0;
-  }
-  String newUrl = urlPool[urlIndex] + suffixUrl;
-  urlIndex = urlIndex + 1;
-  return newUrl;
-}
-
-
 // 热门电视剧
 const HOT_TV_URL = "https://movie.douban.com/j/search_subjects?type=tv&tag=%E7%83%AD%E9%97%A8&page_limit=21&page_start=0";
 // 热门电影
@@ -144,7 +112,7 @@ const SEARCH_URL = "http://musicapi.leanapp.cn/search?keywords=";
 // 相似 歌曲
 const RELATED_SONG = "http://musicapi.leanapp.cn/simi/song?id=347230";
 // 具体mp3地址
-const MP3_URL = "https://music.163.com/song/media/outer/url?id=id.mp3";
+const MP3_URL = "https://music.163.com/song/media/outer/url?id=";
 // 歌词
 const LYRICS_URL = "https://music.jeeas.cn/v1/lyric?id=1412242872";
 // 歌曲详情

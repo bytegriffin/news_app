@@ -114,10 +114,14 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
       _buildButton("黄渤", HB),
       _buildButton("周润发", ZRF),
       _buildButton("甄子丹", ZZD),
+      _buildButton("徐峥", XZ),
+      _buildButton("沈腾", ST),
       _buildButton("名侦探柯南", MZTKN),
+      _buildButton("生活大爆炸", BIGBANG),
       _buildButton("漫威电影", MWDY),
       _buildButton("好莱坞", HLW),
       _buildButton("蜡笔小新", LBXX),
+      _buildButton("科幻系列", KHXL),
     ];
   }
 
@@ -158,6 +162,13 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
       _buildButton("风云足球",FYZJ),
       _buildButton("风云音乐",FYYY),
       _buildButton("世界地理",SJDL),
+      _buildButton("书画",SHUHUA),
+      _buildButton("靓装",LIANGZHUANG),
+      _buildButton("篮球",LANQIU),
+      _buildButton("车迷",CHEMI),
+      _buildButton("人物频道",RENWU),
+      _buildButton("家庭理财",JTLC),
+      _buildButton("茶",CHA),
     ];
   }
 
@@ -239,6 +250,10 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
       _buildButton("河北购物",HBGW),
       _buildButton("河北农民",HBNM),
       _buildButton("衡水新闻",HSXW),
+      _buildButton("长治1台",CZ1),
+      _buildButton("长治2台",CZ2),
+      _buildButton("长治3台",CZ3),
+      _buildButton("长治县台",CZX),
       _buildButton("长沙新闻",CSXW),
       _buildButton("长沙女性",CSNX),
       _buildButton("长沙经贸",CSJM),
@@ -273,6 +288,7 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
       _buildButton("凤凰中文", FHZW_HD),
       _buildButton("凤凰咨询", FHZX_HD),
       _buildButton("凤凰电影", FHDY_HD),
+      _buildButton("香港卫视", HKS),
 //      _buildButton("中天综合", ZTZH),
       _buildButton("中天新闻", ZTXW),
       _buildButton("TVBS", TVBS),
@@ -280,6 +296,7 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
       _buildButton("三立新闻", SLXW),
       _buildButton("东森新闻", DSXW),
       _buildButton("澳门莲花", AMLH),
+      _buildButton("唯心頻道", WXPD),
 //      _buildButton("东森财经", DSCJ),
 //      _buildButton("东森电影", DSDY),
 //      _buildButton("东森洋片", DSYP),
@@ -331,22 +348,30 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
   List<Widget> _buildAbroad(){
     return [
       _buildButton("Discovery",DISCOVERY),
+      _buildButton("HBO",HBO),
       _buildButton("Star Sports", START_SPORT),
       _buildButton("Channel[V]",CHANNELV),
-      _buildButton("TRT WORLD",CHANNELV),
+     // _buildButton("TRT WORLD",TRTWORLD),
       _buildButton("VOA",VOA),
       _buildButton("VOTV",VOTV),
       _buildButton("France",FRANCE),
       _buildButton("CGTN",CGTN),
+      _buildButton("CGNTV",CGNTV),
+      _buildButton("GSTV",GSTV),
+      _buildButton("WBRZ",WBRZ),
+      _buildButton("CBN",CBN),
+      _buildButton("Al Hurra",AlHurra),
+      _buildButton("NHK World",NHK),
       _buildButton("Buffalo",BUFFALO),
       _buildButton("CBS News",CBSNEWS),
+      _buildButton("History 2",History2),
       _buildButton("Newsmax",Newsmax),
       _buildButton("Red Bull TV",REDBULLTV),
       _buildButton("AllSports",ALLSPORTS),
       _buildButton("Rede Atividade",READATIVIDADE),
-//      _buildButton("Rede TV",REDETV),
       _buildButton("Radio Bruno",RB),
       _buildButton("NBC News",NBCNEWS),
+      _buildButton("Good TV",GOODTV),
     ];
   }
 
