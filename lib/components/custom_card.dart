@@ -11,6 +11,7 @@ import '../models/mv.dart';
 import '../views/album_detail.dart';
 import '../views/artist_detail.dart';
 import '../views/mv_detail.dart';
+import '../util/color_util.dart';
 
 Widget getBoxCard(Widget widget) {
   var con = Container(
@@ -341,7 +342,7 @@ Widget getMovieRowItem(BuildContext context,TopMovie movie){
                 maxLines: 1,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0,)),
           ),
           Container(
-            child: getMovieRatingWidget(movie?.rate??"0.0"),
+            child: getMovieRatingWidget(movie?.rate??"0.0", getTopListBGColor(context)),
           )
         ],
       ),

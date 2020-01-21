@@ -4,6 +4,7 @@ import '../components/star_rating.dart';
 import '../util/image_util.dart';
 import 'movie_detail.dart';
 import '../net/httpclient.dart';
+import '../util/color_util.dart';
 
 class TopMovieListPage extends StatefulWidget {
   final String title;
@@ -48,7 +49,7 @@ class _TopMovieListPageState extends State<TopMovieListPage>{
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: getTopListBGColor(context),
       //height: 400,
       child: CustomScrollView(
         slivers: <Widget>[
@@ -96,7 +97,7 @@ class _TopMovieListPageState extends State<TopMovieListPage>{
         maxLines: 1,
       );
     } else {
-      content = getRatingWidget(movie.rating,Colors.white,Colors.black);
+      content = getRatingWidget(movie.rating,getStarBGColor(context),getTextColor(context));
     }
     return content;
   }

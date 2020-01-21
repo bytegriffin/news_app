@@ -82,7 +82,7 @@ class _TopPlayListDetailPageState extends State<TopPlayListDetailPage> {
                   child: getCachedImage(song.albumPic??defaultMusicImage,width: 60),
                 ),
                 title: Text(song.songName, overflow: TextOverflow.ellipsis, maxLines: 1,
-                    style: TextStyle(fontSize: 16.0,color: Colors.black,decoration: TextDecoration.none)),
+                    style: TextStyle(fontSize: 16.0,decoration: TextDecoration.none)),
                 subtitle: Row(
                   children: <Widget>[
                     Expanded(

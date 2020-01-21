@@ -3,6 +3,7 @@ import '../util/image_util.dart';
 import '../models/top_movie.dart';
 import '../components/custom_card.dart';
 import 'movie_detail.dart';
+import '../util/color_util.dart';
 
 class MovieListPage extends StatefulWidget {
   final String title;
@@ -33,7 +34,7 @@ class _MovieListPageState extends State<MovieListPage> with AutomaticKeepAliveCl
   Widget build(BuildContext context) {
     super.build(context);
     return Container(
-      color: Colors.white,
+      color: getTopListBGColor(context),
       child: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
@@ -72,7 +73,7 @@ class _MovieListPageState extends State<MovieListPage> with AutomaticKeepAliveCl
                               width: 200,
                             ),
                             Text(movieList[index].title, overflow: TextOverflow.ellipsis, maxLines: 1,
-                                style: TextStyle(fontSize: 16.0,color: Colors.black,decoration: TextDecoration.none))
+                                style: TextStyle(fontSize: 16.0,color: getTextColor(context),decoration: TextDecoration.none))
                           ],
                         )
                     ),//getMovieRatingWidget(movie?.rate??"0.0")

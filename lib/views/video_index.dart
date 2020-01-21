@@ -13,6 +13,7 @@ import 'gaoxiao_video_list.dart';
 import 'chongwu_video_list.dart';
 import 'qiche_video_list.dart';
 import 'tiyu_video_list.dart';
+import '../util/color_util.dart';
 
 class VideoIndexPage extends StatefulWidget {
   @override
@@ -60,8 +61,8 @@ class _VideoIndexPageState extends State<VideoIndexPage> with SingleTickerProvid
         appBar: new TabBar(
           // controller: controller,
           isScrollable: true, //是否滚动
-          labelColor: Colors.red,
-          unselectedLabelColor: Color(0xff666666),
+          labelColor: getTabColor(context),
+          unselectedLabelColor: getUnselectedLabelColor(),
           labelStyle: TextStyle(fontSize: 16.0),
           tabs: tabs,
         ),

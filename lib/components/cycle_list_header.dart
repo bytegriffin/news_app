@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../util/color_util.dart';
 
 class CycleListHeader extends StatelessWidget implements PreferredSizeWidget {
   CycleListHeader({this.count, this.tail, this.onTap});
@@ -13,13 +14,14 @@ class CycleListHeader extends StatelessWidget implements PreferredSizeWidget {
     return ClipRRect(
       borderRadius: BorderRadius.vertical(top: Radius.circular(ScreenUtil().setWidth(30))),
       child: Container(
-        color: Colors.white,
+        color: getTopListBGColor(context),
         child: InkWell(
           onTap: onTap,
           child: SizedBox.fromSize(
             size: preferredSize,
             child: Row(
               children: [
+                Container(width: 10,),
                 Icon(
                   Icons.play_circle_outline,
                   size:  ScreenUtil().setWidth(50),

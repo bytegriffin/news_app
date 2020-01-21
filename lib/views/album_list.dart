@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 import '../util/image_util.dart';
 import 'album_detail.dart';
 import '../models/album.dart';
+import '../util/color_util.dart';
 
 class AlbumListPage extends StatefulWidget {
   final String title;
@@ -31,7 +31,7 @@ class _AlbumListPageState extends State<AlbumListPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: getTopListBGColor(context),
       child: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
@@ -70,10 +70,10 @@ class _AlbumListPageState extends State<AlbumListPage> {
                             width: 140,
                           ),
                           Text(albumList[index].name, overflow: TextOverflow.ellipsis, maxLines: 1,
-                              style: TextStyle(fontSize: 16.0,color: Colors.black,decoration: TextDecoration.none)),
+                              style: TextStyle(fontSize: 16.0,color: getTextColor(context),decoration: TextDecoration.none)),
                           Text(albumList[index].artistName, overflow: TextOverflow.ellipsis, maxLines: 1,
                               style: TextStyle(fontStyle: FontStyle.normal,fontWeight: FontWeight.w400,fontSize: 14.0,
-                                  color: Colors.black,decoration: TextDecoration.none)),
+                                  color: getTextColor(context),decoration: TextDecoration.none)),
                         ],
                       )
                   ),//getMovieRatingWidget(movie?.rate??"0.0")

@@ -116,8 +116,8 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
           ),
           SliverPersistentHeader(
             delegate: SliverAppBarDelegate(TabBar(
-              labelColor: Colors.red,
-              unselectedLabelColor: Colors.grey,
+              labelColor: getTabColor(context),
+              unselectedLabelColor: getUnselectedLabelColor(),
               tabs: [
                 Tab(text: '热门歌曲'),
                 Tab(text: '专辑'),
@@ -180,7 +180,7 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
         child: getCachedImage(song?.album?.picUrl??defaultMusicImage,width: 60),
       ),
       title: Text(song?.name??"", overflow: TextOverflow.ellipsis, maxLines: 1,
-          style: TextStyle(fontSize: 16.0,color: Colors.black,decoration: TextDecoration.none)),
+          style: TextStyle(fontSize: 16.0,decoration: TextDecoration.none)),
       subtitle: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -214,7 +214,7 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
         child: getCachedImage(hotAlbums[index]?.picUrl??defaultMusicImage,width: 60),
       ),
       title: Text(hotAlbums[index]?.name??"", overflow: TextOverflow.ellipsis, maxLines: 1,
-          style: TextStyle(fontSize: 16.0,color: Colors.black,decoration: TextDecoration.none)),
+          style: TextStyle(fontSize: 16.0,decoration: TextDecoration.none)),
       subtitle: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -265,35 +265,65 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
     return column;
   }
 
-  Widget getArtistDesc(){
-    var column = Column(
+  // 是否显示歌手简介
+  Widget _displayBrief(){
+    if (artist == null || artist.briefDesc == null) {
+      return Container();
+    }
+    return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(" 歌手简介  · · · · · ·",
           style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 16.0,
-            color: detailPageTitleTextColor
+              fontWeight: FontWeight.bold,
+              fontSize: 16.0,
+              color: detailPageTitleTextColor
           )
         ),
         ExpandableText(
           text: "       ${artist?.briefDesc?.toString()??''}",
           maxLines: 5,
-          style: TextStyle(fontSize: 14, color: Colors.black),
+          style: TextStyle(fontSize: 16),
         ),
+      ],
+    );
+  }
+
+  // 是否显示歌手详情1
+  Widget _displayTi1(){
+    if (artistDesc == null || artistDesc.ti1 == null) {
+      return Container(height: 10,);
+    }
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
         Text(" ${artistDesc?.ti1??''}  · · · · · ·",
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16.0,
-                color: detailPageTitleTextColor
-            )
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16.0,
+              color: detailPageTitleTextColor
+          )
         ),
         ExpandableText(
           text: "       ${artistDesc?.txt1?.toString()??''}",
           maxLines: 5,
-          style: TextStyle(fontSize: 14, color: Colors.black),
+          style: TextStyle(fontSize: 16),
         ),
+      ],
+    );
+  }
+
+  // 是否显示歌手详情2
+  Widget _displayTi2(){
+    if (artistDesc == null || artistDesc.ti2 == null) {
+      return Container(height: 10,);
+    }
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
         Text(" ${artistDesc?.ti2??''}  · · · · · ·",
             style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -304,8 +334,21 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
         ExpandableText(
           text: "       ${artistDesc?.txt2?.toString()??''}",
           maxLines: 5,
-          style: TextStyle(fontSize: 14, color: Colors.black),
+          style: TextStyle(fontSize: 16),
         ),
+      ],
+    );
+  }
+
+  // 是否显示歌手详情3
+  Widget _displayTi3(){
+    if (artistDesc == null || artistDesc.ti3 == null) {
+      return Container(height: 10,);
+    }
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
         Text(" ${artistDesc?.ti3??''}  · · · · · ·",
             style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -316,8 +359,21 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
         ExpandableText(
           text: "       ${artistDesc?.txt3?.toString()??''}",
           maxLines: 5,
-          style: TextStyle(fontSize: 14, color: Colors.black),
+          style: TextStyle(fontSize: 16),
         ),
+      ],
+    );
+  }
+
+  // 是否显示歌手详情4
+  Widget _displayTi4(){
+    if (artistDesc == null || artistDesc.ti4 == null) {
+      return Container(height: 10,);
+    }
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
         Text(" ${artistDesc?.ti4??''}  · · · · · ·",
             style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -328,8 +384,22 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
         ExpandableText(
           text: "       ${artistDesc?.txt4?.toString()??''}",
           maxLines: 5,
-          style: TextStyle(fontSize: 14, color: Colors.black),
+          style: TextStyle(fontSize: 16),
         ),
+      ],
+    );
+  }
+
+  Widget getArtistDesc(){
+    var column = Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        _displayBrief(),
+        _displayTi1(),
+        _displayTi2(),
+        _displayTi3(),
+        _displayTi4()
       ],
     );
     return SingleChildScrollView(

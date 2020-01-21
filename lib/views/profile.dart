@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import '../components/profile_clipper.dart';
 import '../components/custom_sliver.dart';
+import '../util/color_util.dart';
 
-//我的页面
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
+  @override
+  _ProfilePageState createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: buildSliverList(_buildProfileBody())
+        body: buildSliverList(_buildProfileBody())
     );
   }
 
@@ -23,7 +28,7 @@ class ProfilePage extends StatelessWidget {
             ClipPath(
               clipper: ProfileClipper(),
               child: Container(
-                color: Colors.red,
+                color: getTabColor(context),
                 height: 200,
               ),
             ),
@@ -87,4 +92,6 @@ class ProfilePage extends StatelessWidget {
       ],
     );
   }
+
 }
+

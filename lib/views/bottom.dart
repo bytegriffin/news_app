@@ -56,7 +56,7 @@ class _BottomNavigatorState extends State<BottomNavigator> {
 
   Widget _buildAppbar(){
     var appBar = AppBar(
-      backgroundColor: Colors.red,
+      //backgroundColor: Colors.red,
       leading: Builder(builder: (context){
         return IconButton(
           icon: Icon(Icons.dehaze,color: Colors.white,),

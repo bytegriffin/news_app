@@ -10,7 +10,7 @@ Widget getRatingWidget(String score, Color bgColor, Color textColor){
     children: <Widget>[
       Text('评分：',
       style: TextStyle(
-        fontSize: 16,
+        fontSize: 14,
         color: textColor
       ),),
       Text('$score   ',style: TextStyle(color: ratingCountColor),),
@@ -25,7 +25,7 @@ Widget getRatingWidget(String score, Color bgColor, Color textColor){
   );
 }
 
-Widget getMovieRatingWidget(String score){
+Widget getMovieRatingWidget(String score, Color bgColor){
   if(score == ""){
     score = "0.0";
   }
@@ -37,6 +37,7 @@ Widget getMovieRatingWidget(String score){
         size:14,
         selectedColor:Colors.orange,
         unselectedColor: Colors.grey,
+        backgroundColor: bgColor,
       ),
     ],
   );

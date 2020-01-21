@@ -212,23 +212,23 @@ class _BookDetailPageState extends State<BookDetailPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(" 摘要  · · · · · ·",
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16.0,
-                color: detailPageTitleTextColor
-            )
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16.0,
+              color: detailPageTitleTextColor
+          )
         ),
         ExpandableText(
           text: summary,
           maxLines: 5,
-          style: TextStyle(fontSize: 16, color: Colors.black),
+          style: TextStyle(fontSize: 16, ),
         )
       ],
     );
     return Container(
-        width: MediaQuery.of(context).size.width,
-        margin: EdgeInsets.all(4.0),
-        child: column
+      width: MediaQuery.of(context).size.width,
+      margin: EdgeInsets.all(4.0),
+      child: column
     );
   }
 
@@ -250,7 +250,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
         ExpandableText(
           text: summary,
           maxLines: 5,
-          style: TextStyle(fontSize: 16, color: Colors.black),
+          style: TextStyle(fontSize: 16,),
         )
       ],
     );
@@ -279,7 +279,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
         ExpandableText(
           text: summary,
           maxLines: 5,
-          style: TextStyle(fontSize: 16, color: Colors.black),
+          style: TextStyle(fontSize: 16,),
         )
       ],
     );

@@ -10,6 +10,7 @@ import 'car_news_list.dart';
 import 'game_news_list.dart';
 import 'ent_news_list.dart';
 import 'fashion_news_list.dart';
+import '../util/color_util.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -54,8 +55,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         appBar: new TabBar(
           // controller: controller,
           isScrollable: true, //是否滚动
-          labelColor: Colors.red,
-          unselectedLabelColor: Color(0xff666666),
+          labelColor: getTabColor(context),
+          unselectedLabelColor: getUnselectedLabelColor(),
           labelStyle: TextStyle(fontSize: 16.0),
           tabs: tabs,
         ),

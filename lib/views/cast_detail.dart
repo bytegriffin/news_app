@@ -299,7 +299,7 @@ class _CastDetailPageState extends State<CastDetailPage>{
           ExpandableText(
             text: summary,
             maxLines: 5,
-            style: TextStyle(fontSize: 16, color: Colors.black),
+            style: TextStyle(fontSize: 16,),
           ),
         Divider(height: 10.0,indent: 0.0,color: detailPageBGColor),
       ],

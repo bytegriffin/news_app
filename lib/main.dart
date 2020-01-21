@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import './views/splash.dart';
 import 'dart:io';
 import 'package:flutter/services.dart';
+import 'package:dynamic_theme/dynamic_theme.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -18,16 +20,32 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: '新闻App',
-      theme: ThemeData(
+    return new DynamicTheme(
+        defaultBrightness: Brightness.light,
+        data: (brightness) => new ThemeData(
           primarySwatch: Colors.red,
-          highlightColor: Color.fromRGBO(255, 255, 255, 0.5),
-          splashColor: Colors.white //水波纹
-      ),
-      home: SplashPage(),
+          brightness: brightness,
+        ),
+        themedWidgetBuilder: (context, theme) {
+          return new MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: '新闻App',
+            theme: theme,
+            home: SplashPage(),
+          );
+        }
     );
+
+//    return MaterialApp(
+//      debugShowCheckedModeBanner: false,
+//      title: '新闻App',
+//      theme: ThemeData(
+//          primarySwatch: Colors.red,
+//          highlightColor: Color.fromRGBO(255, 255, 255, 0.5),
+//          splashColor: Colors.white //水波纹
+//      ),
+//      home: SplashPage(),
+//    );
   }
 }
 

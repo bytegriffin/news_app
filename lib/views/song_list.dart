@@ -57,7 +57,7 @@ class _SongListPageState extends State<SongListPage> {
                         child: getCachedImage(song.picUrl,width: 60),
                       ),
                     title: Text(song.name, overflow: TextOverflow.ellipsis, maxLines: 1,
-                              style: TextStyle(fontSize: 16.0,color: Colors.black,decoration: TextDecoration.none)),
+                              style: TextStyle(fontSize: 16.0,decoration: TextDecoration.none)),
                     subtitle: Row(
                       children: <Widget>[
                         Expanded(

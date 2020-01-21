@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'book_index.dart';
 import 'movie_index.dart';
 import 'music_index.dart';
+import '../util/color_util.dart';
 
 class OtherPage extends StatelessWidget {
 
@@ -11,11 +12,12 @@ class OtherPage extends StatelessWidget {
       length: 3,
       child: new Scaffold(
         appBar: new TabBar(
-          labelColor:Colors.black,
+          labelColor:getTabColor(context),
+          unselectedLabelColor: getUnselectedLabelColor(),
           tabs: <Widget>[
             new Tab(child: Row(
               children: <Widget>[
-                Icon(Icons.library_books, color: Colors.redAccent),
+                Icon(Icons.library_books),
                 Text(' '),
                 Text('图书资讯')
               ],
@@ -24,7 +26,7 @@ class OtherPage extends StatelessWidget {
             ),
             new Tab(child: Row(
               children: <Widget>[
-                Icon(Icons.movie, color: Colors.redAccent),
+                Icon(Icons.movie,),
                 Text(' '),
                 Text('电影资讯')
               ],
@@ -33,7 +35,7 @@ class OtherPage extends StatelessWidget {
             ),
             new Tab(child: Row(
               children: <Widget>[
-                Icon(Icons.music_video, color: Colors.redAccent),
+                Icon(Icons.music_video,),
                 Text(' '),
                 Text('音乐资讯')
               ],

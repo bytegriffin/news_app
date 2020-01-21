@@ -93,7 +93,7 @@ class _AlbumDetailPageState extends State<AlbumDetailPage> {
               return ListTile(
                 leading: getSeq(index),
                 title: Text(songList[index]?.name??"", overflow: TextOverflow.ellipsis, maxLines: 1,
-                    style: TextStyle(fontSize: 16.0,color: Colors.black,decoration: TextDecoration.none)),
+                    style: TextStyle(fontSize: 16.0,decoration: TextDecoration.none)),
                 subtitle: Row(
                   children: <Widget>[
                     Text(album?.artistName??"", overflow: TextOverflow.ellipsis, maxLines: 1,
@@ -147,12 +147,12 @@ class _AlbumDetailPageState extends State<AlbumDetailPage> {
                     ),
                     GestureDetector(
                       child: Text("${album?.artistName??""} > ",
-                        style: TextStyle(fontSize: 16,color: expanedTextColor),
+                        style: TextStyle(fontSize: 16,color: artistTextColor),
                         overflow: TextOverflow.ellipsis,maxLines: 1,
                       ),
                       onTap: (){
                         Navigator.push(context, MaterialPageRoute(
-                            builder: (context) => new ArtistDetailPage(album?.artists[0].id)
+                          builder: (context) => new ArtistDetailPage(album?.artists[0].id)
                         ));
                       },
                     ),

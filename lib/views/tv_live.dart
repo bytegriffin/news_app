@@ -5,7 +5,7 @@ import 'package:flutter_ijkplayer/flutter_ijkplayer.dart';
 import '../net/live_source.dart';
 import '../components/sliver_appbar_delegate.dart';
 import 'package:flutter_progress_button/flutter_progress_button.dart';
-
+import '../util/color_util.dart';
 
 //视频页面
 class TvLivePage extends StatefulWidget {
@@ -55,8 +55,8 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
           SliverPersistentHeader(
               delegate: SliverAppBarDelegate(TabBar(
                 isScrollable: true,
-                labelColor: Colors.red,
-                unselectedLabelColor: Colors.grey,
+                labelColor: getTabColor(context),
+                unselectedLabelColor: getUnselectedLabelColor(),
                 tabs: [
                   Tab(text: 'CCTV'),
                   Tab(text: '卫视'),
@@ -162,13 +162,13 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
       _buildButton("风云足球",FYZJ),
       _buildButton("风云音乐",FYYY),
       _buildButton("世界地理",SJDL),
-      _buildButton("书画",SHUHUA),
-      _buildButton("靓装",LIANGZHUANG),
-      _buildButton("篮球",LANQIU),
-      _buildButton("车迷",CHEMI),
-      _buildButton("人物频道",RENWU),
-      _buildButton("家庭理财",JTLC),
-      _buildButton("茶",CHA),
+//      _buildButton("书画频道",SHUHUA),
+//      _buildButton("靓装频道",LIANGZHUANG),
+//      _buildButton("篮球频道",LANQIU),
+//      _buildButton("车迷频道",CHEMI),
+//      _buildButton("人物频道",RENWU),
+//      _buildButton("家庭理财",JTLC),
+//      _buildButton("茶频道",CHA),
     ];
   }
 
@@ -297,6 +297,10 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
       _buildButton("东森新闻", DSXW),
       _buildButton("澳门莲花", AMLH),
       _buildButton("唯心頻道", WXPD),
+      _buildButton("TVB翡翠台", FCT),
+      _buildButton("有线新闻", YXXW),
+
+
 //      _buildButton("东森财经", DSCJ),
 //      _buildButton("东森电影", DSDY),
 //      _buildButton("东森洋片", DSYP),

@@ -21,7 +21,7 @@ const FYJC = "rtmp://ivi.bupt.edu.cn:1935/livetv/fyjctv";
 const FYZJ = "rtmp://ivi.bupt.edu.cn:1935/livetv/fyzqtv";
 const FYYY = "rtmp://ivi.bupt.edu.cn:1935/livetv/fyyytv";
 const SJDL = "rtmp://ivi.bupt.edu.cn:1935/livetv/sjdltv";
-const token = "&protocol=hls&accesstoken=R5E244F36U3197804BKB36A3D4DI583ADC3CP8M3067712V0Z334B7W15EB4A61BEFC9FEE&playtoken=ABCDEFGH&verifycode=3010084173&rate=org";
+const token = "&protocol=hls&accesstoken=R5E27002AU3199F04BKB36B3289IF339DC3CP8M3067712V0Z334B7W15EBEACA8D6533A6&playtoken=ABCDEFGH&verifycode=3010146953&rate=org";
 const SHUHUA = "http://httpdvb.slave.bfgd.com.cn:13164/playurl?playtype=live$token&programid=4200000076.m3u8";
 const LIANGZHUANG = "http://httpdvb.slave.bfgd.com.cn:13164/playurl?playtype=live$token&programid=4200000060.m3u8";
 const CHA = "http://httpdvb.slave.bfgd.com.cn:13164/playurl?playtype=live$token&programid=4200000069.m3u8";
@@ -144,6 +144,9 @@ const CZX = "http://live.czmarathon.net/AppName/StreamName.m3u8?auth_key=1523524
 
 
 //   以下为 港澳台  //
+const FCT = "http://27.221.116.32/flv.live.xylive.tv/live/00fc.flv";
+const YXXW = "http://27.221.116.32/flv.live.xylive.tv/live/youxianxinwen.flv";
+
 const WXPD = "http://mobile.ccdntech.com/transcoder/_definst_/vod164_Live/live/playlist.m3u8";
 const HKS = "http://zhibo.hkstv.tv/livestream/mutfysrq/playlist.m3u8";
 const FHZW_HD = "rtmp://ivi.bupt.edu.cn:1935/livetv/fhzw";
