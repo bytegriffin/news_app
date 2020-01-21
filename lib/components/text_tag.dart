@@ -31,18 +31,23 @@ class TagItem extends StatelessWidget {
   TagItem({@required this.text});
   @override
   Widget build(BuildContext context) {
-//    return RaisedButton(
-//      child: Text(this.text,style: TextStyle(fontSize: 14 )),
-//      color: Colors.teal,
-//      onPressed: () {},
-//    );
-    return Card(
-      color: Colors.white70,
-      child: Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: Text(this.text,style: TextStyle(fontSize: 14 ,color: tagTextColor)),
+    return Chip(
+      padding: EdgeInsets.symmetric(vertical: 0, horizontal: 5),
+      labelPadding: EdgeInsets.symmetric(vertical: 1, horizontal: 1),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5.0)
       ),
+      label: Text(this.text,style: TextStyle(fontSize: 14 ,color: tagTextColor)),
     );
+
+//    return Card(
+//      color: Colors.white70,
+//      child: Padding(
+//        padding: const EdgeInsets.all(2.0),
+//        child: Text(this.text,style: TextStyle(fontSize: 14 ,color: tagTextColor)),
+//      ),
+//    );
+
   }
 }
 

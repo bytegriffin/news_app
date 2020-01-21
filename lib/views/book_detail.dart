@@ -10,6 +10,7 @@ import '../components/expandable_text.dart';
 import '../util/color_util.dart';
 import '../components/nav_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../components/single_photo_view.dart';
 
 class BookDetailPage extends StatefulWidget {
   final String id;
@@ -158,10 +159,20 @@ class _BookDetailPageState extends State<BookDetailPage> {
               ),
             ],
           ),
-          ClipRRect(
-              borderRadius: BorderRadius.circular(5.0),
-              child: getCachedImage(book?.image??defaultBookImage, width: 110, height: 160)
-          ),
+          GestureDetector(
+            child: ClipRRect(
+                borderRadius: BorderRadius.circular(5.0),
+                child: getCachedImage(book?.image??defaultBookImage, width: 110, height: 160)
+            ),
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(
+                  builder: (context) => SinglePhotoView(
+                    imageProvider:NetworkImage(book?.image??defaultBookImage),
+                    heroTag: 'simple',
+                  )
+              ));
+            },
+          )
         ],
       ),
     );

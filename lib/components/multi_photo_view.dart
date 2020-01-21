@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 
-class PhotoViewGalleryScreen extends StatefulWidget {
+class MultiPhotoView extends StatefulWidget {
   List images=[];
   int index=0;
   String heroTag;
   PageController controller;
 
-  PhotoViewGalleryScreen({Key key,@required this.images,this.index,this.controller,this.heroTag}) : super(key: key){
+  MultiPhotoView({Key key,@required this.images,this.index,this.controller,this.heroTag}) : super(key: key){
     controller=PageController(initialPage: index);
   }
 
   @override
-  _PhotoViewGalleryScreenState createState() => _PhotoViewGalleryScreenState();
+  _MultiPhotoViewState createState() => _MultiPhotoViewState();
 }
 
-class _PhotoViewGalleryScreenState extends State<PhotoViewGalleryScreen> {
+class _MultiPhotoViewState extends State<MultiPhotoView> {
   int currentIndex=0;
 
   @override

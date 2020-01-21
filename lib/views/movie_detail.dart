@@ -9,6 +9,7 @@ import 'cast_detail.dart';
 import '../components/expandable_text.dart';
 import '../util/color_util.dart';
 import '../components/nav_button.dart';
+import '../components/single_photo_view.dart';
 
 class MovieDetailPage extends StatefulWidget {
   final String id;
@@ -366,7 +367,8 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
             ),
           ],
         ),
-        ClipRRect(
+        GestureDetector(
+          child: ClipRRect(
             borderRadius: BorderRadius.circular(5.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -376,6 +378,15 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
                 _displayYear()
               ],
             )
+          ),
+          onTap: (){
+            Navigator.push(context, MaterialPageRoute(
+              builder: (context) => SinglePhotoView(
+                imageProvider:NetworkImage(movie?.image??defaultBookImage),
+                heroTag: 'simple',
+              )
+            ));
+          },
         ),
       ],
     );

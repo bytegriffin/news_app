@@ -8,6 +8,7 @@ import '../net/httpclient.dart';
 import '../net/http_config.dart';
 import '../models/song.dart';
 import 'artist_detail.dart';
+import '../components/single_photo_view.dart';
 
 class AlbumDetailPage extends StatefulWidget {
   final Album album;
@@ -206,9 +207,19 @@ class _AlbumDetailPageState extends State<AlbumDetailPage> {
         Container(
           width: 30,
         ),
-        ClipRRect(
-            borderRadius: BorderRadius.circular(5.0),
-            child: getCachedImage(album?.picUrl??defaultCastImage, width: 110, height: 160)
+        GestureDetector(
+          child: ClipRRect(
+              borderRadius: BorderRadius.circular(5.0),
+              child: getCachedImage(album?.picUrl??defaultCastImage, width: 110, height: 160)
+          ),
+          onTap: (){
+            Navigator.push(context, MaterialPageRoute(
+                builder: (context) => SinglePhotoView(
+                  imageProvider:NetworkImage(album?.picUrl??defaultBookImage),
+                  heroTag: 'simple',
+                )
+            ));
+          },
         ),
       ],
     );
