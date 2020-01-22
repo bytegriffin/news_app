@@ -4,18 +4,19 @@ import '../net/http_config.dart';
 import '../net/httpclient.dart';
 import '../models/play_list.dart';
 import '../util/color_util.dart';
-import 'top_playlist_detail.dart';
+import 'song_playlist_detail.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class TopPlayListPage extends StatefulWidget {
+// 歌单列表页
+class SongPlayListPage extends StatefulWidget {
   final String title;
   final String backgroundImage;
-  TopPlayListPage(this.title, this.backgroundImage);
+  SongPlayListPage(this.title, this.backgroundImage);
   @override
-  _TopPlayListPageState createState() => _TopPlayListPageState();
+  _SongPlayListPageState createState() => _SongPlayListPageState();
 }
 
-class _TopPlayListPageState extends State<TopPlayListPage>{
+class _SongPlayListPageState extends State<SongPlayListPage>{
   List<PlayList> allTopList;
   int allTopCount = 0;
 
@@ -96,7 +97,7 @@ class _TopPlayListPageState extends State<TopPlayListPage>{
       child: column,
       onTap: (){
         Navigator.push(context, MaterialPageRoute(
-            builder: (context) => TopPlayListDetailPage(allTopList[index].id ,allTopList[index].name,allTopList[index].picUrl)
+            builder: (context) => SongPlayListDetailPage(allTopList[index].id ,allTopList[index].name,allTopList[index].picUrl)
         ));
       },
     );

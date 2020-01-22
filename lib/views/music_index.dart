@@ -14,7 +14,7 @@ import 'mv_list.dart';
 import 'artist_list.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'mv_detail.dart';
-import 'top_playlist.dart';
+import 'song_playlist.dart';
 
 // 音乐首页
 class MusicIndexPage extends StatefulWidget {
@@ -25,7 +25,7 @@ class MusicIndexPage extends StatefulWidget {
 class _MusicIndexPageState extends State<MusicIndexPage> with AutomaticKeepAliveClientMixin{
 
   List<Song> recNewMusicList= List.generate(6, (index) {
-    return Song("$index", "", defaultMusicImage , "" , "",);
+    return Song("$index", "", defaultMusicImage);
   });
 
   List<Album> recNewAlbumList= List.generate(6, (index) {
@@ -178,7 +178,7 @@ class _MusicIndexPageState extends State<MusicIndexPage> with AutomaticKeepAlive
             ),
             onTap: (){
               Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => TopPlayListPage("歌单",topNewMusicImage)
+                  builder: (context) => SongPlayListPage("歌单",topNewMusicImage)
               ));
             },
           ),

@@ -167,7 +167,7 @@ class _FreeMovieDetailPageState extends State<FreeMovieDetailPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          ' 注意：本资源只作为参考和学习，如果遇到不能正常播放的情况，可以重新进入此页试一下。',
+          ' 注意：本资源只作为学习和参考，如果遇到不能正常播放的情况，可以重新进入此页试一下。',
           style: new TextStyle(fontWeight: FontWeight.bold,fontSize: 16,color: Colors.redAccent),
         ),
         Container(height: 10,),

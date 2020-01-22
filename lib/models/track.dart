@@ -1,4 +1,9 @@
 import 'artist.dart';
+import 'song.dart';
+
+Song trackToSong(Track tarck){
+  return Song(tarck.songId,tarck.songName,tarck.albumPic);
+}
 
 // 歌曲 song
 class Track{

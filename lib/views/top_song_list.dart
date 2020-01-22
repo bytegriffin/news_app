@@ -6,6 +6,8 @@ import '../components/nav_button.dart';
 import '../util/color_util.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../models/track.dart';
+import '../components/music_player.dart';
+import '../models/song.dart';
 
 //排行榜列表
 class TopSongListPage extends StatefulWidget {
@@ -56,24 +58,32 @@ class _TopSongListPageState extends State<TopSongListPage> {
             ),
           ),
           SliverFixedExtentList(
-            delegate: SliverChildListDelegate(tracks.map((song) {
-              return ListTile(
+            delegate: SliverChildListDelegate(tracks.map((track) {
+              var tile = ListTile(
                 leading: ClipRRect(
                   borderRadius: BorderRadius.circular(5.0),
-                  child: getCachedImage(song.albumPic??defaultMusicImage,width: 60),
+                  child: getCachedImage(track.albumPic??defaultMusicImage,width: 60),
                 ),
-                title: Text(song.songName, overflow: TextOverflow.ellipsis, maxLines: 1,
+                title: Text(track.songName, overflow: TextOverflow.ellipsis, maxLines: 1,
                     style: TextStyle(fontSize: 16.0,decoration: TextDecoration.none)),
                 subtitle: Row(
                   children: <Widget>[
                     Expanded(
-                      child: Text(song.artistNames, overflow: TextOverflow.ellipsis, maxLines: 1,
+                      child: Text(track.artistNames, overflow: TextOverflow.ellipsis, maxLines: 1,
                           style: TextStyle(fontSize: 14.0,color:Colors.grey,fontStyle: FontStyle.normal,decoration: TextDecoration.none)),
                     ),
-                    Expanded(child: Text(" - ${song.albumName}", overflow: TextOverflow.ellipsis, maxLines: 1,)),
+                    Expanded(child: Text(" - ${track.albumName}", overflow: TextOverflow.ellipsis, maxLines: 1,)),
                   ],
                 ),
                 trailing: Icon(Icons.more_vert),
+              );
+              return GestureDetector(
+                child: tile,
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => MusicPlayer(trackToSong(track))
+                  ));
+                },
               );
             }).toList()),
             itemExtent: 70.0,

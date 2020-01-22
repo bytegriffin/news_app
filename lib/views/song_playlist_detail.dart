@@ -8,18 +8,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../models/track.dart';
 import '../net/http_config.dart';
 import '../net/httpclient.dart';
+import '../components/music_player.dart';
 
 //歌单列表
-class TopPlayListDetailPage extends StatefulWidget {
+class SongPlayListDetailPage extends StatefulWidget {
   final String id;
   final String title;
   final String backgroundImage;
-  TopPlayListDetailPage(this.id, this.title, this.backgroundImage);
+  SongPlayListDetailPage(this.id, this.title, this.backgroundImage);
   @override
-  _TopPlayListDetailPageState createState() => _TopPlayListDetailPageState();
+  _SongPlayListDetailPageState createState() => _SongPlayListDetailPageState();
 }
 
-class _TopPlayListDetailPageState extends State<TopPlayListDetailPage> {
+class _SongPlayListDetailPageState extends State<SongPlayListDetailPage> {
   PlayList playList;
   VoidCallback playOnTap;
   int count = 0;
@@ -75,24 +76,32 @@ class _TopPlayListDetailPageState extends State<TopPlayListDetailPage> {
             ),
           ),
           SliverFixedExtentList(
-            delegate: SliverChildListDelegate(tracks.map((song) {
-              return ListTile(
+            delegate: SliverChildListDelegate(tracks.map((track) {
+              var tile =  ListTile(
                 leading: ClipRRect(
                   borderRadius: BorderRadius.circular(5.0),
-                  child: getCachedImage(song.albumPic??defaultMusicImage,width: 60),
+                  child: getCachedImage(track.albumPic??defaultMusicImage,width: 60),
                 ),
-                title: Text(song.songName, overflow: TextOverflow.ellipsis, maxLines: 1,
+                title: Text(track.songName, overflow: TextOverflow.ellipsis, maxLines: 1,
                     style: TextStyle(fontSize: 16.0,decoration: TextDecoration.none)),
                 subtitle: Row(
                   children: <Widget>[
                     Expanded(
-                      child: Text(song.artistNames, overflow: TextOverflow.ellipsis, maxLines: 1,
+                      child: Text(track.artistNames, overflow: TextOverflow.ellipsis, maxLines: 1,
                           style: TextStyle(fontSize: 14.0,color:Colors.grey,fontStyle: FontStyle.normal,decoration: TextDecoration.none)),
                     ),
-                    Expanded(child: Text(" - ${song.albumName}", overflow: TextOverflow.ellipsis, maxLines: 1,)),
+                    Expanded(child: Text(" - ${track.albumName}", overflow: TextOverflow.ellipsis, maxLines: 1,)),
                   ],
                 ),
                 trailing: Icon(Icons.more_vert),
+              );
+              return GestureDetector(
+                child: tile,
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => MusicPlayer(trackToSong(track))
+                  ));
+                },
               );
             }).toList()),
             itemExtent: 70.0,

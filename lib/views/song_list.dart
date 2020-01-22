@@ -5,7 +5,9 @@ import '../models/song.dart';
 import '../components/nav_button.dart';
 import '../util/color_util.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../components/music_player.dart';
 
+//推荐音乐列表
 class SongListPage extends StatefulWidget {
   final String title;
   final String backgroundImage;
@@ -51,7 +53,7 @@ class _SongListPageState extends State<SongListPage> {
           ),
           SliverFixedExtentList(
             delegate: SliverChildListDelegate(songList.map((song) {
-              return ListTile(
+              var tile =  ListTile(
                     leading: ClipRRect(
                         borderRadius: BorderRadius.circular(5.0),
                         child: getCachedImage(song.picUrl,width: 60),
@@ -69,6 +71,14 @@ class _SongListPageState extends State<SongListPage> {
                     ),
                 trailing: Icon(Icons.more_vert),
                   );
+              return GestureDetector(
+                child: tile,
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => MusicPlayer(song)
+                  ));
+                },
+              );
             }).toList()),
             itemExtent: 70.0,
           ),

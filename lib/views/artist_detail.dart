@@ -13,6 +13,7 @@ import '../models/mv.dart';
 import 'mv_detail.dart';
 import '../components/sliver_appbar_delegate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../components/music_player.dart';
 
 class ArtistDetailPage extends StatefulWidget {
   final String id;
@@ -29,7 +30,7 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
   int mvCount;
 
   List<Song> hotSongs = List.generate(1, (index) {
-    return Song("$index", "", defaultMusicImage , "" , "",);
+    return Song("$index", "", defaultMusicImage);
   });
 
   List<Album> hotAlbums = List.generate(1, (index) {
@@ -200,9 +201,9 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
     return GestureDetector(
       child: tile,
       onTap: (){
-//        Navigator.push(context, MaterialPageRoute(
-//            builder: (context) => MusicPlayer(song)
-//        ));
+        Navigator.push(context, MaterialPageRoute(
+            builder: (context) => MusicPlayer(song)
+        ));
       },
     );
   }

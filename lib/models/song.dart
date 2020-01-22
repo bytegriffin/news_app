@@ -15,7 +15,7 @@ class Song {
   String artistName;//歌手名称
   String albumName;//所属专辑名称
 
-  Song(this.id,this.name,this.picUrl,this.company, this.duration);
+  Song(this.id,this.name,this.picUrl);
 
   Song.fromJson(Map<String, dynamic> json){
     this.id = json['id'].toString();

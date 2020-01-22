@@ -9,6 +9,7 @@ import '../net/http_config.dart';
 import '../models/song.dart';
 import 'artist_detail.dart';
 import '../components/single_photo_view.dart';
+import '../components/music_player.dart';
 
 class AlbumDetailPage extends StatefulWidget {
   final Album album;
@@ -23,7 +24,7 @@ class _AlbumDetailPageState extends State<AlbumDetailPage> {
   int songSize = 0;
 
   List<Song> songList= List.generate(6, (index) {
-    return Song("$index", "", defaultMusicImage , "" , "",);
+    return Song("$index", "", defaultMusicImage);
   });
 
 
@@ -90,7 +91,7 @@ class _AlbumDetailPageState extends State<AlbumDetailPage> {
           ),
           SliverFixedExtentList(
             delegate: SliverChildListDelegate(songList.asMap().keys.map((index) {
-              return ListTile(
+              var tile = ListTile(
                 leading: getSeq(index),
                 title: Text(songList[index]?.name??"", overflow: TextOverflow.ellipsis, maxLines: 1,
                     style: TextStyle(fontSize: 16.0,decoration: TextDecoration.none)),
@@ -105,6 +106,14 @@ class _AlbumDetailPageState extends State<AlbumDetailPage> {
                   ],
                 ),
                 trailing: Icon(Icons.more_vert),
+              );
+              return GestureDetector(
+                child: tile,
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => MusicPlayer(songList[index])
+                  ));
+                },
               );
             }).toList()),
             itemExtent: 70.0,
