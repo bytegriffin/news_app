@@ -110,9 +110,9 @@ class _MusicPlayerState extends State<MusicPlayer> with SingleTickerProviderStat
                   children: [
                     Slider(
                       onChanged: (v) {
-                        final Position = v * _duration?.inMilliseconds??0.0;
+                        final position = v * _duration?.inMilliseconds??0.0;
                         _audioPlayer
-                            .seek(Duration(milliseconds: Position.round()));
+                            .seek(Duration(milliseconds: position.round()));
                       },
                       value: (_position != null &&
                           _duration != null &&

@@ -7,7 +7,6 @@ import '../util/color_util.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../models/track.dart';
 import '../components/music_player.dart';
-import '../models/song.dart';
 
 //排行榜列表
 class TopSongListPage extends StatefulWidget {
