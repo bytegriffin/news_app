@@ -23,7 +23,6 @@ class NewsListItemPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return ListTile(
       leading: displayImage(),
       title: Text(news.title),

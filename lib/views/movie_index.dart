@@ -10,6 +10,7 @@ import 'movie_list.dart';
 import 'top_movie_list.dart';
 import '../net/http_router.dart';
 import '../models/swiper_movie.dart';
+import 'free_movie_list.dart';
 
 // 电影首页
 class MovieIndexPage extends StatefulWidget {
@@ -131,7 +132,7 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
           GestureDetector(
             child: Column(
               children: <Widget>[
-                Icon(Icons.remove_red_eye, color: Colors.blueAccent,size: 30,),
+                Icon(Icons.whatshot, color: Colors.pinkAccent,size: 30,),
                 Text("正在热映")
               ],
             ),
@@ -151,6 +152,19 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
             onTap: (){
               Navigator.push(context, MaterialPageRoute(
                   builder: (context) => TopMovieListPage("即将上映",searchMovieImage,commingUpMovieUrl)
+              ));
+            },
+          ),
+          GestureDetector(
+            child: Column(
+              children: <Widget>[
+                Icon(Icons.remove_red_eye, color: Colors.blueAccent,size: 30,),
+                Text("免费观影")
+              ],
+            ),
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(
+                  builder: (context) => FreeMovieListPage()
               ));
             },
           ),

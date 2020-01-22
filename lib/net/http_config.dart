@@ -144,9 +144,10 @@ const RELATED_MV_URL = "http://musicapi.leanapp.cn/simi/mv?mvid=";
 //mv详情
 const MV_DETAIL_URL = "http://musicapi.leanapp.cn/mv/detail?mvid=";
 
-
-
-
+// 电影解析 https://www.leflv.com/vip/?url=
+const FREE_MOVIE_PARSE_URL = "https://www.leflv.com/vip/?url=";
+// 电影列表
+const FREE_MOVIE_LIST_URL = "https://pcw-api.iqiyi.com/search/video/videolists?access_play_control_platform=1&channel_id=1&pageSize=18&pageNum=";
 
 
 
