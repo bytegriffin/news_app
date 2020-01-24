@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import '../models/song.dart';
 import '../net/http_config.dart';
 import '../util/image_util.dart';
+import '../util/color_util.dart';
+import '../views/artist_detail.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 enum PlayerState { stopped, playing, paused }
 
@@ -54,6 +57,7 @@ class _MusicPlayerState extends State<MusicPlayer> with SingleTickerProviderStat
     _initAudioPlayer();
     controller = AnimationController(duration: const Duration(seconds: 20), vsync: this);
     animation = new Tween(begin: 1.0, end: 2.0).animate(controller);
+    _play();
   }
 
   @override
@@ -69,11 +73,132 @@ class _MusicPlayerState extends State<MusicPlayer> with SingleTickerProviderStat
     super.dispose();
   }
 
+  // 显示所有歌手列表
+  Widget _displayAllArtist(){
+    if(song.artists == null || song.artists.length == 0){
+      return Container();
+    }
+    if(song.artists.length == 1){
+      return GestureDetector(
+        child: Text("${song?.artistName??""} > ",
+          style: TextStyle(fontSize: 16,color: artistTextColor),
+          overflow: TextOverflow.ellipsis,maxLines: 1,
+        ),
+        onTap: (){
+          Navigator.push(context, MaterialPageRoute(
+              builder: (context) => new ArtistDetailPage(song?.artists[0].id)
+          ));
+        },
+      );
+    } else if(song.artists.length > 1){
+      return GestureDetector(
+        child: Text("${song?.artistName??""} > ",
+          style: TextStyle(fontSize: 16,color: artistTextColor),
+          overflow: TextOverflow.ellipsis,maxLines: 1,
+        ),
+        onTap: (){
+          showDialog<Null>(
+            context: context,
+            builder: (BuildContext context) {
+              return new SimpleDialog(
+                title: new Text('请选择要查看的歌手'),
+                children: song.artists.map((artist){
+                  return  new SimpleDialogOption(
+                    child: ListTile(
+                      leading: ClipRRect(
+                        borderRadius: BorderRadius.circular(5.0),
+                        child: CircleAvatar( // 个人头像
+                            radius: 20,
+                            backgroundImage: AssetImage('assets/avatar.jpg')
+                        ),
+                      ),
+                      title: Text(artist.name),
+                    ),
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => new ArtistDetailPage(artist.id)
+                      ));
+                    },
+                  );
+                }).toList()
+              );
+            },
+          ).then((val) {
+            //rint(val);
+          });
+        },
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(song.name),
+        title: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(song.name),
+            _displayAllArtist()
+          ],
+        ),
+        actions: <Widget>[
+          IconButton(
+            onPressed: (){
+              showModalBottomSheet(
+                context: context,
+                builder: (BuildContext context) {
+                  return new Container(
+                    height: ScreenUtil().setHeight(120),
+                    margin: EdgeInsets.only(left: 10,top: 10,bottom: 10),
+                    padding: EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Column(
+                          children: <Widget>[
+                            Icon(IconData(0xe644, fontFamily: 'iconfont'),color: Colors.green,size: 30,),
+                            Text("微信朋友圈")
+                          ],
+                        ),
+                        Column(
+                          children: <Widget>[
+                            Icon(IconData(0xe601, fontFamily: 'iconfont'),color: Colors.green,size: 30,),
+                            Text("微信好友")
+                          ],
+                        ),
+                        Column(
+                          children: <Widget>[
+                            Icon(IconData(0xe666, fontFamily: 'iconfont'),color: Colors.yellowAccent,size: 30,),
+                            Text("QQ空间")
+                          ],
+                        ),
+                        Column(
+                          children: <Widget>[
+                            Icon(IconData(0xe60a, fontFamily: 'iconfont'),color: Colors.blue,size: 30,),
+                            Text("QQ好友")
+                          ],
+                        ),
+                        Column(
+                          children: <Widget>[
+                            Icon(IconData(0xe600, fontFamily: 'iconfont'),color: Colors.red,size: 30,),
+                            Text("微博")
+                          ],
+                        )
+                      ],
+                    ),
+                  );
+                },
+              ).then((val) {
+                // print(val);
+              });
+            },
+            iconSize: 30.0,
+            icon: Icon(Icons.share),
+            // color: Colors.white
+          )
+        ],
       ),
       body: Container(
         alignment: Alignment.center,
@@ -84,9 +209,18 @@ class _MusicPlayerState extends State<MusicPlayer> with SingleTickerProviderStat
             //动画控制器
             turns: animation,
             //将要执行动画的子view
-            child:  ClipRRect(
-                borderRadius: BorderRadius.circular(500.0),
-                child:  getCachedImage(song?.picUrl??song?.album?.picUrl??defaultCastImage, width: 250, height: 250)
+            child:  Stack(
+              alignment: Alignment.center,
+              children: <Widget>[
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(500.0),
+                    child: Image.asset("assets/record.jpg",width: 300,height: 300,)
+                ),
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(500.0),
+                    child:  getCachedImage(song?.picUrl??song?.album?.picUrl??defaultCastImage, width: 200, height: 200)
+                )
+              ],
             )
         ),
       ),
@@ -95,20 +229,29 @@ class _MusicPlayerState extends State<MusicPlayer> with SingleTickerProviderStat
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           Column(
-            mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                margin: EdgeInsets.all(14),
+                margin: EdgeInsets.all(5),
                 child: Text(
                   ' 注意：本资源只作为学习和参考，如果遇到不能正常播放的情况，说明这首歌属于歌手个人收费歌曲，请选择别的歌曲试听。',
                   style: new TextStyle(fontWeight: FontWeight.bold,fontSize: 14,color: Colors.redAccent),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.all(12.0),
-                child: Stack(
-                  children: [
-                    Slider(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Text(
+                      _position != null
+                          ? '${_positionText ?? ''}'
+                          : _duration != null ? _durationText : '',
+                      style: TextStyle(fontSize: 14.0),
+                    ),
+                  ),
+                  Expanded(
+                    child: Slider(
                       onChanged: (v) {
                         final position = v * _duration?.inMilliseconds??0.0;
                         _audioPlayer
@@ -121,14 +264,17 @@ class _MusicPlayerState extends State<MusicPlayer> with SingleTickerProviderStat
                           ? _position.inMilliseconds / _duration.inMilliseconds
                           : 0.0,
                     ),
-                  ],
-                ),
-              ),
-              Text(
-                _position != null
-                    ? '${_positionText ?? ''} / ${_durationText ?? ''}'
-                    : _duration != null ? _durationText : '',
-                style: TextStyle(fontSize: 24.0),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(right: 10),
+                    child: Text(
+                      _position != null
+                          ? '${_durationText ?? ''}'
+                          : _duration != null ? _durationText : '',
+                      style: TextStyle(fontSize: 14.0),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -140,17 +286,20 @@ class _MusicPlayerState extends State<MusicPlayer> with SingleTickerProviderStat
                   onPressed: _isPlaying ? null : () => _play(),
                   iconSize: 64.0,
                   icon: Icon(Icons.play_arrow),
-                  color: Colors.cyan),
+                 // color: Colors.black
+              ),
               IconButton(
                   onPressed: _isPlaying ? () => _pause() : null,
                   iconSize: 64.0,
                   icon: Icon(Icons.pause),
-                  color: Colors.cyan),
+                 // color: Colors.white
+              ),
               IconButton(
                   onPressed: _isPlaying || _isPaused ? () => _stop() : null,
                   iconSize: 64.0,
                   icon: Icon(Icons.stop),
-                  color: Colors.cyan),
+                  //color: Colors.white
+              ),
             ],
           ),
         ],

@@ -23,7 +23,7 @@ const ratingCountColor = Colors.deepOrange;
 const tagTextColor = Colors.teal;
 
 // 歌手名字颜色
-const artistTextColor = Colors.yellowAccent;
+const artistTextColor = Colors.deepPurple;
 
 getRandomColor(){
   return Color.fromARGB(255, Random.secure().nextInt(255), Random.secure().nextInt(255), Random.secure().nextInt(255));

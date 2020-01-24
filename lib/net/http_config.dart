@@ -80,9 +80,9 @@ const TIYU_VIDEO_URL = "http://www.hao123.com/feedData/haokanfeed?tab=tiyu_new&v
 
 
 // 热门电视剧
-const HOT_TV_URL = "https://movie.douban.com/j/search_subjects?type=tv&tag=%E7%83%AD%E9%97%A8&page_limit=21&page_start=0";
+const HOT_TV_URL = "https://movie.douban.com/j/search_subjects?type=tv&tag=%E7%83%AD%E9%97%A8&page_limit=48&page_start=0";
 // 热门电影
-const HOT_MOVIE_URL="https://movie.douban.com/j/search_subjects?type=movie&tag=%E7%83%AD%E9%97%A8&page_limit=21&page_start=0";
+const HOT_MOVIE_URL="https://movie.douban.com/j/search_subjects?type=movie&tag=%E7%83%AD%E9%97%A8&page_limit=48&page_start=0";
 
 
 // 图书畅销榜
@@ -100,7 +100,7 @@ const REC_PLAYLIST_URL = "http://musicapi.leanapp.cn/personalized";
 // 推荐新音乐
 const REC_NEW_MUSIC_URL = "http://musicapi.leanapp.cn/personalized/newsong";
 // 新碟上架
-const NEW_ALBUM_URL = "http://musicapi.leanapp.cn/top/album?offset=0&limit=30";
+const NEW_ALBUM_URL = "http://musicapi.leanapp.cn/top/album?offset=0&limit=50";
 
 // const NEW_MUSIC = "https://music.jeeas.cn/v1/personalized/newsong?from=music";
 // 网友最新歌单
@@ -136,7 +136,7 @@ const  TOP_SONG_URL = "http://musicapi.leanapp.cn/top/list?idx=";
 // 获取歌手 mv
 const ARTIST_MV_URL = "http://musicapi.leanapp.cn/artist/mv?limit=100&id=";
 //最新mv
-const NEW_MV_URL= "http://musicapi.leanapp.cn/mv/first?limit=30";
+const NEW_MV_URL= "http://musicapi.leanapp.cn/mv/first?limit=50";
 // 推荐mv
 const REC_MV_URL = "http://musicapi.leanapp.cn/personalized/mv";
 // 相似 mv

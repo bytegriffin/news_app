@@ -29,17 +29,11 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
   TabController tabController;
   int mvCount;
 
-  List<Song> hotSongs = List.generate(1, (index) {
-    return Song("$index", "", defaultMusicImage);
-  });
+  List<Song> hotSongs;
 
-  List<Album> hotAlbums = List.generate(1, (index) {
-    return Album("$index", "" , defaultMusicImage, "", "" , "",  "", null);
-  });
+  List<Album> hotAlbums;
 
-  List<MV> artistMVs = List.generate(1, (index) {
-    return MV("$index", "" , defaultMusicImage, "");
-  });
+  List<MV> artistMVs;
 
   @override
   void initState(){
@@ -133,13 +127,13 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
               controller: this.tabController,
               children: <Widget>[
                 ListView.builder(
-                  itemCount: hotSongs?.length,
+                  itemCount: hotSongs?.length??0,
                   itemBuilder: (context,index){
                     return getSongs(index);
                   }
                 ),
                 ListView.builder(
-                  itemCount: hotAlbums?.length,
+                  itemCount: hotAlbums?.length??0,
                   itemBuilder: (context,index){
                     return GestureDetector(
                       child: getAlbums(index),
@@ -152,7 +146,7 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
                   }
                 ),
                 ListView.builder(
-                  itemCount: mvCount,
+                  itemCount: mvCount??0,
                   itemBuilder: (context,index){
                     return GestureDetector(
                       child: getMVs(index),

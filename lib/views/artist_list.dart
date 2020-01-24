@@ -5,6 +5,7 @@ import '../net/httpclient.dart';
 import 'artist_detail.dart';
 import '../models/artist.dart';
 
+// 热门歌手列表
 class ArtistListPage extends StatefulWidget {
   final String title;
   final String backgroundImage;
@@ -18,7 +19,7 @@ class _ArtistListPageState extends State<ArtistListPage>{
   int count = 0;
 
   List<Artist> hotArtistList= List.generate(4, (index) {
-    return Artist("$index","测试",defaultMusicImage);
+    return Artist("$index","",defaultMusicImage);
   });
 
   @override
@@ -46,7 +47,7 @@ class _ArtistListPageState extends State<ArtistListPage>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("热门歌手"),
       ),
       body: ListView.separated(
         itemCount: count,

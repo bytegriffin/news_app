@@ -68,8 +68,15 @@ flutter:
     - assets/weekly_movie.jpg
     - assets/classic_movie.jpg
     - assets/new_music.jpg
+    - assets/record.jpg
+    - assets/stylus.png
 #    - assets/men.jpg
 #    - assets/woman.jpg
+
+  fonts:
+    - family: iconfont
+      fonts:
+        - asset: assets/fonts/iconfont.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
