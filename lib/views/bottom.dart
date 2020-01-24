@@ -32,11 +32,11 @@ class _BottomNavigatorState extends State<BottomNavigator> {
         ),
         decoration: new BoxDecoration(
           gradient: new LinearGradient(
-              colors: [
-                Colors.red,
-                Colors.teal,
-                Colors.blue
-              ]
+            colors: [
+              Colors.red,
+              Colors.teal,
+              Colors.blue
+            ]
           ),
           boxShadow: [
             new BoxShadow(
@@ -48,8 +48,8 @@ class _BottomNavigatorState extends State<BottomNavigator> {
         ),
       ),
       preferredSize: new Size(
-          MediaQuery.of(context).size.width,
-          0.0
+        MediaQuery.of(context).size.width,
+        0.0
       ),
     );
   }

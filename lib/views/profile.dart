@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../components/profile_clipper.dart';
 import '../components/custom_sliver.dart';
 import '../util/color_util.dart';
+import '../util/cache_util.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -9,16 +11,41 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  bool _switchValue;
+  String _cacheSizeStr;
+  double _cardWidth = ScreenUtil().setWidth(700);
+
+  void _setCacheSize() async {
+    _cacheSizeStr = await loadCache();
+  }
+
+  void _clearAndGetCacheSize(){
+    clearCache();
+    _setCacheSize();
+  }
+
+  @override
+  void initState(){
+    setState(() {
+      _setCacheSize();
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+    _switchValue = initDartThemeSwitchValue(context);
     return Scaffold(
-        body: buildSliverList(_buildProfileBody())
+      body: buildSliverList(_buildProfileBody())
     );
   }
 
+
   //构建profile页面内容
   Widget _buildProfileBody(){
+    setState(() {
+      _setCacheSize();
+    });
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
@@ -34,62 +61,129 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             Column(
               children: <Widget>[
-                CircleAvatar(
-                    radius: 40.0,
+                GestureDetector(child: CircleAvatar(
+                    radius: 35.0,
                     backgroundImage: AssetImage('assets/avatar.jpg')
-                ),
-                Text('点击更换头像'),
+                ),onTap: (){
+
+                }),
+                Text("点击更换头像"),
+                _myAction()
               ],
             )
           ],
         ),
-
         Card(
           color: Colors.blue,
-          child: Column(
-            children: <Widget>[
-              ListTile(
-                leading: Icon(Icons.account_circle),
-                title: Text('姓名：test'),
-              ),
-              ListTile(
-                leading: Icon(Icons.email),
-                title: Text('邮箱：test@test.com'),
-              ),
-            ],
+          child: Container(
+            width: _cardWidth,
+            child: Column(
+              children: <Widget>[
+                ListTile(
+                  leading: Icon(Icons.timelapse),
+                  title: Text('夜晚模式'),
+                  trailing: Switch(
+                    activeColor: Colors.black,
+                    onChanged: (bool value) {
+                      setState(() {
+                        this._switchValue = value;
+                        switchDarkTheme(context);
+                      });
+                    },
+                    value: this._switchValue,
+                  ),
+                ),
+                GestureDetector(
+                  child: ListTile(
+                    leading: Icon(Icons.restore_from_trash),
+                    title: Text('清除缓存'),
+                    trailing: Text(_cacheSizeStr??"0K"),
+                  ),
+                  onTap: (){
+                    setState(() {
+                      _clearAndGetCacheSize();
+                      _cacheSizeStr = "0K";
+                    });
+                  },
+                ),
+              ],
+            ),
           ),
         ),
         Card(
           color: Colors.green,
-          child: Column(
-            children: <Widget>[
-              ListTile(
-                leading: Icon(Icons.history),
-                title: Text('阅读历史'),
-              ),
-              ListTile(
-                leading: Icon(Icons.favorite),
-                title: Text('我的收藏'),
-              ),
-            ],
+          child: Container(
+            width: _cardWidth,
+            child: Column(
+              children: <Widget>[
+                ListTile(
+                  leading: Icon(Icons.history),
+                  title: Text('阅读历史'),
+                ),
+                ListTile(
+                  leading: Icon(Icons.favorite),
+                  title: Text('我的收藏'),
+                ),
+              ],
+            ),
           ),
         ),
         Card(
           color: Colors.teal,
-          child: Column(
-            children: <Widget>[
-              ListTile(
-                leading: Icon(Icons.near_me),
-                title: Text('我的附近'),
-              ),
-              ListTile(
-                leading: Icon(Icons.contact_mail),
-                title: Text('联系方式'),
-              ),
-            ],
+          child: Container(
+            width: _cardWidth,
+            child: Column(
+              children: <Widget>[
+                ListTile(
+                  leading: Icon(Icons.mail_outline),
+                  title: Text('问题反馈'),
+                ),
+                ListTile(
+                  leading: Icon(Icons.contact_mail),
+                  title: Text('联系方式'),
+                ),
+              ],
+            ),
           ),
         ),
       ],
+    );
+  }
+
+  Widget _myAction(){
+    return Card(
+      color: Colors.blue,
+      child: Container(
+        width: _cardWidth,
+        height: 70,
+        padding: EdgeInsets.all(10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Column(
+              children: <Widget>[
+                Icon(Icons.star,color: Colors.yellowAccent,),
+                Text("关注",style:TextStyle(fontSize: 16)),
+              ],
+            ),
+            Container(height: 40,width: 1, child: VerticalDivider(color: Colors.grey)),
+            Column(
+              children: <Widget>[
+                Icon(Icons.pets,color: Colors.deepPurple,),
+                Text("浏览",style:TextStyle(fontSize: 16)),
+              ],
+            ),
+            Container(height: 40,width: 1, child: VerticalDivider(color: Colors.grey)),
+            Column(
+              children: <Widget>[
+                Icon(Icons.chat,color: Colors.purpleAccent,),
+                Text("消息",style:TextStyle(fontSize: 16)),
+              ],
+            ),
+          ],
+        ),
+      )
     );
   }
 

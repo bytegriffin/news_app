@@ -9,11 +9,8 @@ class DrawerPage extends StatefulWidget {
 
 class _DrawerPageState extends State<DrawerPage> {
 
-  bool _switchValue;
-
   @override
   Widget build(BuildContext context) {
-    _switchValue = initDartThemeSwitchValue(context);
     var drawer = Drawer( // 左侧抽屉
       child: ListView(
         padding: EdgeInsets.zero,
@@ -36,21 +33,6 @@ class _DrawerPageState extends State<DrawerPage> {
 //                        )
 //                    )
 //                ),
-          ),
-          ListTile(
-            //title: Text('我的消息', textAlign: TextAlign.left,),
-            leading:  Text('暗黑主题', textAlign: TextAlign.left,),
-            trailing: Switch(
-              activeColor: Colors.blue,
-              onChanged: (bool value) {
-                setState(() {
-                  this._switchValue = value;
-                  switchDarkTheme(context);
-                });
-              },
-              value: this._switchValue,
-            ),
-            //onTap: () => switchDarkTheme(context),
           ),
           ListTile(
             title: Text('我的消息', textAlign: TextAlign.left,),

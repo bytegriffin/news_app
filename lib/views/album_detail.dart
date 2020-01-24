@@ -23,7 +23,7 @@ class _AlbumDetailPageState extends State<AlbumDetailPage> {
   VoidCallback playOnTap;
   int songSize = 0;
 
-  List<Song> songList= List.generate(6, (index) {
+  List<Song> songList= List.generate(0, (index) {
     return Song("$index", "", defaultMusicImage);
   });
 

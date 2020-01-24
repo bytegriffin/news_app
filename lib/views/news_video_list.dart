@@ -85,7 +85,7 @@ class _NewsVideoListPageState extends State<NewsVideoListPage> with AutomaticKee
    return GestureDetector(
       onTap: (){
         Navigator.push(context, MaterialPageRoute(
-            builder: (context) => new NewsDetailPage(news:videolist.result[index])
+          builder: (context) => new NewsDetailPage(news:videolist.result[index])
         )
         );
       },
@@ -100,7 +100,7 @@ class _NewsVideoListPageState extends State<NewsVideoListPage> with AutomaticKee
                 children: <Widget>[
                   ClipRRect(
                     borderRadius: BorderRadius.circular(5.0),
-                    child: getCachedImage(videolist.result[index].image,width: 500,height: 200),
+                    child: Image.network(videolist.result[index].image,width: 500,height: 200,fit: BoxFit.cover,),
                   ),
                   Text(videolist.result[index].title,
                     style: TextStyle(fontSize:20,color: Colors.white,shadows:[
@@ -114,8 +114,8 @@ class _NewsVideoListPageState extends State<NewsVideoListPage> with AutomaticKee
                 Row(
                   children: <Widget>[
                     CircleAvatar(
-                        radius: 10.0,
-                        backgroundImage: NetworkImage(getAvatarPath(videolist.result[index].source))
+                      radius: 10.0,
+                      backgroundImage: NetworkImage(getAvatarPath(videolist.result[index].source))
                     ),
                     Text(' ',style: TextStyle(fontSize:18),),
                     Text(videolist.result[index].authorName,

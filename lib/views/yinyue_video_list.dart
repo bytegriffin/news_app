@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../components/video_tile_card.dart';
 import '../net/httpclient.dart';
 import '../net/http_config.dart';
@@ -72,7 +71,6 @@ class YinyueVideoListPageState extends State<YinyueVideoListPage> with Automatic
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
     return RefreshIndicator(
       onRefresh: _refreshData,
       child: Container(
