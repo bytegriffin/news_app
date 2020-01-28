@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import '../util/image_util.dart';
-import '../models/top_book.dart';
-import '../views/search_book_detail.dart';
 import '../models/top_movie.dart';
 import '../views/movie_detail.dart';
 import '../components/star_rating.dart';

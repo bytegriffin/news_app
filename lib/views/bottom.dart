@@ -24,7 +24,7 @@ class _BottomNavigatorState extends State<BottomNavigator> {
     }
   }
 
-  Widget _buildAppbar2() {
+  Widget buildAppbar2() {
     return new PreferredSize(
       child: new Container(
         padding: new EdgeInsets.only(

@@ -28,7 +28,7 @@ class _MusicPlayerState extends State<MusicPlayer> with SingleTickerProviderStat
   PlayerMode mode;
 
   AudioPlayer _audioPlayer;
-  AudioPlayerState _audioPlayerState = AudioPlayerState.STOPPED;
+  AudioPlayerState audioPlayerState = AudioPlayerState.STOPPED;
   Duration _duration;
   Duration _position;
 
@@ -63,7 +63,7 @@ class _MusicPlayerState extends State<MusicPlayer> with SingleTickerProviderStat
   @override
   void dispose() {
     _audioPlayer.stop();
-    _audioPlayerState = AudioPlayerState.STOPPED;
+    audioPlayerState = AudioPlayerState.STOPPED;
     controller.dispose();
     _durationSubscription?.cancel();
     _positionSubscription?.cancel();
@@ -129,6 +129,7 @@ class _MusicPlayerState extends State<MusicPlayer> with SingleTickerProviderStat
         },
       );
     }
+    return Container();
   }
 
   @override
@@ -353,13 +354,13 @@ class _MusicPlayerState extends State<MusicPlayer> with SingleTickerProviderStat
     _audioPlayer.onPlayerStateChanged.listen((state) {
       if (!mounted) return;
       //setState(() {
-        _audioPlayerState = state;
+        audioPlayerState = state;
       //});
     });
 
     _audioPlayer.onNotificationPlayerStateChanged.listen((state) {
       if (!mounted) return;
-      setState(() => _audioPlayerState = state);
+      setState(() => audioPlayerState = state);
     });
   }
 

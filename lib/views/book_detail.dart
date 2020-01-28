@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../util/image_util.dart';
 import '../components/star_rating.dart';
