@@ -12,10 +12,10 @@ class Song {
   List<Artist> artists;//歌手
   int mvid;//mv id
  // String albumId;//专辑id
-  String artistName;//歌手名称
+  String artistNames;//歌手名称
   String albumName;//所属专辑名称
 
-  Song(this.id,this.name,this.picUrl);
+  Song(this.id,this.name,this.picUrl,this.artistNames,this.artists);
 
   Song.fromJson(Map<String, dynamic> json){
     this.id = json['id'].toString();
@@ -38,7 +38,7 @@ class Song {
             name = name + "/";
           }
         }
-        this.artistName =name;
+        this.artistNames =name;
       }
     } else if(json['al'] != null){
       this.album = Album.fromJson(json['al']);
@@ -54,7 +54,7 @@ class Song {
             name = name + "/";
           }
         }
-        this.artistName =name;
+        this.artistNames =name;
       }
     }
     var dd;

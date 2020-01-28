@@ -25,7 +25,7 @@ class _SongPlayListDetailPageState extends State<SongPlayListDetailPage> {
   VoidCallback playOnTap;
   int count = 0;
 
-  List<Track> tracks= List.generate(4, (index) {
+  List<Track> tracks= List.generate(0, (index) {
     return Track("$index","");
   });
 
@@ -63,7 +63,7 @@ class _SongPlayListDetailPageState extends State<SongPlayListDetailPage> {
             flexibleSpace: FlexibleSpaceBar(
               background:  ClipRRect(
                 borderRadius: BorderRadius.circular(5.0),
-                child: getCachedImage(widget.backgroundImage),
+                child: Image.network(widget.backgroundImage,fit: BoxFit.cover,),
               ),
             ),
             title: Text(widget.title),
@@ -80,7 +80,7 @@ class _SongPlayListDetailPageState extends State<SongPlayListDetailPage> {
               var tile =  ListTile(
                 leading: ClipRRect(
                   borderRadius: BorderRadius.circular(5.0),
-                  child: getCachedImage(track.albumPic??defaultMusicImage,width: 60),
+                  child: Image.network(track.albumPic??defaultMusicImage,width: 60),
                 ),
                 title: Text(track.songName, overflow: TextOverflow.ellipsis, maxLines: 1,
                     style: TextStyle(fontSize: 16.0,decoration: TextDecoration.none)),
@@ -99,7 +99,7 @@ class _SongPlayListDetailPageState extends State<SongPlayListDetailPage> {
                 child: tile,
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => MusicPlayer(trackToSong(track))
+                    builder: (context) => MusicPlayer(trackToSong(track))
                   ));
                 },
               );

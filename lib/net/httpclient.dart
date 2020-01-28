@@ -50,14 +50,32 @@ class HttpClient {
         method: "post", params: params, errorCallBack: errorCallBack);
   }
 
+
+  static void postBook(String url,Map<String, dynamic> params, Function callBack,
+      {Function errorCallBack}) async {
+    String errorMsg = "";
+    int statusCode;
+    try {
+      Response response = await _dio.post(url, data: params);
+      statusCode = response.statusCode;
+      //处理错误部分
+      if (statusCode < 0) {
+        errorMsg = "网络请求错误,状态码:" + statusCode.toString();
+        _handError(errorCallBack, errorMsg);
+        return;
+      }
+      if (callBack != null) {
+        callBack(response.data);
+      }
+    } catch (exception) {
+      print(exception);
+      //_handError(errorCallBack, exception);
+    }
+  }
+
   static void _request(String url, Function callBack,
       {String method, Map<String, String> params,
         Function errorCallBack}) async {
-
-    if (params != null && params.isNotEmpty) {
-      print("<net> params :" + params.toString());
-    }
-
     String errorMsg = "";
     int statusCode;
 

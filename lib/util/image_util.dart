@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 // 默认书籍背景图
-const String defaultBookImage = "https://cdn.pixabay.com/photo/2014/04/02/14/06/book-306178_960_720.png";
+const String defaultBookImage = "https://img3.doubanio.com/f/ark/fcf839063281097eb229b77eddfdbb03d0ec8a5e/pics/app/default-cover.png";
 // 最新书籍背景图
 const topNewBookImage = "assets/new_book.jpg";
 // 畅销书籍背景图
@@ -11,6 +11,8 @@ const topSalesBookImage = "assets/sales_book.jpg";
 const topRecBookImage = "assets/sales_book.jpg";
 // 推荐书籍轮播图
 const recBookImage = "assets/rec_book.jpg";
+// 热门英文书籍轮播图
+const hotEnglishBookImage = "assets/hot_english_book.jpg";
 // 默认影人照片
 const defaultCastImage = "https://img3.doubanio.com/f/movie/8dd0c794499fe925ae2ae89ee30cd225750457b4/pics/movie/celebrity-default-medium.png";
 // 搜索电影列表背景图

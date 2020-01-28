@@ -62,7 +62,9 @@ class FreeMovieList{
     if(json['data'] != null && json['data']['list'] != null){
       this.list = List<FreeMovie>();
       json['data']['list'] .forEach((v) {
-        this.list.add(FreeMovie.fromJson(v));
+        if(v['name'] != null && v['name'] != ''){
+          this.list.add(FreeMovie.fromJson(v));
+        }
       });
     }
   }

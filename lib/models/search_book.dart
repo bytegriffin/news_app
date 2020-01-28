@@ -1,5 +1,6 @@
 class SearchBook {
   String id;//查询id
+  String eBookId;//ebook id值
   String title;//书名
   String rating;//打分
   String author;//作家
@@ -31,6 +32,9 @@ class SearchBook {
     this.catalog = json['catalog'];
     if(image.contains('img9')){
       this.image = image.replaceAll("img9", "img3");
+    }
+    if(json['ebook_url'] != null){
+      this.eBookId = json['ebook_url'].toString().replaceAll("https://read.douban.com/ebook/", "").replaceAll("/", "");
     }
     List authorList = json['author'];
     if(authorList != null && authorList.length > 0){

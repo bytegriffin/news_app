@@ -80,7 +80,7 @@ class _MusicPlayerState extends State<MusicPlayer> with SingleTickerProviderStat
     }
     if(song.artists.length == 1){
       return GestureDetector(
-        child: Text("${song?.artistName??""} > ",
+        child: Text("${song?.artistNames??""} > ",
           style: TextStyle(fontSize: 16,color: artistTextColor),
           overflow: TextOverflow.ellipsis,maxLines: 1,
         ),
@@ -92,7 +92,7 @@ class _MusicPlayerState extends State<MusicPlayer> with SingleTickerProviderStat
       );
     } else if(song.artists.length > 1){
       return GestureDetector(
-        child: Text("${song?.artistName??""} > ",
+        child: Text("${song?.artistNames??""} > ",
           style: TextStyle(fontSize: 16,color: artistTextColor),
           overflow: TextOverflow.ellipsis,maxLines: 1,
         ),
@@ -253,7 +253,7 @@ class _MusicPlayerState extends State<MusicPlayer> with SingleTickerProviderStat
                   Expanded(
                     child: Slider(
                       onChanged: (v) {
-                        final position = v * _duration?.inMilliseconds??0.0;
+                        final position = v * (_duration == null ? 0 : _duration.inMilliseconds??0.0);
                         _audioPlayer
                             .seek(Duration(milliseconds: position.round()));
                       },
@@ -318,7 +318,7 @@ class _MusicPlayerState extends State<MusicPlayer> with SingleTickerProviderStat
 
         _audioPlayer.setNotification(
             title: song.name,
-            artist: song.artistName,
+            artist: song.artistNames,
             albumTitle: song.albumName,
             imageUrl: song.picUrl,
             forwardSkipInterval: const Duration(seconds: 30), // default is 30s

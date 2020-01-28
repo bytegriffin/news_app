@@ -1,63 +1,102 @@
+import 'book_kind.dart';
+
 class TopBook {
-  String id;//id值，用作查询使用
+  String searchId;//id值，用作查询使用
+  String eBookId;//ebook id值
   String currentRank;//当前排行
   String title;//书名
-  String author;//作家
-  String origAuthor;//原作家
+  String authors;//作家
+  String origAuthors;//原作家
   String image;//图片
-  String abstract;//摘要
   String wordCount;//字数
-  String kinds;//种类
+  List<BookKind> kinds;//类型
+  String kindNames;//类型名称
+  List<String> tags;//标签
+  String rating;//评分
+  String salesPrice;//这个价格不正确，要以searchbook中的价格为准
+  bool isColumn;//false：works节点包含book子节点，也就是说可以找到book的id值，true:找不到book子节点
+  bool isOrigin;//跟isColumn一起判断
+  String editorHighlight;//简介，主要在列表中显示
+  String abstract;//摘要，主要在详情页中展示
+  int voteCount;//推荐票
 
-  TopBook(this.id,this.currentRank,this.title,this.author,this.image,this.abstract,this.wordCount,this.kinds);
+  TopBook(this.searchId,this.currentRank,this.title,this.authors,this.image,this.abstract);
 
   TopBook.fromJson(Map<String, dynamic> json){
+    this.isColumn = json['works']['isColumn'];
+    this.isOrigin = json['works']['isOrigin'];
     this.title = json['works']['title'];
-    this.id = json['works']['book']['url'].toString()
-        .replaceAll("https://book.douban.com/subject/", "").replaceAll("/", "");
+
+    if(json['works']['book'] != null){
+      this.searchId = json['works']['book']['url'].toString()
+          .replaceAll("https://book.douban.com/subject/", "").replaceAll("/", "");
+    }
+    if(json['works']['id'] != null){
+      this.eBookId = json['works']['id'];
+    }
+    if(json['works']['averageRating'] != null){
+      this.rating = (json['works']['averageRating'] * 2).toString();
+    }
+    if(json['voteCount'] != null){
+      this.voteCount = json['voteCount'];
+    }
     this.currentRank = json['currentRank'].toString();
-    List origAuthors = json['works']['origAuthor'];
-    if(origAuthors != null && origAuthors.length > 0){
+    this.salesPrice = json['salesPrice'].toString();
+    if(json['works']['editorHighlight'] != null){
+      this.editorHighlight = json['works']['editorHighlight'].toString();
+    }
+    List origAuthorList = json['works']['origAuthor'];
+    if(origAuthorList != null && origAuthorList.length > 0){
       String name = "";
-      for (int i=0; i < origAuthors.length; i++) {
-        name += origAuthors[i]["name"].toString().replaceAll("〔", "(").replaceAll("〕", ")");
-        if(origAuthors.length - i > 1){
-          name = name + ",";
+      for (int i=0; i < origAuthorList.length; i++) {
+        name += origAuthorList[i]["name"].toString();
+        if(origAuthorList.length - i > 1){
+          name = name + "/";
         }
       }
-      this.origAuthor = name;
+      this.origAuthors = name;
     }
-    List authors = json['works']['author'];
-    if(authors != null && authors.length > 0){
+    List authorList = json['works']['author'];
+    if(authorList != null && authorList.length > 0){
       String name = "";
-      for (int i=0; i < authors.length; i++) {
-        name += authors[i]["name"].toString().replaceAll("〔", "(").replaceAll("〕", ")");
-        if(authors.length - i > 1){
-          name = name + ",";
+      for (int i=0; i < authorList.length; i++) {
+        name += authorList[i]["name"].toString().replaceAll("〔", "(").replaceAll("〕", ")");
+        if(authorList.length - i > 1){
+          name = name + "/";
         }
       }
       if (name != ""){
-        this.author = name;
+        this.authors = name;
       }
-    }else if (this.origAuthor != null && this.origAuthor != "") {
-      this.author = this.origAuthor;
+    }else if (this.origAuthors != null && this.origAuthors != "") {
+      this.authors = this.origAuthors;
     }
+
     this.image = json['works']['cover'];
     this.abstract = json['works']['abstract'];
     this.wordCount = json['works']['wordCount'].toString() + " " + json['works']['wordCountUnit'];
-
     List kindList = json['works']['kinds'];
     if(kindList != null && kindList.length > 0){
       String name = "";
+      kinds = List<BookKind>();
       for (int i=0; i < kindList.length; i++) {
         name += kindList[i]["shortName"].toString();
         if(kindList.length - i > 1){
-          name = name + " | ";
+          name = name + "/";
         }
+        kinds.add(BookKind(kindList[i]["id"],kindList[i]["shortName"]));
       }
-      this.kinds = name;
-    }else{
-      this.kinds = "";
+      if (name != ""){
+        this.kindNames = name;
+      }
+    }
+
+    List tagList = json['works']['highlightTags'];
+    if(tagList != null && tagList.length > 0){
+      tags = List<String>();
+      for (int i=0; i < tagList.length; i++) {
+        tags.add(tagList[i]['name']);
+      }
     }
 
   }

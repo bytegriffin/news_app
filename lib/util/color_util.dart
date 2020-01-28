@@ -23,7 +23,13 @@ const ratingCountColor = Colors.deepOrange;
 const tagTextColor = Colors.teal;
 
 // 歌手名字颜色
-const artistTextColor = Colors.deepPurple;
+const artistTextColor = Colors.grey;
+
+// 图书排名文字颜色
+const rankTextColor = Colors.red;
+
+// 图书排名图标颜色
+const rankIconColor = Colors.yellowAccent;
 
 getRandomColor(){
   return Color.fromARGB(255, Random.secure().nextInt(255), Random.secure().nextInt(255), Random.secure().nextInt(255));

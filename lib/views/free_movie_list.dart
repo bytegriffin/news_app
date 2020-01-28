@@ -17,17 +17,18 @@ class FreeMovieListPage extends StatefulWidget {
 
 class FreeMovieListPageState extends State<FreeMovieListPage> {
 
-  int _pageNum = 1;
+  int _pageNum = 0;
  //  int _size = 10;
-//  int _beLoad = 0; // 0表示不显示, 1表示正在请求, 2表示没有更多数据
+ //  int _beLoad = 0; // 0表示不显示, 1表示正在请求, 2表示没有更多数据
 
   var datas = [];
+  var datanames = [];
 
   // 下拉刷新数据
   Future<Null> _refreshData() async {
     setState(() {
       this._pageNum = 1;
-      _getNewData(false);
+      _getMoreData(false);
     });
   }
 
@@ -35,21 +36,31 @@ class FreeMovieListPageState extends State<FreeMovieListPage> {
   Future<Null> _addMoreData() async {
     setState(() {
       this._pageNum += 1;
-      _getNewData(true);
+      _getMoreData(true);
     });
   }
 
-  // 请求新数据
-  void _getNewData(bool _ifAdd) async {
+  // 请求数据
+  void _getMoreData(bool _ifAdd) async {
     HttpClient.get(FREE_MOVIE_LIST_URL+this._pageNum.toString(), (result) {
       if(mounted){
         setState(() {
           var hlist  = FreeMovieList.fromJson(result).list;
           if (_ifAdd) {
-            datas.addAll(hlist);
+            for(int i=0; i<hlist.length; i++) {
+              if (datanames.contains(hlist[i].name)) {
+                 continue;
+              }
+              datanames.add(hlist[i].name);
+              datas.add(hlist[i]);
+            }
           } else {
             datas.clear();
+            datanames.clear();
             datas = hlist;
+            hlist.forEach((v) {
+              datanames.add(v.name);
+            });
           }
         });
       }
@@ -62,7 +73,7 @@ class FreeMovieListPageState extends State<FreeMovieListPage> {
   void initState() {
     super.initState();
     // 首次拉取数据
-    _getNewData(true);
+ //   _getNewData(true);
 //    _scrollController.addListener(() {
 //      if (_scrollController.position.pixels ==
 //          _scrollController.position.maxScrollExtent) {

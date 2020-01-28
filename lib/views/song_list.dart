@@ -63,7 +63,7 @@ class _SongListPageState extends State<SongListPage> {
                     subtitle: Row(
                       children: <Widget>[
                         Expanded(
-                          child: Text(song.artistName, overflow: TextOverflow.ellipsis, maxLines: 1,
+                          child: Text(song.artistNames, overflow: TextOverflow.ellipsis, maxLines: 1,
                               style: TextStyle(fontSize: 14.0,color:Colors.grey,fontStyle: FontStyle.normal,decoration: TextDecoration.none)),
                         ),
                         Expanded(child: Text(" - "+song.album.name, overflow: TextOverflow.ellipsis, maxLines: 1,)),

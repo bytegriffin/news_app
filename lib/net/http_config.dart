@@ -89,10 +89,20 @@ const HOT_MOVIE_URL="https://movie.douban.com/j/search_subjects?type=movie&tag=%
 const TOP_SALE_BOOK = "https://read.douban.com/j/index//charts?type=sales&index=ebook&verbose=1";
 // 最新读书榜
 const TOP_NEW_BOOK = "https://read.douban.com/j/index//charts?type=newly_published_sales&index=ebook&verbose=1";
+// 好评书榜
+const TOP_HIGH_RATE_BOOK="https://read.douban.com/j/index//charts?type=highly_rated_sales&index=ebook&verbose=1";
 // 套装书榜
 const TOP_BUNDLE_BOOK="https://read.douban.com/j/index//charts?type=bundle_sales&index=ebook&verbose=1";
-// 好评书榜
-const HIGH_RATE_BOOK="https://read.douban.com/j/index//charts?type=highly_rated_sales&index=ebook&verbose=1";
+// 长篇推荐票月榜
+const TOP_LONG_BOOK="https://read.douban.com/j/index//charts?type=most_voted_column&index=featured&verbose=1";
+// 中篇榜
+const TOP_MIDDLE_BOOK = "https://read.douban.com/j/index//charts?type=intermediate_finalized&index=featured&verbose=1";
+
+
+// 电子书地址
+const EBOOK_URL = "https://read.douban.com/reader/ebook/";
+// 获取图书
+const BOOK_URL = "https://read.douban.com/j/kind/";
 
 
 // 推荐歌单
@@ -144,7 +154,7 @@ const RELATED_MV_URL = "http://musicapi.leanapp.cn/simi/mv?mvid=";
 //mv详情
 const MV_DETAIL_URL = "http://musicapi.leanapp.cn/mv/detail?mvid=";
 
-// 电影解析 https://www.leflv.com/vip/?url=
+// 电影解析 https://api.bingdou.net/?url=
 const FREE_MOVIE_PARSE_URL = "https://www.leflv.com/vip/?url=";
 // 电影列表
 const FREE_MOVIE_LIST_URL = "https://pcw-api.iqiyi.com/search/video/videolists?access_play_control_platform=1&channel_id=1&pageSize=18&pageNum=";

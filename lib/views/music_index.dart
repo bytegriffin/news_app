@@ -25,7 +25,7 @@ class MusicIndexPage extends StatefulWidget {
 class _MusicIndexPageState extends State<MusicIndexPage> with AutomaticKeepAliveClientMixin{
 
   List<Song> recNewMusicList= List.generate(6, (index) {
-    return Song("$index", "", defaultMusicImage);
+    return Song("$index", "", defaultMusicImage, "", null);
   });
 
   List<Album> recNewAlbumList= List.generate(6, (index) {
@@ -33,7 +33,7 @@ class _MusicIndexPageState extends State<MusicIndexPage> with AutomaticKeepAlive
   });
 
   List<MV> recNewMVList= List.generate(4, (index) {
-    return MV("$index","测试",defaultMusicImage,"");
+    return MV("$index","",defaultMusicImage,"");
   });
 
   @override
@@ -119,7 +119,7 @@ class _MusicIndexPageState extends State<MusicIndexPage> with AutomaticKeepAlive
           return GestureDetector(
             child:  ClipRRect(
               borderRadius: BorderRadius.circular(5.0),
-              child: getCachedImage(recNewMVList[i]?.cover??""),
+              child: Image.network(recNewMVList[i]?.cover??"",fit: BoxFit.cover,),
             ),
             onTap: (){
               Navigator.push(context, MaterialPageRoute(

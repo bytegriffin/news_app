@@ -24,7 +24,7 @@ class _AlbumDetailPageState extends State<AlbumDetailPage> {
   int songSize = 0;
 
   List<Song> songList= List.generate(0, (index) {
-    return Song("$index", "", defaultMusicImage);
+    return Song("$index", "", defaultMusicImage,"", null);
   });
 
 
@@ -155,9 +155,12 @@ class _AlbumDetailPageState extends State<AlbumDetailPage> {
                       overflow: TextOverflow.ellipsis,maxLines: 1,
                     ),
                     GestureDetector(
-                      child: Text("${album?.artistName??""} > ",
-                        style: TextStyle(fontSize: 16,color: artistTextColor),
-                        overflow: TextOverflow.ellipsis,maxLines: 1,
+                      child: Container(
+                        width: 180,
+                        child: Text("${album?.artistName??""} > ",
+                          style: TextStyle(fontSize: 16,color: artistTextColor),
+                          overflow: TextOverflow.ellipsis,maxLines: 1,
+                        ),
                       ),
                       onTap: (){
                         Navigator.push(context, MaterialPageRoute(

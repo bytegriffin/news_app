@@ -13,8 +13,6 @@ class NewsDetailPage extends StatefulWidget {
 
 class _NewsDetailPageState extends State<NewsDetailPage> {
 
-  String content="";
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

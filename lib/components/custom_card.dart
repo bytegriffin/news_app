@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../util/image_util.dart';
 import '../models/top_book.dart';
-import '../views/book_detail.dart';
+import '../views/search_book_detail.dart';
 import '../models/top_movie.dart';
 import '../views/movie_detail.dart';
 import '../components/star_rating.dart';
@@ -9,9 +9,11 @@ import '../models/song.dart';
 import '../models/album.dart';
 import '../models/mv.dart';
 import '../views/album_detail.dart';
-import '../views/artist_detail.dart';
+import '../components/music_player.dart';
 import '../views/mv_detail.dart';
 import '../util/color_util.dart';
+import '../models/book.dart';
+import '../views/book_detail.dart';
 
 Widget getBoxCard(Widget widget) {
   var con = Container(
@@ -213,21 +215,21 @@ Widget getSongRowItem(BuildContext context,Song song){
           ),
           Container(
             width: 130,
-            child: Text("${song?.artistName??""}",overflow: TextOverflow.ellipsis,
+            child: Text("${song?.artistNames??""}",overflow: TextOverflow.ellipsis,
                 maxLines: 1,style: TextStyle(fontWeight:FontWeight.normal, fontSize: 14.0,)),
           ),
         ],
       ),
       onTap: (){
         Navigator.push(context, MaterialPageRoute(
-            builder: (context) => new ArtistDetailPage(song.artists[0].id)
+            builder: (context) => MusicPlayer(song)
         ));
       },
     ),
   );
 }
 
-Widget buildRowSongCard(BuildContext context,String typeName,Widget page, List<Widget> movieList){
+Widget buildRowSongCard(BuildContext context,String typeName,Widget page, List<Widget> songList){
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
@@ -268,7 +270,7 @@ Widget buildRowSongCard(BuildContext context,String typeName,Widget page, List<W
         //子Widget宽高比例
         childAspectRatio: 7 / 10,
         //子Widget列表
-        children: movieList,
+        children: songList,
       )
     ],
   );
@@ -355,12 +357,58 @@ Widget getMovieRowItem(BuildContext context,TopMovie movie){
   );
 }
 
-Widget buildRowBookCard(BuildContext context,String typeName,Widget page, List<TopBook> bookList){
+Widget buildRowBookCard1(BuildContext context,String typeName,Widget page, List<Widget> bookList){
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
       Padding(
         padding: EdgeInsets.only(top:5.0,left: 5.0,bottom: 0.0,right: 5.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text("  $typeName",style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0,)),
+            GestureDetector(
+              child: Row(
+                children: <Widget>[
+                  Text("查看更多",style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.0,color: Colors.blue)),
+                  Icon(Icons.arrow_right,color: Colors.blue,)
+                ],
+              ),
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => page
+                ));
+              },
+            )
+          ],
+        ),
+      ),
+      GridView.count(
+        primary: false,
+        shrinkWrap:true,
+        //水平子Widget之间间距
+        crossAxisSpacing:3.0,
+        //垂直子Widget之间间距
+        mainAxisSpacing: 2.0,
+        //GridView内边距
+        padding: EdgeInsets.all(1.0),
+        //一行的Widget数量
+        crossAxisCount: 3,
+        //子Widget宽高比例
+        childAspectRatio: 3 / 5,
+        //子Widget列表
+        children: bookList,
+      ),
+    ],
+  );
+}
+
+Widget buildRowBookCard2(BuildContext context,String typeName,Widget page, List<Book> bookList){
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: <Widget>[
+      Padding(
+        padding: EdgeInsets.only(top:5.0,left: 5.0,bottom: 5.0,right: 5.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -399,35 +447,133 @@ Widget buildRowBookCard(BuildContext context,String typeName,Widget page, List<T
   );
 }
 
-Widget getBookRowItem(BuildContext context,TopBook book){
-  var pad = GestureDetector(
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: <Widget>[
-        ClipRRect(
-          borderRadius: BorderRadius.circular(5.0),
-          child: getCachedImage(book.image),
+Widget getBookRowItem(BuildContext context,Book book){
+  return Container(
+    padding: EdgeInsets.only(left:10.0),
+    child: GestureDetector(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            width: 120,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(5.0),
+              child: getCachedImage(book.cover),
+            ),
+          ),
+          Container(
+            width: 120,
+            child: Text("${book.title}",overflow: TextOverflow.ellipsis,
+                maxLines: 1,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0,)),
+          ),
+          Container(
+            width: 120,
+            child: Text("${book.authors??book.origAuthors}",overflow: TextOverflow.ellipsis,
+                maxLines:1,style: TextStyle(fontWeight: FontWeight.normal, fontSize: 13.0,)),
+          )
+        ],
+      ),
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(
+           builder: (context) => new BookDetailPage(book)
+        ));
+      },
+    ),
+  );
+}
+
+Widget buildRowBookCard3(BuildContext context,String typeName,Widget page, List<Book> bookList){
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: <Widget>[
+      Padding(
+        padding: EdgeInsets.only(top:10.0,left: 5.0,bottom: 5.0,right: 5.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text(" $typeName",style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0,)),
+            GestureDetector(
+              child: Row(
+                children: <Widget>[
+                  Text("查看更多",style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.0,color: Colors.blue)),
+                  Icon(Icons.arrow_right,color: Colors.blue,)
+                ],
+              ),
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => page
+                ));
+              },
+            )
+          ],
         ),
-        Container(
-          width: 100,
-          child: Text("${book.title}",overflow: TextOverflow.ellipsis,
-              maxLines: 1,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0,)),
+      ),
+      _buildBookRowItem(context,bookList[0]),
+      _buildBookRowItem(context,bookList[1]),
+      _buildBookRowItem(context,bookList[2])
+    ],
+  );
+}
+
+Widget _buildBookRowItem(BuildContext context,Book book){
+  var row = Row(
+    children: <Widget>[
+      Container(
+        padding: EdgeInsets.all(4),
+        height: 150,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(4.0),
+          child: Image.network(book.cover),
         ),
-        Container(
-          width: 100,
-          child: Text("${book.author}",overflow: TextOverflow.ellipsis,
-              maxLines:1,style: TextStyle(fontWeight: FontWeight.normal, fontSize: 13.0,)),
+      ),
+      Expanded(
+        child: Container(
+          margin: EdgeInsets.only(left: 8.0),
+          height: 150.0,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              Text(
+                book.title,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.0,
+                ),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+              ),
+              Text(
+                '作者：${book.authors??book.origAuthors}',
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+              ),
+              Text(
+                book?.abstract??"",
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+                style: TextStyle( fontWeight: FontWeight.w600,),
+              ),
+              Text(
+                "约 ${book.wordCount} | ${book.kindNames} ",
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+                textAlign: TextAlign.left,
+              ),
+            ],
+          ),
         )
-      ],
+      )
+    ],
+  );
+  return GestureDetector(
+    child: Card(
+      child: row,
     ),
     onTap: (){
       Navigator.push(context, MaterialPageRoute(
-          builder: (context) => new BookDetailPage(book.id)
+        builder: (context) => BookDetailPage(book)
       ));
     },
-  );
-  return Card(
-    child: pad,
   );
 }

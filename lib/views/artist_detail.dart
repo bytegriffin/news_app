@@ -181,7 +181,7 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Flexible(
-            child: Text(song?.artistName??"", overflow: TextOverflow.ellipsis, maxLines: 1,
+            child: Text(song?.artistNames??"", overflow: TextOverflow.ellipsis, maxLines: 1,
                 style: TextStyle(fontSize: 14.0,color:Colors.grey,fontStyle: FontStyle.normal,decoration: TextDecoration.none)),
           ),
           Expanded(

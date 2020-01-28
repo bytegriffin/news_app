@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../net/httpclient.dart';
 import '../net/http_config.dart';
 import '../models/news.dart';
-import 'news_list.dart';
+import 'news_list_item.dart';
 import 'dart:convert';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_easyrefresh/ball_pulse_header.dart';

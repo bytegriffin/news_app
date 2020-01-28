@@ -1,127 +1,170 @@
 import 'package:flutter/material.dart';
-import '../util/image_util.dart';
-import '../models/top_book.dart';
+import '../net/httpclient.dart';
+import '../net/http_config.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:flutter_easyrefresh/ball_pulse_header.dart';
+import 'package:flutter_easyrefresh/ball_pulse_footer.dart';
+import '../models/book.dart';
 import 'book_detail.dart';
+import '../models/book_post_data.dart';
 
+// 图书列表
 class BookListPage extends StatefulWidget {
   final String title;
-  final String backgroundImage;
-  final List<TopBook> topBookList;
-  BookListPage(this.title, this.backgroundImage,this.topBookList);
+  final BookType bookType;
+  BookListPage(this.title,this.bookType);
+
   @override
   _BookListPageState createState() => _BookListPageState();
 }
 
 class _BookListPageState extends State<BookListPage> with AutomaticKeepAliveClientMixin{
-  List<TopBook> bookList;
+  List<Book> bookList;
+  int size = 0;
+  int _pageNum = 0;
+  var datas = [];
+
   @override
   bool get wantKeepAlive => true;
 
+  // 下拉刷新数据
+  Future<Null> _refreshData() async {
+    setState(() {
+      this._pageNum = 1;
+      _getMoreData(false);
+    });
+  }
+
+  // 上拉加载数据
+  Future<Null> _addMoreData() async {
+    setState(() {
+      this._pageNum += 1;
+      _getMoreData(true);
+    });
+  }
+
+  _getMoreData(bool _ifAdd){
+    Map<String,dynamic> postData = getBookPostJsonData(widget.bookType,_pageNum);
+    HttpClient.postBook(BOOK_URL, postData, (result) {
+      if (mounted) {
+        setState(() {
+          bookList = BookList.fromJson(result).list;
+          if (_ifAdd) {
+            datas.addAll(bookList);
+            size = datas.length;
+          } else {
+            datas.clear();
+            datas = bookList;
+            size = datas.length;
+          }
+        });
+      }
+    }, errorCallBack: (error) {
+      print(error);
+    });
+  }
+
+
   @override
   void initState(){
-    bookList = widget.topBookList;
     super.initState();
+    _addMoreData();
   }
 
   @override
-  Widget build(BuildContext context) {
-    super.build(context);
-    return Scaffold(
-      body: buildScrollView(),
-    );
+  void dispose() {
+    super.dispose();
   }
 
-  Widget buildScrollView(){
-    return Container(
-      //height: 400,
-      child: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            actions: <Widget>[
-            ],
-            backgroundColor: Theme.of(context).primaryColor,
-            expandedHeight: 180.0,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text(widget.title),
-              background: Image.asset(widget.backgroundImage, fit:BoxFit.cover,),
-            ),
-            pinned: true,
-            floating: false,
-            snap: false,
-          ),
-          SliverFixedExtentList(
-            delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index){
-                  return getItem(bookList[index]);
-                },
-              childCount: bookList.length
-            ),
-            itemExtent: 160.0,
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget getItem(TopBook book) {
+  Widget getItem(Book book) {
     var row = Container(
       margin: EdgeInsets.all(4.0),
       child: Row(
         children: <Widget>[
-          ClipRRect(
-            borderRadius: BorderRadius.circular(4.0),
-            child: getCachedImage(book.image)
+          Container(
+            height: 150,
+            child: ClipRRect(
+                borderRadius: BorderRadius.circular(4.0),
+                child: Image.network(book.cover),
+            ),
           ),
           Expanded(
-            child: Container(
-              margin: EdgeInsets.only(left: 8.0),
-              height: 150.0,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  Text(
-                    book.title,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.0,
+              child: Container(
+                margin: EdgeInsets.only(left: 8.0),
+                height: 150.0,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Text(
+                      book.title,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
                     ),
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                  ),
-                  Text(
-                    '作者：${book.author}',
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                  ),
-                  Text(
-                    book.abstract,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                    style: TextStyle( fontWeight: FontWeight.w600,),
-                  ),
-                  Text(
-                    "约 ${book.wordCount} | ${book.kinds} ",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                    textAlign: TextAlign.left,
-                  ),
-                ],
-              ),
-            )
+                    Text(
+                      '作者：${book.authors??book.origAuthors}',
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    ),
+                    Text(
+                      book.abstract,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      style: TextStyle( fontWeight: FontWeight.w600,),
+                    ),
+                    Text(
+                      "约 ${book.wordCount} | ${book.kindNames} ",
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      textAlign: TextAlign.left,
+                    ),
+                  ],
+                ),
+              )
           )
         ],
       ),
     );
+
     return GestureDetector(
       child: Card(
         child: row,
       ),
       onTap: (){
         Navigator.push(context, MaterialPageRoute(
-            builder: (context) => BookDetailPage(book?.id)
+            builder: (context) => BookDetailPage(book)
         ));
       },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: EasyRefresh(
+        header: BallPulseHeader(),
+        footer: BallPulseFooter(),
+        onRefresh: _refreshData,
+        onLoad: _addMoreData,
+        child: new ListView.separated(
+          itemCount: size,
+          physics: BouncingScrollPhysics(),
+          itemBuilder: (context, index){
+            return getItem(datas[index]);
+          },
+          separatorBuilder: (context, index) {
+            return Container();
+          },
+        ),
+      ),
     );
   }
 
