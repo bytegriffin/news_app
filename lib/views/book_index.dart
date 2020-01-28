@@ -46,7 +46,7 @@ class _BookIndexPageState extends State<BookIndexPage> with AutomaticKeepAliveCl
   });
 
   @override
-  bool get wantKeepAlive => false;
+  bool get wantKeepAlive => true;
 
   _getBooks() {
     HttpClient.postBook(BOOK_URL, WXBookPostData(1).toJson(), (result) {
