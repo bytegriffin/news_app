@@ -57,6 +57,12 @@ class _AlbumDetailPageState extends State<AlbumDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading:GestureDetector(
+          child: Icon(Icons.arrow_back),
+          onTap: (){
+            Navigator.of(context).pop();
+          },
+        ),
         // title: Text(cast?.name??""),
         backgroundColor: detailPageBGColor,
         elevation:0,
@@ -67,17 +73,17 @@ class _AlbumDetailPageState extends State<AlbumDetailPage> {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverList(
-              delegate: SliverChildBuilderDelegate((context, index){
-                if(index == 0){
-                  return Column(
-                    children: <Widget>[
-                      getItem(),
-                    ],
-                  );
-                }
-                return null;
+            delegate: SliverChildBuilderDelegate((context, index){
+              if(index == 0){
+                return Column(
+                  children: <Widget>[
+                    getItem(),
+                  ],
+                );
               }
-              )
+              return null;
+            }
+            )
           ),
           SliverToBoxAdapter(
             child: new Container(
@@ -127,7 +133,7 @@ class _AlbumDetailPageState extends State<AlbumDetailPage> {
   Widget getItem() {
     var row = Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -216,23 +222,41 @@ class _AlbumDetailPageState extends State<AlbumDetailPage> {
             )
           ],
         ),
-        Container(
-          width: 30,
-        ),
-        GestureDetector(
-          child: ClipRRect(
-              borderRadius: BorderRadius.circular(5.0),
-              child: getCachedImage(album?.picUrl??defaultCastImage, width: 110, height: 160)
-          ),
-          onTap: (){
-            Navigator.push(context, MaterialPageRoute(
-                builder: (context) => SinglePhotoView(
-                  imageProvider:NetworkImage(album?.picUrl??defaultBookImage),
-                  heroTag: 'simple',
-                )
-            ));
-          },
-        ),
+        Column(
+          children: <Widget>[
+            Container(height: 20,),
+            GestureDetector(
+              child: Stack(
+                alignment: Alignment.topCenter,
+                overflow: Overflow.visible,
+                children: <Widget>[
+                  Container(
+                    height: 110,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(100.0),
+                      child: Image.asset("assets/record.jpg"),
+                    ),
+                  ),
+                  Positioned(
+                    top: 20,
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(5.0),
+                        child: getCachedImage(album?.picUrl??defaultCastImage, width: 110, height: 130)
+                    ),
+                  )
+                ],
+              ),
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => SinglePhotoView(
+                      imageProvider:NetworkImage(album?.picUrl??defaultBookImage),
+                      heroTag: 'simple',
+                    )
+                ));
+              },
+            ),
+          ],
+        )
       ],
     );
     return Container(

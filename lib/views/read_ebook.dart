@@ -21,7 +21,7 @@ class _ReadEBookPageState extends State<ReadEBookPage> {
               maxLines: 1,style: TextStyle(fontWeight: FontWeight.bold,)),
         ),
         body:WebView(
-          //userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0",
+          userAgent: "api-client/1 com.douban.frodo/6.22.0(166) Android/29 product/tiffany vendor/Xiaomi model/MI 9  rom/miui10  network/wifi  platform/mobile",
           initialUrl: EBOOK_URL + widget.eBookId,
           //JS执行模式 是否允许JS执行
           javascriptMode: JavascriptMode.unrestricted,

@@ -77,7 +77,7 @@ const BJQN = "rtmp://ivi.bupt.edu.cn:1935/livetv/btv8";
 const BJXW = "rtmp://ivi.bupt.edu.cn:1935/livetv/btv9";
 const BJKK = "rtmp://ivi.bupt.edu.cn:1935/livetv/btv10";
 const BJJS = "rtmp://ivi.bupt.edu.cn:1935/livetv/btv11hd";
-const CQXW_HD = "http://vss.cbnmtv.com/live/CQTV_xw_hd_1.m3u8?segmentserverid=CQTV_xw_hd_1&channelid=CQTV_xw_hd_1";
+const CQXW_HD = "https://onsitecdn.cbgcloud.com/4zjt2a/zb7nip.m3u8";
 const CQDU_HD = "http://vss.cbnmtv.com/live/CQTV_dushi_hd_1.m3u8?segmentserverid=CQTV_dushi_ld_1&channelid=CQTV_dushi_hd_1";
 const CQSE_HD = "http://vss.cbnmtv.com/live/CQTV_shaoer_hd_1.m3u8?segmentserverid=CQTV_shaoer_hd_1&channelid=CQTV_shaoer_hd_1";
 const CQSS_HD = "http://vss.cbnmtv.com/live/CQTV_shishang_hd_1.m3u8?segmentserverid=CQTV_shishang_hd_1&channelid=CQTV_shishang_hd_1";
@@ -159,6 +159,8 @@ const NDXW = "http://104.250.154.42:8080/ZZ_niandaixinwen/ZZ_niandianxinwen.m3u8
 const DSXW = "http://192.200.120.82:8080/ZZ_dongsenxinwen/ZZ_dongsenxinwen.m3u8";
 const TVBS = "http://60.199.188.65/HLS/WG_TVBS-N/01.m3u8";
 const AMLH = "rtmp://live-rtmp.lotustv.duolaibo.cn/lotustv/5562e9e4d409d24c9600075c";
+const AMWS = "http://stream.mastvnet.com/MSTV/SD/live.m3u8";
+const HDXW = "http://202.175.127.77/live/show/ch2/index.m3u8";
 const DSCJ = "http://pili-live-hdl.qhmywl.com:80/dsdtv/10e21c98ff74745141a386d91da24c56.m3u8";
 const DSDY = "http://pili-live-hdl.qhmywl.com:80/dsdtv/d2325cfdfd53364263d307573f78e3ce.m3u8";
 const DSYP = "http://pili-live-hdl.qhmywl.com:80/dsdtv/24b15906d2250c062c0f0b5339e166b2.m3u8";
@@ -233,10 +235,14 @@ const AlHurra = "http://mbnhls-lh.akamaihd.net/i/MBN_1@118619/master.m3u8";
 const WBRZ = "http://cms-wowza.lunabyte.io/wbrz-live-1/_definst_/smil:wbrz-live.smil/chunklist_b1300000.m3u8";
 const CBN = "http://bcliveunivsecure-lh.akamaihd.net/i/news_1@500579/index_150_av-p.m3u8";
 const History2 = "http://livecdnh1.tvanywhere.ae:80/hls/h2/05.m3u8";
+const Channel9 = "http://220.158.149.14:9999/live/TV00000000000000000169@HHZT;LIVEjiema4";
+const CNEX = "http://220.158.149.14:9999/live/TV00000000000000000083@HHZT;LIVEjiema4";
+const BBC = "http://220.158.149.14:9999/live/TV00000000000000000112@HHZT;LIVEjiema4";
+const ABCNews = "https://abclive1-lh.akamaihd.net/i/abc_live01@423395/master.m3u8";
 
 //   以下为 专辑  //
 const ZXC = "http://tx.hls.huya.com/huyalive/94525224-2460685313-10568562945082523648-2789274524-10057-A-0-1.m3u8";
-const MZTKN = "http://101.72.196.41/r/baiducdnct.inter.iqiyi.com/tslive/c15_lb_mingzhentankenan_1080p_t10/c15_lb_mingzhentankenan_1080p_t10.m3u8";
+const MZTKN = "http://baiducdnct.inter.iqiyi.com/tslive/c15_lb_mingzhentankenan_1080p_t10/c15_lb_mingzhentankenan_1080p_t10.m3u8";
 const MWDY = "http://aldirect.hls.huya.com/huyalive/30765679-2504742278-10757786168918540288-3049003128-10057-A-0-1_1200.m3u8";
 const LDH = "https://aldirect.hls.huya.com/huyalive/94525224-2467341872-10597152648291418112-2789274550-10057-A-0-1_1200.m3u8";
 const LBXX = "http://aldirect.hls.huya.com/huyalive/94525224-2503194318-10751137731343024128-2847699212-10057-A-0-1_1200.m3u8";
@@ -245,12 +251,12 @@ const HB = "http://aldirect.hls.huya.com/huyalive/30765679-2554414680-1097112751
 const ZRF = "https://aldirect.hls.huya.com/huyalive/94525224-2460685774-10568564925062447104-2789253840-10057-A-0-1_1200.m3u8";
 const ZZD = "http://aldirect.hls.huya.com/huyalive/29169025-2686219938-11537226783573147648-2847699096-10057-A-1524024759-1_1200.m3u8";
 const HLW = "http://aldirect.hls.huya.com/huyalive/30765679-2484192572-10669525853706125312-2847687498-10057-A-0-1_1200.m3u8";
-const XZ = "https://aldirect.hls.huya.com/huyalive/30765679-2689675828-11552069718101721088-3048991626-10057-A-0-1_1200.m3u8";
+const XZ = "https://aldirect.hls.huya.com/huyalive/30765679-2689675828-11552069718101721088-3048991626-10057-A-0-1.m3u8";
 const KHXL = "https://aldirect.hls.huya.com/huyalive/28466698-2689656864-11551988268341919744-2847699194-10057-A-0-1_1200.m3u8";
 const ST = "http://tx.hls.huya.com/huyalive/29141112-2689675756-11552069408864075776-3048959626-10057-A-0-1.m3u8";
 const BIGBANG = "http://aldirect.hls.huya.com/huyalive/29169025-2686221732-11537234488744476672-2847699168-10057-A-0-1.m3u8";
-
-
+const CL = "http://aldirect.hls.huya.com/huyalive/94525224-2460685722-10568564701724147712-2789253838-10057-A-0-1.m3u8";
+const LYJ = "https://aldirect.hls.huya.com/huyalive/29169025-2686220018-11537227127170531328-2847699120-10057-A-1524041208-1.m3u8";
 
 
 

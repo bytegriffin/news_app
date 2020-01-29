@@ -26,7 +26,7 @@ Widget getBoxCard(Widget widget) {
 
 Widget getMVRowItem(BuildContext context,MV mv){
   return Container(
-    padding: EdgeInsets.all(1.0),
+    padding: EdgeInsets.symmetric(horizontal: 5),
     child: GestureDetector(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -198,13 +198,22 @@ Widget getSongRowItem(BuildContext context,Song song){
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          Container(
-            width: 130,
-            height: 130,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(5.0),
-              child: getCachedImage(song?.picUrl),
-            ),
+          Stack(
+            children: <Widget>[
+              Container(
+                width: 130,
+                height: 130,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(5.0),
+                  child: getCachedImage(song?.picUrl),
+                ),
+              ),
+              Positioned(
+                right: 5,
+                bottom: 5,
+                child:Icon(Icons.play_circle_filled,color: songIconPlayColor,)
+              )
+            ],
           ),
           Container(
             width: 130,

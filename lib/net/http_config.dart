@@ -52,7 +52,7 @@ const BOMB_VIDEO_URL = "http://v.baidu.com/channel/short/newbomb?format=json";
 const REFRESH_VIDEO_COUNT = 30;
 
 // 新闻
-const NEWS_VIDEO_URL = "https://www.hao123.com/feedData/data?rn=$REFRESH_VIDEO_COUNT&pn=3&type=video&ctype=video&app_from=pc_tuijian";
+const NEWS_VIDEO_URL = "https://www.hao123.com/feedData/data?type=video&ctype=video&app_from=pc_tuijian&pn=3&rn=$REFRESH_VIDEO_COUNT";
 // 影视
 const YINGSHI_VIDEO_URL = "http://www.hao123.com/feedData/haokanfeed?tab=yingshi_new&video_type=1&nums=$REFRESH_VIDEO_COUNT";
 // 音乐

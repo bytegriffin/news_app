@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_ijkplayer/flutter_ijkplayer.dart';
 import '../net/live_source.dart';
 import '../components/sliver_appbar_delegate.dart';
@@ -115,7 +113,9 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
       _buildButton("周润发", ZRF),
       _buildButton("甄子丹", ZZD),
       _buildButton("徐峥", XZ),
+      _buildButton("成龙", CL),
       _buildButton("沈腾", ST),
+      _buildButton("老友记", LYJ),
       _buildButton("名侦探柯南", MZTKN),
       _buildButton("生活大爆炸", BIGBANG),
       _buildButton("漫威电影", MWDY),
@@ -224,9 +224,9 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
       _buildButton("北京纪实",BJTY),
       _buildButton("怀柔电视",HR),
       _buildButton("重庆新闻",CQXW_HD),
-      _buildButton("重庆都市",CQDU_HD),
-      _buildButton("重庆时尚",CQSS_HD),
-      _buildButton("重庆影视",CQYS_HD),
+//      _buildButton("重庆都市",CQDU_HD),
+//      _buildButton("重庆时尚",CQSS_HD),
+//      _buildButton("重庆影视",CQYS_HD),
       _buildButton("蚌埠新闻",BBXW),
       _buildButton("蚌埠公共",BBGG),
       _buildButton("蚌埠生活",BBSH),
@@ -296,6 +296,8 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
       _buildButton("三立新闻", SLXW),
       _buildButton("东森新闻", DSXW),
       _buildButton("澳门莲花", AMLH),
+      _buildButton("澳门卫视", AMWS),
+      _buildButton("互动新闻", HDXW),
       _buildButton("唯心頻道", WXPD),
       _buildButton("TVB翡翠台", FCT),
       _buildButton("有线新闻", YXXW),
@@ -355,15 +357,18 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
       _buildButton("HBO",HBO),
       _buildButton("Star Sports", START_SPORT),
       _buildButton("Channel[V]",CHANNELV),
+      _buildButton("BBC",BBC),
      // _buildButton("TRT WORLD",TRTWORLD),
       _buildButton("VOA",VOA),
       _buildButton("VOTV",VOTV),
       _buildButton("France",FRANCE),
       _buildButton("CGTN",CGTN),
       _buildButton("CGNTV",CGNTV),
+      _buildButton("CNEX",CNEX),
       _buildButton("GSTV",GSTV),
       _buildButton("WBRZ",WBRZ),
       _buildButton("CBN",CBN),
+      _buildButton("ABC News",ABCNews),
       _buildButton("Al Hurra",AlHurra),
       _buildButton("NHK World",NHK),
       _buildButton("Buffalo",BUFFALO),

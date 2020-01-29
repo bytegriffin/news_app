@@ -11,10 +11,9 @@ class VideoTileCard extends StatelessWidget {
 
   VideoTileCard({this.haoKanVideo,this.worksAspectRatio, this .index});
 
-  double dheight;
-
   @override
   Widget build(BuildContext context) {
+    double dheight;
     // 动态计算图片高度，第一个要小一些
     if(index  == 0 ){
       dheight =  ScreenUtil().setWidth(460);

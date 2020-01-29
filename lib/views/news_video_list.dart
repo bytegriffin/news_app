@@ -3,7 +3,7 @@ import '../net/httpclient.dart';
 import '../net/http_config.dart';
 import '../models/news.dart';
 import 'dart:convert';
-import 'news_detail.dart';
+import 'news_video_detail.dart';
 import '../util/image_util.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_easyrefresh/ball_pulse_header.dart';
@@ -85,7 +85,7 @@ class _NewsVideoListPageState extends State<NewsVideoListPage> with AutomaticKee
    return GestureDetector(
       onTap: (){
         Navigator.push(context, MaterialPageRoute(
-          builder: (context) => new NewsDetailPage(news:videolist.result[index])
+          builder: (context) => NewsVideoDetailPage(news:videolist.result[index])
         )
         );
       },
@@ -100,9 +100,9 @@ class _NewsVideoListPageState extends State<NewsVideoListPage> with AutomaticKee
                 children: <Widget>[
                   ClipRRect(
                     borderRadius: BorderRadius.circular(5.0),
-                    child: Image.network(videolist.result[index].image,width: 500,height: 200,fit: BoxFit.cover,),
+                    child: Image.network(videolist?.result[index]?.image0??"",width: 500,height: 200,fit: BoxFit.cover,),
                   ),
-                  Text(videolist.result[index].title,
+                  Text(videolist?.result[index]?.title??"",
                     style: TextStyle(fontSize:20,color: Colors.white,shadows:[
                       BoxShadow(color: Colors.black54,offset: Offset(0.1,0.1), blurRadius: 5.0)
                     ])),

@@ -996,6 +996,63 @@ String getAvatarPath(String source){
     case "雷帝触网":
       imageStr = "https://pic.rmb.bdstatic.com/95126ed7b5eead8d4724dc0afe88e0b2.jpeg";
       break;
+    case "中国新闻周刊":
+      imageStr = "https://tva4.sinaimg.cn/crop.0.0.179.179.180/61e6c012gw1ev930c1e5sj2050050t8w.jpg";
+      break;
+    case "三言财经":
+      imageStr = "https://tvax2.sinaimg.cn/crop.0.0.1002.1002.180/0074jgZUly8g0hnj8r19vj30ru0ruaba.jpg";
+      break;
+    case "中国长安网":
+      imageStr = "http://pic.rmb.bdstatic.com/dcc360cabeab23744cbe60d5254e86ec.jpeg";
+      break;
+    case "武汉交通广播":
+      imageStr = "https://tvax3.sinaimg.cn/crop.0.0.512.512.180/72260dd3ly8fx9yg2dr3ej20e80e8q3d.jpg";
+      break;
+    case "吉林日报":
+      imageStr = "https://tva1.sinaimg.cn/crop.0.0.430.430.180/c14917b7jw8ew4a6vlovyj20by0bywf9.jpg";
+      break;
+    case "网信天津":
+      imageStr = "https://tvax4.sinaimg.cn/crop.200.0.500.500.180/006ntL7Dly8fzgfnz9xi1j30p00dwt98.jpg";
+      break;
+    case "百度":
+      imageStr = "https://tvax4.sinaimg.cn/crop.30.17.398.398.180/968408a0ly8g5s8ini53rj20ce0cf75h.jpg";
+      break;
+    case "潇湘晨报官方":
+      imageStr = "http://pic.rmb.bdstatic.com/a51d142ac7625feda1002f0c739ae255.jpeg";
+      break;
+    case "畅娱网络":
+      imageStr = "https://pic.rmb.bdstatic.com/2cde6568749a78fbe4f94f60b7ba1c3d.jpeg";
+      break;
+    case "南方新闻网":
+      imageStr = "https://tva3.sinaimg.cn/crop.0.0.180.180.180/b7246b83jw1e8qgp5bmzyj2050050aa8.jpg";
+      break;
+    case "缅甸中文网":
+      imageStr = "http://pic.rmb.bdstatic.com/e0700a40ccce2aaa67a06fa418df0f7a.jpeg";
+      break;
+    case "野球帝侃球":
+      imageStr = "https://pic.rmb.bdstatic.com/b97e97f96170dddae930e278b41735f9.png";
+      break;
+    case "足坛平头哥":
+      imageStr = "https://pic.rmb.bdstatic.com/363830d4e46e14e16536a9e2aa75d6b4.jpeg";
+      break;
+    case "西安日报":
+      imageStr = "https://tvax4.sinaimg.cn/crop.7.7.172.172.180/70be0d54ly8g0vgcrf9xpj2050050jrj.jpg?KID=imgbed,tva&Expires=1580300190&ssig=B3LEfnyJAo";
+      break;
+    case "环球科学猫":
+      imageStr = "https://timg01.bdimg.com/timg?pacompress&imgtype=0&sec=1439619614&autorotate=1&di=3d6e55310924f7c44273688c47d544ef&quality=90&size=b870_10000&src=http%3A%2F%2Fbos.nj.bpc.baidu.com%2Fv1%2Fmediaspot%2Fba25d87f391d1c837912ed2b7ad66beb.png";
+      break;
+    case "每日新报":
+      imageStr = "https://tva2.sinaimg.cn/crop.0.0.180.180.180/95ff72a7jw8evcrhriclzj2050050aac.jpg?KID=imgbed,tva&Expires=1580298845&ssig=9sM9lPmB%2FD";
+      break;
+    case "江南都市报":
+      imageStr = "https://timg01.bdimg.com/timg?pa=&imgtype=0&sec=1439619614&di=75508fca92ff2cdca38d3727c51ae93d&quality=90&size=b870_10000&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Ff6d2558fd2af948fb356953803424f74.jpeg";
+      break;
+    case "重案组37号":
+      imageStr = "https://timg01.bdimg.com/timg?pacompress=&imgtype=0&sec=1439619614&autorotate=1&di=9da052921a2b83d464e4f13080beca28&quality=90&size=b200_200&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2F3cd2e9a0588a49dfecc735034bedb69e.jpeg";
+      break;
+    case "齐鲁网":
+      imageStr = "http://timg01.bdimg.com/timg?pacompress=&imgtype=0&sec=1439619614&di=87e517719c59e73ccfdf83b097cddfbb&quality=90&size=b870_10000&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2F967fba689814a5067474d6ed1345f3e6.jpeg";
+      break;
     case "潮闻知天下":
       imageStr = "https://timg01.bdimg.com/timg?pacompress&imgtype=0&sec=1439619614&autorotate=1&di=88f3a04b524ba5e8dea521eff23a948b&quality=90&size=b200_200&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2F152001063259d6cff6fc1fbfbe25f9e427b7c582cf.jpeg";
       break;
