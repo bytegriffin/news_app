@@ -15,43 +15,56 @@ class FashionNewsListPage extends StatefulWidget{
 }
 
 class _FashionNewsListPageState extends State<FashionNewsListPage>  with AutomaticKeepAliveClientMixin {
-  ScrollController _scrollController = ScrollController();
   NewsList newslist;
   int size = 0;
+  int _pageNum = 0;
+  var datas = [];
 
   @override
   bool get wantKeepAlive => true;
 
-  _getMoreData(){
+  // 下拉刷新数据
+  Future<Null> _refreshData() async {
+    setState(() {
+      this._pageNum = 1;
+      _getMoreData(false);
+    });
+  }
+
+  // 上拉加载数据
+  Future<Null> _addMoreData() async {
+    setState(() {
+      this._pageNum += 1;
+      _getMoreData(true);
+    });
+  }
+
+  _getMoreData(bool _ifAdd){
     HttpClient.request(FASHION_NEWS_API).then((res){
       Map<String,dynamic> subjects  = json.decode(res.data) as Map;
       if(mounted){
         setState(() {
           this.newslist = NewsList.fromJson(subjects);
-          this.size = newslist.result.length;
+          if (_ifAdd) {
+            datas.addAll(newslist.result);
+          } else {
+            datas.clear();
+            datas = newslist.result;
+          }
+          size = datas.length;
         });
       }
-    });
-  }
-
-  Future<void> _onRefresh() async {
-    await Future.delayed(Duration(seconds: 1)).then((e){
-      setState(() {
-        //  newslist.result.clear();
-        _getMoreData();
-      });
     });
   }
 
   @override
   void initState(){
     super.initState();
-    _getMoreData();
+    _addMoreData();
   }
 
   @override
   void dispose() {
-    _scrollController.dispose();
     super.dispose();
   }
 
@@ -66,14 +79,14 @@ class _FashionNewsListPageState extends State<FashionNewsListPage>  with Automat
             itemCount: size,
             physics: BouncingScrollPhysics(),
             itemBuilder: (context, index){
-              return NewsListItemPage(newslist.result[index]);
+              return NewsListItemPage(datas[index]);
             },
             separatorBuilder: (context, index) {
               return Divider();
             },
           ),
-          onRefresh: _onRefresh,
-          onLoad: _onRefresh
+        onRefresh: _refreshData,
+        onLoad: _addMoreData,
       ),
     );
 

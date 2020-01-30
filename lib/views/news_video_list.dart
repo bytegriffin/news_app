@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import '../net/httpclient.dart';
 import '../net/http_config.dart';
 import '../models/news.dart';
@@ -16,41 +17,54 @@ class NewsVideoListPage extends StatefulWidget {
 }
 
 class _NewsVideoListPageState extends State<NewsVideoListPage> with AutomaticKeepAliveClientMixin{
-  ScrollController _scrollController = ScrollController();
   NewsList videolist;
   int size = 0;
+  int _pageNum = 0;
+  var datas = [];
 
   @override
   bool get wantKeepAlive => true;
 
-  _getMoreData(){
+  _getMoreData(bool _ifAdd){
     HttpClient.request(NEWS_VIDEO_URL).then((res){
       Map<String,dynamic> subjects  = json.decode(res.data) as Map;
       setState(() {
         this.videolist = NewsList.fromJson(subjects);
-        this.size = videolist.result.length;
+        if (_ifAdd) {
+          datas.addAll(videolist.result);
+        } else {
+          datas.clear();
+          datas = videolist.result;
+        }
+        size = datas.length;
       });
     });
   }
 
-  Future<void> _onRefresh() async {
-    await Future.delayed(Duration(seconds: 1)).then((e){
-      setState(() {
-        //  newslist.result.clear();
-        _getMoreData();
-      });
+  // 下拉刷新数据
+  Future<Null> _refreshData() async {
+    setState(() {
+      this._pageNum = 1;
+      _getMoreData(false);
+    });
+  }
+
+  // 上拉加载数据
+  Future<Null> _addMoreData() async {
+    setState(() {
+      this._pageNum += 1;
+      _getMoreData(true);
     });
   }
 
   @override
   void initState(){
     super.initState();
-    _getMoreData();
+    _addMoreData();
   }
 
   @override
   void dispose() {
-    _scrollController.dispose();
     super.dispose();
   }
 
@@ -61,8 +75,8 @@ class _NewsVideoListPageState extends State<NewsVideoListPage> with AutomaticKee
       body: EasyRefresh(
         header: BallPulseHeader(),
         footer: BallPulseFooter(),
-        onRefresh: _onRefresh,
-        onLoad: _onRefresh,
+        onRefresh: _refreshData,
+        onLoad: _addMoreData,
         child: new ListView.separated(
           padding: EdgeInsets.only(top:5),
           itemCount: size,
@@ -76,18 +90,14 @@ class _NewsVideoListPageState extends State<NewsVideoListPage> with AutomaticKee
         ),
       ),
     );
-
-    //return buildGridView();
   }
-
 
   Widget buildItem(int index){
    return GestureDetector(
       onTap: (){
         Navigator.push(context, MaterialPageRoute(
-          builder: (context) => NewsVideoDetailPage(news:videolist.result[index])
-        )
-        );
+          builder: (context) => NewsVideoDetailPage(news:datas[index])
+        ));
       },
       child: Card(
         margin: EdgeInsets.only(left: 5,right: 5,top: 0,bottom: 0),
@@ -100,12 +110,15 @@ class _NewsVideoListPageState extends State<NewsVideoListPage> with AutomaticKee
                 children: <Widget>[
                   ClipRRect(
                     borderRadius: BorderRadius.circular(5.0),
-                    child: Image.network(videolist?.result[index]?.image0??"",width: 500,height: 200,fit: BoxFit.cover,),
+                    child: Image.network(datas[index]?.image0??"",fit: BoxFit.fill,),
                   ),
-                  Text(videolist?.result[index]?.title??"",
-                    style: TextStyle(fontSize:20,color: Colors.white,shadows:[
-                      BoxShadow(color: Colors.black54,offset: Offset(0.1,0.1), blurRadius: 5.0)
-                    ])),
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    child: Text(datas[index]?.title??"",
+                      style: TextStyle(fontSize:20,fontWeight: FontWeight.w900 ,color: Colors.white,shadows:[
+                        BoxShadow(color: Colors.black54,offset: Offset(0.1,0.1), blurRadius: 5.0)
+                      ])),
+                  ),
                 ],
               )
             ),
@@ -115,24 +128,19 @@ class _NewsVideoListPageState extends State<NewsVideoListPage> with AutomaticKee
                   children: <Widget>[
                     CircleAvatar(
                       radius: 10.0,
-                      backgroundImage: NetworkImage(getAvatarPath(videolist.result[index].source))
+                      backgroundImage: NetworkImage(getAvatarPath(datas[index].source))
                     ),
                     Text(' ',style: TextStyle(fontSize:18),),
-                    Text(videolist.result[index].authorName,
+                    Text(datas[index].authorName,
                       style: TextStyle(fontSize:18),),
                   ],
                 ),
                 Text('',style: TextStyle(fontSize:18),),
-                Text("${videolist.result[index].playCount}次播放",
+                Text("${datas[index].playCount}次播放",
                   style: TextStyle(fontSize:18),),
               ],
               mainAxisAlignment: MainAxisAlignment.spaceAround,
             ),
-
-//                  Icon(Icons.people),
-//                  Text(newslist.result[index].authorName,
-//                    overflow: TextOverflow.ellipsis,
-//                    style: TextStyle(fontSize:18),)
           ],
         ),
       ),

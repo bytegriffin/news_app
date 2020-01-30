@@ -12,7 +12,7 @@ import 'shishang_video_list.dart';
 import 'gaoxiao_video_list.dart';
 import 'chongwu_video_list.dart';
 import 'qiche_video_list.dart';
-import 'tiyu_video_list.dart';
+import 'sport_video_list.dart';
 import '../util/color_util.dart';
 
 class VideoIndexPage extends StatefulWidget {
@@ -81,7 +81,7 @@ class _VideoIndexPageState extends State<VideoIndexPage> with SingleTickerProvid
             new Center(child: GaoxiaoVideoListPage()),
             new Center(child: ChongwuVideoListPage()),
             new Center(child: QicheVideoListPage()),
-            new Center(child: TiyuVideoListPage()),
+            new Center(child: SportVideoListPage()),
           ],
         ),
       ),

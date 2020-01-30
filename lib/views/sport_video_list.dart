@@ -6,12 +6,12 @@ import '../net/http_config.dart';
 import '../models/haokan_video.dart';
 
 // 体育视频
-class TiyuVideoListPage extends StatefulWidget {
+class SportVideoListPage extends StatefulWidget {
   @override
-  TiyuVideoListPageState createState() => new TiyuVideoListPageState();
+  SportVideoListPageState createState() => new SportVideoListPageState();
 }
 
-class TiyuVideoListPageState extends State<TiyuVideoListPage> with AutomaticKeepAliveClientMixin {
+class SportVideoListPageState extends State<SportVideoListPage> with AutomaticKeepAliveClientMixin {
 
   ScrollController _scrollController = new ScrollController();
 

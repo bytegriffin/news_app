@@ -13,12 +13,24 @@ class NewsDetailPage extends StatefulWidget {
 }
 
 class _NewsDetailPageState extends State<NewsDetailPage> {
+  // 隐藏显示一些信息
+  String javaScript = "document.getElementById('detail-page').childNodes[2].style.display='none'; "
+      "document.getElementById('detail-page').childNodes[3].style.display='none';  "
+      "document.getElementById('detail-page').childNodes[4].style.display='none'; "
+      "document.getElementById('article-notice').style.display='none'; "
+      "document.querySelector('#detail-page > div:nth-child(2) > article > footer').style.display='none'; ";
+
+  @override
+  void initState(){
+    super.initState();
+  }
+  WebViewController _controller;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          //title: Text(widget.news.title),
+          title: Text(widget.news.title),
           leading:GestureDetector(
             child: Icon(Icons.arrow_back),
             onTap: (){
@@ -31,6 +43,15 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
           initialUrl: widget.news.url,
           //JS执行模式 是否允许JS执行
           javascriptMode: JavascriptMode.unrestricted,
+          onWebViewCreated: (WebViewController webViewController) {
+            _controller = webViewController;
+          },
+          onPageFinished: (String url) {
+            _controller
+                ?.evaluateJavascript(javaScript)
+                ?.then((result) {
+            });
+          }
         )
     );
   }

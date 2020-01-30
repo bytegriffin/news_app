@@ -1,29 +1,29 @@
 const HTTP_CONNECT_TIMEOUT = 5000;
 const HTTP_RECEIVE_TIMEOUT = 5000;
 // 推荐
-const REC_NEWS_API = "https://www.hao123.com/feedData/data?type=rec&app_from=pc_tuijian&rn=20&pn=1";
+const REC_NEWS_API = "https://www.hao123.com/feedData/data?type=rec&app_from=pc_tuijian&rn=20&pn=";
 // 体育
-const SPORT_NEWS_API = "https://www.hao123.com/feedData/data?type=sports&app_from=pc_tuijian&rn=20&pn=1";
+const SPORT_NEWS_API = "https://www.hao123.com/feedData/data?type=sports&app_from=pc_tuijian&rn=20&pn=";
 // 国内
-const GN_NEWS_API = "https://www.hao123.com/feedData/data?type=domestic&app_from=pc_tuijian&rn=20&pn=1";
+const GN_NEWS_API = "https://www.hao123.com/feedData/data?type=domestic&app_from=pc_tuijian&rn=20&pn=";
 // 国际
-const GJ_NEWS_API = "https://www.hao123.com/feedData/data?type=intl&app_from=pc_tuijian&rn=20&pn=1";
+const GJ_NEWS_API = "https://www.hao123.com/feedData/data?type=intl&app_from=pc_tuijian&rn=20&pn=";
 // 财经
-const FINANCE_NEWS_API = "https://www.hao123.com/feedData/data?type=finance&app_from=pc_tuijian&rn=20&pn=1";
+const FINANCE_NEWS_API = "https://www.hao123.com/feedData/data?type=finance&app_from=pc_tuijian&rn=20&pn=";
 // 科技
-const TECH_NEWS_API = "https://www.hao123.com/feedData/data?type=tech&app_from=pc_tuijian&rn=20&pn=1";
+const TECH_NEWS_API = "https://www.hao123.com/feedData/data?type=tech&app_from=pc_tuijian&rn=20&pn=";
 // 历史
-const HISTORY_NEWS_API = "https://www.hao123.com/feedData/data?type=history&app_from=pc_tuijian&rn=20&pn=1";
+const HISTORY_NEWS_API = "https://www.hao123.com/feedData/data?type=history&app_from=pc_tuijian&rn=20&pn=";
 // 汽车
-const CAR_NEWS_API = "https://www.hao123.com/feedData/data?type=cars&app_from=pc_tuijian&rn=20&pn=1";
+const CAR_NEWS_API = "https://www.hao123.com/feedData/data?type=cars&app_from=pc_tuijian&rn=20&pn=";
 // 教育 分类消息错误
-const EDU_NEWS_API = "https://www.hao123.com/feedData/data?type=edu&app_from=pc_tuijian&rn=20&pn=1";
+const EDU_NEWS_API = "https://www.hao123.com/feedData/data?type=edu&app_from=pc_tuijian&rn=20&pn=";
 // 游戏
-const GAME_NEWS_API = "https://www.hao123.com/feedData/data?type=games&app_from=pc_tuijian&rn=20&pn=1";
+const GAME_NEWS_API = "https://www.hao123.com/feedData/data?type=games&app_from=pc_tuijian&rn=20&pn=";
 // 房产 分类消息错误
-const FANG_NEWS_API = "https://www.hao123.com/feedData/data?type=estate&app_from=pc_tuijian&rn=20&pn=1";
+const FANG_NEWS_API = "https://www.hao123.com/feedData/data?type=estate&app_from=pc_tuijian&rn=20&pn=";
 // 时尚
-const FASHION_NEWS_API = "https://www.hao123.com/feedData/data?type=fashion&app_from=pc_tuijian&rn=20&pn=1";
+const FASHION_NEWS_API = "https://www.hao123.com/feedData/data?type=fashion&app_from=pc_tuijian&rn=20&pn=";
 // 娱乐
 const ENT_NEWS_API = "https://tuijian.hao123.com/headnew_timeline?pagesize=20&key=ent";
 

@@ -51,12 +51,11 @@ class _BookListPageState extends State<BookListPage> with AutomaticKeepAliveClie
           bookList = BookList.fromJson(result).list;
           if (_ifAdd) {
             datas.addAll(bookList);
-            size = datas.length;
           } else {
             datas.clear();
             datas = bookList;
-            size = datas.length;
           }
+          size = datas.length;
         });
       }
     }, errorCallBack: (error) {
