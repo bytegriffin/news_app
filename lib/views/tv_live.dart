@@ -301,6 +301,8 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
       _buildButton("唯心頻道", WXPD),
       _buildButton("TVB翡翠台", FCT),
       _buildButton("有线新闻", YXXW),
+      _buildButton("澳门1台", AM1),
+      _buildButton("澳门2台", AM2),
 
 
 //      _buildButton("东森财经", DSCJ),

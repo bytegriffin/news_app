@@ -79,17 +79,17 @@ const BJKK = "rtmp://ivi.bupt.edu.cn:1935/livetv/btv10";
 const BJJS = "rtmp://ivi.bupt.edu.cn:1935/livetv/btv11hd";
 const CQXW_HD = "https://onsitecdn.cbgcloud.com/4zjt2a/zb7nip.m3u8";
 const CQDU_HD = "http://vss.cbnmtv.com/live/CQTV_dushi_hd_1.m3u8?segmentserverid=CQTV_dushi_ld_1&channelid=CQTV_dushi_hd_1";
-const CQSE_HD = "http://vss.cbnmtv.com/live/CQTV_shaoer_hd_1.m3u8?segmentserverid=CQTV_shaoer_hd_1&channelid=CQTV_shaoer_hd_1";
+const CQSE_HD = "http://219.153.252.50/PLTV/88888888/224/3221225625/chunklist.m3u8";
 const CQSS_HD = "http://vss.cbnmtv.com/live/CQTV_shishang_hd_1.m3u8?segmentserverid=CQTV_shishang_hd_1&channelid=CQTV_shishang_hd_1";
 const CQYS_HD = "http://vss.cbnmtv.com/live/CQTV_yingshi_hd_1.m3u8?segmentserverid=CQTV_yingshi_hd_1&channelid=CQTV_yingshi_hd_1";
 const CETV1 = "rtmp://ivi.bupt.edu.cn:1935/livetv/cetv1";
 const CETV3 = "rtmp://ivi.bupt.edu.cn:1935/livetv/cetv3";
 const CETV4 = "rtmp://ivi.bupt.edu.cn:1935/livetv/cetv4";
-const JJDH = "http://223.110.241.204:6610/gitv/live1/G_JIAJIA/G_JIAJIA/";
-const YMDH = "http://223.110.241.204:6610/gitv/live1/G_YOUMAN/G_YOUMAN/";
-const KKSE = "http://223.110.241.204:6610/gitv/live1/G_KAKU/G_KAKU/";
-const JJKT = "http://223.110.241.204:6610/gitv/live1/G_JINYING/G_JINYING/";
-const XDKT = "http://223.110.241.204:6610/gitv/live1/G_XUANDONG/G_XUANDONG/";
+const JJDH = "http://112.17.40.140/PLTV/88888888/224/3221226461/index.m3u8";
+const YMDH = "http://111.40.205.76/PLTV/88888888/224/3221225656/index.m3u8";
+const KKSE = "http://117.148.187.37/PLTV/88888888/224/3221226184/index.m3u8";
+const JJKT = "http://m-tvlmedia.public.bcs.ysten.com/ysten-business/live/jinyingkaton/1.m3u8";
+const XDKT = "http://121.31.30.90:8085/ysten-business/live/xuandongkaton/1.m3u8";
 const DZCJ = "http://cclive2.aniu.tv/live/anzb.m3u8";
 const YCCJ = "http://202.69.67.66:443/webcast/bshdlive-mobile/playlist.m3u8";
 const XKWS_HD = "rtmp://ivi.bupt.edu.cn:1935/livetv/startv";
@@ -144,9 +144,10 @@ const CZX = "http://live.czmarathon.net/AppName/StreamName.m3u8?auth_key=1523524
 
 
 //   以下为 港澳台  //
+const AM1 = "http://61.244.22.4/ch3/ch3.live/playelist.m3u8";
+const AM2 = "http://61.244.22.4/ch2/ch2.live/playelist.m3u8";
 const FCT = "http://27.221.116.32/flv.live.xylive.tv/live/00fc.flv";
 const YXXW = "http://27.221.116.32/flv.live.xylive.tv/live/youxianxinwen.flv";
-
 const WXPD = "http://mobile.ccdntech.com/transcoder/_definst_/vod164_Live/live/playlist.m3u8";
 const HKS = "http://zhibo.hkstv.tv/livestream/mutfysrq/playlist.m3u8";
 const FHZW_HD = "rtmp://ivi.bupt.edu.cn:1935/livetv/fhzw";

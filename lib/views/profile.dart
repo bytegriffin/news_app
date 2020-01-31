@@ -4,6 +4,7 @@ import '../components/custom_sliver.dart';
 import '../util/color_util.dart';
 import '../util/cache_util.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'game_detail.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -93,7 +94,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     value: this._switchValue,
                   ),
                 ),
-                GestureDetector(
+                InkWell(
                   child: ListTile(
                     leading: Icon(Icons.restore_from_trash),
                     title: Text('清除缓存'),
@@ -136,7 +137,18 @@ class _ProfilePageState extends State<ProfilePage> {
               children: <Widget>[
                 ListTile(
                   leading: Icon(Icons.mail_outline),
-                  title: Text('问题反馈'),
+                  title: InkWell(
+                    child: Container(
+                        height: 50.0,
+                        alignment: Alignment.centerLeft,
+                        child: Text("小游戏")
+                    ),
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => new GameDetailPage("http://sda.4399.com/4399swf/upload_swf/ftp31/liuxinyu/20200114/3/index.html")
+                      ));
+                    },
+                  ),
                 ),
                 ListTile(
                   leading: Icon(Icons.contact_mail),

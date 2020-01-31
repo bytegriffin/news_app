@@ -46,6 +46,12 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
           onWebViewCreated: (WebViewController webViewController) {
             _controller = webViewController;
           },
+          onPageStarted: (String url) {
+            _controller
+                ?.evaluateJavascript(javaScript)
+                ?.then((result) {
+            });
+          },
           onPageFinished: (String url) {
             _controller
                 ?.evaluateJavascript(javaScript)
