@@ -70,7 +70,7 @@ class _TopMovieListPageState extends State<TopMovieListPage>{
             delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index){
                 return GestureDetector(
-                  child: getItem(movieList[index]),
+                  child: getItem(movieList[index], index + 1),
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(
                         builder: (context) => MovieDetailPage(movieList[index].id)
@@ -101,12 +101,33 @@ class _TopMovieListPageState extends State<TopMovieListPage>{
     }
     return content;
   }
+  
+  Widget _displayCurrentRank(int index){
+    if(widget.title.contains("榜") || widget.title.contains("经典影片")){
+      return Stack(
+        alignment: Alignment.center,
+        children: <Widget>[
+          Icon(Icons.bookmark,color: rankIconColor,size: 50,),
+          Text(
+            index.toString(),
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20.0,
+                color: rankTextColor
+            ),
+          ),
+        ],
+      );
+    }
+    return Container();
+  }
 
-  Widget getItem(SearchMovie movie) {
+  Widget getItem(SearchMovie movie, int index) {
     var row = Container(
       margin: EdgeInsets.all(4.0),
       child: Row(
         children: <Widget>[
+          _displayCurrentRank(index),
           ClipRRect(
             borderRadius: BorderRadius.circular(4.0),
             child: getCachedImage(movie?.image),

@@ -22,8 +22,8 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
   SearchMovie movie;
   String summary = "";
 
-  List<String> tags=List<String>.generate(1, (index){
-    return "标签";
+  List<String> tags=List<String>.generate(0, (index){
+    return "";
   });
 
   _getMovies(){

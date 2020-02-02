@@ -20,10 +20,22 @@ class MovieIndexPage extends StatefulWidget {
 
 class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAliveClientMixin{
 
-  List<TopMovie> hotMovieList= List.generate(6, (index) {
+  List<TopMovie> newMovieList= List.generate(6, (index) {
     return TopMovie("$index","","",defaultCastImage);
   });
   List<TopMovie> hotTvList= List.generate(6, (index) {
+    return TopMovie("$index","","",defaultCastImage);
+  });
+  List<TopMovie> hotEntList= List.generate(6, (index) {
+    return TopMovie("$index","","",defaultCastImage);
+  });
+  List<TopMovie> hotComicList= List.generate(6, (index) {
+    return TopMovie("$index","","",defaultCastImage);
+  });
+  List<TopMovie> hotDocList= List.generate(6, (index) {
+    return TopMovie("$index","","",defaultCastImage);
+  });
+  List<TopMovie> hotSortList= List.generate(6, (index) {
     return TopMovie("$index","","",defaultCastImage);
   });
 
@@ -39,21 +51,61 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
   bool get wantKeepAlive => true;
 
   _getMovies(){
-    //热门电影
-    HttpClient.get(HOT_MOVIE_URL, (result){
+    //最新电影
+    HttpClient.get(NEW_MOVIE_URL+"0", (result){
       if(mounted){
         setState(() {
-          this.hotMovieList = TopMovieList.fromJson(result).subjects;
+          this.newMovieList = TopMovieList.fromJson(result).subjects;
         });
       }
     },errorCallBack: (error){
       print(error);
     });
     //热门电视剧
-    HttpClient.get(HOT_TV_URL, (result){
+    HttpClient.get(HOT_TV_URL+"0", (result){
       if(mounted){
         setState(() {
           this.hotTvList = TopMovieList.fromJson(result).subjects;
+        });
+      }
+    },errorCallBack: (error){
+      print(error);
+    });
+    //热门综艺
+    HttpClient.get(HOT_ENT_URL+"0", (result){
+      if(mounted){
+        setState(() {
+          this.hotEntList = NewMovieList.fromJson(result).data;
+        });
+      }
+    },errorCallBack: (error){
+      print(error);
+    });
+    //热门动漫
+    HttpClient.get(HOT_COMIC_URL+"0", (result){
+      if(mounted){
+        setState(() {
+          this.hotComicList = NewMovieList.fromJson(result).data;
+        });
+      }
+    },errorCallBack: (error){
+      print(error);
+    });
+    //热门纪录片
+    HttpClient.get(HOT_DOC_URL+"0", (result){
+      if(mounted){
+        setState(() {
+          this.hotDocList = NewMovieList.fromJson(result).data;
+        });
+      }
+    },errorCallBack: (error){
+      print(error);
+    });
+    //热门短片
+    HttpClient.get(HOT_SORT_URL+"0", (result){
+      if(mounted){
+        setState(() {
+          this.hotSortList = NewMovieList.fromJson(result).data;
         });
       }
     },errorCallBack: (error){
@@ -68,11 +120,15 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
   }
 
   List<Widget> generateDefaultHotMovieList() {
-    return hotMovieList.sublist(0,6).map((item) => getMovieRowItem(context, item)).toList();
+    return newMovieList.sublist(0,6).map((item) => getMovieRowItem(context, item)).toList();
   }
 
   List<Widget> generateDefaultHotTvList() {
     return hotTvList.sublist(0,6).map((item) => getMovieRowItem(context, item)).toList();
+  }
+
+  List<Widget> generateDefaultHotDocList() {
+    return hotDocList.sublist(0,6).map((item) => getMovieRowItem(context, item)).toList();
   }
 
   @override
@@ -84,8 +140,15 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
         children: <Widget>[
           _buildSwiper(),
           _buildButton(),
-          buildRowMovieCard(context,"热门电影",MovieListPage("热门电影",topMovieImage, hotMovieList), generateDefaultHotMovieList()),
-          buildRowMovieCard(context,"热门电视剧",MovieListPage("热门电视剧",topMovieImage, hotTvList), generateDefaultHotTvList()),
+          buildRowMovieCard1(context,"最新电影",MovieListPage("最新电影",TopMovieType.NewMovie), generateDefaultHotMovieList()),
+          buildRowMovieCard1(context,"热门电视剧",MovieListPage("热门电视剧",TopMovieType.TV), generateDefaultHotTvList()),
+          buildRowMovieCard2(context,"热门综艺",MovieListPage("热门综艺",TopMovieType.Ent), hotEntList),
+          Container(height: 20,),
+          // Container(width: double.infinity, height: 8.0, color: Color.fromRGBO(220, 220, 220, 1.0)),
+          buildRowMovieCard3(context, "热门动漫",MovieListPage("热门动漫",TopMovieType.Comic),hotComicList),
+          Container(height: 20,),
+          buildRowMovieCard1(context,"热门纪录片",MovieListPage("热门纪录片",TopMovieType.Doc), generateDefaultHotDocList()),
+          buildRowMovieCard2(context,"热门短片",MovieListPage("热门短片",TopMovieType.Sort), hotSortList),
         ],
       ),
     );

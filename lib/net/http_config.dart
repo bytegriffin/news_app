@@ -80,9 +80,18 @@ const TIYU_VIDEO_URL = "http://www.hao123.com/feedData/haokanfeed?tab=tiyu_new&v
 
 
 // 热门电视剧
-const HOT_TV_URL = "https://movie.douban.com/j/search_subjects?type=tv&tag=%E7%83%AD%E9%97%A8&page_limit=48&page_start=0";
-// 热门电影
-const HOT_MOVIE_URL="https://movie.douban.com/j/search_subjects?type=movie&tag=%E7%83%AD%E9%97%A8&page_limit=48&page_start=0";
+const HOT_TV_URL = "https://movie.douban.com/j/search_subjects?type=tv&tag=热门&page_limit=20&page_start=";
+// 最新电影
+const NEW_MOVIE_URL="https://movie.douban.com/j/search_subjects?type=movie&tag=最新&page_limit=20&page_start=";
+
+// 热门综艺
+const HOT_ENT_URL="https://movie.douban.com/j/new_search_subjects?sort=U&range=0,10&tags=综艺&start=";
+// 热门动漫
+const HOT_COMIC_URL="https://movie.douban.com/j/new_search_subjects?sort=U&range=0,10&tags=动漫&start=";
+// 热门纪录片
+const HOT_DOC_URL="https://movie.douban.com/j/new_search_subjects?sort=U&range=0,10&tags=纪录片&start=";
+// 热门短片
+const HOT_SORT_URL="https://movie.douban.com/j/new_search_subjects?sort=U&range=0,10&tags=短片&start=";
 
 
 // 图书畅销榜

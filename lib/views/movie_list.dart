@@ -1,97 +1,155 @@
 import 'package:flutter/material.dart';
 import '../util/image_util.dart';
 import '../models/top_movie.dart';
-import '../components/custom_card.dart';
 import 'movie_detail.dart';
-import '../util/color_util.dart';
+import '../net/httpclient.dart';
+import '../net/http_config.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:flutter_easyrefresh/ball_pulse_header.dart';
+import 'package:flutter_easyrefresh/ball_pulse_footer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MovieListPage extends StatefulWidget {
   final String title;
-  final String backgroundImage;
-  final List<TopMovie> topMovieList;
-  MovieListPage(this.title, this.backgroundImage,this.topMovieList);
+  final TopMovieType type;
+  MovieListPage(this.title, this.type);
   @override
   _MovieListPageState createState() => _MovieListPageState();
 }
 
-class _MovieListPageState extends State<MovieListPage> with AutomaticKeepAliveClientMixin{
+class _MovieListPageState extends State<MovieListPage> {
   List<TopMovie> movieList;
+  int size = 0;
+  int _pageNum = -20;
+  var datas = [];
+  String url ;
 
-  @override
-  bool get wantKeepAlive => true;
-
-  @override
-  void initState(){
-    super.initState();
-    movieList =widget.topMovieList;
+  // 下拉刷新数据
+  Future<Null> _refreshData() async {
+    setState(() {
+      this._pageNum = 0;
+      _getMoreData(false);
+    });
   }
 
-  List<Widget> getHotMovieList() {
-    return movieList.map((item) => getMovieRowItem(context, item)).toList();
+  // 上拉加载数据
+  Future<Null> _addMoreData() async {
+    setState(() {
+      this._pageNum = this._pageNum + 20;
+      _getMoreData(true);
+    });
+  }
+
+  _getMoreData(bool _ifAdd) {
+    HttpClient.get(url + _pageNum.toString(), (result) {
+      if (mounted) {
+        setState(() {
+          if(widget.type == TopMovieType.NewMovie || widget.type == TopMovieType.TV){
+            this.movieList = TopMovieList.fromJson(result).subjects;
+          } else {
+            this.movieList = NewMovieList.fromJson(result).data;
+          }
+          if (_ifAdd) {
+            datas.addAll(movieList);
+          } else {
+            datas.clear();
+            datas = movieList;
+          }
+          size = datas.length;
+        });
+      }
+    }, errorCallBack: (error) {
+      print(error);
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    switch(widget.type){
+      case TopMovieType.NewMovie:
+        url = NEW_MOVIE_URL;
+        break;
+      case TopMovieType.TV:
+        url = HOT_TV_URL;
+        break;
+      case TopMovieType.Ent:
+        url = HOT_ENT_URL;
+        break;
+      case TopMovieType.Comic:
+        url = HOT_COMIC_URL;
+        break;
+      case TopMovieType.Doc:
+        url = HOT_DOC_URL;
+        break;
+      case TopMovieType.Sort:
+        url = HOT_SORT_URL;
+        break;
+      default:
+        return null;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    super.build(context);
-    return Container(
-      color: getTopListBGColor(context),
-      child: CustomScrollView(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: EasyRefresh.custom(
+        header: BallPulseHeader(),
+        footer: BallPulseFooter(),
         slivers: <Widget>[
-          SliverAppBar(
-            actions: <Widget>[
-            ],
-//            backgroundColor: Theme.of(context).primaryColor,
-            expandedHeight: 180.0,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text(widget.title),
-              background: Image.asset(widget.backgroundImage, fit:BoxFit.cover,),
-            ),
-            pinned: true,
-            floating: false,
-            snap: false,
-          ),
           SliverGrid(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount:3,
-              mainAxisSpacing:0.0,
-              crossAxisSpacing:0.0,
-              childAspectRatio: 10 / 16,
+              crossAxisCount: 3,
+              crossAxisSpacing: 0.0,
+              mainAxisSpacing: 0,
+              childAspectRatio: 4 / 6,
             ),
             delegate: SliverChildBuilderDelegate(
                   (BuildContext context, int index) {
-                return GestureDetector(
-                  child: Container(
-                     margin: EdgeInsets.all(2),
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(5.0),
-                              child: getCachedImage(movieList[index].image),
-                            ),
-                            height: 170,
-                            width: 200,
-                          ),
-                          Text(movieList[index].title, overflow: TextOverflow.ellipsis, maxLines: 1,
-                              style: TextStyle(fontSize: 16.0,color: getTextColor(context),decoration: TextDecoration.none))
-                        ],
-                      )
-                  ),//getMovieRatingWidget(movie?.rate??"0.0")
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => MovieDetailPage(movieList[index].id)
-                    ));
-                  },
-                );
+                return getMovieItem(datas[index]);
               },
-              childCount: movieList.length,
+              childCount: size,
             ),
-          )
+          ),
         ],
+        onRefresh: _refreshData,
+        onLoad: _addMoreData,
+      ),
+    );
+  }
+
+  Widget getMovieItem(TopMovie movie){
+    return Container(
+      padding: EdgeInsets.all(5.0),
+      child: GestureDetector(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              width: ScreenUtil().setWidth(240),
+              height: ScreenUtil().setHeight(260),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(5.0),
+                child: getCachedImage(movie?.image??defaultCastImage),
+              ),
+            ),
+            Container(
+              width: ScreenUtil().setWidth(240),
+              child: Text("${movie?.title}",overflow: TextOverflow.ellipsis,
+                  maxLines: 1,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0,)),
+            ),
+          ],
+        ),
+        onTap: (){
+          Navigator.push(context, MaterialPageRoute(
+              builder: (context) => MovieDetailPage(movie.id)
+          ));
+        },
       ),
     );
   }
 
 }
-
-

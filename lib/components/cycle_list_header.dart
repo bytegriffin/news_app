@@ -10,7 +10,6 @@ class CycleListHeader extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
     return ClipRRect(
       borderRadius: BorderRadius.vertical(top: Radius.circular(ScreenUtil().setWidth(30))),
       child: Container(

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../net/httpclient.dart';
 import '../net/http_config.dart';
 import '../models/free_movie.dart';
@@ -84,7 +83,6 @@ class FreeMovieListPageState extends State<FreeMovieListPage> {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
     return Scaffold(
       appBar: AppBar(
         title: Text("免费观影"),

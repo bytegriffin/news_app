@@ -33,7 +33,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.instance = ScreenUtil(width: 750, height: 1334, allowFontScaling: true)..init(context);
+    ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
     return FadeTransition(
       opacity: _animation,
       child:

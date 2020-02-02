@@ -284,15 +284,15 @@ Widget buildRowSongCard(BuildContext context,String typeName,Widget page, List<W
 }
 
 
-Widget buildRowMovieCard(BuildContext context,String typeName,Widget page, List<Widget> movieList){
+Widget buildRowMovieCard1(BuildContext context,String typeName,Widget page, List<Widget> movieList){
   return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
+    crossAxisAlignment: CrossAxisAlignment.center,
     children: <Widget>[
       Container(
         margin: EdgeInsets.all(5),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(" $typeName",style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0,)),
             GestureDetector(
@@ -331,15 +331,59 @@ Widget buildRowMovieCard(BuildContext context,String typeName,Widget page, List<
   );
 }
 
+Widget buildRowMovieCard2(BuildContext context,String typeName,Widget page, List<TopMovie> movieList){
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: <Widget>[
+      Padding(
+        padding: EdgeInsets.only(top:5.0,left: 5.0,bottom: 5.0,right: 5.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text(" $typeName",style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0,)),
+            GestureDetector(
+              child: Row(
+                children: <Widget>[
+                  Text("查看更多",style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.0,color: Colors.blue)),
+                  Icon(Icons.arrow_right,color: Colors.blue,)
+                ],
+              ),
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => page
+                ));
+              },
+            )
+          ],
+        ),
+      ),
+      SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        physics: BouncingScrollPhysics(),
+        child: Row(
+          children: <Widget>[
+            getMovieRowItem(context,movieList[0]),
+            getMovieRowItem(context,movieList[1]),
+            getMovieRowItem(context,movieList[2]),
+            getMovieRowItem(context,movieList[3]),
+            getMovieRowItem(context,movieList[4]),
+            getMovieRowItem(context,movieList[5]),
+          ],
+        ),
+      ),
+    ],
+  );
+}
+
 Widget getMovieRowItem(BuildContext context,TopMovie movie){
   return Container(
-    padding: EdgeInsets.all(1.0),
+    padding: EdgeInsets.only(left:5.0),
     child: GestureDetector(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            width: 150,
+            width: 120,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(5.0),
               child: getCachedImage(movie.image),
@@ -363,6 +407,111 @@ Widget getMovieRowItem(BuildContext context,TopMovie movie){
     ),
   );
 }
+
+Widget buildRowMovieCard3(BuildContext context,String typeName,Widget page, List<TopMovie> movieList){
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: <Widget>[
+      Padding(
+        padding: EdgeInsets.only(top:10.0,left: 5.0,bottom: 5.0,right: 5.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text(" $typeName",style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0,)),
+            GestureDetector(
+              child: Row(
+                children: <Widget>[
+                  Text("查看更多",style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.0,color: Colors.blue)),
+                  Icon(Icons.arrow_right,color: Colors.blue,)
+                ],
+              ),
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => page
+                ));
+              },
+            )
+          ],
+        ),
+      ),
+      _buildMovieRowItem(context,movieList[0]),
+      _buildMovieRowItem(context,movieList[1]),
+      _buildMovieRowItem(context,movieList[2])
+    ],
+  );
+}
+
+
+
+Widget _displayWidget(String title, List<String> list){
+  String name = "";
+  for (int i=0; i < list.length; i++) {
+    name += list[i].toString();
+    if(list.length - i > 1){
+      name = name + " | ";
+    }
+  }
+  return Text(
+    title + name,
+    overflow: TextOverflow.ellipsis,
+    maxLines: 2,
+  );
+}
+
+Widget _buildMovieRowItem(BuildContext context,TopMovie movie){
+  var row = Row(
+    children: <Widget>[
+      Container(
+        padding: EdgeInsets.all(4),
+        height: 150,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(4.0),
+          child: Image.network(movie.image),
+        ),
+      ),
+      Expanded(
+          child: Container(
+            margin: EdgeInsets.only(left: 8.0),
+            height: 150.0,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Text(
+                  movie.title,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.0,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                ),
+                Row(
+                  children: <Widget>[
+                    Text("评分："),
+                    getMovieRatingWidget(movie?.rate??"0.0", getTopListBGColor(context))
+                  ],
+                ),
+                _displayWidget("导演：", movie.directors),
+                _displayWidget("演员：", movie.casts),
+              ],
+            ),
+          )
+      )
+    ],
+  );
+  return GestureDetector(
+    child: Card(
+      child: row,
+    ),
+    onTap: (){
+      Navigator.push(context, MaterialPageRoute(
+          builder: (context) => MovieDetailPage(movie.id)
+      ));
+    },
+  );
+}
+
 
 Widget buildRowBookCard1(BuildContext context,String typeName,Widget page, List<Widget> bookList){
   return Column(
