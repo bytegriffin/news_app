@@ -492,8 +492,8 @@ Widget _buildMovieRowItem(BuildContext context,TopMovie movie){
                     getMovieRatingWidget(movie?.rate??"0.0", getTopListBGColor(context))
                   ],
                 ),
-                _displayWidget("导演：", movie.directors),
-                _displayWidget("演员：", movie.casts),
+                _displayWidget("导演：", movie?.directors??List<String>()),
+                _displayWidget("演员：", movie?.casts??List<String>()),
               ],
             ),
           )

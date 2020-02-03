@@ -113,6 +113,15 @@ const EBOOK_URL = "https://read.douban.com/reader/ebook/";
 // 获取图书
 const BOOK_URL = "https://read.douban.com/j/kind/";
 
+// 计算机免费书籍
+const JSJ_FREE_BOOK_LIST_URL = "https://lib-nuanxin.wqxuetang.com/v1/search/inithomedata?size=10&pn=";
+// 免费书籍列表
+const FREE_BOOK_LIST_URL = "https://lib-nuanxin.wqxuetang.com/v1/search/initsearch";
+// 详细书籍页面
+const FREE_BOOK_DETAIL_URL = "https://lib-nuanxin.wqxuetang.com/v1/book/initbook?bid=";
+// 详细页面
+const FREE_BOOK_RELATED_URL = "https://lib-nuanxin.wqxuetang.com/v1/book/relatedetail?type=1&kw=";
+
 
 // 推荐歌单
 const REC_PLAYLIST_URL = "http://musicapi.leanapp.cn/personalized";

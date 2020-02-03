@@ -8,6 +8,7 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import '../models/book.dart';
 import 'book_list.dart';
 import '../models/book_post_data.dart';
+import 'free_book_index.dart';
 
 // 阅读首页
 class BookIndexPage extends StatefulWidget {
@@ -249,6 +250,19 @@ class _BookIndexPageState extends State<BookIndexPage> with AutomaticKeepAliveCl
             onTap: (){
               Navigator.push(context, MaterialPageRoute(
                   builder: (context) => TopBookListPage("畅销榜",topNewBookImage, TOP_HIGH_RATE_BOOK)
+              ));
+            },
+          ),
+          GestureDetector(
+            child: Column(
+              children: <Widget>[
+                Icon(Icons.remove_red_eye, color: Colors.blueAccent,size: 30,),
+                Text("免费区")
+              ],
+            ),
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(
+                  builder: (context) => FreeBookIndexPage()
               ));
             },
           ),

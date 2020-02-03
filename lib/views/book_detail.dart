@@ -262,7 +262,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
           )
         ),
         ExpandableText(
-          text: summary,
+          text: catalog,
           maxLines: 5,
           style: TextStyle(fontSize: 16,),
         )

@@ -242,14 +242,17 @@ class _CastDetailPageState extends State<CastDetailPage>{
                 maxLines: 1,
               ),
             ),
-            Text(
-              "职业：${cast?.professions??""}",
-              style: TextStyle(
-                fontSize: 16,
-                  color: detailPagePropTextColor
+            Container(
+              width: 210,
+              child: Text(
+                "职业：${cast?.professions??""}",
+                style: TextStyle(
+                  fontSize: 16,
+                    color: detailPagePropTextColor
+                ),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
               ),
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
             ),
           ],
         ),
