@@ -32,7 +32,7 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
   List<TopMovie> hotComicList= List.generate(6, (index) {
     return TopMovie("$index","","",defaultCastImage);
   });
-  List<TopMovie> hotDocList= List.generate(6, (index) {
+  List<TopMovie> hotDocList= List.generate(7, (index) {
     return TopMovie("$index","","",defaultCastImage);
   });
   List<TopMovie> hotSortList= List.generate(6, (index) {
@@ -44,7 +44,7 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
     if(index == 0){
       return SwiperMovie("经典影片",classicMovieImage,top250MovieUrl);
     }
-    return SwiperMovie("好评榜单",weeklyMovieImage,weeklyMovieUrl);
+    return SwiperMovie("本周口碑榜",weeklyMovieImage,weeklyMovieUrl);
   });
 
   @override
@@ -128,6 +128,9 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
   }
 
   List<Widget> generateDefaultHotDocList() {
+    if(hotDocList.sublist(0,6) == null){
+      return hotDocList.map((item) => getMovieRowItem(context, item)).toList();
+    }
     return hotDocList.sublist(0,6).map((item) => getMovieRowItem(context, item)).toList();
   }
 
@@ -154,6 +157,24 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
     );
   }
 
+  Widget _buildSwiperImage(int index){
+    if(index == 0){
+      return Image.asset(swMovieList[index]?.image??"",fit: BoxFit.cover);
+    }
+    return Stack(
+      fit: StackFit.expand,
+      children: <Widget>[
+        Image.asset(swMovieList[index]?.image??"",fit: BoxFit.cover),
+        Positioned(
+          top: 20,
+          right: 30,
+          child: Text("本周口碑榜",style: TextStyle(fontWeight: FontWeight.w400, fontSize: 34.0,color: Colors.white)),
+        )
+
+      ],
+    );
+  }
+
   //构建轮播图
   Widget _buildSwiper(){
     var con = Container(
@@ -168,7 +189,7 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
           return GestureDetector(
             child: ClipRRect(
                 borderRadius: BorderRadius.circular(5.0),
-                child: Image.asset(swMovieList[i]?.image??"",fit: BoxFit.cover),
+                child: _buildSwiperImage(i),
               ),
             onTap: (){
               Navigator.push(context, MaterialPageRoute(

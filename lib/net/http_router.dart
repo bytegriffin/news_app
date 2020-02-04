@@ -27,11 +27,11 @@ var techBookUrl = getRouterUrl() + "/v2/book/search?q='编程'&start=0&count=20"
 //为了避免过多访问同一个api地址而导致访问次数受限，
 //每次访问前可将其路由到不同的api地址来减少访问同一个api的次数
 List<String> urlPool = [
-//  "https://douban.uieee.com",
+  "https://douban.uieee.com",
   "https://douban-api.uieee.com",
-  "https://douban-api.now.sh",
+  //"https://douban-api.now.sh",
   "https://douban-api.zce.now.sh",
-  // "https://douban-api-git-master.zce.now.sh"
+  //"https://douban-api-git-master.zce.now.sh"
 ];
 String getRouterUrl(){
   return urlPool[Random().nextInt(urlPool.length)];
@@ -39,21 +39,25 @@ String getRouterUrl(){
 
 
 List<String> cookiePool = [
-  "BAIDUID=501A9AD4BD86B3FAC733070345736378:FG=1; expires=Wed, 13-Jan-21 14:59:03 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
-  "BAIDUID=034EF6889579393CC9D044B7A1E3268E:FG=1; expires=Wed, 13-Jan-21 14:59:28 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
-  "BAIDUID=0C479EF8669523FB93B18BDFB6E9050A:FG=1; expires=Wed, 13-Jan-21 14:59:59 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
-  "BAIDUID=3940C94AD5B0C6567487889E8F7568E5:FG=1; expires=Wed, 13-Jan-21 15:00:16 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
-  "BAIDUID=9EC427BBE2339D157DD67FB06F8B8C0F:FG=1; expires=Wed, 13-Jan-21 15:00:30 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
-  "BAIDUID=DEC18A29043333A7DD624DEE6B433E40:FG=1; expires=Wed, 13-Jan-21 15:00:44 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
-  "BAIDUID=AE43467033E2C2626B12765BD9C76675:FG=1; expires=Wed, 13-Jan-21 15:00:59 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
-  "BAIDUID=54629294C1F11C6EDB1D8AF7192BFA67:FG=1; expires=Wed, 13-Jan-21 15:01:11 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
-  "BAIDUID=0943AA77C167DC48701DE3398DEF0BD1:FG=1; expires=Wed, 13-Jan-21 15:01:29 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
-  "BAIDUID=C62294412AF819C32D5D534AEC13032E:FG=1; expires=Wed, 13-Jan-21 15:01:43 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
-  "BAIDUID=3880633B30688EE64CE90DE7E2E570E0:FG=1; expires=Wed, 13-Jan-21 15:02:29 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
-  "BAIDUID=AAC7DDAE98A1F944192A0C1E23102331:FG=1; expires=Wed, 13-Jan-21 15:02:41 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
-  "BAIDUID=D9D3E0E5DD3A6A59A8F5B4E7A6B66024:FG=1; expires=Wed, 13-Jan-21 15:02:51 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
-  "BAIDUID=850E6CC3A22D237B12E4EA4055D3ACC0:FG=1; expires=Wed, 13-Jan-21 15:03:02 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
-  "BAIDUID=DFED02033FEA2A3F46B30D975B640360:FG=1; expires=Wed, 13-Jan-21 15:03:23 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;"
+  "BAIDUID=3A70F193311D1FDADBD38B37F85DF9C2:FG=1; expires=Wed, 03-Feb-21 06:50:19 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
+  "BAIDUID=DE806399A4AA5437172B7F1610DD4DF8:FG=1; expires=Wed, 03-Feb-21 06:53:16 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
+  "BAIDUID=125F6DE2FC8568CDF2B621D4C2B85B4D:FG=1; expires=Wed, 03-Feb-21 06:53:32 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
+  "BAIDUID=2BE65319B3D4BEAA5D246113EB68DC33:FG=1; expires=Wed, 03-Feb-21 06:53:53 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
+  "BAIDUID=61BCCDA5008736210BD44857B704D211:FG=1; expires=Wed, 03-Feb-21 06:54:04 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
+  "BAIDUID=38C8F174BF44D43699A857196C4AA81A:FG=1; expires=Wed, 03-Feb-21 06:54:15 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
+  "BAIDUID=3FBBA3A33944A6DF5452660359942AC7:FG=1; expires=Wed, 03-Feb-21 06:54:25 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
+  "BAIDUID=CF3D31C93EC32B06E4777E2D3C6180D3:FG=1; expires=Wed, 03-Feb-21 06:54:35 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
+  "BAIDUID=BB3AAFAD7AE83935941FE9AE69E77E4C:FG=1; expires=Wed, 03-Feb-21 06:54:44 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
+  "BAIDUID=A4F205228B69E0A8E32F8A0EA1D6A70D:FG=1; expires=Wed, 03-Feb-21 06:55:02 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
+  "BAIDUID=22192B65BF15A145814CAC63B5292203:FG=1; expires=Wed, 03-Feb-21 06:55:12 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
+  "BAIDUID=8EBDD1BF823C19B5C92692687597BBD1:FG=1; expires=Wed, 03-Feb-21 06:55:23 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
+  "BAIDUID=F0709E9A528B84F5B22207DDA41925CA:FG=1; expires=Wed, 03-Feb-21 06:55:34 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
+  "BAIDUID=BF33839B89143FB36A221409F6313D07:FG=1; expires=Wed, 03-Feb-21 06:55:44 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
+  "BAIDUID=502C3506E03CE109AF6C74CD596E8416:FG=1; expires=Wed, 03-Feb-21 06:55:53 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
+  "BAIDUID=4E1F5A0573A978BD4F157438C6EC29B9:FG=1; expires=Wed, 03-Feb-21 06:56:03 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
+  "BAIDUID=C3376EBE7536EB58178CE9558C353FBC:FG=1; expires=Wed, 03-Feb-21 06:56:17 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
+  "BAIDUID=154B7BF5BF41910A39401568DE2948C7:FG=1; expires=Wed, 03-Feb-21 06:56:27 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
+  "BAIDUID=12E85EDB567C23F270F8D60B6F770261:FG=1; expires=Wed, 03-Feb-21 06:56:39 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;"
 ];
 
 var cookie = cookiePool[Random().nextInt(cookiePool.length)];

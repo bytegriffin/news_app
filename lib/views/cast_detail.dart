@@ -108,12 +108,13 @@ class _CastDetailPageState extends State<CastDetailPage>{
                 return GestureDetector(
                     child: getBoxCard(column),
                   onTap: (){
-                    //FadeRoute是自定义的切换过度动画（渐隐渐现） 如果不需要 可以使用默认的MaterialPageRoute
-                    Navigator.of(context).push(new FadeRoute(page: MultiPhotoView(
-                      images:cast?.photos,//传入图片list
-                      index: index,//传入当前点击的图片的index
-                      heroTag: index.toString(),//传入当前点击的图片的hero tag （可选）
-                    )));
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => MultiPhotoView(
+                          images:cast?.photos,
+                          index: index,
+                          heroTag: index.toString(),
+                        )
+                    ));
                   },
                 );
               },

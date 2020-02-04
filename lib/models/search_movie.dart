@@ -1,4 +1,14 @@
 import 'related_cast.dart';
+// 预告片
+class Trailer{
+  String id;//id
+  String image;//预览图片
+  String name;//预告片名称
+  String duration;//预告片时长
+  String url;//预告片地址
+  Trailer(this.id, this.name, this.image, this.duration, this.url);
+}
+
 // movie详情
 class SearchMovie {
   String id;//id值
@@ -18,9 +28,10 @@ class SearchMovie {
   String summary;//电影简介
   List<String> trailerUrls;//预告片
   String year;//上映年份
+  List<Trailer>  trailers;//预告片列表
+  List<String>  photos;//影片截图
 
-  SearchMovie(this.id,this.title,this.rating,this.casts,this.durations,this.tags,this.summary,this.year,
-      this.directors,this.image,this.pubDates,this.type,this.language,this.country,this.trailerUrls);
+  SearchMovie(this.id, this.title, this.image);
 
   SearchMovie.fromJson(Map<String, dynamic> json){
     this.id = json['id'].toString();

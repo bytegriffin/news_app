@@ -19,11 +19,11 @@ class MVDetailPage extends StatefulWidget {
 }
 
 class _MVDetailPageState extends State<MVDetailPage>{
-  MV mv = MV("1","测试",defaultMusicImage,"");
+  MV mv = MV("","",defaultMusicImage,"");
   IjkMediaController _controller = IjkMediaController();
 
-  List<MV> similarMVs= List.generate(5, (index) {
-    return MV("$index","测试",defaultMusicImage,"");
+  List<MV> similarMVs= List.generate(0, (index) {
+    return MV("$index","",defaultMusicImage,"");
   });
 
   @override
