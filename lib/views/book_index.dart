@@ -8,7 +8,6 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import '../models/book.dart';
 import 'book_list.dart';
 import '../models/book_post_data.dart';
-import 'free_book_index.dart';
 
 // 阅读首页
 class BookIndexPage extends StatefulWidget {
