@@ -39,7 +39,7 @@ class _MusicIndexPageState extends State<MusicIndexPage> with AutomaticKeepAlive
   });
 
   @override
-  bool get wantKeepAlive => false;
+  bool get wantKeepAlive => true;
 
   _getMusics(){
     //推荐新音乐
