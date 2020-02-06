@@ -37,6 +37,17 @@ class HttpClient {
   }
 
   //异步get请求
+  static void getFreeBook(String url, Function callBack,
+      {Map<String, String> params, Function errorCallBack}) async {
+    var httpHeaders={
+      "Cookie":  freeBookCookie
+    };
+    _dio.options.headers = httpHeaders;
+    _request(url, callBack,
+        method: "get", params: params, errorCallBack: errorCallBack);
+  }
+
+  //异步get请求
   static void get(String url, Function callBack,
       {Map<String, String> params, Function errorCallBack}) async {
     _request(url, callBack,
@@ -55,7 +66,11 @@ class HttpClient {
     String errorMsg = "";
     int statusCode;
     try {
-      Response response = await _dio.post(url, queryParameters: params);
+      var httpHeaders={
+        "Cookie":  freeBookCookie
+      };
+      _dio.options.headers = httpHeaders;
+      Response response = await _dio.get(url, queryParameters: params);
       statusCode = response.statusCode;
       //处理错误部分
       if (statusCode < 0) {

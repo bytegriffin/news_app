@@ -12,6 +12,9 @@ import '../views/mv_detail.dart';
 import '../util/color_util.dart';
 import '../models/book.dart';
 import '../views/book_detail.dart';
+import '../models/play_list.dart';
+import '../views/song_playlist_detail.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Widget getBoxCard(Widget widget) {
   var con = Container(
@@ -24,32 +27,117 @@ Widget getBoxCard(Widget widget) {
   );
 }
 
+Widget buildRowSongPlayListCard(BuildContext context,String typeName,Widget page, List<PlayList> playlist){
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: <Widget>[
+      Padding(
+        padding: EdgeInsets.only(top:5.0,left: 5.0,bottom: 0.0,right: 5.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text(" $typeName",style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0,)),
+            GestureDetector(
+              child: Row(
+                children: <Widget>[
+                  Text("查看更多",style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.0,color: Colors.blue)),
+                  Icon(Icons.arrow_right,color: Colors.blue,)
+                ],
+              ),
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => page
+                ));
+              },
+            )
+          ],
+        ),
+      ),
+      SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        // reverse: true,
+        //padding: EdgeInsets.all(0.0),
+        physics: BouncingScrollPhysics(),
+        child: Row(
+          children: <Widget>[
+            getPlayListRowItem(context,playlist[0]),
+            getPlayListRowItem(context,playlist[1]),
+            getPlayListRowItem(context,playlist[2]),
+            getPlayListRowItem(context,playlist[3]),
+            getPlayListRowItem(context,playlist[4]),
+            getPlayListRowItem(context,playlist[5]),
+          ],
+        ),
+      ),
+    ],
+  );
+}
+
+Widget getPlayListRowItem(BuildContext context,PlayList playlist){
+  return Container(
+    alignment: Alignment.topLeft,
+    padding: EdgeInsets.symmetric(horizontal: 5),
+    child: GestureDetector(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            width: ScreenUtil().setWidth(220),
+            height: ScreenUtil().setHeight(220),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(5.0),
+              child: getCachedImage(playlist.picUrl??defaultMusicImage),
+            ),
+          ),
+          Container(
+            width: ScreenUtil().setWidth(220),
+            child: Text("${playlist.name}",overflow: TextOverflow.ellipsis,
+                maxLines: 1,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0,)),
+          ),
+        ],
+      ),
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(
+            builder: (context) => SongPlayListDetailPage(playlist.id ,playlist.name,playlist.picUrl)
+        ));
+      },
+    ),
+  );
+}
+
 Widget getMVRowItem(BuildContext context,MV mv){
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 5),
     child: GestureDetector(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Container(
-            width: 130,
-            height: 150,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(5.0),
-              child: getCachedImage(mv.cover),
-            ),
+          Stack(
+            alignment: Alignment.center,
+            children: <Widget>[
+              Container(
+                width: ScreenUtil().setWidth(300),
+                height: ScreenUtil().setHeight(200),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(5.0),
+                  child: getCachedImage(mv.cover),
+                ),
+              ),
+              Icon(Icons.play_circle_outline,color: Colors.white,),
+            ],
           ),
           Container(
-            width: 130,
+            width: ScreenUtil().setWidth(300),
             child: Text("${mv.name}",overflow: TextOverflow.ellipsis,
                 maxLines: 1,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0,)),
           ),
           Container(
-            width: 130,
+            width: ScreenUtil().setWidth(300),
             child: Text("${mv.artistName}",overflow: TextOverflow.ellipsis,
-                maxLines: 1,style: TextStyle(fontWeight:FontWeight.normal, fontSize: 14.0,)),
-          ),
+                maxLines: 1,style: TextStyle(fontWeight: FontWeight.normal, fontSize: 14.0,)),
+          )
         ],
       ),
       onTap: (){

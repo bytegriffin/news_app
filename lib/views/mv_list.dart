@@ -6,9 +6,6 @@ import 'mV_detail.dart';
 import '../models/mv.dart';
 
 class MVListPage extends StatefulWidget {
-  final String title;
-  final String backgroundImage;
-  MVListPage(this.title, this.backgroundImage);
   @override
   _MVListPageState createState() => _MVListPageState();
 }
@@ -17,7 +14,7 @@ class _MVListPageState extends State<MVListPage>{
   int count = 0;
 
   List<MV> newMVList= List.generate(4, (index) {
-    return MV("$index","测试",defaultMusicImage,"");
+    return MV("$index","",defaultMusicImage,"");
   });
 
   @override
@@ -45,7 +42,7 @@ class _MVListPageState extends State<MVListPage>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("推荐新MV"),
       ),
       body: ListView.separated(
         itemCount: count,

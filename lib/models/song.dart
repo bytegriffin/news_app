@@ -66,7 +66,12 @@ class Song {
     var period = Duration(milliseconds: dd);
     var minute = period.inMinutes;
     var seconds = period.inSeconds;
-    this.duration = minute.toString() + ":" + (seconds - minute * 60).toString();
+    int hours = period.inHours;
+    if(hours <= 0){
+      this.duration = minute.toString() + ":" + (seconds - minute * 60).toString();
+    } else {
+      this.duration =  hours.toString() + ":" + minute.toString() + ":" + (seconds - minute * 60).toString();
+    }
     if(json['company'] != null){
       this.company = json['company'];
     } else if(album != null && album.company != null){

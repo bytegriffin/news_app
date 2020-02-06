@@ -6,19 +6,20 @@ import 'artist_detail.dart';
 import '../models/artist.dart';
 
 // 热门歌手列表
-class ArtistListPage extends StatefulWidget {
-  final String title;
-  final String backgroundImage;
-  ArtistListPage(this.title, this.backgroundImage);
+class HotArtistListPage extends StatefulWidget {
+  HotArtistListPage();
 
   @override
-  _ArtistListPageState createState() => _ArtistListPageState();
+  _HotArtistListPageState createState() => _HotArtistListPageState();
 }
 
-class _ArtistListPageState extends State<ArtistListPage>{
+class _HotArtistListPageState extends State<HotArtistListPage> with AutomaticKeepAliveClientMixin{
   int count = 0;
 
-  List<Artist> hotArtistList= List.generate(4, (index) {
+  @override
+  bool get wantKeepAlive => true;
+
+  List<Artist> hotArtistList= List.generate(0, (index) {
     return Artist("$index","",defaultMusicImage);
   });
 
@@ -45,10 +46,8 @@ class _ArtistListPageState extends State<ArtistListPage>{
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
-      appBar: AppBar(
-        title: Text("热门歌手"),
-      ),
       body: ListView.separated(
         itemCount: count,
         physics: BouncingScrollPhysics(),
@@ -56,7 +55,7 @@ class _ArtistListPageState extends State<ArtistListPage>{
           return ListTile(
             leading: ClipRRect(
               borderRadius: BorderRadius.circular(5.0),
-              child: getCachedImage(hotArtistList[index]?.picUrl??defaultMusicImage,width: 100,height: 80),
+              child: Image.network(hotArtistList[index]?.picUrl??defaultMusicImage,fit: BoxFit.cover,width: 100,height: 80),
             ),
             title: Container(child: Text(hotArtistList[index].name)),
             subtitle: Row(

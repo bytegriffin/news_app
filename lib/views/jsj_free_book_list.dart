@@ -41,7 +41,7 @@ class _JSJFreeBookListPageState extends State<JSJFreeBookListPage>  with Automat
   }
 
   _getMoreData(bool _ifAdd){
-    HttpClient.get(JSJ_FREE_BOOK_LIST_URL+this._pageNum.toString(), (result){
+    HttpClient.getFreeBook(JSJ_FREE_BOOK_LIST_URL+this._pageNum.toString(), (result){
       if (mounted) {
         Map<String,dynamic> subjects  = json.decode(result) as Map;
         setState(() {

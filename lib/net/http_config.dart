@@ -122,17 +122,27 @@ const FREE_BOOK_DETAIL_URL = "https://lib-nuanxin.wqxuetang.com/v1/book/initbook
 // 相关书籍列表
 const FREE_BOOK_RELATED_URL = "https://lib-nuanxin.wqxuetang.com/v1/book/relatedetail?type=1&kw=";
 
-
+// 新歌速递
+const NEW_MUSIC_url = "http://musicapi.leanapp.cn/top/song?type=0";
 // 推荐歌单
-const REC_PLAYLIST_URL = "http://musicapi.leanapp.cn/personalized";
+const REC_PLAYLIST_URL = "http://musicapi.leanapp.cn/personalized?limit=";
 // 推荐新音乐
 const REC_NEW_MUSIC_URL = "http://musicapi.leanapp.cn/personalized/newsong";
+// 推荐电台节目
+const REC_DJ_PROGRAM_URL = "http://musicapi.leanapp.cn/personalized/djprogram";
+// 推荐电台广播
+const REC_DJ_RADIO_URL = "http://musicapi.leanapp.cn/dj/recommend";
+// 热门DJ
+const HOT_DJ_URL = "http://musicapi.leanapp.cn/dj/hot?limit=30&offset=0";
+// 推荐节目
+const REC_PROGRAM_URL = "http://musicapi.leanapp.cn/program/recommend";
+
 // 新碟上架
 const NEW_ALBUM_URL = "http://musicapi.leanapp.cn/top/album?offset=0&limit=50";
 
 // const NEW_MUSIC = "https://music.jeeas.cn/v1/personalized/newsong?from=music";
 // 网友最新歌单
-const PLAYLIST_URL = "http://musicapi.leanapp.cn/top/playlist?limit=20&order=new";
+const NEW_PLAYLIST_URL = "http://musicapi.leanapp.cn/top/playlist?limit=100&order=new";
 // 网友最新歌单详情
 const PLAYLIST_DETAIL_URL = "http://musicapi.leanapp.cn/playlist/detail?id=";
 // 音乐搜索
@@ -145,6 +155,25 @@ const MP3_URL = "https://music.163.com/song/media/outer/url?id=";
 const LYRICS_URL = "https://music.jeeas.cn/v1/lyric?id=1412242872";
 // 歌曲详情
 const SONG_DETAIL_URL = "http://musicapi.leanapp.cn/song/detail?ids=347230";
+// 相似歌单
+const RELATED_PLAYLIST_URL = "http://musicapi.leanapp.cn/simi/playlist?id=347230";
+// 相似音乐
+const RELATED_SONG_URL = "http://musicapi.leanapp.cn/simi/song?id=347230";
+// 私人电台
+const PERSONAL_FM_URL = "http://musicapi.leanapp.cn/personal_fm";
+
+// 音乐评论
+const MUSIC_COMMENT_URL = "http://musicapi.leanapp.cn/comment/music?id=186016";
+// 专辑评论
+const ALBUM_COMMENT_URL = "http://musicapi.leanapp.cn/comment/album?id=32311";
+// 歌单评论
+const PLAYLIST_COMMENT_URL = "http://musicapi.leanapp.cn/comment/playlist?id=705123491";
+// MV评论
+const MV_COMMENT_URL = "http://musicapi.leanapp.cn/comment/mv?id=5436712";
+// DJ评论
+const DJ_COMMENT_URL = "http://musicapi.leanapp.cn/comment/dj?id=794062371";
+
+
 
 // 专辑内容
 const GET_ALBUM_URL = "http://musicapi.leanapp.cn/album?id=";
@@ -155,6 +184,11 @@ const ARTIST_ALBUM_URL = "http://musicapi.leanapp.cn/artist/album?id=";
 // 获得歌手描述
 const ARTIST_DESC_URL = "http://musicapi.leanapp.cn/artist/desc?id=";
 
+// 歌手列表
+// 入驻歌手 5001  华语男歌手 1001  华语女歌手 1002  华语组合/乐队 1003
+// 欧美男歌手 2001 欧美女歌手 2002  欧美组合/乐队 2003   日本男歌手 6001  日本女歌手 6002  日本组合/乐队 6003
+// 韩国男歌手 7001  韩国女歌手 7002  韩国组合/乐队 7003  其他男歌手 4001  其他女歌手 4002  其他组合/乐队 4003
+const ARTIST_URL = "http://musicapi.leanapp.cn/artist/list?cat=";
 // 热门歌手
 const HOT_ARTIST_URL = "http://musicapi.leanapp.cn/top/artists";
 // 榜单  "0": 云音乐新歌榜, "1": 云音乐热歌榜, "4": 云音乐电音榜, "5": UK排行榜周榜, "6": 美国Billboard周榜
@@ -163,15 +197,16 @@ const  TOP_SONG_URL = "http://musicapi.leanapp.cn/top/list?idx=";
 
 // 获取歌手 mv
 const ARTIST_MV_URL = "http://musicapi.leanapp.cn/artist/mv?limit=100&id=";
-//最新mv
+// 最新mv
 const NEW_MV_URL= "http://musicapi.leanapp.cn/mv/first?limit=50";
 // 推荐mv
 const REC_MV_URL = "http://musicapi.leanapp.cn/personalized/mv";
 // 相似 mv
 const RELATED_MV_URL = "http://musicapi.leanapp.cn/simi/mv?mvid=";
-//mv详情
+// mv详情
 const MV_DETAIL_URL = "http://musicapi.leanapp.cn/mv/detail?mvid=";
-
+// mv排行
+const TOP_MV_URL = "http://musicapi.leanapp.cn/top/mv?limit=10";
 // 电影解析 https://api.bingdou.net/?url=
 const FREE_MOVIE_PARSE_URL = "https://www.leflv.com/vip/?url=";
 // 电影列表

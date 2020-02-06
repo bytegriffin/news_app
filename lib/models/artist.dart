@@ -41,6 +41,25 @@ class Artist{
   }
 }
 
+class ArtistNewList{
+  bool more;
+  int code;
+  List<Artist> artists;
+
+  ArtistNewList(this.artists);
+
+  ArtistNewList.fromJson(Map<String,dynamic> json){
+    this.more = json['more']??true;
+    this.code = json['code']??0;
+    if(json['artists'] != null && json['artists'].length > 0){
+      this.artists = List<Artist>();
+      json['artists'].forEach((v) {
+        this.artists.add(Artist.fromJson(v));
+      });
+    }
+  }
+}
+
 
 class ArtistList{
   int total;

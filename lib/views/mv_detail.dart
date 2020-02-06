@@ -164,7 +164,7 @@ class _MVDetailPageState extends State<MVDetailPage>{
         ),
         Column(
           children: <Widget>[
-            Icon(Icons.insert_comment,size: 30,),
+            Icon(Icons.comment,size: 30,),
             Text("${mv?.commentCount??0}")
           ],
         ),

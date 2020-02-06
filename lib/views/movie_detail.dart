@@ -516,7 +516,7 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
       );
       var click = GestureDetector(
         child: Container(
-          width: ScreenUtil().setWidth(240),
+          width: ScreenUtil().setWidth(260),
           height: ScreenUtil().setHeight(260),
           margin: EdgeInsets.all(2),
           child: column,
@@ -630,7 +630,7 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
   }
 
   //是否显示影片时长
-  Widget _displayDuration() {
+  Widget displayDuration() {
     if (movie !=null && movie.durations != null) {
       return Container(
         width: 230,
@@ -648,7 +648,7 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
   }
 
   //是否显示影片类型
-  Widget _displayType() {
+  Widget displayType() {
     if (movie !=null && movie.type != null) {
       //如果数据不为空，则显示Text
       return Text(
@@ -726,20 +726,8 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
                 );
               },
             ),
-            _displayType(),
-            _displayDuration(),
-//            Container(
-//              width: 240,
-//              child: Text(
-//                "制片国家：${movie?.country??""}",
-//                style: TextStyle(
-//                  fontSize: 16,
-//                    color: detailPagePropTextColor
-//                ),
-//                overflow: TextOverflow.ellipsis,
-//                maxLines: 1,
-//              ),
-//            ),
+//            _displayType(),
+//            _displayDuration(),
           ],
         ),
         GestureDetector(

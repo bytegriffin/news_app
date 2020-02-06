@@ -8,9 +8,7 @@ import 'top_song_list.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TopSongPage extends StatefulWidget {
-  final String title;
-  final String backgroundImage;
-  TopSongPage(this.title, this.backgroundImage);
+  TopSongPage();
   @override
   _TopSongPageState createState() => _TopSongPageState();
 }
@@ -153,7 +151,7 @@ class _TopSongPageState extends State<TopSongPage>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("排行榜"),
       ),
       body: Padding(
         padding: EdgeInsets.all(5),

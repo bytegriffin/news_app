@@ -38,7 +38,7 @@ String getRouterUrl(){
 }
 
 
-List<String> cookiePool = [
+List<String> hkVideoCookiePool = [
   "BAIDUID=3A70F193311D1FDADBD38B37F85DF9C2:FG=1; expires=Wed, 03-Feb-21 06:50:19 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
   "BAIDUID=DE806399A4AA5437172B7F1610DD4DF8:FG=1; expires=Wed, 03-Feb-21 06:53:16 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
   "BAIDUID=125F6DE2FC8568CDF2B621D4C2B85B4D:FG=1; expires=Wed, 03-Feb-21 06:53:32 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;",
@@ -60,8 +60,10 @@ List<String> cookiePool = [
   "BAIDUID=12E85EDB567C23F270F8D60B6F770261:FG=1; expires=Wed, 03-Feb-21 06:56:39 GMT; max-age=31536000; path=/; domain=.hao123.com; version=1;"
 ];
 
-var cookie = cookiePool[Random().nextInt(cookiePool.length)];
+var hkVideoCookie = hkVideoCookiePool[Random().nextInt(hkVideoCookiePool.length)];
 
 String getVideoCookies(){
-  return cookie;
+  return hkVideoCookie;
 }
+// 文泉测试账号 17134025332/asdf123
+var freeBookCookie = "_gid=356938408658; _gidv=e6f6ccd30c056b42967bf5e78ff5cd53; acw_tc=b65cfd3215809536889641194e0be082a447f9df75fdf9b4192cb2878cceaf; PHPSESSID=99m8i4qlpck7ufgga3ojnjbbb3; Hm_lvt_a84b27ffd87daa3273555205ef60df89=1580953700,1580954074,1580957403,1580958007; Hm_lpvt_a84b27ffd87daa3273555205ef60df89=1580960579; ssxmod_itna=QqGxciD=GQit=0KGHoiQRfxGqozDyAa=nix6Gx0HIeGzDAxn40iDtoPv0o6ijGAgT3eq077DmW8GmYa4eE/j7r34a2Yx0aDbqGkqiEr4GGfxBYDQxAYDGDDPDocPD1D3qDkUxYPGW7qDoDY+=uDitD4qDBzOdDKqGg7dxYYGD94CL4LL2gKY03fG=DjMrD/RGb6QrTrpD/b2QDzdFDtMUS7TUKx0Pz88hemGDzekGWFA+NlEx=Bij3fnGoyDo3lODAPx+bUYBdfDDAG/+hLiD===; ssxmod_itna2=QqGxciD=GQit=0KGHoiQRfxGqozDyAa=nix6DnK8cRG25DssQDLCtTLEpA=qNik0vPniDL4=FoVDgY=D6GQwTYo8ikxeYeCUx49K8/pni+ptuijbTGmUt7iTua8AtK2PenmjE8YKBqK4AExE+O039k=xTSfQB8iq/82vWQwDrlqDLYKDkoT7/8hRbbQmRkR7z8UkjEEvWqdUYbw=T0D7IdxGBnEYQux2Ke+ZSOQLiR37+RI438x27Ux4t6PKd0j4GmIeYDXzE1NBmoEUqeo=G02KbGrttaxKOa/uugjT2QEKy+rIH7hNQG/EYhxpgA3+j3RjQmA0zxdA7YK4pNeYIgiac0qUjeUEIQYQ9NMnNED0pxAge63UEAaxeopK0ie=EPYTjAI3jjZQfmmuvlI3/iD=Do4rvcLYa2xnUx=DP1A+nnCtjC0ALeTe=RHzKe=XOzKI=4UbA2/nofANbwHR0e7IxpGi003K984due974LgRdx4dGDfAlpO8TDVH0+mhP6j6iPfKUWxzerOcDoZqDZeeYLslpvC+RZwK8DcGLxnrz1vg4yuDiA7DEn5tMSasptv37BGYS6DxvCkFAr2HNKQvqWDG2B4DFqD+rDxD";

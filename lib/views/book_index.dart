@@ -253,19 +253,19 @@ class _BookIndexPageState extends State<BookIndexPage> with AutomaticKeepAliveCl
               ));
             },
           ),
-          GestureDetector(
-            child: Column(
-              children: <Widget>[
-                Icon(Icons.remove_red_eye, color: Colors.blueAccent,size: 30,),
-                Text("免费区")
-              ],
-            ),
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => FreeBookIndexPage()
-              ));
-            },
-          ),
+//          GestureDetector(
+//            child: Column(
+//              children: <Widget>[
+//                Icon(Icons.remove_red_eye, color: Colors.blueAccent,size: 30,),
+//                Text("免费区")
+//              ],
+//            ),
+//            onTap: (){
+//              Navigator.push(context, MaterialPageRoute(
+//                  builder: (context) => FreeBookIndexPage()
+//              ));
+//            },
+//          ),
           GestureDetector(
             child: Column(
               children: <Widget>[

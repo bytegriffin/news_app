@@ -11,10 +11,12 @@ import '../models/album.dart';
 import 'album_list.dart';
 import '../models/mv.dart';
 import 'mv_list.dart';
-import 'artist_list.dart';
+import 'artist_index.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'mv_detail.dart';
-import 'song_playlist.dart';
+import 'new_song_playlist.dart';
+import '../models/play_list.dart';
+import 'rec_song_playlist.dart';
 
 // 音乐首页
 class MusicIndexPage extends StatefulWidget {
@@ -24,20 +26,20 @@ class MusicIndexPage extends StatefulWidget {
 
 class _MusicIndexPageState extends State<MusicIndexPage> with AutomaticKeepAliveClientMixin{
 
-  List<Song> recNewMusicList= List.generate(6, (index) {
-    return Song("$index", "", defaultMusicImage, "", null);
-  });
+  List<Song> recNewMusicList;
 
-  List<Album> recNewAlbumList= List.generate(6, (index) {
-    return Album("$index", "" , defaultMusicImage, "", "" , "",  "", null);
-  });
+  List<Album> recNewAlbumList;
 
   List<MV> recNewMVList= List.generate(4, (index) {
     return MV("$index","",defaultMusicImage,"");
   });
 
+  List<PlayList> reSongPlayList= List.generate(6, (index) {
+    return PlayList("", defaultMusicImage);
+  });
+
   @override
-  bool get wantKeepAlive => true;
+  bool get wantKeepAlive => false;
 
   _getMusics(){
     //推荐新音乐
@@ -73,6 +75,17 @@ class _MusicIndexPageState extends State<MusicIndexPage> with AutomaticKeepAlive
       print(error);
     });
 
+    //推荐歌单
+    HttpClient.get(REC_MV_URL+"6", (result){
+      if(mounted){
+        setState(() {
+          this.reSongPlayList = PersonalPlayLists.fromJson(result).result;
+        });
+      }
+    },errorCallBack: (error){
+      print(error);
+    });
+
   }
 
   @override
@@ -82,10 +95,26 @@ class _MusicIndexPageState extends State<MusicIndexPage> with AutomaticKeepAlive
   }
 
   List<Widget> generateDefaultRecNewMusicList() {
+    if(recNewMusicList == null){
+      recNewMusicList= List.generate(6, (index) {
+        return Song("$index", "", defaultMusicImage, "", null);
+      });
+    }
+    if(recNewMusicList.sublist(0,6) == null){
+      return recNewMusicList.map((item) => getSongRowItem(context, item)).toList();
+    }
     return recNewMusicList.sublist(0,6).map((item) => getSongRowItem(context, item)).toList();
   }
 
   List<Widget> generateDefaultRecNewAlbumList() {
+    if(recNewAlbumList == null){
+      recNewAlbumList= List.generate(6, (index) {
+        return Album("$index", "" , defaultMusicImage, "", "" , "",  "", null);
+      });
+    }
+    if(recNewAlbumList.sublist(0,6) == null){
+      return recNewAlbumList.map((item) => getAlbumRowItem(context, item)).toList();
+    }
     return recNewAlbumList.sublist(0,6).map((item) => getAlbumRowItem(context, item)).toList();
   }
 
@@ -100,7 +129,10 @@ class _MusicIndexPageState extends State<MusicIndexPage> with AutomaticKeepAlive
           _buildButton(),
           buildRowSongCard(context,"推荐新音乐",SongListPage("推荐新音乐",topNewMusicImage, recNewMusicList), generateDefaultRecNewMusicList()),
           buildRowAlbumCard(context,"推荐新专辑",AlbumListPage("推荐新专辑",topNewMusicImage, recNewAlbumList), generateDefaultRecNewAlbumList()),
-          buildRowMVCard(context,"推荐新MV",MVListPage("推荐新MV",topNewMusicImage),recNewMVList),
+          Container(height: 20,),
+          buildRowMVCard(context,"推荐新MV",MVListPage(),recNewMVList),
+          Container(height: 20,),
+          buildRowSongPlayListCard(context,"推荐歌单",RecSongPlayListPage(),reSongPlayList),
       ],
     ),
     );
@@ -152,7 +184,7 @@ class _MusicIndexPageState extends State<MusicIndexPage> with AutomaticKeepAlive
             ),
             onTap: (){
               Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => ArtistListPage("歌手",topNewMusicImage)
+                  builder: (context) => ArtistIndexPage()
               ));
             },
           ),
@@ -165,7 +197,7 @@ class _MusicIndexPageState extends State<MusicIndexPage> with AutomaticKeepAlive
             ),
             onTap: (){
               Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => TopSongPage("排行",searchMovieImage)
+                  builder: (context) => TopSongPage()
               ));
             },
           ),
@@ -178,7 +210,7 @@ class _MusicIndexPageState extends State<MusicIndexPage> with AutomaticKeepAlive
             ),
             onTap: (){
               Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => SongPlayListPage("歌单",topNewMusicImage)
+                  builder: (context) => NewSongPlayListPage()
               ));
             },
           ),
@@ -191,7 +223,7 @@ class _MusicIndexPageState extends State<MusicIndexPage> with AutomaticKeepAlive
             ),
             onTap: (){
               Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => MVListPage("推荐新MV",topNewMusicImage)
+                  builder: (context) => MVListPage()
               ));
             },
           )
