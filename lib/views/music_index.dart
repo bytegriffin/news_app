@@ -17,6 +17,7 @@ import 'mv_detail.dart';
 import 'new_song_playlist.dart';
 import '../models/play_list.dart';
 import 'rec_song_playlist.dart';
+import '../models/free_movie.dart';
 
 // 音乐首页
 class MusicIndexPage extends StatefulWidget {
@@ -38,8 +39,15 @@ class _MusicIndexPageState extends State<MusicIndexPage> with AutomaticKeepAlive
     return PlayList("", defaultMusicImage);
   });
 
+  List<FreeMovie> freeMovieList= List<FreeMovie>();
+
   @override
   bool get wantKeepAlive => true;
+
+  _buildFreeMovies(){
+    freeMovieList.add(FreeMovie("30402564","泰勒·斯威夫特：“举世盛名”巡回演唱会","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2543029684.webp","https://youku.haokzy-tudou.com/ppvod/F1hQfQI9.m3u8"));
+    freeMovieList.add(FreeMovie("34809304","周杰伦2016地表最强世界巡回演唱会","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2574680900.webp","https://youku.haokzy-tudou.com/ppvod/31fZdHqp.m3u8"));
+  }
 
   _getMusics(){
     //推荐新音乐
@@ -91,6 +99,7 @@ class _MusicIndexPageState extends State<MusicIndexPage> with AutomaticKeepAlive
   @override
   void initState(){
     _getMusics();
+    _buildFreeMovies();
     super.initState();
   }
 
@@ -133,6 +142,8 @@ class _MusicIndexPageState extends State<MusicIndexPage> with AutomaticKeepAlive
           buildRowMVCard(context,"推荐新MV",MVListPage(),recNewMVList),
           Container(height: 20,),
           buildRowSongPlayListCard(context,"推荐歌单",RecSongPlayListPage(),reSongPlayList),
+          Container(height: 20,),
+          buildRowFreeMovieCard(context,"推荐演唱会", freeMovieList),
       ],
     ),
     );

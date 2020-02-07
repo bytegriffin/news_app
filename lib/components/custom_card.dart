@@ -13,7 +13,9 @@ import '../util/color_util.dart';
 import '../models/book.dart';
 import '../views/book_detail.dart';
 import '../models/play_list.dart';
+import '../models/free_movie.dart';
 import '../views/song_playlist_detail.dart';
+import '../views/custom_movie_detail.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Widget getBoxCard(Widget widget) {
@@ -368,6 +370,65 @@ Widget buildRowSongCard(BuildContext context,String typeName,Widget page, List<W
         children: songList,
       )
     ],
+  );
+}
+
+Widget buildRowFreeMovieCard(BuildContext context,String typeName, List<FreeMovie> movieList){
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: <Widget>[
+      Padding(
+        padding: EdgeInsets.only(left: 5.0,bottom: 5.0),
+        child: Text(" $typeName",style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0,)),
+      ),
+      SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        physics: BouncingScrollPhysics(),
+        child: Row(
+          children: movieList.map((m) {
+            return getFreeMovieRowItem(context, m);
+          }).toList(),
+        ),
+      ),
+    ],
+  );
+}
+
+
+Widget getFreeMovieRowItem(BuildContext context,FreeMovie movie){
+  return Container(
+    padding: EdgeInsets.only(left:5.0),
+    child: GestureDetector(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Stack(
+            alignment: Alignment.center,
+            children: <Widget>[
+              Container(
+                width: ScreenUtil().setWidth(420),
+                height: ScreenUtil().setHeight(280),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(5.0),
+                  child: Image.network(movie.image??defaultMusicImage,fit: BoxFit.cover,),
+                ),
+              ),
+              Icon(Icons.play_circle_outline,size: 30,color: Colors.white,)
+            ],
+          ),
+          Container(
+            width: ScreenUtil().setWidth(420),
+            child: Text("${movie.name}",overflow: TextOverflow.ellipsis,
+                maxLines: 1,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0,)),
+          ),
+        ],
+      ),
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(
+            builder: (context) => CustomMovieDetailPage(movie)
+        ));
+      },
+    ),
   );
 }
 

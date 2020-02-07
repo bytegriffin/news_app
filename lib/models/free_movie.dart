@@ -12,6 +12,8 @@ class FreeMovie {
   List<FreeCast> actors;//演员
   List<FreeCast> writers;//编剧
 
+  FreeMovie(this.id, this.name, this.image, this.playUrl);
+
   FreeMovie.fromJson(Map<String, dynamic> json){
     this.id = json['docId'];
     this.name = json['name'];

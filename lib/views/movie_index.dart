@@ -11,6 +11,7 @@ import 'top_movie_list.dart';
 import '../net/http_router.dart';
 import '../models/swiper_movie.dart';
 import 'free_movie_list.dart';
+import '../models/free_movie.dart';
 
 // 电影首页
 class MovieIndexPage extends StatefulWidget {
@@ -38,6 +39,7 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
   List<TopMovie> hotSortList= List.generate(6, (index) {
     return TopMovie("$index","","",defaultCastImage);
   });
+  List<FreeMovie> freeMovieList= List<FreeMovie>();
 
   //构建默认轮播图
   List<SwiperMovie> swMovieList = List<SwiperMovie>.generate(2, (int index){
@@ -49,6 +51,22 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
 
   @override
   bool get wantKeepAlive => true;
+
+  _buildFreeMovies(){
+    freeMovieList.add(FreeMovie("30329892","航海王：狂热行动","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2570039912.webp","https://youku.haokzy-tudou.com/ppvod/jsFEkdYf.m3u8"));
+    freeMovieList.add(FreeMovie("30252495","1917","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2570243317.webp","https://youku.haokzy-tudou.com/ppvod/k71LPzr8.m3u8"));
+    freeMovieList.add(FreeMovie("27119724","小丑 Joker","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2567198874.webp","https://youku.haokzy-tudou.com/ppvod/4yf2LZrW.m3u8"));
+    freeMovieList.add(FreeMovie("6981153","爱尔兰人","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2568902055.webp","https://youku.haokzy-tudou.com/ppvod/0p8xRuyT.m3u8"));
+    freeMovieList.add(FreeMovie("26786669","决战中途岛","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2573582192.webp","https://youku.haokzy-tudou.com/ppvod/HmZTkPxP.m3u8"));
+    freeMovieList.add(FreeMovie("30394807","蜡笔小新：新婚旅行飓风之遗失的野原广志","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2549326655.webp","https://youku.haokzy-tudou.com/ppvod/G3zC6Lt5.m3u8"));
+    freeMovieList.add(FreeMovie("26100958","复仇者联盟4：终局之战","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2552058346.webp","https://youku.haokzy-tudou.com/ppvod/fhAfitLK.m3u8"));
+    freeMovieList.add(FreeMovie("30318116","利刃出鞘","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2574172427.webp","https://youku.haokzy-tudou.com/ppvod/mhcf32Ti.m3u8"));
+    freeMovieList.add(FreeMovie("30327842","82年生的金智英","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2578045524.webp","https://youku.haokzy-tudou.com/ppvod/fhLte5FN.m3u8"));
+    freeMovieList.add(FreeMovie("6538866","极速车王","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2568792942.webp","https://youku.haokzy-tudou.com/ppvod/LkEdxNf9.m3u8"));
+    freeMovieList.add(FreeMovie("27087724","好莱坞往事","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2551119672.webp","https://youku.haokzy-tudou.com/ppvod/GchvsIPV.m3u8"));
+    freeMovieList.add(FreeMovie("27002635","唐顿庄园","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2575400017.webp","https://youku.haokzy-tudou.com/ppvod/8EZvxIyB.m3u8"));
+    freeMovieList.add(FreeMovie("30334073","调音师","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2551995207.webp","https://youku.haokzy-tudou.com/ppvod/JkvezV4x.m3u8"));
+  }
 
   _getMovies(){
     //最新电影
@@ -116,6 +134,7 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
   @override
   void initState(){
     _getMovies();
+    _buildFreeMovies();
     super.initState();
   }
 
@@ -144,6 +163,8 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
           _buildSwiper(),
           _buildButton(),
           buildRowMovieCard1(context,"最新电影",MovieListPage("最新电影",TopMovieType.NewMovie), generateDefaultHotMovieList()),
+          buildRowFreeMovieCard(context,"免费观影", freeMovieList),
+          Container(height: 20,),
           buildRowMovieCard1(context,"热门电视剧",MovieListPage("热门电视剧",TopMovieType.TV), generateDefaultHotTvList()),
           buildRowMovieCard2(context,"热门综艺",MovieListPage("热门综艺",TopMovieType.Ent), hotEntList),
           Container(height: 20,),

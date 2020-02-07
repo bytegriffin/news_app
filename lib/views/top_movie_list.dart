@@ -27,7 +27,7 @@ class _TopMovieListPageState extends State<TopMovieListPage>{
     HttpClient.get(widget?.url, (result){
       if(mounted){
         setState(() {
-          if(widget.title.contains("北美") || widget.title.contains("好评榜")){
+          if(widget.title.contains("北美") || widget.title.contains("口碑榜")){
             this.movieList = UsBoxMovieList.fromJson(result).subjects;
           } else {
             this.movieList = SearchMovieList.fromJson(result).subjects;
