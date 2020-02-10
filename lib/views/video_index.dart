@@ -14,6 +14,7 @@ import 'chongwu_video_list.dart';
 import 'qiche_video_list.dart';
 import 'sport_video_list.dart';
 import '../util/color_util.dart';
+import '../components/over_scroll_behavior.dart';
 
 class VideoIndexPage extends StatefulWidget {
   @override
@@ -66,23 +67,26 @@ class _VideoIndexPageState extends State<VideoIndexPage> with SingleTickerProvid
           labelStyle: TextStyle(fontSize: 16.0),
           tabs: tabs,
         ),
-        body: new TabBarView(
-          children: <Widget>[
-            new Center(child: NewsVideoListPage()),
-            new Center(child: TvLivePage()),
-            new Center(child: YingshiVideoListPage()),
-            new Center(child: YinyueVideoListPage()),
-            new Center(child: DongmanVideoListPage()),
-            new Center(child: YouxiVideoListPage()),
-            new Center(child: ZongyiVideoListPage()),
-            new Center(child: WenhuaVideoListPage()),
-            new Center(child: MeishiVideoListPage()),
-            new Center(child: ShishangVideoListPage()),
-            new Center(child: GaoxiaoVideoListPage()),
-            new Center(child: ChongwuVideoListPage()),
-            new Center(child: QicheVideoListPage()),
-            new Center(child: SportVideoListPage()),
-          ],
+        body: ScrollConfiguration(
+          behavior: OverScrollBehavior(),
+          child: new TabBarView(
+            children: <Widget>[
+              new Center(child: NewsVideoListPage()),
+              new Center(child: TvLivePage()),
+              new Center(child: YingshiVideoListPage()),
+              new Center(child: YinyueVideoListPage()),
+              new Center(child: DongmanVideoListPage()),
+              new Center(child: YouxiVideoListPage()),
+              new Center(child: ZongyiVideoListPage()),
+              new Center(child: WenhuaVideoListPage()),
+              new Center(child: MeishiVideoListPage()),
+              new Center(child: ShishangVideoListPage()),
+              new Center(child: GaoxiaoVideoListPage()),
+              new Center(child: ChongwuVideoListPage()),
+              new Center(child: QicheVideoListPage()),
+              new Center(child: SportVideoListPage()),
+            ],
+          ),
         ),
       ),
     );

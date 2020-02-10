@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import '../components/over_scroll_behavior.dart';
 
 // 构建一个SliverList,防止产生overflow超出屏幕异常
 Widget buildSliverList(Widget wrap){
-  return CustomScrollView(
+  var csv =  CustomScrollView(
     slivers: <Widget>[
       SliverList(
         delegate: SliverChildBuilderDelegate(
@@ -15,6 +16,10 @@ Widget buildSliverList(Widget wrap){
         )
       )
     ],
+  );
+  return ScrollConfiguration(
+    behavior: OverScrollBehavior(),
+    child: csv,
   );
 }
 

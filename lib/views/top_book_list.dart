@@ -5,6 +5,7 @@ import 'search_book_detail.dart';
 import '../net/httpclient.dart';
 import '../views/top_book_detail.dart';
 import '../util/color_util.dart';
+import '../components/over_scroll_behavior.dart';
 
 //图书榜单列表
 class TopBookListPage extends StatefulWidget {
@@ -44,8 +45,8 @@ class _TopBookListPageState extends State<TopBookListPage> with AutomaticKeepAli
   }
 
   Widget buildScrollView(){
-    return Container(
-      //height: 400,
+    return ScrollConfiguration(
+      behavior: OverScrollBehavior(),
       child: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(

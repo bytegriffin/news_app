@@ -15,6 +15,7 @@ import '../models/related_cast.dart';
 import 'trailer_video_detail.dart';
 import '../components/multi_photo_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../components/over_scroll_behavior.dart';
 
 class MovieDetailPage extends StatefulWidget {
   final String id;
@@ -195,137 +196,140 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
             buildHomeNavButton(context)
           ],
         ),
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverList(
-            delegate: SliverChildBuilderDelegate((context, index){
-                if(index == 0){
-                  return Column(
-                    children: <Widget>[
-                      getItem(),
-                      getTags(),
-                      Divider(height: 10.0,indent: 0.0,color: detailPageBGColor),
-                      getSummary(),
-                    ],
-                  );
+      body: ScrollConfiguration(
+        behavior: OverScrollBehavior(),
+        child: CustomScrollView(
+          slivers: <Widget>[
+            SliverList(
+              delegate: SliverChildBuilderDelegate((context, index){
+                  if(index == 0){
+                    return Column(
+                      children: <Widget>[
+                        getItem(),
+                        getTags(),
+                        Divider(height: 10.0,indent: 0.0,color: detailPageBGColor),
+                        getSummary(),
+                      ],
+                    );
+                  }
+                  return null;
                 }
-                return null;
-              }
-            )
-          ),
-          SliverToBoxAdapter(
-            child: new Container(
-              padding: EdgeInsets.only(top: 5, bottom: 5),
-              child:  _displayTrailer(),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: new Container(
-                padding: EdgeInsets.only(top: 5, bottom: 5),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: getTrailers(),
-                  ),
-                )
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: new Container(
-              padding: EdgeInsets.only(top: 5, bottom: 5),
-              child: _displayPhoto(),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: new Container(
-                padding: EdgeInsets.only(top: 5, bottom: 5),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: getPhotos(),
-                  ),
-                )
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: new Container(
-              padding: EdgeInsets.only(top: 5, bottom: 5),
-              child: _displayRelatedMovies()
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: new Container(
-                padding: EdgeInsets.only(top: 5, bottom: 5),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: getRelatedMovies(),
-                  ),
-                )
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: new Container(
-              padding: EdgeInsets.only(top: 5, bottom: 5),
-              child:  _displayDirector(),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: new Container(
-                padding: EdgeInsets.only(top: 5, bottom: 5),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: getDirectors(),
-                  ),
-                )
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: new Container(
-              padding: EdgeInsets.only(top: 5, bottom: 5),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  _displayCast(),
-                ],
               )
             ),
-          ),
-          SliverToBoxAdapter(
-            child: new Container(
+            SliverToBoxAdapter(
+              child: new Container(
                 padding: EdgeInsets.only(top: 5, bottom: 5),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: getCasts(),
-                  ),
-                )
+                child:  _displayTrailer(),
+              ),
             ),
-          ),
-          SliverToBoxAdapter(
-            child: new Container(
-              padding: EdgeInsets.only(top: 5, bottom: 5),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  _displayWriter(),
-                ],
-              )
+            SliverToBoxAdapter(
+              child: new Container(
+                  padding: EdgeInsets.only(top: 5, bottom: 5),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: getTrailers(),
+                    ),
+                  )
+              ),
             ),
-          ),
-          SliverToBoxAdapter(
-            child: new Container(
+            SliverToBoxAdapter(
+              child: new Container(
                 padding: EdgeInsets.only(top: 5, bottom: 5),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: getWriters(),
-                  ),
-                )
+                child: _displayPhoto(),
+              ),
             ),
-          ),
-        ],
+            SliverToBoxAdapter(
+              child: new Container(
+                  padding: EdgeInsets.only(top: 5, bottom: 5),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: getPhotos(),
+                    ),
+                  )
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: new Container(
+                padding: EdgeInsets.only(top: 5, bottom: 5),
+                child: _displayRelatedMovies()
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: new Container(
+                  padding: EdgeInsets.only(top: 5, bottom: 5),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: getRelatedMovies(),
+                    ),
+                  )
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: new Container(
+                padding: EdgeInsets.only(top: 5, bottom: 5),
+                child:  _displayDirector(),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: new Container(
+                  padding: EdgeInsets.only(top: 5, bottom: 5),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: getDirectors(),
+                    ),
+                  )
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: new Container(
+                padding: EdgeInsets.only(top: 5, bottom: 5),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    _displayCast(),
+                  ],
+                )
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: new Container(
+                  padding: EdgeInsets.only(top: 5, bottom: 5),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: getCasts(),
+                    ),
+                  )
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: new Container(
+                padding: EdgeInsets.only(top: 5, bottom: 5),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    _displayWriter(),
+                  ],
+                )
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: new Container(
+                  padding: EdgeInsets.only(top: 5, bottom: 5),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: getWriters(),
+                    ),
+                  )
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

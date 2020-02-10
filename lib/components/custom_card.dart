@@ -16,6 +16,8 @@ import '../models/play_list.dart';
 import '../models/free_movie.dart';
 import '../views/song_playlist_detail.dart';
 import '../views/custom_movie_detail.dart';
+import '../models/artist.dart';
+import '../views/artist_detail.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Widget getBoxCard(Widget widget) {
@@ -373,6 +375,60 @@ Widget buildRowSongCard(BuildContext context,String typeName,Widget page, List<W
   );
 }
 
+Widget buildRowArtistCard(BuildContext context,String typeName, List<Artist> artistList){
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    mainAxisAlignment: MainAxisAlignment.start,
+    children: <Widget>[
+      Padding(
+        padding: EdgeInsets.only(left: 5.0,bottom: 5.0),
+        child: Text(" $typeName",style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0,)),
+      ),
+      SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        physics: BouncingScrollPhysics(),
+        child: Row(
+          children: artistList.map((ar) {
+            return getArtistRowItem(context, ar);
+          }).toList(),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget getArtistRowItem(BuildContext context,Artist artist){
+  var container = Container(
+    height: ScreenUtil().setHeight(270),
+    padding: EdgeInsets.all(10.0),
+    child: GestureDetector(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          CircleAvatar(
+              radius: 40.0,
+              backgroundImage: NetworkImage(artist.picUrl??defaultMusicImage)
+          ),
+          Container(
+            child: Text("${artist.name}",overflow: TextOverflow.ellipsis,
+                maxLines: 1,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0,)),
+          ),
+        ],
+      ),
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(
+            builder: (context) => ArtistDetailPage(artist.id)
+        ));
+      },
+    ),
+  );
+  return Card(
+    elevation: 1.0,
+    child: container,
+  );
+}
+
 Widget buildRowFreeMovieCard(BuildContext context,String typeName, List<FreeMovie> movieList){
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -406,18 +462,18 @@ Widget getFreeMovieRowItem(BuildContext context,FreeMovie movie){
             alignment: Alignment.center,
             children: <Widget>[
               Container(
-                width: ScreenUtil().setWidth(420),
-                height: ScreenUtil().setHeight(280),
+                width: ScreenUtil().setWidth(440),
+                height: ScreenUtil().setHeight(300),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(5.0),
-                  child: Image.network(movie.image??defaultMusicImage,fit: BoxFit.cover,),
+                  child: Image.network(movie.image??defaultMusicImage,fit: BoxFit.fill,),
                 ),
               ),
               Icon(Icons.play_circle_outline,size: 30,color: Colors.white,)
             ],
           ),
           Container(
-            width: ScreenUtil().setWidth(420),
+            width: ScreenUtil().setWidth(440),
             child: Text("${movie.name}",overflow: TextOverflow.ellipsis,
                 maxLines: 1,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0,)),
           ),

@@ -10,6 +10,7 @@ import '../models/song.dart';
 import 'artist_detail.dart';
 import '../components/single_photo_view.dart';
 import '../components/music_player.dart';
+import '../components/over_scroll_behavior.dart';
 
 class AlbumDetailPage extends StatefulWidget {
   final Album album;
@@ -70,62 +71,65 @@ class _AlbumDetailPageState extends State<AlbumDetailPage> {
           buildHomeNavButton(context)
         ],
       ),
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverList(
-            delegate: SliverChildBuilderDelegate((context, index){
-              if(index == 0){
-                return Column(
-                  children: <Widget>[
-                    getItem(),
-                  ],
-                );
+      body: ScrollConfiguration(
+        behavior: OverScrollBehavior(),
+        child: CustomScrollView(
+          slivers: <Widget>[
+            SliverList(
+              delegate: SliverChildBuilderDelegate((context, index){
+                if(index == 0){
+                  return Column(
+                    children: <Widget>[
+                      getItem(),
+                    ],
+                  );
+                }
+                return null;
               }
-              return null;
-            }
-            )
-          ),
-          SliverToBoxAdapter(
-            child: new Container(
-              padding: EdgeInsets.only(top: 5, bottom: 0),
-              child: CycleListHeader(
-                onTap: playOnTap,
-                count: songList.length,
-              ),
-              color: detailPageBGColor,
+              )
             ),
-          ),
-          SliverFixedExtentList(
-            delegate: SliverChildListDelegate(songList.asMap().keys.map((index) {
-              var tile = ListTile(
-                leading: getSeq(index),
-                title: Text(songList[index]?.name??"", overflow: TextOverflow.ellipsis, maxLines: 1,
-                    style: TextStyle(fontSize: 16.0,decoration: TextDecoration.none)),
-                subtitle: Row(
-                  children: <Widget>[
-                    Text(album?.artistName??"", overflow: TextOverflow.ellipsis, maxLines: 1,
-                        style: TextStyle(fontSize: 14.0,color:Colors.grey,fontStyle: FontStyle.normal,decoration: TextDecoration.none)),
-                    Expanded(
-                      child: Text(" - "+album?.name??"", overflow: TextOverflow.ellipsis, maxLines: 1,
-                          style: TextStyle(fontSize: 14.0,color:Colors.grey,fontStyle: FontStyle.normal,decoration: TextDecoration.none)),
-                    )
-                  ],
+            SliverToBoxAdapter(
+              child: new Container(
+                padding: EdgeInsets.only(top: 5, bottom: 0),
+                child: CycleListHeader(
+                  onTap: playOnTap,
+                  count: songList.length,
                 ),
-                trailing: Icon(Icons.more_vert),
-              );
-              return GestureDetector(
-                child: tile,
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => MusicPlayer(songList[index])
-                  ));
-                },
-              );
-            }).toList()),
-            itemExtent: 70.0,
-          ),
+                color: detailPageBGColor,
+              ),
+            ),
+            SliverFixedExtentList(
+              delegate: SliverChildListDelegate(songList.asMap().keys.map((index) {
+                var tile = ListTile(
+                  leading: getSeq(index),
+                  title: Text(songList[index]?.name??"", overflow: TextOverflow.ellipsis, maxLines: 1,
+                      style: TextStyle(fontSize: 16.0,decoration: TextDecoration.none)),
+                  subtitle: Row(
+                    children: <Widget>[
+                      Text(album?.artistName??"", overflow: TextOverflow.ellipsis, maxLines: 1,
+                          style: TextStyle(fontSize: 14.0,color:Colors.grey,fontStyle: FontStyle.normal,decoration: TextDecoration.none)),
+                      Expanded(
+                        child: Text(" - "+album?.name??"", overflow: TextOverflow.ellipsis, maxLines: 1,
+                            style: TextStyle(fontSize: 14.0,color:Colors.grey,fontStyle: FontStyle.normal,decoration: TextDecoration.none)),
+                      )
+                    ],
+                  ),
+                  trailing: Icon(Icons.more_vert),
+                );
+                return GestureDetector(
+                  child: tile,
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => MusicPlayer(songList[index])
+                    ));
+                  },
+                );
+              }).toList()),
+              itemExtent: 70.0,
+            ),
 
-        ],
+          ],
+        ),
       ),
     );
   }

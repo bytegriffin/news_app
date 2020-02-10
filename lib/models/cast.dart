@@ -16,9 +16,6 @@ class Cast{
   List<String> photos;//照片
   List<RelatedMovie> relatedMovieList;//影人参与的影片
 
-  Cast(this.id,this.avatar,this.name,this.enName,this.gender,this.professions,this.birthday,
-      this.bornPlace,this.constellation,this.summary,this.photos,this.relatedMovieList);
-
   Cast.fromJson(Map<String, dynamic> json){
     this.avatar = json['avatars']==null ? defaultCastImage :json['avatars']['small'];
     this.id = json['id'].toString()??"";

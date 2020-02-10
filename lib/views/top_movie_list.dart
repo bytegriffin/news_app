@@ -5,6 +5,7 @@ import '../util/image_util.dart';
 import 'movie_detail.dart';
 import '../net/httpclient.dart';
 import '../util/color_util.dart';
+import '../components/over_scroll_behavior.dart';
 
 class TopMovieListPage extends StatefulWidget {
   final String title;
@@ -51,38 +52,41 @@ class _TopMovieListPageState extends State<TopMovieListPage>{
     return Container(
       color: getTopListBGColor(context),
       //height: 400,
-      child: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            actions: <Widget>[
-            ],
-            backgroundColor: Theme.of(context).primaryColor,
-            expandedHeight: 180.0,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text(widget?.title),
-              background: Image.asset(widget.backgroundImage, fit:BoxFit.cover,),
+      child: ScrollConfiguration(
+        behavior: OverScrollBehavior(),
+        child: CustomScrollView(
+          slivers: <Widget>[
+            SliverAppBar(
+              actions: <Widget>[
+              ],
+              backgroundColor: Theme.of(context).primaryColor,
+              expandedHeight: 180.0,
+              flexibleSpace: FlexibleSpaceBar(
+                title: Text(widget?.title),
+                background: Image.asset(widget.backgroundImage, fit:BoxFit.cover,),
+              ),
+              pinned: true,
+              floating: false,
+              snap: false,
             ),
-            pinned: true,
-            floating: false,
-            snap: false,
-          ),
-          SliverFixedExtentList(
-            delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index){
-                return GestureDetector(
-                  child: getItem(movieList[index], index + 1),
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => MovieDetailPage(movieList[index].id)
-                    ));
-                  },
-                );
-              },
-              childCount: size
-            ),
-            itemExtent: 160.0,
-          )
-        ],
+            SliverFixedExtentList(
+              delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index){
+                  return GestureDetector(
+                    child: getItem(movieList[index], index + 1),
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => MovieDetailPage(movieList[index].id)
+                      ));
+                    },
+                  );
+                },
+                childCount: size
+              ),
+              itemExtent: 160.0,
+            )
+          ],
+        ),
       ),
     );
   }
@@ -107,7 +111,7 @@ class _TopMovieListPageState extends State<TopMovieListPage>{
       return Stack(
         alignment: Alignment.center,
         children: <Widget>[
-          Icon(Icons.bookmark,color: rankIconColor,size: 50,),
+          Icon(Icons.bookmark,color: rankIconColor,size: 40,),
           Text(
             index.toString(),
             style: TextStyle(
@@ -124,10 +128,13 @@ class _TopMovieListPageState extends State<TopMovieListPage>{
 
   Widget getItem(SearchMovie movie, int index) {
     var row = Container(
-      margin: EdgeInsets.all(4.0),
+      padding: EdgeInsets.all(2.0),
       child: Row(
         children: <Widget>[
-          _displayCurrentRank(index),
+          Container(
+            width: 40,
+              child: _displayCurrentRank(index)
+          ),
           ClipRRect(
             borderRadius: BorderRadius.circular(4.0),
             child: getCachedImage(movie?.image),

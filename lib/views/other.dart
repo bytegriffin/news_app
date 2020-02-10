@@ -3,6 +3,7 @@ import 'book_index.dart';
 import 'movie_index.dart';
 import 'music_index.dart';
 import '../util/color_util.dart';
+import '../components/over_scroll_behavior.dart';
 
 class OtherPage extends StatelessWidget {
 
@@ -45,12 +46,15 @@ class OtherPage extends StatelessWidget {
           ],
           //controller: _tabController,
         ),
-        body: new TabBarView(
-          children: <Widget>[
-            new Center(child: BookIndexPage()),
-            new Center(child: MovieIndexPage()),
-            new Center(child: MusicIndexPage()),
-          ],
+        body: ScrollConfiguration(
+          behavior: OverScrollBehavior(),
+          child: new TabBarView(
+            children: <Widget>[
+              new Center(child: BookIndexPage()),
+              new Center(child: MovieIndexPage()),
+              new Center(child: MusicIndexPage()),
+            ],
+          ),
         ),
       ),
     );

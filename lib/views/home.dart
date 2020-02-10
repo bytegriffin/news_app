@@ -11,6 +11,7 @@ import 'game_news_list.dart';
 import 'ent_news_list.dart';
 import 'fashion_news_list.dart';
 import '../util/color_util.dart';
+import '../components/over_scroll_behavior.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -60,20 +61,23 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           labelStyle: TextStyle(fontSize: 16.0),
           tabs: tabs,
         ),
-        body: new TabBarView(
-          children: <Widget>[
-            new Center(child: RecNewsListPage()),
-            new Center(child: GNNewsListPage()),
-            new Center(child: GJNewsListPage()),
-            new Center(child: TechNewsListPage()),
-            new Center(child: FinanceNewsListPage()),
-            new Center(child: HistoryNewsListPage()),
-            new Center(child: CarNewsListPage()),
-            new Center(child: SportNewsListPage()),
-            new Center(child: GameNewsListPage()),
-            new Center(child: FashionNewsListPage()),
-            new Center(child: EntNewsListPage()),
-          ],
+        body: ScrollConfiguration(
+          behavior: OverScrollBehavior(),
+          child: new TabBarView(
+            children: <Widget>[
+              new Center(child: RecNewsListPage()),
+              new Center(child: GNNewsListPage()),
+              new Center(child: GJNewsListPage()),
+              new Center(child: TechNewsListPage()),
+              new Center(child: FinanceNewsListPage()),
+              new Center(child: HistoryNewsListPage()),
+              new Center(child: CarNewsListPage()),
+              new Center(child: SportNewsListPage()),
+              new Center(child: GameNewsListPage()),
+              new Center(child: FashionNewsListPage()),
+              new Center(child: EntNewsListPage()),
+            ],
+          ),
         ),
       ),
     );

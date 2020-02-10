@@ -18,6 +18,7 @@ import 'qtnan_artist_list.dart';
 import 'qtnv_artist_list.dart';
 import 'qtband_artist_list.dart';
 import 'rz_artist_list.dart';
+import '../components/over_scroll_behavior.dart';
 
 // 歌手页面
 class ArtistIndexPage extends StatefulWidget {
@@ -78,27 +79,30 @@ class _ArtistIndexPageState extends State<ArtistIndexPage> with TickerProviderSt
           ),
           SliverFillRemaining(
             hasScrollBody: true,
-            child: TabBarView(
-              controller: this.tabController,
-              children: <Widget>[
-                new Center(child: HotArtistListPage()),
-                new Center(child: HYNanArtistListPage()),
-                new Center(child: HYNvArtistListPage()),
-                new Center(child: HYBandArtistListPage()),
-                new Center(child: OMNanArtistListPage()),
-                new Center(child: OMNvArtistListPage()),
-                new Center(child: OMBandArtistListPage()),
-                new Center(child: RBNanArtistListPage()),
-                new Center(child: RBNvArtistListPage()),
-                new Center(child: RBBandArtistListPage()),
-                new Center(child: HGNanArtistListPage()),
-                new Center(child: HGNvArtistListPage()),
-                new Center(child: HGBandArtistListPage()),
-                new Center(child: QTNanArtistListPage()),
-                new Center(child: QTNvArtistListPage()),
-                new Center(child: QTBandArtistListPage()),
-                new Center(child: RZArtistListPage()),
-              ],
+            child: ScrollConfiguration(
+              behavior: OverScrollBehavior(),
+              child: TabBarView(
+                controller: this.tabController,
+                children: <Widget>[
+                  new Center(child: HotArtistListPage()),
+                  new Center(child: HYNanArtistListPage()),
+                  new Center(child: HYNvArtistListPage()),
+                  new Center(child: HYBandArtistListPage()),
+                  new Center(child: OMNanArtistListPage()),
+                  new Center(child: OMNvArtistListPage()),
+                  new Center(child: OMBandArtistListPage()),
+                  new Center(child: RBNanArtistListPage()),
+                  new Center(child: RBNvArtistListPage()),
+                  new Center(child: RBBandArtistListPage()),
+                  new Center(child: HGNanArtistListPage()),
+                  new Center(child: HGNvArtistListPage()),
+                  new Center(child: HGBandArtistListPage()),
+                  new Center(child: QTNanArtistListPage()),
+                  new Center(child: QTNvArtistListPage()),
+                  new Center(child: QTBandArtistListPage()),
+                  new Center(child: RZArtistListPage()),
+                ],
+              ),
             ),
           ),
         ],

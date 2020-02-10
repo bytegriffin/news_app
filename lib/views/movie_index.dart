@@ -58,6 +58,7 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
     freeMovieList.add(FreeMovie("27119724","小丑 Joker","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2567198874.webp","https://youku.haokzy-tudou.com/ppvod/4yf2LZrW.m3u8"));
     freeMovieList.add(FreeMovie("6981153","爱尔兰人","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2568902055.webp","https://youku.haokzy-tudou.com/ppvod/0p8xRuyT.m3u8"));
     freeMovieList.add(FreeMovie("26786669","决战中途岛","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2573582192.webp","https://youku.haokzy-tudou.com/ppvod/HmZTkPxP.m3u8"));
+    freeMovieList.add(FreeMovie("27010768","寄生虫","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2561439800.webp","https://youku.haokzy-tudou.com/ppvod/gsCepFJN.m3u8"));
     freeMovieList.add(FreeMovie("30394807","蜡笔小新：新婚旅行飓风之遗失的野原广志","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2549326655.webp","https://youku.haokzy-tudou.com/ppvod/G3zC6Lt5.m3u8"));
     freeMovieList.add(FreeMovie("26100958","复仇者联盟4：终局之战","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2552058346.webp","https://youku.haokzy-tudou.com/ppvod/fhAfitLK.m3u8"));
     freeMovieList.add(FreeMovie("30318116","利刃出鞘","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2574172427.webp","https://youku.haokzy-tudou.com/ppvod/mhcf32Ti.m3u8"));
@@ -66,6 +67,12 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
     freeMovieList.add(FreeMovie("27087724","好莱坞往事","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2551119672.webp","https://youku.haokzy-tudou.com/ppvod/GchvsIPV.m3u8"));
     freeMovieList.add(FreeMovie("27002635","唐顿庄园","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2575400017.webp","https://youku.haokzy-tudou.com/ppvod/8EZvxIyB.m3u8"));
     freeMovieList.add(FreeMovie("30334073","调音师","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2551995207.webp","https://youku.haokzy-tudou.com/ppvod/JkvezV4x.m3u8"));
+    freeMovieList.add(FreeMovie("27179039","朱迪 Judy","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2570099577.webp","https://youku.haokzy-tudou.com/ppvod/5EyVdBnX.m3u8"));
+    freeMovieList.add(FreeMovie("6850547","玩具总动员4","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2557284230.webp","https://youku.haokzy-tudou.com/ppvod/BapS0wUg.m3u8"));
+    freeMovieList.add(FreeMovie("10432911","流感","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2029391129.webp","https://youku.haokzy-tudou.com/ppvod/DyajjvYw.m3u8"));
+    freeMovieList.add(FreeMovie("30170546","乔乔的异想世界","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2567973073.webp","https://youku.haokzy-tudou.com/ppvod/5BhOPIxS.m3u8"));
+    freeMovieList.add(FreeMovie("30198539","痛苦与荣耀","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2554080075.webp","https://youku.haokzy-tudou.com/ppvod/GOclbi2Z.m3u8"));
+    freeMovieList.add(FreeMovie("26858510","克劳斯：圣诞节的秘密 Klaus","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2570825762.webp","https://youku.haokzy-tudou.com/ppvod/vA74tBbz.m3u8"));
   }
 
   _getMovies(){

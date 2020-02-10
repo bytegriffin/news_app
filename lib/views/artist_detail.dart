@@ -14,7 +14,9 @@ import 'mv_detail.dart';
 import '../components/sliver_appbar_delegate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../components/music_player.dart';
+import '../components/over_scroll_behavior.dart';
 
+// 歌手详情页
 class ArtistDetailPage extends StatefulWidget {
   final String id;
   ArtistDetailPage(this.id);
@@ -36,7 +38,7 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
   List<MV> artistMVs;
 
   @override
-  void initState(){
+  void initState(){print(widget.id);
     super.initState();
     tabController = TabController(length: 4, vsync: this);
     // 获取歌手热门歌曲
@@ -92,77 +94,80 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        physics: BouncingScrollPhysics(),
-        slivers: <Widget>[
-          SliverAppBar(
-            actions: <Widget>[
-              buildHomeNavButton(context)
-            ],
-            backgroundColor: detailPageBGColor,
-            expandedHeight: 240.0,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text(artist?.name??""),
-              background: getCachedImage(artist?.picUrl??defaultMusicImage),
-            ),
-            pinned: true,
-            floating: false,
-            snap: false,
-          ),
-          SliverPersistentHeader(
-            delegate: SliverAppBarDelegate(TabBar(
-              labelColor: getTabColor(context),
-              unselectedLabelColor: getUnselectedLabelColor(),
-              tabs: [
-                Tab(text: '热门歌曲'),
-                Tab(text: '专辑'),
-                Tab(text: 'MV'),
-                Tab(text: '简介'),
+      body: ScrollConfiguration(
+        behavior: OverScrollBehavior(),
+        child: CustomScrollView(
+          physics: BouncingScrollPhysics(),
+          slivers: <Widget>[
+            SliverAppBar(
+              actions: <Widget>[
+                buildHomeNavButton(context)
               ],
-              controller: tabController,
-            ))
-          ),
-          SliverFillRemaining(
-            child: TabBarView(
-              controller: this.tabController,
-              children: <Widget>[
-                ListView.builder(
-                  itemCount: hotSongs?.length??0,
-                  itemBuilder: (context,index){
-                    return getSongs(index);
-                  }
-                ),
-                ListView.builder(
-                  itemCount: hotAlbums?.length??0,
-                  itemBuilder: (context,index){
-                    return GestureDetector(
-                      child: getAlbums(index),
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(
-                            builder: (context) => AlbumDetailPage(hotAlbums[index]??null)
-                        ));
-                      },
-                    );
-                  }
-                ),
-                ListView.builder(
-                  itemCount: mvCount??0,
-                  itemBuilder: (context,index){
-                    return GestureDetector(
-                      child: getMVs(index),
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(
-                          builder: (context) => MVDetailPage(artistMVs[index].id)
-                        ));
-                      },
-                    );
-                  }
-                ),
-                getArtistDesc(),
-              ],
+              backgroundColor: detailPageBGColor,
+              expandedHeight: 240.0,
+              flexibleSpace: FlexibleSpaceBar(
+                title: Text(artist?.name??""),
+                background: getCachedImage(artist?.picUrl??defaultMusicImage),
+              ),
+              pinned: true,
+              floating: false,
+              snap: false,
             ),
-          ),
-        ],
+            SliverPersistentHeader(
+              delegate: SliverAppBarDelegate(TabBar(
+                labelColor: getTabColor(context),
+                unselectedLabelColor: getUnselectedLabelColor(),
+                tabs: [
+                  Tab(text: '热门歌曲'),
+                  Tab(text: '专辑'),
+                  Tab(text: 'MV'),
+                  Tab(text: '简介'),
+                ],
+                controller: tabController,
+              ))
+            ),
+            SliverFillRemaining(
+              child: TabBarView(
+                controller: this.tabController,
+                children: <Widget>[
+                  ListView.builder(
+                    itemCount: hotSongs?.length??0,
+                    itemBuilder: (context,index){
+                      return getSongs(index);
+                    }
+                  ),
+                  ListView.builder(
+                    itemCount: hotAlbums?.length??0,
+                    itemBuilder: (context,index){
+                      return GestureDetector(
+                        child: getAlbums(index),
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(
+                              builder: (context) => AlbumDetailPage(hotAlbums[index]??null)
+                          ));
+                        },
+                      );
+                    }
+                  ),
+                  ListView.builder(
+                    itemCount: mvCount??0,
+                    itemBuilder: (context,index){
+                      return GestureDetector(
+                        child: getMVs(index),
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => MVDetailPage(artistMVs[index].id)
+                          ));
+                        },
+                      );
+                    }
+                  ),
+                  getArtistDesc(),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
