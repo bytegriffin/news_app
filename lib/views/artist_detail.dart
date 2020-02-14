@@ -38,7 +38,7 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
   List<MV> artistMVs;
 
   @override
-  void initState(){print(widget.id);
+  void initState(){
     super.initState();
     tabController = TabController(length: 4, vsync: this);
     // 获取歌手热门歌曲
@@ -100,6 +100,12 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
           physics: BouncingScrollPhysics(),
           slivers: <Widget>[
             SliverAppBar(
+              leading:GestureDetector(
+                child: Icon(Icons.arrow_back),
+                onTap: (){
+                  Navigator.of(context).pop();
+                },
+              ),
               actions: <Widget>[
                 buildHomeNavButton(context)
               ],

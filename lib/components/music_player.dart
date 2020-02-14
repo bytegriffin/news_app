@@ -136,6 +136,12 @@ class _MusicPlayerState extends State<MusicPlayer> with SingleTickerProviderStat
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading:GestureDetector(
+          child: Icon(Icons.arrow_back),
+          onTap: (){
+            Navigator.of(context).pop();
+          },
+        ),
         title: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,

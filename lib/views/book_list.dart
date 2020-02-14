@@ -146,6 +146,12 @@ class _BookListPageState extends State<BookListPage> with AutomaticKeepAliveClie
     super.build(context);
     return Scaffold(
       appBar: AppBar(
+        leading:GestureDetector(
+          child: Icon(Icons.arrow_back),
+          onTap: (){
+            Navigator.of(context).pop();
+          },
+        ),
         title: Text(widget.title),
       ),
       body: EasyRefresh(

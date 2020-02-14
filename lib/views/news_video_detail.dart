@@ -41,6 +41,12 @@ class _NewsVideoDetailPageState extends State<NewsVideoDetailPage> {
         physics: BouncingScrollPhysics(),
         slivers: <Widget>[
           SliverAppBar(
+            leading:GestureDetector(
+              child: Icon(Icons.arrow_back),
+              onTap: (){
+                Navigator.of(context).pop();
+              },
+            ),
             actions: <Widget>[
             ],
             backgroundColor: Colors.transparent,

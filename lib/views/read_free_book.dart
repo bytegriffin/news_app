@@ -28,6 +28,12 @@ class _ReadFreeBookPageState extends State<ReadFreeBookPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          leading:GestureDetector(
+            child: Icon(Icons.arrow_back),
+            onTap: (){
+              Navigator.of(context).pop();
+            },
+          ),
           title: Text(widget.title,overflow: TextOverflow.ellipsis,
               maxLines: 1,style: TextStyle(fontWeight: FontWeight.bold,)),
         ),

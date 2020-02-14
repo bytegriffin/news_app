@@ -12,6 +12,7 @@ import '../net/http_router.dart';
 import '../models/swiper_movie.dart';
 import 'free_movie_list.dart';
 import '../models/free_movie.dart';
+import 'custom_free_movie_list.dart';
 
 // 电影首页
 class MovieIndexPage extends StatefulWidget {
@@ -42,37 +43,18 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
   List<FreeMovie> freeMovieList= List<FreeMovie>();
 
   //构建默认轮播图
-  List<SwiperMovie> swMovieList = List<SwiperMovie>.generate(2, (int index){
-    if(index == 0){
-      return SwiperMovie("经典影片",classicMovieImage,top250MovieUrl);
-    }
-    return SwiperMovie("本周口碑榜",weeklyMovieImage,weeklyMovieUrl);
-  });
+  List<SwiperMovie> swMovieList;
 
   @override
   bool get wantKeepAlive => true;
 
   _buildFreeMovies(){
+    freeMovieList.add(FreeMovie("34453138","第92届奥斯卡颁奖典礼","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2584156190.webp","https://tv1.youkutv.cc/2020/02/11/p8h7IzfECIPX1Q6l/playlist.m3u8"));
     freeMovieList.add(FreeMovie("30329892","航海王：狂热行动","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2570039912.webp","https://youku.haokzy-tudou.com/ppvod/jsFEkdYf.m3u8"));
     freeMovieList.add(FreeMovie("30252495","1917","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2570243317.webp","https://youku.haokzy-tudou.com/ppvod/k71LPzr8.m3u8"));
     freeMovieList.add(FreeMovie("27119724","小丑 Joker","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2567198874.webp","https://youku.haokzy-tudou.com/ppvod/4yf2LZrW.m3u8"));
     freeMovieList.add(FreeMovie("6981153","爱尔兰人","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2568902055.webp","https://youku.haokzy-tudou.com/ppvod/0p8xRuyT.m3u8"));
-    freeMovieList.add(FreeMovie("26786669","决战中途岛","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2573582192.webp","https://youku.haokzy-tudou.com/ppvod/HmZTkPxP.m3u8"));
     freeMovieList.add(FreeMovie("27010768","寄生虫","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2561439800.webp","https://youku.haokzy-tudou.com/ppvod/gsCepFJN.m3u8"));
-    freeMovieList.add(FreeMovie("30394807","蜡笔小新：新婚旅行飓风之遗失的野原广志","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2549326655.webp","https://youku.haokzy-tudou.com/ppvod/G3zC6Lt5.m3u8"));
-    freeMovieList.add(FreeMovie("26100958","复仇者联盟4：终局之战","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2552058346.webp","https://youku.haokzy-tudou.com/ppvod/fhAfitLK.m3u8"));
-    freeMovieList.add(FreeMovie("30318116","利刃出鞘","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2574172427.webp","https://youku.haokzy-tudou.com/ppvod/mhcf32Ti.m3u8"));
-    freeMovieList.add(FreeMovie("30327842","82年生的金智英","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2578045524.webp","https://youku.haokzy-tudou.com/ppvod/fhLte5FN.m3u8"));
-    freeMovieList.add(FreeMovie("6538866","极速车王","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2568792942.webp","https://youku.haokzy-tudou.com/ppvod/LkEdxNf9.m3u8"));
-    freeMovieList.add(FreeMovie("27087724","好莱坞往事","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2551119672.webp","https://youku.haokzy-tudou.com/ppvod/GchvsIPV.m3u8"));
-    freeMovieList.add(FreeMovie("27002635","唐顿庄园","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2575400017.webp","https://youku.haokzy-tudou.com/ppvod/8EZvxIyB.m3u8"));
-    freeMovieList.add(FreeMovie("30334073","调音师","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2551995207.webp","https://youku.haokzy-tudou.com/ppvod/JkvezV4x.m3u8"));
-    freeMovieList.add(FreeMovie("27179039","朱迪 Judy","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2570099577.webp","https://youku.haokzy-tudou.com/ppvod/5EyVdBnX.m3u8"));
-    freeMovieList.add(FreeMovie("6850547","玩具总动员4","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2557284230.webp","https://youku.haokzy-tudou.com/ppvod/BapS0wUg.m3u8"));
-    freeMovieList.add(FreeMovie("10432911","流感","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2029391129.webp","https://youku.haokzy-tudou.com/ppvod/DyajjvYw.m3u8"));
-    freeMovieList.add(FreeMovie("30170546","乔乔的异想世界","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2567973073.webp","https://youku.haokzy-tudou.com/ppvod/5BhOPIxS.m3u8"));
-    freeMovieList.add(FreeMovie("30198539","痛苦与荣耀","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2554080075.webp","https://youku.haokzy-tudou.com/ppvod/GOclbi2Z.m3u8"));
-    freeMovieList.add(FreeMovie("26858510","克劳斯：圣诞节的秘密 Klaus","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2570825762.webp","https://youku.haokzy-tudou.com/ppvod/vA74tBbz.m3u8"));
   }
 
   _getMovies(){
@@ -140,6 +122,7 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
 
   @override
   void initState(){
+    _buildSWMovieList();
     _getMovies();
     _buildFreeMovies();
     super.initState();
@@ -160,6 +143,10 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
     return hotDocList.sublist(0,6).map((item) => getMovieRowItem(context, item)).toList();
   }
 
+  List<Widget> generateDefaultFreeMovieList() {
+    return freeMovieList.sublist(0,6).map((item) => buildCustomFreeMovieRowItem(context, item)).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -170,8 +157,7 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
           _buildSwiper(),
           _buildButton(),
           buildRowMovieCard1(context,"最新电影",MovieListPage("最新电影",TopMovieType.NewMovie), generateDefaultHotMovieList()),
-          buildRowFreeMovieCard(context,"免费观影", freeMovieList),
-          Container(height: 20,),
+          buildRowMovieCard1(context,"免费观影",CustomFreeMovieListPage(), generateDefaultFreeMovieList()),
           buildRowMovieCard1(context,"热门电视剧",MovieListPage("热门电视剧",TopMovieType.TV), generateDefaultHotTvList()),
           buildRowMovieCard2(context,"热门综艺",MovieListPage("热门综艺",TopMovieType.Ent), hotEntList),
           Container(height: 20,),
@@ -185,10 +171,15 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
     );
   }
 
+
+  _buildSWMovieList(){
+    swMovieList = List<SwiperMovie>();
+    swMovieList.add(SwiperMovie("经典影片",classicMovieImage,"https://movie.douban.com/top250"));
+//    swMovieList.add(SwiperMovie("本周口碑榜",weeklyMovieImage,"https://movie.douban.com/chart"));
+    swMovieList.add(SwiperMovie("本周口碑榜",weeklyMovieImage, weeklyMovieUrl));
+  }
+
   Widget _buildSwiperImage(int index){
-    if(index == 0){
-      return Image.asset(swMovieList[index]?.image??"",fit: BoxFit.cover);
-    }
     return Stack(
       fit: StackFit.expand,
       children: <Widget>[
@@ -196,7 +187,7 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
         Positioned(
           top: 20,
           right: 30,
-          child: Text("本周口碑榜",style: TextStyle(fontWeight: FontWeight.w400, fontSize: 34.0,color: Colors.white)),
+          child: Text(swMovieList[index]?.title??"",style: TextStyle(fontWeight: FontWeight.w400, fontSize: 34.0,color: Colors.white)),
         )
 
       ],
@@ -250,7 +241,7 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
             ),
             onTap: (){
               Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => TopMovieListPage("正在热映",searchMovieImage,theatersMovieUrl)
+                  builder: (context) => TopMovieListPage("正在热映",searchMovieImage,"https://movie.douban.com/cinema/nowplaying/beijing/")
               ));
             },
           ),
@@ -263,7 +254,7 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
             ),
             onTap: (){
               Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => TopMovieListPage("即将上映",searchMovieImage,commingUpMovieUrl)
+                  builder: (context) => TopMovieListPage("即将上映",searchMovieImage,"https://movie.douban.com/cinema/nowplaying/beijing/")
               ));
             },
           ),
@@ -276,7 +267,8 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
             ),
             onTap: (){
               Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => FreeMovieListPage()
+//                  builder: (context) => FreeMovieListPage()
+                  builder: (context) => CustomFreeMovieListPage()
               ));
             },
           ),
@@ -289,7 +281,7 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
             ),
             onTap: (){
               Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => TopMovieListPage("新片榜",searchMovieImage,newMovieUrl)
+                  builder: (context) => TopMovieListPage("新片榜",searchMovieImage,"https://movie.douban.com/chart")
               ));
             },
           ),
@@ -302,6 +294,7 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
             ),
             onTap: (){
               Navigator.push(context, MaterialPageRoute(
+//                  builder: (context) => TopMovieListPage("北美票房榜",searchMovieImage,"https://movie.douban.com/chart")
                   builder: (context) => TopMovieListPage("北美票房榜",searchMovieImage,usMovieUrl)
               ));
             },

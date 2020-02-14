@@ -18,9 +18,11 @@ class SearchMovie {
   List<RelatedCast> casts; //演员
   List<RelatedCast> directors;//导演
   List<RelatedCast> writers; //编剧
+  String directorNames;// 导演名称
+  String castNames;//演员名称
   String durations;//时长
   String image;//电影图
-  String pubDates;//发布时间
+  String pubDate;//发布时间
   String type;//类型
   String language;//语言
   String country;//国家
@@ -30,6 +32,7 @@ class SearchMovie {
   String year;//上映年份
   List<Trailer>  trailers;//预告片列表
   List<String>  photos;//影片截图
+  String info;//新片榜/经典影片简介
 
   SearchMovie(this.id, this.title, this.image);
 
@@ -46,7 +49,7 @@ class SearchMovie {
     if(image.contains('img9')){
       this.image = image.replaceAll("img9", "img3");
     }
-    this.pubDates = json['pubdates'].toString().replaceAll("[", "").replaceAll("]", "");
+    this.pubDate = json['pubdates'].toString().replaceAll("[", "").replaceAll("]", "");
     this.type = json["genres"].toString().replaceAll("[", "").replaceAll("]", "");
     this.durations = json['durations'].toString().replaceAll("[", "").replaceAll("]", "");
     this.summary = json['summary'].toString().replaceAll("©豆瓣", "");

@@ -15,7 +15,7 @@ import '../views/book_detail.dart';
 import '../models/play_list.dart';
 import '../models/free_movie.dart';
 import '../views/song_playlist_detail.dart';
-import '../views/custom_movie_detail.dart';
+import '../views/custom_free_movie_detail.dart';
 import '../models/artist.dart';
 import '../views/artist_detail.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -429,7 +429,37 @@ Widget getArtistRowItem(BuildContext context,Artist artist){
   );
 }
 
-Widget buildRowFreeMovieCard(BuildContext context,String typeName, List<FreeMovie> movieList){
+Widget buildCustomFreeMovieRowItem(BuildContext context,FreeMovie movie){
+  return Container(
+    padding: EdgeInsets.only(left:5.0),
+    child: GestureDetector(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            width: 120,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(5.0),
+              child: getCachedImage(movie.image),
+            ),
+          ),
+          Container(
+            width: 120,
+            child: Text("${movie.name}",overflow: TextOverflow.ellipsis,
+                maxLines: 1,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0,)),
+          ),
+        ],
+      ),
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(
+            builder: (context) => new CustomFreeMovieDetailPage(movie)
+        ));
+      },
+    ),
+  );
+}
+
+Widget buildRowCustomFreeMovieCard(BuildContext context,String typeName, List<FreeMovie> movieList){
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
@@ -442,7 +472,7 @@ Widget buildRowFreeMovieCard(BuildContext context,String typeName, List<FreeMovi
         physics: BouncingScrollPhysics(),
         child: Row(
           children: movieList.map((m) {
-            return getFreeMovieRowItem(context, m);
+            return getCustomFreeMovieRowItem(context, m);
           }).toList(),
         ),
       ),
@@ -451,7 +481,7 @@ Widget buildRowFreeMovieCard(BuildContext context,String typeName, List<FreeMovi
 }
 
 
-Widget getFreeMovieRowItem(BuildContext context,FreeMovie movie){
+Widget getCustomFreeMovieRowItem(BuildContext context,FreeMovie movie){
   return Container(
     padding: EdgeInsets.only(left:5.0),
     child: GestureDetector(
@@ -481,7 +511,7 @@ Widget getFreeMovieRowItem(BuildContext context,FreeMovie movie){
       ),
       onTap: (){
         Navigator.push(context, MaterialPageRoute(
-            builder: (context) => CustomMovieDetailPage(movie)
+            builder: (context) => CustomFreeMovieDetailPage(movie)
         ));
       },
     ),
@@ -595,7 +625,7 @@ Widget getMovieRowItem(BuildContext context,TopMovie movie){
             ),
           ),
           Container(
-            width: 100,
+            width: 120,
             child: Text("${movie.title}",overflow: TextOverflow.ellipsis,
                 maxLines: 1,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0,)),
           ),

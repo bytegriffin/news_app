@@ -12,9 +12,12 @@ class Cast{
   String birthday;//生日
   String bornPlace;//出生地
   String constellation;//星座
+  String info;//总共简介
   String summary;//人物简介
   List<String> photos;//照片
   List<RelatedMovie> relatedMovieList;//影人参与的影片
+
+  Cast();
 
   Cast.fromJson(Map<String, dynamic> json){
     this.avatar = json['avatars']==null ? defaultCastImage :json['avatars']['small'];

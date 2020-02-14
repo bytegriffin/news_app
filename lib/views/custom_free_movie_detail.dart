@@ -10,15 +10,15 @@ import '../components/expandable_text.dart';
 import '../util/color_util.dart';
 
 //电影视频详情页面
-class CustomMovieDetailPage extends StatefulWidget {
+class CustomFreeMovieDetailPage extends StatefulWidget {
   final FreeMovie freeMovie;
-  CustomMovieDetailPage(this.freeMovie);
+  CustomFreeMovieDetailPage(this.freeMovie);
 
   @override
-  _CustomMovieDetailPageState createState() => _CustomMovieDetailPageState();
+  _CustomFreeMovieDetailPageState createState() => _CustomFreeMovieDetailPageState();
 }
 
-class _CustomMovieDetailPageState extends State<CustomMovieDetailPage>{
+class _CustomFreeMovieDetailPageState extends State<CustomFreeMovieDetailPage>{
   IjkMediaController _controller = IjkMediaController();
   String props = "";
   String summary = "";

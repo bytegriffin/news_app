@@ -3,7 +3,7 @@ import '../util/color_util.dart';
 
 // 获得详情页评分
 Widget getRatingWidget(String score, Color bgColor, Color textColor){
-  if(score == ""){
+  if(score == null || score == ""){
     score = "0.0";
   }
   return Row(

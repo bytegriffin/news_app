@@ -23,11 +23,13 @@ class _BookDetailPageState extends State<BookDetailPage> {
   String summary = "";
   String authorIntro = "";
   String catalog = "";
+  bool isBundle = false;
 
   @override
   void initState(){
     book = widget.book;
     summary = book.abstract;
+    isBundle = book.isBundle;
     super.initState();
   }
 
@@ -35,6 +37,12 @@ class _BookDetailPageState extends State<BookDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          leading:GestureDetector(
+            child: Icon(Icons.arrow_back),
+            onTap: (){
+              Navigator.of(context).pop();
+            },
+          ),
           //title: Text(book?.title??""),
           backgroundColor: detailPageBGColor,
           elevation:0,
@@ -170,7 +178,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
   }
 
   Widget _disoplayFreeReaderBtn(){
-    if(book.isBundle){
+    if(book != null && isBundle){
       return Container();
     }
     return MaterialButton(

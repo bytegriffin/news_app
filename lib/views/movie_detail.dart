@@ -189,6 +189,12 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          leading:GestureDetector(
+            child: Icon(Icons.arrow_back),
+            onTap: (){
+              Navigator.of(context).pop();
+            },
+          ),
           //title: Text(movie?.title??""),
           backgroundColor: detailPageBGColor,
           elevation:0,
@@ -717,11 +723,16 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
                           ],
                         ),
                         //titlePadding: EdgeInsets.only(bottom: 30.0,),
-                        content: SingleChildScrollView(
-                          child: ListBody(
-                            children: <Widget>[
-                              Text(props),
-                            ],
+                        content: ScrollConfiguration(
+                          behavior: OverScrollBehavior(),
+//                          height: MediaQuery.of(context).size.height,
+//                          width: 400.0,
+                          child: SingleChildScrollView(
+                            child: ListBody(
+                              children: <Widget>[
+                                Text(props),
+                              ],
+                            ),
                           ),
                         ),
                         contentPadding: EdgeInsets.all(10.0),

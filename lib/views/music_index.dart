@@ -166,7 +166,7 @@ class _MusicIndexPageState extends State<MusicIndexPage> with AutomaticKeepAlive
           Container(height: 20,),
           buildRowSongPlayListCard(context,"推荐歌单",RecSongPlayListPage(),reSongPlayList),
           Container(height: 20,),
-          buildRowFreeMovieCard(context,"推荐演唱会", freeMovieList),
+          buildRowCustomFreeMovieCard(context,"推荐演唱会", freeMovieList),
       ],
     ),
     );
