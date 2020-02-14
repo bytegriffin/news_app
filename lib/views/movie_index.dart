@@ -10,7 +10,6 @@ import 'movie_list.dart';
 import 'top_movie_list.dart';
 import '../net/http_router.dart';
 import '../models/swiper_movie.dart';
-import 'free_movie_list.dart';
 import '../models/free_movie.dart';
 import 'custom_free_movie_list.dart';
 
