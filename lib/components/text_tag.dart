@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import '../util/color_util.dart';
+import '../views/tag_book_list.dart';
+
+enum PageType {
+  Book,
+  Movie,
+}
 
 //文本标签
 class TextTags extends StatelessWidget {
 
   final List<String> list;
-  TextTags({@required this.list});
+  final PageType type;
+  TextTags({@required this.list,this.type});
 
   List<Widget> _generateList() {
-    return list.map((item) => TagItem(text: item)).toList();
+    return list.map((item) => TagItem(text: item,type: this.type)).toList();
   }
 
   @override
@@ -28,16 +35,42 @@ class TextTags extends StatelessWidget {
 
 class TagItem extends StatelessWidget {
   final String text;
-  TagItem({@required this.text});
+  final PageType type;
+  TagItem({@required this.text,this.type});
+
+  Widget _visit(PageType type, String tag){
+    if(type == PageType.Book){
+      return TagBookListPage(tag);
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Chip(
-      padding: EdgeInsets.symmetric(vertical: 0, horizontal: 5),
-      labelPadding: EdgeInsets.symmetric(vertical: 1, horizontal: 1),
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5.0)
+    if(type == null){
+      return Chip(
+        padding: EdgeInsets.symmetric(vertical: 0, horizontal: 5),
+        labelPadding: EdgeInsets.symmetric(vertical: 1, horizontal: 1),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5.0)
+        ),
+        label: Text(this.text,style: TextStyle(fontSize: 14 ,color: tagTextColor)),
+      );
+    }
+    return GestureDetector(
+      child: Chip(
+        padding: EdgeInsets.symmetric(vertical: 0, horizontal: 5),
+        labelPadding: EdgeInsets.symmetric(vertical: 1, horizontal: 1),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5.0)
+        ),
+        label: Text(this.text,style: TextStyle(fontSize: 14 ,color: tagTextColor)),
       ),
-      label: Text(this.text,style: TextStyle(fontSize: 14 ,color: tagTextColor)),
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(
+          builder: (context) => _visit(type, text)
+        ));
+      },
     );
 
 //    return Card(

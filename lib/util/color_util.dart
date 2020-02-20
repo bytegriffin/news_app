@@ -10,6 +10,9 @@ const detailPageTitleTextColor =  Colors.teal;
 // 详情页面属性文字颜色
 const detailPagePropTextColor = Colors.white;
 
+// 详情页面属性链接颜色
+const detailPagePropLinkColor = Color(0xFF7EC0EE);
+
 // 收起文字颜色
 const expanedTextColor = Colors.blueAccent;
 
@@ -66,6 +69,12 @@ getStarBGColor(BuildContext context){
 getTabColor(BuildContext context){
   return Theme.of(context).brightness == Brightness.dark? Colors.tealAccent: Colors.red;
 }
+
+// 获取tab颜色
+getDivideColor(BuildContext context){
+  return Theme.of(context).brightness == Brightness.dark? Color(0xFF808080): Color(0xFFD3D3D3);
+}
+
 
 // 获取未选中的tab颜色
 getUnselectedLabelColor(){

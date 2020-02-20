@@ -10,6 +10,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../components/single_photo_view.dart';
 import '../models/top_book.dart';
 import 'read_ebook.dart';
+import '../net/http_config.dart';
+import '../net/httpclient.dart';
+import 'package:html/parser.dart' show parse;
+import 'package:html/dom.dart' as dom;
 
 // （长篇榜/中篇榜）书籍排行榜详情页（不包括新书榜/畅销榜/推荐作品）
 class TopBookDetailPage extends StatefulWidget {
@@ -25,10 +29,35 @@ class _TopBookDetailPageState extends State<TopBookDetailPage> {
   String authorIntro = "";
   String catalog = "";
 
+  List<String> tags=List<String>.generate(0, (index){
+    return "";
+  });
+
+  _getDetail(){
+    HttpClient.get(EBOOK_DETAIL_URL+widget.topBook.eBookId, (result){
+      if(mounted){
+        setState(() {
+          dom.Document doc = parse(result.toString());
+          List<dom.Element> tagList= doc.querySelector("div.bd > ul.tags").children;
+          for(dom.Element e in tagList){
+            tags.add(e.querySelector("a > span.tag-name").text);
+          }
+          List<dom.Element> catalogList = doc.querySelector("div.bd.collapse-content > ol").children;
+          for(dom.Element e in catalogList){
+            catalog += e.text +"\n";
+          }
+        });
+      }
+    },errorCallBack: (error){
+      print(error);
+    });
+  }
+
   @override
   void initState(){
     book = widget.topBook;
     summary = book.abstract;
+    _getDetail();
     super.initState();
   }
 
@@ -49,6 +78,10 @@ class _TopBookDetailPageState extends State<TopBookDetailPage> {
               getItem(),
               getTags(),
               getSummary(),
+              Divider(height: 10.0,indent: 0.0,color: detailPageBGColor),
+//              getAuthroIntro(),
+//              Divider(height: 10.0,indent: 0.0,color: detailPageBGColor),
+              getCatalog(),
               Container(height:20.0,width:0.0)
             ],
           ),
@@ -83,7 +116,7 @@ class _TopBookDetailPageState extends State<TopBookDetailPage> {
               ),
               getRatingWidget(book?.rating??"0.0",detailPageBGColor,ratingTextColor),
               Container(
-                width: 230,
+                width: ScreenUtil().setWidth(400),
                 child: Text(
                   '作者：${book?.authors??book?.origAuthors??""}',
                   style: TextStyle(
@@ -92,15 +125,18 @@ class _TopBookDetailPageState extends State<TopBookDetailPage> {
                   ),
                 ),
               ),
-              Text(
-                "字数：${book?.wordCount??""}",
-                style: TextStyle(
-                    fontSize: 16,
-                    color: detailPagePropTextColor
+              Container(
+                width: ScreenUtil().setWidth(400),
+                child: Text(
+                  "类型：${book?.kindNames??""}",
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: detailPagePropTextColor
+                  ),
                 ),
               ),
               Text(
-                "类型：${book?.kindNames??""}",
+                "字数：${book?.wordCount??""}",
                 style: TextStyle(
                     fontSize: 16,
                     color: detailPagePropTextColor
@@ -146,7 +182,7 @@ class _TopBookDetailPageState extends State<TopBookDetailPage> {
 
   // 获取书籍标签
   Widget getTags() {
-    if(book.tags == null){
+    if(tags == null){
       return Container(height:0.0,width:0.0);
     }
     return Container(
@@ -162,7 +198,7 @@ class _TopBookDetailPageState extends State<TopBookDetailPage> {
                   color: detailPageTitleTextColor
               )
           ),
-          TextTags(list:this.book.tags),
+          TextTags(list:tags),
           Divider(height: 10.0,indent: 0.0,color: detailPageBGColor),
         ],
       ),
@@ -177,7 +213,7 @@ class _TopBookDetailPageState extends State<TopBookDetailPage> {
     var column = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(" 摘要  · · · · · ·",
+        Text(" 作品简介  · · · · · ·",
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
@@ -215,7 +251,7 @@ class _TopBookDetailPageState extends State<TopBookDetailPage> {
           )
         ),
         ExpandableText(
-          text: summary,
+          text: authorIntro,
           maxLines: 5,
           style: TextStyle(fontSize: 16,),
         )
@@ -244,7 +280,7 @@ class _TopBookDetailPageState extends State<TopBookDetailPage> {
             )
         ),
         ExpandableText(
-          text: summary,
+          text: catalog,
           maxLines: 5,
           style: TextStyle(fontSize: 16,),
         )

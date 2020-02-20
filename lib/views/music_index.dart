@@ -48,8 +48,9 @@ class _MusicIndexPageState extends State<MusicIndexPage> with AutomaticKeepAlive
   bool get wantKeepAlive => true;
 
   _buildFreeMovies(){
-    freeMovieList.add(FreeMovie("30402564","泰勒·斯威夫特：“举世盛名”巡回演唱会","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2543029684.webp","https://youku.haokzy-tudou.com/ppvod/F1hQfQI9.m3u8"));
-    freeMovieList.add(FreeMovie("34809304","周杰伦2016地表最强世界巡回演唱会","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2574680900.webp","https://youku.haokzy-tudou.com/ppvod/31fZdHqp.m3u8"));
+    freeMovieList.add(FreeMovie("30402564",PageType.Movie, "泰勒·斯威夫特：“举世盛名”巡回演唱会","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2543029684.webp","https://youku.haokzy-tudou.com/ppvod/F1hQfQI9.m3u8"));
+    freeMovieList.add(FreeMovie("34809304",PageType.Movie,"周杰伦2016地表最强世界巡回演唱会","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2574680900.webp","https://youku.haokzy-tudou.com/ppvod/31fZdHqp.m3u8"));
+    freeMovieList.add(FreeMovie("30392921",PageType.Music,"張學友：醒著做夢音樂會","https://img9.doubanio.com/view/subject/m/public/s29937715.jpg","https://youku.haokzy-tudou.com/ppvod/CCbjEXFr.m3u8"));
   }
 
   _buildArtists(){

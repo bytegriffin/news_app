@@ -209,11 +209,11 @@ class _SearchBookDetailPageState extends State<SearchBookDetailPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(" 标签  · · · · · ·",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16.0,
-                color: detailPageTitleTextColor
-              )
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16.0,
+              color: detailPageTitleTextColor
+            )
           ),
           TextTags(list:this.tags),
       ],
@@ -266,7 +266,7 @@ class _SearchBookDetailPageState extends State<SearchBookDetailPage> {
             )
         ),
         ExpandableText(
-          text: summary,
+          text: authorIntro,
           maxLines: 5,
           style: TextStyle(fontSize: 16,),
         )
@@ -295,7 +295,7 @@ class _SearchBookDetailPageState extends State<SearchBookDetailPage> {
             )
         ),
         ExpandableText(
-          text: summary,
+          text: catalog,
           maxLines: 5,
           style: TextStyle(fontSize: 16,),
         )

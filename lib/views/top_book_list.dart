@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import '../util/image_util.dart';
 import '../models/top_book.dart';
-import 'search_book_detail.dart';
 import '../net/httpclient.dart';
-import '../views/top_book_detail.dart';
+import '../models/book.dart';
+import '../views/book_detail.dart';
 import '../util/color_util.dart';
 import '../components/over_scroll_behavior.dart';
+import 'bundle_book_detail.dart';
 
 //图书榜单列表
 class TopBookListPage extends StatefulWidget {
@@ -153,11 +154,16 @@ class _TopBookListPageState extends State<TopBookListPage> with AutomaticKeepAli
     );
   }
 
-  Widget _visitBookDetail(TopBook book){
-    if(book.isOrigin){
-      return TopBookDetailPage(book);
+  Widget _visitBookDetail(TopBook topBook){
+    Book book = Book(topBook.eBookId, topBook.title, topBook.image, topBook.authors, topBook.isBundle );
+    if(topBook.isBundle){
+      return BundleBookDetailPage(book);
     }
-    return SearchBookDetailPage(book?.searchId);
+    return BookDetailPage(book);
+//    if(book.isOrigin){
+//      return TopBookDetailPage(book);
+//    }
+//    return SearchBookDetailPage(book?.searchId);
   }
 
 }

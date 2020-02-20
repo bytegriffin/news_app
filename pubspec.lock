@@ -260,7 +260,7 @@ packages:
       name: photo_view
       url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
     source: hosted
-    version: "0.9.1"
+    version: "0.9.2"
   platform:
     dependency: transitive
     description:
@@ -275,6 +275,13 @@ packages:
       url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
     source: hosted
     version: "2.0.5"
+  share:
+    dependency: "direct main"
+    description:
+      name: share
+      url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
+    source: hosted
+    version: "0.6.3+5"
   shared_preferences:
     dependency: transitive
     description:
@@ -398,7 +405,7 @@ packages:
       name: webview_flutter
       url: "https://dart-pub.mirrors.sjtug.sjtu.edu.cn/"
     source: hosted
-    version: "0.3.19+5"
+    version: "0.3.19+7"
   xml:
     dependency: transitive
     description:

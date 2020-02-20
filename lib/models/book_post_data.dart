@@ -8,7 +8,9 @@ enum BookType {
   JiaoYuKaoShi,
   ManHuaHuiBen,
   YiShuSheJi,
-  ReMenYingWen
+  XiaoShuo,
+  ReMenYingWen,
+  MianFei
 }
 
 class BookPostData{
@@ -33,12 +35,81 @@ Map<String,dynamic> getBookPostJsonData(BookType type,int pageNum){
       return JYKSBookPostData(pageNum).toJson();
     case BookType.ManHuaHuiBen:
       return MHHBBookPostData(pageNum).toJson();
+    case BookType.XiaoShuo:
+      return XSBookPostData(pageNum).toJson();
     case BookType.YiShuSheJi:
       return YSSJBookPostData(pageNum).toJson();
     case BookType.ReMenYingWen:
       return RMYWBookPostData(pageNum).toJson();
+    case BookType.MianFei:
+      return MFBookPostData(pageNum).toJson();
     default:
       return null;
+  }
+}
+
+Map<String,dynamic> getTagBookPostJsonData(String tag,int pageNum){
+  return TagBookPostData(tag, pageNum).toJson();
+}
+
+// 标签图书
+class TagBookPostData extends BookPostData{
+  int page;
+  String tag;
+  BookType bookType = BookType.WenXue;
+  TagBookPostData(this.tag, this.page);
+
+  Map<String, dynamic> toJson() {
+    return {
+      "tags": [tag],
+      "sort": "hot",
+      "page": page,
+      "rootKind": "",
+      "query": query,
+      "variables": {},
+    };
+  }
+}
+
+Map<String,dynamic> getAuthorBookPostJsonData(String q,int pageNum){
+  return AuthorBookPostData(q, pageNum).toJson();
+}
+
+// 作者图书
+class AuthorBookPostData extends BookPostData{
+  int page;
+  String q;
+  BookType bookType = BookType.WenXue;
+  AuthorBookPostData(this.q, this.page);
+
+  Map<String, dynamic> toJson() {
+    return {
+      "q": q,
+      "sort": "default",
+      "page": page,
+      "rootKind": "",
+      "query": query,
+      "variables": {},
+    };
+  }
+}
+
+// 免费
+class MFBookPostData extends BookPostData{
+  int page;
+  BookType bookType = BookType.WenXue;
+  MFBookPostData(this.page);
+
+  Map<String, dynamic> toJson() {
+    return {
+      "sort": "new",
+      "minPrice": 0,
+      "maxPrice": 0,
+      "page": page,
+      "kind": 1,
+      "query": query,
+      "variables": {},
+    };
   }
 }
 // 文学
@@ -135,6 +206,23 @@ class MHHBBookPostData extends BookPostData{
       "sort": "new",
       "page": page,
       "kind": 110,
+      "query": query,
+      "variables": {},
+    };
+  }
+}
+
+// 小说
+class XSBookPostData extends BookPostData{
+  int page;
+  BookType bookType = BookType.WenXue;
+  XSBookPostData(this.page);
+
+  Map<String, dynamic> toJson() {
+    return {
+      "sort": "new",
+      "page": page,
+      "kind": 100,
       "query": query,
       "variables": {},
     };

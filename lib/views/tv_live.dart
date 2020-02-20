@@ -147,6 +147,7 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
       _buildButton("CCTV3",CCTV3_HD),
       _buildButton("CCTV4",CCTV4_HD),
       _buildButton("CCTV5",CCTV5_HD),
+      _buildButton("CCTV5+",CCTV5p_HD),
       _buildButton("CCTV6",CCTV6_HD),
       _buildButton("CCTV7",CCTV7_HD),
       _buildButton("CCTV8",CCTV8_HD),
@@ -162,7 +163,7 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
       _buildButton("中国教育4",CETV4),
       _buildButton("第一剧场",DYJC),
       _buildButton("留学世界",LXSJ),
-      _buildButton("CGTN",CGTN),
+//      _buildButton("CGTN",CGTN),
       _buildButton("CGTN-法语",CGTNFY),
       _buildButton("CGTN-西语",CGTNXY),
       _buildButton("CGTN-阿语",CGTNAY),
@@ -352,9 +353,10 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
       _buildButton("东森新闻", DSXW),
       _buildButton("澳门莲花", AMLH),
       _buildButton("澳门卫视", AMWS),
+      _buildButton("澳视葡文", ASPW),
       _buildButton("互动新闻", HDXW),
       _buildButton("唯心頻道", WXPD),
-      _buildButton("TVB翡翠台", FCT),
+//      _buildButton("TVB翡翠台", FCT),
       _buildButton("有线新闻", YXXW),
       _buildButton("博斯魅力", BSML),
       _buildButton("澳门1台", AM1),
@@ -420,7 +422,7 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
       _buildButton("VOA",VOA),
       _buildButton("VOTV",VOTV),
       _buildButton("France",FRANCE),
-      _buildButton("MTV Love",MTVLove),
+      _buildButton("MTV Now",MTVLove),
       _buildButton("CGNTV",CGNTV),
       _buildButton("CNEX",CNEX),
       _buildButton("MBC",MBC),
@@ -446,13 +448,14 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
   }
 
   Widget _buildIjkPlayer() {
+    IjkPlayer player = IjkPlayer(
+      mediaController: _controller,
+    );
     return Card(
       margin: EdgeInsets.only(left: 5,right: 5,top: 0,bottom: 0),
       child: Container(
         height: 230,
-        child: IjkPlayer(
-          mediaController: _controller,
-        ),
+        child: player,
       )
     );
   }

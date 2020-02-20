@@ -17,6 +17,16 @@ class SinglePhotoView extends StatelessWidget{
   final dynamic maxScale;
   final String heroTag;
 
+//  @override
+//  void initState() {
+//    super.initState();
+//    var permission =  PermissionHandler().checkPermissionStatus(PermissionGroup.storage);
+//    print("permission status is " + permission.toString());
+//    PermissionHandler().requestPermissions(<PermissionGroup>[
+//      PermissionGroup.storage, // 在这里添加需要的权限
+//    ]);
+//  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +35,7 @@ class SinglePhotoView extends StatelessWidget{
           height: MediaQuery.of(context).size.height,
         ),
         child: Stack(
+          alignment: Alignment.bottomCenter,
           children: <Widget>[
             Positioned(
               top: 0,
@@ -50,7 +61,16 @@ class SinglePhotoView extends StatelessWidget{
                   Navigator.of(context).pop();
                 },
               ),
-            )
+            ),
+//            Container(
+//              child: FlatButton(
+//                child: Text("保存",style: TextStyle(color: Colors.white)),
+//                onPressed: (){
+//                  _testSaveImg();
+//                },
+//              ),
+//              color: Colors.red,
+//            ),
           ],
         ),
       ),

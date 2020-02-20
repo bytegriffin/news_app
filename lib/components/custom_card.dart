@@ -19,6 +19,10 @@ import '../views/custom_free_movie_detail.dart';
 import '../models/artist.dart';
 import '../views/artist_detail.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../models/top_book.dart';
+import '../views/top_book_list.dart';
+import '../net/http_config.dart';
+import '../views/bundle_book_detail.dart';
 
 Widget getBoxCard(Widget widget) {
   var con = Container(
@@ -408,7 +412,7 @@ Widget getArtistRowItem(BuildContext context,Artist artist){
         children: <Widget>[
           CircleAvatar(
               radius: 40.0,
-              backgroundImage: NetworkImage(artist.picUrl??defaultMusicImage)
+              backgroundImage: NetworkImage(artist?.picUrl??defaultMusicImage)
           ),
           Container(
             child: Text("${artist.name}",overflow: TextOverflow.ellipsis,
@@ -522,14 +526,14 @@ Widget getCustomFreeMovieRowItem(BuildContext context,FreeMovie movie){
 Widget buildRowMovieCard1(BuildContext context,String typeName,Widget page, List<Widget> movieList){
   return Column(
     crossAxisAlignment: CrossAxisAlignment.center,
+    mainAxisAlignment: MainAxisAlignment.center,
     children: <Widget>[
-      Container(
-        margin: EdgeInsets.all(5),
+      Center(
+        //padding: EdgeInsets.only(top:5.0,left: 5.0,bottom: 10.0,right: 5.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Text(" $typeName",style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0,)),
+            Text("  $typeName",style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0,)),
             GestureDetector(
               child: Row(
                 children: <Widget>[
@@ -542,7 +546,7 @@ Widget buildRowMovieCard1(BuildContext context,String typeName,Widget page, List
                     builder: (context) => page
                 ));
               },
-            ),
+            )
           ],
         ),
       ),
@@ -550,18 +554,18 @@ Widget buildRowMovieCard1(BuildContext context,String typeName,Widget page, List
         primary: false,
         shrinkWrap:true,
         //水平子Widget之间间距
-        crossAxisSpacing:1.0,
+        crossAxisSpacing:3.0,
         //垂直子Widget之间间距
         mainAxisSpacing: 2.0,
         //GridView内边距
-        padding: EdgeInsets.all(1.0),
+        padding: EdgeInsets.all(5.0),
         //一行的Widget数量
         crossAxisCount: 3,
         //子Widget宽高比例
         childAspectRatio: 3 / 5,
         //子Widget列表
         children: movieList,
-      )
+      ),
     ],
   );
 }
@@ -595,14 +599,13 @@ Widget buildRowMovieCard2(BuildContext context,String typeName,Widget page, List
       SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         physics: BouncingScrollPhysics(),
-        child: Row(
+        child:Row(
           children: <Widget>[
-            getMovieRowItem(context,movieList[0]),
-            getMovieRowItem(context,movieList[1]),
-            getMovieRowItem(context,movieList[2]),
-            getMovieRowItem(context,movieList[3]),
-            getMovieRowItem(context,movieList[4]),
-            getMovieRowItem(context,movieList[5]),
+            Container(width: 5,),
+            Row(
+              children: movieList.map((movie) => getMovieRowItem2(context, movie)).toList(),
+            ),
+            Container(width: 5,),
           ],
         ),
       ),
@@ -610,9 +613,9 @@ Widget buildRowMovieCard2(BuildContext context,String typeName,Widget page, List
   );
 }
 
-Widget getMovieRowItem(BuildContext context,TopMovie movie){
-  return Container(
-    padding: EdgeInsets.only(left:5.0),
+Widget getMovieRowItem2(BuildContext context,TopMovie movie){
+  return Padding(
+    padding: EdgeInsets.symmetric(horizontal:5.0),
     child: GestureDetector(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -630,6 +633,41 @@ Widget getMovieRowItem(BuildContext context,TopMovie movie){
                 maxLines: 1,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0,)),
           ),
           Container(
+            width: 120,
+            child: getMovieRatingWidget(movie?.rate??"0.0", getTopListBGColor(context)),
+          )
+        ],
+      ),
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(
+            builder: (context) => new MovieDetailPage(movie.id)
+        ));
+      },
+    ),
+  );
+}
+
+Widget getMovieRowItem(BuildContext context,TopMovie movie){
+  return Center(
+    //padding: EdgeInsets.only(left:5.0),
+    child: GestureDetector(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            width: 120,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(5.0),
+              child: getCachedImage(movie.image),
+            ),
+          ),
+          Container(
+            width: 120,
+            child: Text("${movie.title}",overflow: TextOverflow.ellipsis,
+                maxLines: 1,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0,)),
+          ),
+          Container(
+            width: 120,
             child: getMovieRatingWidget(movie?.rate??"0.0", getTopListBGColor(context)),
           )
         ],
@@ -753,7 +791,7 @@ Widget buildRowBookCard1(BuildContext context,String typeName,Widget page, List<
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
       Padding(
-        padding: EdgeInsets.only(top:5.0,left: 5.0,bottom: 0.0,right: 5.0),
+        padding: EdgeInsets.only(top:5.0,left: 5.0,bottom: 10.0,right: 5.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -782,7 +820,7 @@ Widget buildRowBookCard1(BuildContext context,String typeName,Widget page, List<
         //垂直子Widget之间间距
         mainAxisSpacing: 2.0,
         //GridView内边距
-        padding: EdgeInsets.all(1.0),
+        padding: EdgeInsets.all(5.0),
         //一行的Widget数量
         crossAxisCount: 3,
         //子Widget宽高比例
@@ -794,12 +832,13 @@ Widget buildRowBookCard1(BuildContext context,String typeName,Widget page, List<
   );
 }
 
+
 Widget buildRowBookCard2(BuildContext context,String typeName,Widget page, List<Book> bookList){
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
       Padding(
-        padding: EdgeInsets.only(top:5.0,left: 5.0,bottom: 5.0,right: 5.0),
+        padding: EdgeInsets.only(top:5.0,left: 5.0,bottom: 10.0,right: 5.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -825,22 +864,25 @@ Widget buildRowBookCard2(BuildContext context,String typeName,Widget page, List<
         physics: BouncingScrollPhysics(),
         child: Row(
           children: <Widget>[
-            getBookRowItem(context,bookList[0]),
-            getBookRowItem(context,bookList[1]),
-            getBookRowItem(context,bookList[2]),
-            getBookRowItem(context,bookList[3]),
-            getBookRowItem(context,bookList[4]),
-            getBookRowItem(context,bookList[5]),
+            Container(width: 5,),
+            Row(
+              children: bookList.map((book) => getBookRowItem2(context, book)).toList(),
+            ),
+            Container(width: 5,),
           ],
-        ),
+        )
       ),
     ],
   );
 }
 
-Widget getBookRowItem(BuildContext context,Book book){
+Widget getBookRowItem2(BuildContext context,Book book){
+  Widget goPage = BookDetailPage(book);
+  if(book.isBundle){
+    goPage = BundleBookDetailPage(book);
+  }
   return Container(
-    padding: EdgeInsets.only(left:10.0),
+    padding: EdgeInsets.symmetric(horizontal:5.0),
     child: GestureDetector(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -849,7 +891,7 @@ Widget getBookRowItem(BuildContext context,Book book){
             width: 120,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(5.0),
-              child: getCachedImage(book.cover),
+              child: getCachedImage(book?.cover??defaultBookImage),
             ),
           ),
           Container(
@@ -866,7 +908,45 @@ Widget getBookRowItem(BuildContext context,Book book){
       ),
       onTap: (){
         Navigator.push(context, MaterialPageRoute(
-           builder: (context) => new BookDetailPage(book)
+            builder: (context) => goPage
+        ));
+      },
+    ),
+  );
+}
+
+Widget getBookRowItem(BuildContext context,Book book){
+  Widget goPage = BookDetailPage(book);
+  if(book.isBundle){
+    goPage = BundleBookDetailPage(book);
+  }
+  return Center(
+    child: GestureDetector(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            width: 120,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(5.0),
+              child: getCachedImage(book?.cover??defaultBookImage),
+            ),
+          ),
+          Container(
+            width: 120,
+            child: Text("${book.title}",overflow: TextOverflow.ellipsis,
+                maxLines: 1,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0,)),
+          ),
+          Container(
+            width: 120,
+            child: Text("${book.authors??book.origAuthors}",overflow: TextOverflow.ellipsis,
+                maxLines:1,style: TextStyle(fontWeight: FontWeight.normal, fontSize: 13.0,)),
+          )
+        ],
+      ),
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(
+           builder: (context) => goPage
         ));
       },
     ),
@@ -964,6 +1044,183 @@ Widget _buildBookRowItem(BuildContext context,Book book){
     onTap: (){
       Navigator.push(context, MaterialPageRoute(
         builder: (context) => BookDetailPage(book)
+      ));
+    },
+  );
+}
+
+Widget buildRowBookCard4(BuildContext context,String typeName, List<Widget> bookList){
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: <Widget>[
+      Padding(
+        padding: EdgeInsets.only(top:5.0,left: 5.0,bottom: 10.0,right: 5.0),
+        child: Text("  $typeName",style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0,)),
+      ),
+      GridView.count(
+        primary: false,
+        shrinkWrap:true,
+        //水平子Widget之间间距
+        crossAxisSpacing:3.0,
+        //垂直子Widget之间间距
+        mainAxisSpacing: 2.0,
+        //GridView内边距
+        padding: EdgeInsets.all(5.0),
+        //一行的Widget数量
+        crossAxisCount: 3,
+        //子Widget宽高比例
+        childAspectRatio: 3 / 5,
+        //子Widget列表
+        children: bookList,
+      ),
+    ],
+  );
+}
+
+Widget buildScrollRow(List<Widget> widgets){
+  return SingleChildScrollView(
+    scrollDirection: Axis.horizontal,
+    physics: BouncingScrollPhysics(),
+    child: Row(
+      children: widgets,
+    )
+  );
+}
+
+Widget buildTopWidget(BuildContext context, String topic, List<TopBook> bookList){
+  List<Color> colorList = [Color(0xFFfbab66), Color(0xFFf7418c)];
+  String onclickUrl = TOP_WOMEN_BOOK;
+  if(topic.contains("悬疑")){
+    onclickUrl = TOP_MYSTERY_BOOK;
+    colorList = [Color(0xFFCDB38B), Color(0xFFCD6839)];
+  }else if(topic.contains("幻想")){
+    onclickUrl = TOP_SCIENCE_BOOK;
+    colorList = [Color(0xFFCD96CD), Color(0xFF9B30FF)];
+  }
+  var c = Column(
+    children: <Widget>[
+      Container(
+        height: ScreenUtil().setHeight(120),
+        alignment: Alignment.centerLeft,
+        decoration: new BoxDecoration(
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(5),topRight: Radius.circular(5)),
+          gradient: LinearGradient(
+            colors: colorList,
+            begin: Alignment.centerLeft,
+            end:Alignment.centerRight
+          ),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Container(width: 40,),
+                Text(topic,style: TextStyle(fontSize: 25,color: Colors.white,fontWeight: FontWeight.bold,),),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => TopBookListPage(topic,topSalesBookImage, onclickUrl)
+                    ));
+                  },
+                  child: Text("查看详情 >",style: TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.bold,),),
+                ),
+                Container(width:30,),
+              ],
+            )
+          ],
+        )
+      ),
+      Container(
+        padding: EdgeInsets.only(top:10),
+        height: ScreenUtil().setHeight(610),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: bookList.sublist(0, 5).map((book) => _buildListTile(context, book)).toList(),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: bookList.sublist(5, 10).map((book) => _buildListTile(context, book)).toList(),
+            )
+          ],
+        ),
+      )
+    ],
+  );
+  return SizedBox(
+    width: ScreenUtil().setWidth(650),
+    height: ScreenUtil().setHeight(750),
+    child: Card(
+      child: Container(
+        decoration: new BoxDecoration(
+         // border: Border.all(width: 1.0,color: Colors.orangeAccent),
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(5),topRight: Radius.circular(5)),
+        ),
+        child: c,
+      ),
+    ),
+  );
+}
+
+Widget _buildListTile(BuildContext context, TopBook topBook){
+  Widget text = Text(topBook.currentRank,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.yellow),);
+  if(topBook.currentRank == "1"){
+    text = Text(topBook.currentRank,style: TextStyle(fontSize: 20,color: Colors.red,fontWeight: FontWeight.bold,),);
+  } else if(topBook.currentRank == "2"){
+    text = Text(topBook.currentRank,style: TextStyle(fontSize: 20,color: Colors.orange,fontWeight: FontWeight.bold,),);
+  } else if(topBook.currentRank == "3"){
+    text = Text(topBook.currentRank,style: TextStyle(fontSize: 20,color: Colors.amber,fontWeight: FontWeight.bold,),);
+  }
+  Widget cc = Container();
+  if(topBook.currentRank == "10"){
+    cc = Container();
+  } else {
+    cc = Container(padding: EdgeInsets.only(right:10),);
+  }
+  String image = topBook.image;
+  if(image == null || image.trim() == "" ){
+    image = defaultBookImage;
+  }
+  var row = Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: <Widget>[
+      cc,
+      text,
+      Container(
+        padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+        child: Image.network(image,width: ScreenUtil().setWidth(60),),
+      ),
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+              width: ScreenUtil().setWidth(170),
+              child: Text(topBook.title,maxLines: 2,overflow: TextOverflow.ellipsis,style:
+              TextStyle(fontSize: 14,fontWeight: FontWeight.bold,))
+          ),
+          Container(
+              width: ScreenUtil().setWidth(170),
+              child: Text(topBook.authors,maxLines: 1,overflow: TextOverflow.ellipsis,style:
+                   TextStyle(fontSize: 13,fontWeight: FontWeight.normal,))
+          ),
+        ],
+      ),
+      //Container(padding: EdgeInsets.only(right:5),)
+    ],
+  );
+  return GestureDetector(
+    child: row,
+    onTap: (){
+      Navigator.push(context, MaterialPageRoute(
+          builder: (context) => BookDetailPage(Book(topBook.eBookId, topBook.title, topBook.image, topBook.authors, false ))
       ));
     },
   );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../net/httpclient.dart';
 import '../net/http_config.dart';
 import '../models/news.dart';
@@ -99,49 +100,58 @@ class _NewsVideoListPageState extends State<NewsVideoListPage> with AutomaticKee
           builder: (context) => NewsVideoDetailPage(news:datas[index])
         ));
       },
-      child: Card(
-        margin: EdgeInsets.only(left: 5,right: 5,top: 0,bottom: 0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              child: Stack(
+      child: SizedBox(
+        height: ScreenUtil().setHeight(450),
+        width: ScreenUtil.screenWidth,
+        child: Card(
+          clipBehavior: Clip.antiAlias,
+          margin: EdgeInsets.only(left: 5,right: 5,top: 0,bottom: 0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Stack(
+                fit: StackFit.loose,
+                 overflow: Overflow.visible,
                 children: <Widget>[
                   ClipRRect(
                     borderRadius: BorderRadius.circular(5.0),
-                    child: Image.network(datas[index]?.image0??"",fit: BoxFit.fill,),
+                    child: Image.network(datas[index]?.image0??"",fit: BoxFit.fill,height: ScreenUtil().setHeight(400),width: ScreenUtil.screenWidth,),
                   ),
                   Container(
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.all( 10),
                     child: Text(datas[index]?.title??"",
-                      style: TextStyle(fontSize:20,fontWeight: FontWeight.w900 ,color: Colors.white,shadows:[
-                        BoxShadow(color: Colors.black54,offset: Offset(0.1,0.1), blurRadius: 5.0)
-                      ])),
+                        style: TextStyle(fontSize:20,fontWeight: FontWeight.w900 ,color: Colors.white,shadows:[
+                          BoxShadow(color: Colors.black54,offset: Offset(0.1,0.1), blurRadius: 5.0)
+                        ])),
                   ),
                 ],
-              )
-            ),
-            Row(
-              children: <Widget>[
-                Row(
+              ),
+              Container(
+                height: ScreenUtil().setHeight(50),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    CircleAvatar(
-                      radius: 10.0,
-                      backgroundImage: NetworkImage(getAvatarPath(datas[index].source))
+                    Row(
+                      children: <Widget>[
+                        CircleAvatar(
+                          radius: 10.0,
+                          backgroundImage: NetworkImage(getAvatarPath(datas[index].source))
+                        ),
+                        Text(' ',style: TextStyle(fontSize:18),),
+                        Text(datas[index].authorName,
+                          style: TextStyle(fontSize:18),),
+                      ],
                     ),
-                    Text(' ',style: TextStyle(fontSize:18),),
-                    Text(datas[index].authorName,
+                    Text('',style: TextStyle(fontSize:18),),
+                    Text("${datas[index].playCount}次播放",
                       style: TextStyle(fontSize:18),),
                   ],
                 ),
-                Text('',style: TextStyle(fontSize:18),),
-                Text("${datas[index].playCount}次播放",
-                  style: TextStyle(fontSize:18),),
-              ],
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );

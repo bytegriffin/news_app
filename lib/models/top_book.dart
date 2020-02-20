@@ -16,6 +16,7 @@ class TopBook {
   String salesPrice;//这个价格不正确，要以searchbook中的价格为准
   bool isColumn;//false：works节点包含book子节点，也就是说可以找到book的id值，true:找不到book子节点
   bool isOrigin;//跟isColumn一起判断
+  bool isBundle;//是否是套装
   String editorHighlight;//简介，主要在列表中显示
   String abstract;//摘要，主要在详情页中展示
   int voteCount;//推荐票
@@ -25,8 +26,8 @@ class TopBook {
   TopBook.fromJson(Map<String, dynamic> json){
     this.isColumn = json['works']['isColumn'];
     this.isOrigin = json['works']['isOrigin'];
+    this.isBundle = json['works']['isBundle'];
     this.title = json['works']['title'];
-
     if(json['works']['book'] != null){
       this.searchId = json['works']['book']['url'].toString()
           .replaceAll("https://book.douban.com/subject/", "").replaceAll("/", "");
@@ -82,7 +83,7 @@ class TopBook {
       for (int i=0; i < kindList.length; i++) {
         name += kindList[i]["shortName"].toString();
         if(kindList.length - i > 1){
-          name = name + "/";
+          name = name + " | ";
         }
         kinds.add(BookKind(kindList[i]["id"],kindList[i]["shortName"]));
       }

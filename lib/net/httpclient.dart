@@ -22,6 +22,30 @@ class HttpClient {
     }
   }
 
+  //异步get图片请求
+  static void getImage(String url, Function callBack,
+      {Map<String, String> params, Function errorCallBack}) async {
+    String errorMsg = "";
+    int statusCode;
+    try {
+      Response response = await _dio.get(url, options: Options(responseType: ResponseType.bytes));
+      statusCode = response.statusCode;
+      //处理错误部分
+      if (statusCode < 0) {
+        errorMsg = "网络请求错误,状态码:" + statusCode.toString();
+        _handError(errorCallBack, errorMsg);
+        return;
+      }
+      if (callBack != null) {
+        callBack(response.data);
+      }
+    } catch (exception) {
+      print(exception);
+      //_handError(errorCallBack, exception);
+    }
+
+  }
+
 
   // 访问好看视频需要在httpheader中设置cookie值，当使用浏览器中访问YINGSHI_VIDEO_URL后查看Cookies值发现过期时间太短
   // 此时需要手工删除掉，重新请求YINGSHI_VIDEO_URL后得到一个期限为1年的cookie值，将其取出即可，

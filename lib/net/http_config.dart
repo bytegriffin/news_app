@@ -106,12 +106,27 @@ const TOP_BUNDLE_BOOK="https://read.douban.com/j/index//charts?type=bundle_sales
 const TOP_LONG_BOOK="https://read.douban.com/j/index//charts?type=most_voted_column&index=featured&verbose=1";
 // 中篇榜
 const TOP_MIDDLE_BOOK = "https://read.douban.com/j/index//charts?type=intermediate_finalized&index=featured&verbose=1";
+// 女性中篇榜
+const TOP_WOMEN_BOOK = "https://read.douban.com/j/index//charts?type=intermediate_finalized&index=womens_fiction&verbose=1";
+// 历史中篇榜
+const TOP_HISTORY_BOOK = "https://read.douban.com/j/index//charts?type=intermediate_finalized&index=historical_fiction&verbose=1";
+// 悬疑中篇榜
+const TOP_MYSTERY_BOOK = "https://read.douban.com/j/index//charts?type=intermediate_finalized&index=mystery_fiction&verbose=1";
+// 幻想中篇榜
+const TOP_SCIENCE_BOOK = "https://read.douban.com/j/index//charts?type=intermediate_finalized&index=science_fiction&verbose=1";
+// 文艺中篇榜
+const TOP_LITERARY_BOOK = "https://read.douban.com/j/index//charts?type=intermediate_finalized&index=literary_fiction&verbose=1";
+
 
 
 // 电子书地址
 const EBOOK_URL = "https://read.douban.com/reader/ebook/";
 // 获取图书
-const BOOK_URL = "https://read.douban.com/j/kind/";
+const EBOOK_LIST_URL = "https://read.douban.com/j/kind/";
+// 图书详情
+const EBOOK_DETAIL_URL = "https://read.douban.com/ebook/";
+// 套装书详情
+const BUNDLE_EBOOK_DETAIL_URL = "https://read.douban.com/bundle/";
 
 // 计算机免费书籍
 const JSJ_FREE_BOOK_LIST_URL = "https://lib-nuanxin.wqxuetang.com/v1/search/inithomedata?size=10&pn=";
@@ -138,7 +153,7 @@ const HOT_DJ_URL = "http://musicapi.leanapp.cn/dj/hot?limit=30&offset=0";
 const REC_PROGRAM_URL = "http://musicapi.leanapp.cn/program/recommend";
 
 // 新碟上架
-const NEW_ALBUM_URL = "http://musicapi.leanapp.cn/top/album?offset=0&limit=50";
+const NEW_ALBUM_URL = "http://musicapi.leanapp.cn/top/album?offset=0&limit=100";
 
 // const NEW_MUSIC = "https://music.jeeas.cn/v1/personalized/newsong?from=music";
 // 网友最新歌单
@@ -198,7 +213,7 @@ const  TOP_SONG_URL = "http://musicapi.leanapp.cn/top/list?idx=";
 // 获取歌手 mv
 const ARTIST_MV_URL = "http://musicapi.leanapp.cn/artist/mv?limit=100&id=";
 // 最新mv
-const NEW_MV_URL= "http://musicapi.leanapp.cn/mv/first?limit=50";
+const NEW_MV_URL= "http://musicapi.leanapp.cn/mv/first?limit=100";
 // 推荐mv
 const REC_MV_URL = "http://musicapi.leanapp.cn/personalized/mv";
 // 相似 mv

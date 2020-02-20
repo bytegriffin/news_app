@@ -7,7 +7,6 @@ import '../net/http_config.dart';
 import '../util/image_util.dart';
 import '../util/color_util.dart';
 import '../views/artist_detail.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 enum PlayerState { stopped, playing, paused }
 
@@ -153,53 +152,7 @@ class _MusicPlayerState extends State<MusicPlayer> with SingleTickerProviderStat
         actions: <Widget>[
           IconButton(
             onPressed: (){
-              showModalBottomSheet(
-                context: context,
-                builder: (BuildContext context) {
-                  return new Container(
-                    height: ScreenUtil().setHeight(120),
-                    margin: EdgeInsets.only(left: 10,top: 10,bottom: 10),
-                    padding: EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: <Widget>[
-                        Column(
-                          children: <Widget>[
-                            Icon(IconData(0xe644, fontFamily: 'iconfont'),color: Colors.green,size: 30,),
-                            Text("微信朋友圈")
-                          ],
-                        ),
-                        Column(
-                          children: <Widget>[
-                            Icon(IconData(0xe601, fontFamily: 'iconfont'),color: Colors.green,size: 30,),
-                            Text("微信好友")
-                          ],
-                        ),
-                        Column(
-                          children: <Widget>[
-                            Icon(IconData(0xe666, fontFamily: 'iconfont'),color: Colors.yellowAccent,size: 30,),
-                            Text("QQ空间")
-                          ],
-                        ),
-                        Column(
-                          children: <Widget>[
-                            Icon(IconData(0xe60a, fontFamily: 'iconfont'),color: Colors.blue,size: 30,),
-                            Text("QQ好友")
-                          ],
-                        ),
-                        Column(
-                          children: <Widget>[
-                            Icon(IconData(0xe600, fontFamily: 'iconfont'),color: Colors.red,size: 30,),
-                            Text("微博")
-                          ],
-                        )
-                      ],
-                    ),
-                  );
-                },
-              ).then((val) {
-                // print(val);
-              });
+              // Share.share(song.name+':'+mp3);
             },
             iconSize: 30.0,
             icon: Icon(Icons.share),

@@ -7,6 +7,8 @@ import 'package:flutter_easyrefresh/ball_pulse_footer.dart';
 import '../models/book.dart';
 import 'book_detail.dart';
 import '../models/book_post_data.dart';
+import 'bundle_book_detail.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // 图书列表
 class BookListPage extends StatefulWidget {
@@ -18,14 +20,12 @@ class BookListPage extends StatefulWidget {
   _BookListPageState createState() => _BookListPageState();
 }
 
-class _BookListPageState extends State<BookListPage> with AutomaticKeepAliveClientMixin{
-  List<Book> bookList;
+class _BookListPageState extends State<BookListPage>{
   int size = 0;
   int _pageNum = 0;
   var datas = [];
-
-  @override
-  bool get wantKeepAlive => true;
+  bool showToTopBtn = false;
+  ScrollController _controller = new ScrollController();
 
   // 下拉刷新数据
   Future<Null> _refreshData() async {
@@ -45,10 +45,10 @@ class _BookListPageState extends State<BookListPage> with AutomaticKeepAliveClie
 
   _getMoreData(bool _ifAdd){
     Map<String,dynamic> postData = getBookPostJsonData(widget.bookType,_pageNum);
-    HttpClient.postBook(BOOK_URL, postData, (result) {
+    HttpClient.postBook(EBOOK_LIST_URL, postData, (result) {
       if (mounted) {
         setState(() {
-          bookList = BookList.fromJson(result).list;
+          List<Book> bookList = BookList.fromJson(result).list;
           if (_ifAdd) {
             datas.addAll(bookList);
           } else {
@@ -68,10 +68,22 @@ class _BookListPageState extends State<BookListPage> with AutomaticKeepAliveClie
   void initState(){
     super.initState();
     _addMoreData();
+    _controller.addListener(() {
+      if (_controller.offset < 2000 && showToTopBtn) {
+        setState(() {
+          showToTopBtn = false;
+        });
+      } else if (_controller.offset >= 2000 && showToTopBtn == false) {
+        setState(() {
+          showToTopBtn = true;
+        });
+      }
+    });
   }
 
   @override
   void dispose() {
+    _controller.dispose();
     super.dispose();
   }
 
@@ -81,49 +93,49 @@ class _BookListPageState extends State<BookListPage> with AutomaticKeepAliveClie
       child: Row(
         children: <Widget>[
           Container(
-            height: 150,
+            height: ScreenUtil().setHeight(300),
             child: ClipRRect(
                 borderRadius: BorderRadius.circular(4.0),
                 child: Image.network(book.cover),
             ),
           ),
           Expanded(
-              child: Container(
-                margin: EdgeInsets.only(left: 8.0),
-                height: 150.0,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    Text(
-                      book.title,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0,
-                      ),
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
+            child: Container(
+              margin: EdgeInsets.only(left: 8.0),
+              height: ScreenUtil().setHeight(300),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Text(
+                    book.title,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
                     ),
-                    Text(
-                      '作者：${book.authors??book.origAuthors}',
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                    ),
-                    Text(
-                      book.abstract,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
-                      style: TextStyle( fontWeight: FontWeight.w600,),
-                    ),
-                    Text(
-                      "约 ${book.wordCount} | ${book.kindNames} ",
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                      textAlign: TextAlign.left,
-                    ),
-                  ],
-                ),
-              )
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                  ),
+                  Text(
+                    '作者：${book.authors??book.origAuthors}',
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
+                  Text(
+                    book.abstract,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                    style: TextStyle( fontWeight: FontWeight.w600,),
+                  ),
+                  Text(
+                    "约 ${book.wordCount} | ${book.kindNames} ",
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    textAlign: TextAlign.left,
+                  ),
+                ],
+              ),
+            )
           )
         ],
       ),
@@ -134,16 +146,25 @@ class _BookListPageState extends State<BookListPage> with AutomaticKeepAliveClie
         child: row,
       ),
       onTap: (){
-        Navigator.push(context, MaterialPageRoute(
-            builder: (context) => BookDetailPage(book)
-        ));
+        visit(book);
       },
     );
   }
 
+  visit(Book book){
+    if(book.isBundle){
+      Navigator.push(context, MaterialPageRoute(
+          builder: (context) => BundleBookDetailPage(book)
+      ));
+    }else {
+      Navigator.push(context, MaterialPageRoute(
+          builder: (context) => BookDetailPage(book)
+      ));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    super.build(context);
     return Scaffold(
       appBar: AppBar(
         leading:GestureDetector(
@@ -160,6 +181,7 @@ class _BookListPageState extends State<BookListPage> with AutomaticKeepAliveClie
         onRefresh: _refreshData,
         onLoad: _addMoreData,
         child: new ListView.separated(
+          controller: _controller,
           itemCount: size,
           physics: BouncingScrollPhysics(),
           itemBuilder: (context, index){
@@ -169,6 +191,16 @@ class _BookListPageState extends State<BookListPage> with AutomaticKeepAliveClie
             return Container();
           },
         ),
+      ),
+      floatingActionButton: !showToTopBtn ? null : FloatingActionButton(
+        child: Icon(Icons.arrow_upward),
+        onPressed: () {
+          //返回到顶部时执行动画
+          _controller.animateTo(.0,
+              duration: Duration(milliseconds: 200),
+              curve: Curves.ease
+          );
+        }
       ),
     );
   }

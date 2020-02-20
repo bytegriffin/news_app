@@ -26,15 +26,22 @@ class _CustomFreeMovieDetailPageState extends State<CustomFreeMovieDetailPage>{
   @override
   void initState(){
     super.initState();
-    HttpClient.get("https://movie.douban.com/subject/"+widget.freeMovie.id, (result){
+    String url = "https://movie.douban.com/subject/"+widget.freeMovie.id;
+    if(widget.freeMovie.pageType == PageType.Music){
+      url = "https://music.douban.com/subject/"+widget.freeMovie.id;
+    }
+    HttpClient.get(url, (result){
       if(mounted){
         setState(() {
           dom.Document doc = parse(result.toString());
-          props = doc.querySelector("#info").text;
+          props = doc.querySelector("#info").text.trim();
+          if(widget.freeMovie.pageType == PageType.Music){
+            props = props.replaceAll("\n    ", " ").replaceAll("                         ", "").replaceAll("表演者:               ", "      表演者:").replaceAll("流派:", "\n       流派:").replaceAll("    条形码", "条形码");
+          }
           if(props.contains("IMDb链接")){
             props = props.split("IMDb链接")[0];
           }
-          summary = doc.querySelector("#link-report > span").text;
+          summary = doc.querySelector("#link-report > span").text.replaceAll("\n       ", "");
         });
       }
     },errorCallBack: (error){
@@ -57,6 +64,12 @@ class _CustomFreeMovieDetailPageState extends State<CustomFreeMovieDetailPage>{
         physics: BouncingScrollPhysics(),
         slivers: <Widget>[
           SliverAppBar(
+            leading:GestureDetector(
+              child: Icon(Icons.arrow_back),
+              onTap: (){
+                Navigator.of(context).pop();
+              },
+            ),
             actions: <Widget>[
             ],
             backgroundColor: Colors.transparent,

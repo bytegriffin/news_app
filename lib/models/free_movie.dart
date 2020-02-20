@@ -1,3 +1,8 @@
+enum PageType {
+  Movie,
+  Music,
+}
+
 //免费电影
 class FreeMovie {
   String id;//id值
@@ -11,8 +16,9 @@ class FreeMovie {
   List<FreeCast> directors;//导演
   List<FreeCast> actors;//演员
   List<FreeCast> writers;//编剧
+  PageType pageType;
 
-  FreeMovie(this.id, this.name, this.image, this.playUrl);
+  FreeMovie(this.id,this.pageType, this.name, this.image, this.playUrl,);
 
   FreeMovie.fromJson(Map<String, dynamic> json){
     this.id = json['docId'];

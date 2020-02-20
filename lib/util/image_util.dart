@@ -669,6 +669,9 @@ String getAvatarPath(String source){
     case "博科园":
       imageStr = "https://tvax4.sinaimg.cn/crop.0.0.970.970.180/8413ac87ly8fdl9h4iwbdj20qy0qyx4r.jpg";
       break;
+    case "荔枝新闻":
+      imageStr = "https://tvax1.sinaimg.cn/crop.0.0.751.751.180/6b0e1e9dly8g9w55vahltj20kv0kvju6.jpg";
+      break;
     case "政知见":
       imageStr = "https://mp-video.myzaker.com/image/201905/5cecaf1b7c274f20285e3425.jpg";
       break;

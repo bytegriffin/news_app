@@ -60,10 +60,10 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
         setState(() {
           movie.id = widget.id;
           dom.Document doc = parse(result.toString());
-          movie.title = doc.querySelector("#content > h1 > span:nth-child(1)").text;
+          movie.title = doc.querySelector("#content > h1 > span").text;
           movie.year = doc.querySelector("#content > h1 > span.year").text;
           movie.image = doc.querySelector("#mainpic > a > img").attributes['src'];
-          movie.rating = doc.querySelector("#interest_sectl > div.rating_wrap.clearbox > div.rating_self.clearfix > strong").text;
+          movie.rating = doc.querySelector("#interest_sectl > div > div.rating_self > strong").text;
           //movie.type = doc.querySelector("#info > span:nth-child(12)").text;
           //movie.pubDates = doc.querySelector("#info > span:nth-child(20)").text;
           //print(doc.querySelector("#info > span:nth-child(20)").text);
@@ -71,9 +71,13 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
           if(props.contains("IMDb链接")){
             props = props.split("IMDb链接")[0];
           }
-          movie.summary = doc.querySelector("#link-report > span").text;
-          summary = movie.summary;
-          List<dom.Element> tagList= doc.querySelector("#content > div.grid-16-8.clearfix > div.aside > div.tags > div").children;
+          dom.Element se = doc.querySelector("#link-report > span");
+          if(se != null){
+            movie.summary = se.text.replaceAll("                          \n                                   ", "").replaceAll("(展开全部)", "").replaceAll("          　", "");
+            summary = "　　"+movie.summary.trim();
+          }
+
+          List<dom.Element> tagList= doc.querySelector("#content > div.grid-16-8 > div.aside > div.tags > div").children;
           for(dom.Element e in tagList){
             tags.add(e.text);
           }
@@ -213,7 +217,7 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
                       children: <Widget>[
                         getItem(),
                         getTags(),
-                        Divider(height: 10.0,indent: 0.0,color: detailPageBGColor),
+                        Container(height: 10.0,),
                         getSummary(),
                       ],
                     );
@@ -483,7 +487,7 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
        onTap: (){
          Navigator.push(context, MaterialPageRoute(
              builder: (context) => MultiPhotoView(
-               images: movie?.photos,
+               images: movie.photos.map((p) =>  p = p.replaceAll("sqxs", "m")).toList(),
                index: index,
                heroTag: index.toString(),
              )
@@ -526,8 +530,8 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
       );
       var click = GestureDetector(
         child: Container(
-          width: ScreenUtil().setWidth(260),
-          height: ScreenUtil().setHeight(260),
+          width: ScreenUtil().setWidth(420),
+          height: ScreenUtil().setHeight(350),
           margin: EdgeInsets.all(2),
           child: column,
         ),
@@ -547,10 +551,10 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Divider(height: 10.0,indent: 0.0,color: detailPageBGColor),
+          Container(height: 10.0),
           Text(
             " 喜欢这部电影的人也喜欢  · · · · · ·",
-            style: new TextStyle(fontWeight: FontWeight.bold,fontSize: 16,color: detailPageTitleTextColor),
+            style: new TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: detailPageTitleTextColor),
           ),
         ],
       );
@@ -563,10 +567,10 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Divider(height: 10.0,indent: 0.0,color: detailPageBGColor),
+          Container(height: 10.0,),
           Text(
           ' 相关照片  · · · · · · ',
-            style: new TextStyle(fontWeight: FontWeight.bold,fontSize: 16,color: detailPageTitleTextColor),
+            style: new TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: detailPageTitleTextColor),
           )
         ],
       );
@@ -600,10 +604,10 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Divider(height: 10.0,indent: 0.0,color: detailPageBGColor),
+          Container(height: 10.0,),
           Text(
             " 预告片  · · · · · ·",
-            style: new TextStyle(fontWeight: FontWeight.bold,fontSize: 16,color: detailPageTitleTextColor),
+            style: new TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: detailPageTitleTextColor),
           )
         ],
       );
@@ -617,10 +621,10 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Divider(height: 10.0,indent: 0.0,color: detailPageBGColor),
+          Container(height: 10.0,),
           Text(
             " 导演  · · · · · ·",
-            style: new TextStyle(fontWeight: FontWeight.bold,fontSize: 16,color: detailPageTitleTextColor),
+            style: new TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: detailPageTitleTextColor),
           )
         ],
       );
@@ -633,7 +637,7 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
     if (movie !=null && movie.writers != null && movie.writers.length > 0) {
       return Text(
         " 编剧  · · · · · ·",
-        style: new TextStyle(fontWeight: FontWeight.bold,fontSize: 16,color: detailPageTitleTextColor),
+        style: new TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: detailPageTitleTextColor),
       );
     }
     return  Container(height:0.0,width:0.0);
@@ -780,7 +784,7 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
         Text(" 标签  · · · · · ·",
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 16.0,
+              fontSize: 18.0,
                 color: detailPageTitleTextColor
             )
         ),
@@ -805,12 +809,12 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
         Text("摘要  · · · · · ·",
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 16.0,
+              fontSize: 18.0,
                 color: detailPageTitleTextColor
             )
         ),
           ExpandableText(
-            text: summary.trim(),
+            text: summary,
             maxLines: 5,
             style: TextStyle(fontSize: 16,),
           ),

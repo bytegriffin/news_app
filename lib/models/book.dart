@@ -3,8 +3,10 @@ import 'book_kind.dart';
 class Book {
   String id;//id值，用作查询使用
   String title;//书名
+  String subTitle;// 子书名
   String cover;//图片
   String eBookId;//ebook url
+  String bundleId;//套装书id
   bool isBundle;//是否是套装
   String salesPrice;//售价
   String authors;//作家
@@ -16,8 +18,11 @@ class Book {
   String kindNames;//类型名称
   String onSaleTime;//上架日期
   String rating;//评分
+  String pubHouse;//出版社
+  String provider;//提供方
+  String isbn;// ISBN
 
-  Book(this.title,this.cover,this.authors);
+  Book(this.id, this.title,this.cover,this.authors, this.isBundle);
 
   Book.fromJson(Map<String, dynamic> json){
     this.id = json['id'].toString();
@@ -35,7 +40,9 @@ class Book {
     }
     this.abstract = json['abstract'];
     this.wordCount = json['wordCount'].toString() + " " + json['wordCountUnit'].toString();
-    this.salesPrice = json['salesPrice'].toString();
+    if(json['salesPrice'] != null){
+      this.salesPrice = (json['salesPrice'] / 100).toString();
+    }
     List authors = json['author'];
     if(authors != null && authors.length > 0){
       String name = "";
@@ -81,7 +88,7 @@ class Book {
       for (int i=0; i < kindList.length; i++) {
         name += kindList[i]["shortName"].toString();
         if(kindList.length - i > 1){
-          name = name + " | ";
+          name = name + " / ";
         }
         kinds.add(BookKind(kindList[i]["id"],kindList[i]["shortName"]));
       }
@@ -109,4 +116,12 @@ class BookList{
     }
   }
 
+}
+
+// 首页上的动态book列表
+class TopicBooks{
+  String label;
+  List<Book> list;
+
+  TopicBooks(this.label,this.list);
 }

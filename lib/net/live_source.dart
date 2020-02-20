@@ -3,7 +3,8 @@ const CCTV1_HD = "rtmp://ivi.bupt.edu.cn:1935/livetv/cctv1";
 const CCTV2_HD = "rtmp://ivi.bupt.edu.cn:1935/livetv/cctv2";
 const CCTV3_HD = "rtmp://ivi.bupt.edu.cn:1935/livetv/cctv3";
 const CCTV4_HD = "rtmp://ivi.bupt.edu.cn:1935/livetv/cctv4";
-const CCTV5_HD = "rtmp://ivi.bupt.edu.cn:1935/livetv/cctv5phd";
+const CCTV5_HD = "rtmp://ivi.bupt.edu.cn:1935/livetv/cctv5hd";
+const CCTV5p_HD = "rtmp://ivi.bupt.edu.cn:1935/livetv/cctv5phd";
 const CCTV6_HD = "rtmp://ivi.bupt.edu.cn:1935/livetv/cctv6";
 const CCTV7_HD = "rtmp://ivi.bupt.edu.cn:1935/livetv/cctv7";
 const CCTV8_HD = "rtmp://ivi.bupt.edu.cn:1935/livetv/cctv8hd";
@@ -34,12 +35,11 @@ const CETV1 = "rtmp://ivi.bupt.edu.cn:1935/livetv/cetv1";
 const CETV3 = "rtmp://ivi.bupt.edu.cn:1935/livetv/cetv3";
 const CETV4 = "rtmp://ivi.bupt.edu.cn:1935/livetv/cetv4";
 
-const CGTN = "http://live.cgtn.com/1000/prog_index.m3u8";
+const CGTN = "https://live.cgtn.com/1000/prog_index.m3u8";
 const CGTNFY = "https://livefr.cgtn.com/1000f/prog_index.m3u8";
 const CGTNXY = "https://livees.cgtn.com/1000e/prog_index.m3u8";
 const CGTNAY = "https://livear.cgtn.com/1000a/prog_index.m3u8";
 const CGTNEY = "https://liveru.cgtn.com/1000r/prog_index.m3u8";
-
 
 
 //   以下为 卫视台  //
@@ -221,6 +221,7 @@ const DSXW = "http://192.200.120.82:8080/ZZ_dongsenxinwen/ZZ_dongsenxinwen.m3u8"
 const TVBS = "http://60.199.188.65/HLS/WG_TVBS-N/01.m3u8";
 const AMLH = "rtmp://live-rtmp.lotustv.duolaibo.cn/lotustv/5562e9e4d409d24c9600075c";
 const AMWS = "http://stream.mastvnet.com/MSTV/SD/live.m3u8";
+const ASPW = "http://61.244.22.4/ch2/ch2.live/chunklist_w1488479670.m3u8";
 const HDXW = "http://202.175.127.77/live/show/ch2/index.m3u8";
 const DSCJ = "http://pili-live-hdl.qhmywl.com:80/dsdtv/10e21c98ff74745141a386d91da24c56.m3u8";
 const DSDY = "http://pili-live-hdl.qhmywl.com:80/dsdtv/d2325cfdfd53364263d307573f78e3ce.m3u8";
