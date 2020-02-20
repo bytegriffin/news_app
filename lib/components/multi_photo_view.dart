@@ -45,7 +45,7 @@ class _MultiPhotoViewState extends State<MultiPhotoView> {
                     );
                   },
                   itemCount: widget.images.length,
-                  loadingChild: Container(),
+                  //loadingChild: Container(),
                   backgroundDecoration: null,
                   pageController: widget.controller,
                   enableRotation: true,
