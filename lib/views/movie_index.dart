@@ -48,17 +48,17 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
   bool get wantKeepAlive => true;
 
   _buildFreeMovies(){
+    freeMovieList.add(FreeMovie("30434174",PageType.Movie,"遗愿清单","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2555841251.webp","https://youku.haokzy-tudou.com/ppvod/TRNLZdzO.m3u8"));
+    freeMovieList.add(FreeMovie("30257175",PageType.Movie,"燃烧女子的肖像","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2584308261.webp","https://youku.haokzy-tudou.com/ppvod/pTP65xJL.m3u8"));
+    freeMovieList.add(FreeMovie("30241298",PageType.Movie,"南山的部长们","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2581888792.webp","https://hallo.sc2yun.com/vod/hls/1582382365084_naann0f8nn8t.m3u8"));
     freeMovieList.add(FreeMovie("34453138",PageType.Movie,"第92届奥斯卡颁奖典礼","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2584156190.webp","https://tv1.youkutv.cc/2020/02/11/p8h7IzfECIPX1Q6l/playlist.m3u8"));
     freeMovieList.add(FreeMovie("30329892",PageType.Movie,"航海王：狂热行动","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2570039912.webp","https://youku.haokzy-tudou.com/ppvod/jsFEkdYf.m3u8"));
     freeMovieList.add(FreeMovie("30252495",PageType.Movie,"1917","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2570243317.webp","https://youku.haokzy-tudou.com/ppvod/k71LPzr8.m3u8"));
-    freeMovieList.add(FreeMovie("27119724",PageType.Movie,"小丑 Joker","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2567198874.webp","https://youku.haokzy-tudou.com/ppvod/4yf2LZrW.m3u8"));
-    freeMovieList.add(FreeMovie("6981153",PageType.Movie,"爱尔兰人","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2568902055.webp","https://youku.haokzy-tudou.com/ppvod/0p8xRuyT.m3u8"));
-    freeMovieList.add(FreeMovie("27010768",PageType.Movie,"寄生虫","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2561439800.webp","https://youku.haokzy-tudou.com/ppvod/gsCepFJN.m3u8"));
   }
 
   _getMovies(){
     //最新电影
-    HttpClient.get(NEW_MOVIE_URL+"0", (result){
+    HttpClient.getMovie(NEW_MOVIE_URL+"0", (result){
       if(mounted){
         setState(() {
           this.newMovieList = TopMovieList.fromJson(result).subjects;
@@ -68,7 +68,7 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
       print(error);
     });
     //热门电视剧
-    HttpClient.get(HOT_TV_URL+"0", (result){
+    HttpClient.getMovie(HOT_TV_URL+"0", (result){
       if(mounted){
         setState(() {
           this.hotTvList = TopMovieList.fromJson(result).subjects;
@@ -78,7 +78,7 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
       print(error);
     });
     //热门综艺
-    HttpClient.get(HOT_ENT_URL+"0", (result){
+    HttpClient.getMovie(HOT_ENT_URL+"0", (result){
       if(mounted){
         setState(() {
           this.hotEntList = NewMovieList.fromJson(result).data;
@@ -88,7 +88,7 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
       print(error);
     });
     //热门动漫
-    HttpClient.get(HOT_COMIC_URL+"0", (result){
+    HttpClient.getMovie(HOT_COMIC_URL+"0", (result){
       if(mounted){
         setState(() {
           this.hotComicList = NewMovieList.fromJson(result).data;
@@ -98,7 +98,7 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
       print(error);
     });
     //热门纪录片
-    HttpClient.get(HOT_DOC_URL+"0", (result){
+    HttpClient.getMovie(HOT_DOC_URL+"0", (result){
       if(mounted){
         setState(() {
           this.hotDocList = NewMovieList.fromJson(result).data;
@@ -108,7 +108,7 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
       print(error);
     });
     //热门短片
-    HttpClient.get(HOT_SORT_URL+"0", (result){
+    HttpClient.getMovie(HOT_SORT_URL+"0", (result){
       if(mounted){
         setState(() {
           this.hotSortList = NewMovieList.fromJson(result).data;

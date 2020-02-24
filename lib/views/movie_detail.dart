@@ -73,7 +73,7 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
           }
           dom.Element se = doc.querySelector("#link-report > span");
           if(se != null){
-            movie.summary = se.text.replaceAll("                          \n                                   ", "").replaceAll("(展开全部)", "").replaceAll("          　", "");
+            movie.summary = se.text.replaceAll("                                ", "").replaceAll("(展开全部)", "");
             summary = "　　"+movie.summary.trim();
           }
 
@@ -176,7 +176,12 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
       String fullName = ele.attributes['title'];
       String cover = ele.querySelector("div").attributes['style'].replaceAll("background-image: url(", "").replaceAll(")", "");
       String id = href.split("/")[4];
-      String name = fullName.split(" ")[0];
+      String name = fullName;
+      RegExp reg = new RegExp(r"[\u4e00-\u9fa5]+");
+      Iterable<Match> matches = reg.allMatches(fullName);
+      if(matches.isNotEmpty){
+        name = fullName.split(" ")[0];
+      }
       String enName = fullName.replaceAll(name, "").trim();
       rcList.add(RelatedCast(id, cover, name, enName));
     }
@@ -328,7 +333,7 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
               ),
             ),
             SliverToBoxAdapter(
-              child: new Container(
+              child: Container(
                   padding: EdgeInsets.only(top: 5, bottom: 5),
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
@@ -336,6 +341,11 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
                       children: getWriters(),
                     ),
                   )
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: new Container(
+                 height: 20,
               ),
             ),
           ],
@@ -354,7 +364,7 @@ class _MovieDetailPageState extends State<MovieDetailPage>{
             borderRadius: BorderRadius.circular(5.0),
             child: Image.network(movie?.writers[index]?.avatar??defaultCastImage,fit: BoxFit.cover,width: 100,height: 100,)
           ),
-          Text(movie?.writers[index]?.name??"",overflow: TextOverflow.ellipsis,maxLines: 2)
+          Text(movie?.writers[index]?.name??"",overflow: TextOverflow.ellipsis,maxLines: 2),
         ],
       );
       var click = GestureDetector(

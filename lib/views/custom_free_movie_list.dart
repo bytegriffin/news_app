@@ -15,6 +15,9 @@ class _CustomFreeMovieListPageState extends State<CustomFreeMovieListPage> {
   List<FreeMovie> freeMovieList= List<FreeMovie>();
 
   _buildFreeMovies(){
+    freeMovieList.add(FreeMovie("30434174",PageType.Movie,"遗愿清单","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2555841251.webp","https://youku.haokzy-tudou.com/ppvod/TRNLZdzO.m3u8"));
+    freeMovieList.add(FreeMovie("30257175",PageType.Movie,"燃烧女子的肖像","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2584308261.webp","https://youku.haokzy-tudou.com/ppvod/pTP65xJL.m3u8"));
+    freeMovieList.add(FreeMovie("30241298",PageType.Movie,"南山的部长们","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2581888792.webp","https://hallo.sc2yun.com/vod/hls/1582382365084_naann0f8nn8t.m3u8"));
     freeMovieList.add(FreeMovie("34453138",PageType.Movie,"第92届奥斯卡颁奖典礼","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2584156190.webp","https://tv1.youkutv.cc/2020/02/11/p8h7IzfECIPX1Q6l/playlist.m3u8"));
     freeMovieList.add(FreeMovie("30329892",PageType.Movie,"航海王：狂热行动","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2570039912.webp","https://youku.haokzy-tudou.com/ppvod/jsFEkdYf.m3u8"));
     freeMovieList.add(FreeMovie("30252495",PageType.Movie,"1917","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2570243317.webp","https://youku.haokzy-tudou.com/ppvod/k71LPzr8.m3u8"));
@@ -48,17 +51,33 @@ class _CustomFreeMovieListPageState extends State<CustomFreeMovieListPage> {
     freeMovieList.add(FreeMovie("30318116",PageType.Movie,"利刃出鞘","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2574172427.webp","https://youku.haokzy-tudou.com/ppvod/mhcf32Ti.m3u8"));
     freeMovieList.add(FreeMovie("30327842",PageType.Movie,"82年生的金智英","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2578045524.webp","https://youku.haokzy-tudou.com/ppvod/fhLte5FN.m3u8"));
     freeMovieList.add(FreeMovie("27087724",PageType.Movie,"好莱坞往事","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2551119672.webp","https://youku.haokzy-tudou.com/ppvod/GchvsIPV.m3u8"));
+    freeMovieList.add(FreeMovie("26426056",PageType.Movie,"沉睡魔咒2","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2570105165.webp","https://youku.haokzy-tudou.com/ppvod/IBUkLScM.m3u8"));
     freeMovieList.add(FreeMovie("30271841",PageType.Movie,"多哥","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2575882765.webp","https://youku.haokzy-tudou.com/ppvod/2mNcpO98.m3u8"));
     freeMovieList.add(FreeMovie("27002635",PageType.Movie,"唐顿庄园","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2575400017.webp","https://youku.haokzy-tudou.com/ppvod/8EZvxIyB.m3u8"));
     freeMovieList.add(FreeMovie("30334073",PageType.Movie,"调音师","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2551995207.webp","https://youku.haokzy-tudou.com/ppvod/JkvezV4x.m3u8"));
+    freeMovieList.add(FreeMovie("30208010",PageType.Movie,"名侦探柯南：绀青之拳","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2566225091.webp","https://youku.haokzy-tudou.com/ppvod/c0T6hYQu.m3u8"));
+    freeMovieList.add(FreeMovie("27110363",PageType.Movie,"名侦探柯南：零的执行人","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2537694239.webp","https://youku.haokzy-tudou.com/ppvod/abpBRAMk.m3u8"));
+    freeMovieList.add(FreeMovie("27615467",PageType.Movie,"女大法官金斯伯格 RBG","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2511664915.webp","https://youku.haokzy-tudou.com/ppvod/JjH1BNL2.m3u8"));
+    freeMovieList.add(FreeMovie("26929010",PageType.Movie,"雪人奇缘","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2567925521.webp","https://youku.haokzy-tudou.com/ppvod/e72Z6Kpe.m3u8"));
+    freeMovieList.add(FreeMovie("30167509",PageType.Movie,"徒手攀岩","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2566598269.webp","https://youku.haokzy-tudou.com/ppvod/43XXBkxp.m3u8"));
+    freeMovieList.add(FreeMovie("30249161",PageType.Movie,"哆啦A梦：大雄的月球探险记","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2557500825.webp","https://youku.haokzy-tudou.com/ppvod/XlN8G7hv.m3u8"));
     freeMovieList.add(FreeMovie("27179039",PageType.Movie,"朱迪 Judy","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2570099577.webp","https://youku.haokzy-tudou.com/ppvod/5EyVdBnX.m3u8"));
     freeMovieList.add(FreeMovie("6850547",PageType.Movie,"玩具总动员4","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2557284230.webp","https://youku.haokzy-tudou.com/ppvod/BapS0wUg.m3u8"));
     freeMovieList.add(FreeMovie("10432911",PageType.Movie,"流感","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2029391129.webp","https://youku.haokzy-tudou.com/ppvod/DyajjvYw.m3u8"));
     freeMovieList.add(FreeMovie("30170546",PageType.Movie,"乔乔的异想世界","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2567973073.webp","https://youku.haokzy-tudou.com/ppvod/5BhOPIxS.m3u8"));
     freeMovieList.add(FreeMovie("30198539",PageType.Movie,"痛苦与荣耀","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2554080075.webp","https://youku.haokzy-tudou.com/ppvod/GOclbi2Z.m3u8"));
+    freeMovieList.add(FreeMovie("27166442",PageType.Movie,"夏目友人帐 劇場版","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2546745948.webp","https://youku.haokzy-tudou.com/ppvod/GIgblGFZ.m3u8"));
     freeMovieList.add(FreeMovie("2244426",PageType.Movie,"雷霆沙赞！","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2551249211.webp","https://youku.haokzy-tudou.com/ppvod/Htk4kCfT.m3u8"));
     freeMovieList.add(FreeMovie("1652592",PageType.Movie,"阿丽塔：战斗天使","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2544987866.webp","https://youku.haokzy-tudou.com/ppvod/KX6ti133.m3u8"));
     freeMovieList.add(FreeMovie("26835471",PageType.Movie,"大侦探皮卡丘","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2555538168.webp","https://youku.haokzy-tudou.com/ppvod/HopoKAxD.m3u8"));
+    freeMovieList.add(FreeMovie("2998270",PageType.Movie,"大侦探福尔摩斯","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p1078047854.webp","https://youku.haokzy-tudou.com/ppvod/BmE1oMQE.m3u8"));
+    freeMovieList.add(FreeMovie("4051753",PageType.Movie,"大侦探福尔摩斯2：诡影游戏","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p1327387815.webp","https://youku.haokzy-tudou.com/ppvod/Ar2WwjTN.m3u8"));
+    freeMovieList.add(FreeMovie("26419637",PageType.Movie,"误杀瞒天记","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2574266567.webp","https://youku.haokzy-tudou.com/ppvod/WoVWMsDZ.m3u8"));
+
+
+
+
+
     freeMovieList.add(FreeMovie("26636712",PageType.Movie,"蚁人2：黄蜂女现身","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2529389608.webp","https://youku.haokzy-tudou.com/ppvod/xse7Nph4.m3u8"));
     freeMovieList.add(FreeMovie("1866473",PageType.Movie,"蚁人","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2266823371.webp","https://youku.haokzy-tudou.com/ppvod/1gFBmcol.m3u8"));
     freeMovieList.add(FreeMovie("3878007",PageType.Movie,"海王","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2541280047.webp","https://youku.haokzy-tudou.com/ppvod/Uz62YShX.m3u8"));
@@ -69,10 +88,24 @@ class _CustomFreeMovieListPageState extends State<CustomFreeMovieListPage> {
     freeMovieList.add(FreeMovie("30170448",PageType.Movie,"何以为家","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2555295759.webp","https://youku.haokzy-tudou.com/ppvod/h24kLZnX.m3u8"));
     freeMovieList.add(FreeMovie("26683290",PageType.Movie,"你的名字","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2395733377.webp","https://youku.haokzy-tudou.com/ppvod/gsjypRSO.m3u8"));
     freeMovieList.add(FreeMovie("3793023",PageType.Movie,"三傻大闹宝莱坞","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p579729551.webp","https://youku.haokzy-tudou.com/ppvod/zeeJTKRn.m3u8"));
+    freeMovieList.add(FreeMovie("1294323",PageType.Movie,"第一滴血","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2485300934.webp","https://youku.haokzy-tudou.com/ppvod/uYzpl8w8.m3u8"));
+    freeMovieList.add(FreeMovie("1300361",PageType.Movie,"第一滴血2","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2485316784.webp","https://youku.haokzy-tudou.com/ppvod/Zu2fFB50.m3u8"));
+    freeMovieList.add(FreeMovie("1300399",PageType.Movie,"第一滴血3","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2243764496.webp","https://youku.haokzy-tudou.com/ppvod/zSmA1mWq.m3u8"));
+    freeMovieList.add(FreeMovie("1440855",PageType.Movie,"第一滴血4","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p456972157.webp","https://youku.haokzy-tudou.com/ppvod/X9xbmcYT.m3u8"));
+    freeMovieList.add(FreeMovie("10546436",PageType.Movie,"第一滴血5","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2564519086.webp","https://youku.haokzy-tudou.com/ppvod/OXOLjm96.m3u8"));
+    freeMovieList.add(FreeMovie("6390825",PageType.Movie,"黑豹","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2512123434.webp","https://youku.haokzy-tudou.com/ppvod/pMubZA5u.m3u8"));
+    freeMovieList.add(FreeMovie("3025375",PageType.Movie,"奇异博士","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2388501883.webp","https://youku.haokzy-tudou.com/ppvod/qXmWcwRb.m3u8"));
+    freeMovieList.add(FreeMovie("27024959",PageType.Movie,"绝杀慕尼黑","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2556883031.webp","https://youku.haokzy-tudou.com/ppvod/aXGCJbJB.m3u8"));
     freeMovieList.add(FreeMovie("6786002",PageType.Movie,"触不可及","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p1454261925.webp","https://youku.haokzy-tudou.com/ppvod/MaBFwJsX.m3u8"));
     freeMovieList.add(FreeMovie("1291561",PageType.Movie,"千与千寻","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2557573348.webp","https://youku.haokzy-tudou.com/ppvod/aoe0I6Fw.m3u8"));
     freeMovieList.add(FreeMovie("3541415",PageType.Movie,"盗梦空间","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p513344864.webp","https://cdn.letv-cdn.com/2019/04/20/KwnVRO0LUgBtvQkz/playlist.m3u8"));
     freeMovieList.add(FreeMovie("1291560",PageType.Movie,"龙猫","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2540924496.webp","https://youku.haokzy-tudou.com/ppvod/RpXNQ6ob.m3u8"));
+    freeMovieList.add(FreeMovie("1304102",PageType.Movie,"谍影重重","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1597183981.webp","https://youku.haokzy-tudou.com/ppvod/1ZumBUMX.m3u8"));
+    freeMovieList.add(FreeMovie("1308767",PageType.Movie,"谍影重重2","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p667644866.webp","https://youku.haokzy-tudou.com/ppvod/G0jaRkyY.m3u8"));
+    freeMovieList.add(FreeMovie("1578507",PageType.Movie,"谍影重重3","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p792223507.webp","https://youku.haokzy-tudou.com/ppvod/FasIG9i5.m3u8"));
+    freeMovieList.add(FreeMovie("3001077",PageType.Movie,"谍影重重4","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p1706819167.webp","https://youku.haokzy-tudou.com/ppvod/ok55yYdG.m3u8"));
+    freeMovieList.add(FreeMovie("26266072",PageType.Movie,"谍影重重5","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2379032162.webp","https://youku.haokzy-tudou.com/ppvod/iib9yYh5.m3u8"));
+    freeMovieList.add(FreeMovie("1309021",PageType.Movie,"康斯坦丁","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p907374250.webp","https://youku.haokzy-tudou.com/ppvod/us5uhmUA.m3u8"));
     freeMovieList.add(FreeMovie("1292052",PageType.Movie,"肖申克的救赎","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p480747492.webp","https://youku.haokzy-tudou.com/ppvod/wSJ3frKv.m3u8"));
     freeMovieList.add(FreeMovie("1292063",PageType.Movie,"美丽人生","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2578474613.webp","https://cdn.zypbo.com/20180826/Gwfqdx4H/index.m3u8"));
   }

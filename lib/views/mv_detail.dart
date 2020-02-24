@@ -9,7 +9,6 @@ import '../components/nav_button.dart';
 import 'package:flutter_ijkplayer/flutter_ijkplayer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 //MV详情页
 class MVDetailPage extends StatefulWidget {
   final String id;
@@ -220,6 +219,9 @@ class _MVDetailPageState extends State<MVDetailPage>{
     return GestureDetector(
       child: row,
       onTap: (){
+        if(_controller.isPlaying){
+          _controller.pause();
+        }
         Navigator.push(context, MaterialPageRoute(
             builder: (context) => MVDetailPage(mv?.id)
         ));

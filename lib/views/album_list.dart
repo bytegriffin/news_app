@@ -93,5 +93,3 @@ class _AlbumListPageState extends State<AlbumListPage> {
   }
 
 }
-
-

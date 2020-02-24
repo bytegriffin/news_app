@@ -115,7 +115,7 @@ class _CastDetailPageState extends State<CastDetailPage>{
 
   Widget _displayPhotoDivide(){
     if (photoList != null && photoList.length > 0){
-      return Divider(height: 10.0,indent: 0.0,color: detailPageBGColor);
+      return Container(height: 10.0,);
     }
     return Container();
   }
@@ -318,7 +318,7 @@ class _CastDetailPageState extends State<CastDetailPage>{
             maxLines: 5,
             style: TextStyle(fontSize: 16,),
           ),
-        Divider(height: 10.0,indent: 0.0,color: detailPageBGColor),
+        Container(height: 10.0),
       ],
     );
     return Container(

@@ -20,6 +20,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin{
   TabController controller;
+  int selectedIndex = 0;
 
   List<Tab> tabs = [
     new Tab(child:Text('推荐')),
@@ -40,6 +41,9 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     super.initState();
     // initialIndex 表示默认选中第一个
     controller = TabController(initialIndex: 0, length: tabs.length, vsync: this);
+    controller.addListener(() {
+      setState(() => selectedIndex = controller.index);
+    });
   }
 
   @override

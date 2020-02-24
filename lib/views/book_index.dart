@@ -80,7 +80,7 @@ class _BookIndexPageState extends State<BookIndexPage> with AutomaticKeepAliveCl
 
   _getBookList(){
     // 最新推荐
-    HttpClient.get("https://read.douban.com/ebooks/", (result){
+    HttpClient.getBook("https://read.douban.com/ebooks/", (result){
       if(mounted){
         setState(() {
           zxtjBookList.clear();
@@ -105,7 +105,7 @@ class _BookIndexPageState extends State<BookIndexPage> with AutomaticKeepAliveCl
       print(error);
     });
     // 女性排行榜
-    HttpClient.get(TOP_WOMEN_BOOK, (result){
+    HttpClient.getBook(TOP_WOMEN_BOOK, (result){
       if(mounted){
         setState(() {
           this.womenBookList = TopBookList.fromJson(result).list;
@@ -116,7 +116,7 @@ class _BookIndexPageState extends State<BookIndexPage> with AutomaticKeepAliveCl
     });
 
     // 悬疑排行榜
-    HttpClient.get(TOP_MYSTERY_BOOK, (result){
+    HttpClient.getBook(TOP_MYSTERY_BOOK, (result){
       if(mounted){
         setState(() {
           this.mysteryBookList = TopBookList.fromJson(result).list;
@@ -127,7 +127,7 @@ class _BookIndexPageState extends State<BookIndexPage> with AutomaticKeepAliveCl
     });
 
     // 幻想排行榜
-    HttpClient.get(TOP_SCIENCE_BOOK, (result){
+    HttpClient.getBook(TOP_SCIENCE_BOOK, (result){
       if(mounted){
         setState(() {
           this.scienceBookList = TopBookList.fromJson(result).list;
@@ -138,7 +138,7 @@ class _BookIndexPageState extends State<BookIndexPage> with AutomaticKeepAliveCl
     });
 
     // 动态图书列表
-    HttpClient.get("https://read.douban.com/j/ebooks/topics_sections", (result){
+    HttpClient.getBook("https://read.douban.com/j/ebooks/topics_sections", (result){
       setState(() {
         dom.Document doc = parse(result["html"].toString());
         List<dom.Element> sectionList = doc.getElementsByTagName("section");
@@ -292,7 +292,11 @@ class _BookIndexPageState extends State<BookIndexPage> with AutomaticKeepAliveCl
   }
 
   List<Widget> generateZXTJBookList() {
-    return zxtjBookList.sublist(0,6).map((item) => getBookRowItem(context, item)).toList();
+    int size = 6;
+    if(zxtjBookList.length < 6){
+      size = zxtjBookList.length;
+    }
+    return zxtjBookList.sublist(0,size).map((item) => getBookRowItem(context, item)).toList();
   }
 
   //构建排行榜单

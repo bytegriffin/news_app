@@ -35,7 +35,7 @@ const SUGGUEST = "https://www.baidu.com/sugrec?prod=pc_hao123&wd=";
 
 // 实时热点新闻  https://m.hao123.com/hao123_api/api/top/getBuzzTop?cate=热点&buzz=实时热点
 
-// 头条api https://www.toutiao.com/api/pc/feed/?category=__all__
+// 新闻api（备用） http://api.adline.com.cn/api/v2/article?app_id=1&cid=1&page_token=1&article_id=0&create_time=0&c=1&adline_newsdn=13F55C59
 
 // "http://c.m.163.com/nc/article/headline/T1348647853363/0-10.html";
 // 聚合新闻api http://v.juhe.cn/toutiao/index?type=top&key=3dc86b09a2ee2477a5baa80ee70fcdf5
@@ -153,7 +153,7 @@ const HOT_DJ_URL = "http://musicapi.leanapp.cn/dj/hot?limit=30&offset=0";
 const REC_PROGRAM_URL = "http://musicapi.leanapp.cn/program/recommend";
 
 // 新碟上架
-const NEW_ALBUM_URL = "http://musicapi.leanapp.cn/top/album?offset=0&limit=100";
+const NEW_ALBUM_URL = "http://musicapi.leanapp.cn/top/album?offset=0&limit=102";
 
 // const NEW_MUSIC = "https://music.jeeas.cn/v1/personalized/newsong?from=music";
 // 网友最新歌单

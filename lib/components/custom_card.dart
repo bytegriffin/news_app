@@ -415,6 +415,8 @@ Widget getArtistRowItem(BuildContext context,Artist artist){
               backgroundImage: NetworkImage(artist?.picUrl??defaultMusicImage)
           ),
           Container(
+            alignment: Alignment.center,
+            width: ScreenUtil().setWidth(120),
             child: Text("${artist.name}",overflow: TextOverflow.ellipsis,
                 maxLines: 1,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0,)),
           ),
@@ -682,6 +684,11 @@ Widget getMovieRowItem(BuildContext context,TopMovie movie){
 }
 
 Widget buildRowMovieCard3(BuildContext context,String typeName,Widget page, List<TopMovie> movieList){
+  if(movieList == null){
+    return Container();
+  }else if(movieList.length > 3){
+    movieList = movieList.sublist(0, 3);
+  }
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
@@ -707,13 +714,12 @@ Widget buildRowMovieCard3(BuildContext context,String typeName,Widget page, List
           ],
         ),
       ),
-      _buildMovieRowItem(context,movieList[0]),
-      _buildMovieRowItem(context,movieList[1]),
-      _buildMovieRowItem(context,movieList[2])
+      Column(
+        children: movieList.map((movie) => _buildMovieRowItem(context, movie)).toList(),
+      ),
     ],
   );
 }
-
 
 
 Widget _displayWidget(String title, List<String> list){
@@ -1055,7 +1061,7 @@ Widget buildRowBookCard4(BuildContext context,String typeName, List<Widget> book
     children: <Widget>[
       Padding(
         padding: EdgeInsets.only(top:5.0,left: 5.0,bottom: 10.0,right: 5.0),
-        child: Text("  $typeName",style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0,)),
+        child: Text(" $typeName",style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0,)),
       ),
       GridView.count(
         primary: false,

@@ -8,6 +8,8 @@ import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_easyrefresh/ball_pulse_header.dart';
 import 'package:flutter_easyrefresh/ball_pulse_footer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../components/star_rating.dart';
+import '../util/color_util.dart';
 
 class MovieListPage extends StatefulWidget {
   final String title;
@@ -100,20 +102,23 @@ class _MovieListPageState extends State<MovieListPage> {
         header: BallPulseHeader(),
         footer: BallPulseFooter(),
         slivers: <Widget>[
-          SliverGrid(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              crossAxisSpacing: 0.0,
-              mainAxisSpacing: 0,
-              childAspectRatio: 4 / 6,
+          SliverPadding(
+            padding: EdgeInsets.all(5),
+            sliver: SliverGrid(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                crossAxisSpacing: 1.0,
+                mainAxisSpacing: 3,
+                childAspectRatio: 3 / 5,
+              ),
+              delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                  return getMovieItem(datas[index]);
+                },
+                childCount: size,
+              ),
             ),
-            delegate: SliverChildBuilderDelegate(
-                  (BuildContext context, int index) {
-                return getMovieItem(datas[index]);
-              },
-              childCount: size,
-            ),
-          ),
+          )
         ],
         onRefresh: _refreshData,
         onLoad: _addMoreData,
@@ -141,6 +146,10 @@ class _MovieListPageState extends State<MovieListPage> {
               child: Text("${movie?.title}",overflow: TextOverflow.ellipsis,
                   maxLines: 1,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0,)),
             ),
+            Container(
+              width: ScreenUtil().setWidth(240),
+              child: getMovieRatingWidget(movie?.rate??"0.0", getTopListBGColor(context)),
+            )
           ],
         ),
         onTap: (){

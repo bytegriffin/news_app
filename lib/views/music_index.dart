@@ -65,7 +65,9 @@ class _MusicIndexPageState extends State<MusicIndexPage> with AutomaticKeepAlive
     artistList.add(Artist("4721","朴树","http://p2.music.126.net/YDKUscOIKTm7Ko7KyKWggw==/3346913395417148.jpg?param=177y177"));
     artistList.add(Artist("2116","陈奕迅","http://p2.music.126.net/nILBk4DaE3yV__25uq-5GQ==/18641120139241412.jpg?param=177y177"));
     artistList.add(Artist("4723","潘玮柏","http://p1.music.126.net/VbC0CDRFn-4fesL6eJFWjQ==/109951163766134127.jpg?param=177y177"));
+    artistList.add(Artist("36490","Johann Sebastian Bach","http://p1.music.126.net/dPp4HlN1c-HBXwc0nBwgaw==/109951163620844481.jpg?param=177y177"));
     artistList.add(Artist("32665","Eminem","http://p1.music.126.net/0-lP9MDZ02AQcMlT45LuXA==/109951164631221738.jpg?param=177y177"));
+    artistList.add(Artist("53283","Drake","http://p1.music.126.net/RRV9FIP8MQAs-2t9Xo98-Q==/210006720922713.jpg?param=177y177"));
     artistList.add(Artist("44266","Taylor Swift","http://p1.music.126.net/nSp0W3dWuUfEY5XETjhsVg==/109951164025974359.jpg?param=177y177"));
     artistList.add(Artist("1045123","Alan Walker","http://p2.music.126.net/--Sx5gSt57L7pBeV_UWJkQ==/18953381439717008.jpg?param=177y177"));
   }

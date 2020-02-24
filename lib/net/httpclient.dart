@@ -78,6 +78,30 @@ class HttpClient {
         method: "get", params: params, errorCallBack: errorCallBack);
   }
 
+  //异步get请求
+  static void getMovie(String url, Function callBack,
+      {Map<String, String> params, Function errorCallBack}) async {
+    const httpHeaders={
+      //'Host': 'movie.douban.com',
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.116 Safari/537.36'
+    };
+    _dio.options.headers = httpHeaders;
+    _request(url, callBack,
+        method: "get", params: params, errorCallBack: errorCallBack);
+  }
+
+  //异步get请求
+  static void getBook(String url, Function callBack,
+      {Map<String, String> params, Function errorCallBack}) async {
+    const httpHeaders={
+     // 'Host': 'read.douban.com',
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.116 Safari/537.36'
+    };
+    _dio.options.headers = httpHeaders;
+    _request(url, callBack,
+        method: "get", params: params, errorCallBack: errorCallBack);
+  }
+
   //异步post请求
   static void post(String url, Function callBack,
       {Map<String, String> params, Function errorCallBack}) async {

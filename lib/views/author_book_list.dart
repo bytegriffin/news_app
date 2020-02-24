@@ -204,7 +204,7 @@ class _AuthorBookListPageState extends State<AuthorBookListPage> {
 
   Widget _displayAuthor(Book book){
     String authors = book.authors ?? book.origAuthors;
-    if(authors.contains(widget.author)){
+    if(authors == widget.author){
       return Wrap(
         children: <Widget>[
           Text(
