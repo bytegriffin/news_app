@@ -121,7 +121,7 @@ class _BottomNavigatorState extends State<BottomNavigator> {
         ],
       ),
       //抽屉也可以使用AppBar中的leading属性来实现
-      //drawer:DrawerPage(),
+      drawer:DrawerPage(),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (int index){
