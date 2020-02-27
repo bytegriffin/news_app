@@ -52,30 +52,30 @@ class _SongListPageState extends State<SongListPage> {
             ),
           ),
           SliverFixedExtentList(
-            delegate: SliverChildListDelegate(songList.map((song) {
+            delegate: SliverChildListDelegate(songList.asMap().keys.map((index) {
               var tile =  ListTile(
-                    leading: ClipRRect(
-                        borderRadius: BorderRadius.circular(5.0),
-                        child: getCachedImage(song.picUrl,width: 60),
-                      ),
-                    title: Text(song.name, overflow: TextOverflow.ellipsis, maxLines: 1,
-                              style: TextStyle(fontSize: 16.0,decoration: TextDecoration.none)),
-                    subtitle: Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: Text(song.artistNames, overflow: TextOverflow.ellipsis, maxLines: 1,
-                              style: TextStyle(fontSize: 14.0,color:Colors.grey,fontStyle: FontStyle.normal,decoration: TextDecoration.none)),
-                        ),
-                        Expanded(child: Text(" - "+song.album.name, overflow: TextOverflow.ellipsis, maxLines: 1,)),
-                      ],
+                  leading: ClipRRect(
+                      borderRadius: BorderRadius.circular(5.0),
+                      child: getCachedImage(songList[index].picUrl,width: 60),
                     ),
+                  title: Text(songList[index].name, overflow: TextOverflow.ellipsis, maxLines: 1,
+                            style: TextStyle(fontSize: 16.0,decoration: TextDecoration.none)),
+                  subtitle: Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: Text(songList[index].artistNames, overflow: TextOverflow.ellipsis, maxLines: 1,
+                            style: TextStyle(fontSize: 14.0,color:Colors.grey,fontStyle: FontStyle.normal,decoration: TextDecoration.none)),
+                      ),
+                      Expanded(child: Text(" - "+songList[index].album.name, overflow: TextOverflow.ellipsis, maxLines: 1,)),
+                    ],
+                  ),
                 trailing: Icon(Icons.more_vert),
-                  );
+             );
               return GestureDetector(
                 child: tile,
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => MusicPlayer(song)
+                      builder: (context) => MusicPlayer(songList, index)
                   ));
                 },
               );

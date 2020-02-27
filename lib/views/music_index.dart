@@ -134,9 +134,9 @@ class _MusicIndexPageState extends State<MusicIndexPage> with AutomaticKeepAlive
       });
     }
     if(recNewMusicList.sublist(0,6) == null){
-      return recNewMusicList.map((item) => getSongRowItem(context, item)).toList();
+      return recNewMusicList.asMap().keys.map((index) => getSongRowItem(context, recNewMusicList, index)).toList();
     }
-    return recNewMusicList.sublist(0,6).map((item) => getSongRowItem(context, item)).toList();
+    return recNewMusicList.sublist(0,6).asMap().keys.map((index) => getSongRowItem(context, recNewMusicList, index)).toList();
   }
 
   List<Widget> generateDefaultRecNewAlbumList() {

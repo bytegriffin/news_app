@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:dynamic_theme/dynamic_theme.dart';
 
-
 void main() {
   runApp(MyApp());
   // 设置android状态栏为透明的沉浸。写在组件渲染之后，是为了在渲染后进行set赋值，
@@ -35,6 +34,32 @@ class MyApp extends StatelessWidget {
           );
         }
     );
+
+//    return MultiProvider(
+//      providers: [
+//        ChangeNotifierProvider(create: (_) => PlaySongsModel()),
+//      ],
+//      child: Consumer<PlaySongsModel>(
+//        builder: (context, counter, _) {
+//          return DynamicTheme(
+//              defaultBrightness: Brightness.light,
+//              data: (brightness) => new ThemeData(
+//                primarySwatch: Colors.red,
+//                brightness: brightness,
+//              ),
+//              themedWidgetBuilder: (context, theme) {
+//                return new MaterialApp(
+//                  debugShowCheckedModeBanner: false,
+//                  title: '新闻App',
+//                  theme: theme,
+//                  home: SplashPage(),
+//                );
+//              }
+//          );
+//        },
+//      ),
+//    );
+
 
 //    return MaterialApp(
 //      debugShowCheckedModeBanner: false,

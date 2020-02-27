@@ -68,7 +68,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),onTap: (){
 
                 }),
-                Text("点击更换头像"),
+                Text("测试账户"),
                 _myAction()
               ],
             )

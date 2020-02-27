@@ -7,6 +7,7 @@ import '../util/color_util.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../models/track.dart';
 import '../components/music_player.dart';
+import '../models/song.dart';
 
 //排行榜列表
 class TopSongListPage extends StatefulWidget {
@@ -32,6 +33,7 @@ class _TopSongListPageState extends State<TopSongListPage> {
 
   @override
   Widget build(BuildContext context) {
+    List<Song> songs = tracks.map((track) => trackToSong(track)).toList();
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
@@ -57,21 +59,21 @@ class _TopSongListPageState extends State<TopSongListPage> {
             ),
           ),
           SliverFixedExtentList(
-            delegate: SliverChildListDelegate(tracks.map((track) {
+            delegate: SliverChildListDelegate(tracks.asMap().keys.map((index) {
               var tile = ListTile(
                 leading: ClipRRect(
                   borderRadius: BorderRadius.circular(5.0),
-                  child: getCachedImage(track.albumPic??defaultMusicImage,width: 60),
+                  child: getCachedImage(tracks[index].albumPic??defaultMusicImage,width: 60),
                 ),
-                title: Text(track.songName, overflow: TextOverflow.ellipsis, maxLines: 1,
+                title: Text(tracks[index].songName, overflow: TextOverflow.ellipsis, maxLines: 1,
                     style: TextStyle(fontSize: 16.0,decoration: TextDecoration.none)),
                 subtitle: Row(
                   children: <Widget>[
                     Expanded(
-                      child: Text(track.artistNames, overflow: TextOverflow.ellipsis, maxLines: 1,
+                      child: Text(tracks[index].artistNames, overflow: TextOverflow.ellipsis, maxLines: 1,
                           style: TextStyle(fontSize: 14.0,color:Colors.grey,fontStyle: FontStyle.normal,decoration: TextDecoration.none)),
                     ),
-                    Expanded(child: Text(" - ${track.albumName}", overflow: TextOverflow.ellipsis, maxLines: 1,)),
+                    Expanded(child: Text(" - ${tracks[index].albumName}", overflow: TextOverflow.ellipsis, maxLines: 1,)),
                   ],
                 ),
                 trailing: Icon(Icons.more_vert),
@@ -80,7 +82,7 @@ class _TopSongListPageState extends State<TopSongListPage> {
                 child: tile,
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => MusicPlayer(trackToSong(track))
+                      builder: (context) => MusicPlayer(songs, index)
                   ));
                 },
               );

@@ -286,7 +286,7 @@ Widget buildRowAlbumCard(BuildContext context,String typeName,Widget page, List<
 }
 
 
-Widget getSongRowItem(BuildContext context,Song song){
+Widget getSongRowItem(BuildContext context,List<Song> songs,int index){
   return Container(
     padding: EdgeInsets.all(1.0),
     child: GestureDetector(
@@ -301,7 +301,7 @@ Widget getSongRowItem(BuildContext context,Song song){
                 height: 130,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(5.0),
-                  child: getCachedImage(song?.picUrl),
+                  child: getCachedImage(songs[index]?.picUrl),
                 ),
               ),
               Positioned(
@@ -313,19 +313,19 @@ Widget getSongRowItem(BuildContext context,Song song){
           ),
           Container(
             width: 130,
-            child: Text("${song?.name}",overflow: TextOverflow.ellipsis,
+            child: Text("${songs[index]?.name}",overflow: TextOverflow.ellipsis,
                 maxLines: 1,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0,)),
           ),
           Container(
             width: 130,
-            child: Text("${song?.artistNames??""}",overflow: TextOverflow.ellipsis,
+            child: Text("${songs[index]?.artistNames??""}",overflow: TextOverflow.ellipsis,
                 maxLines: 1,style: TextStyle(fontWeight:FontWeight.normal, fontSize: 14.0,)),
           ),
         ],
       ),
       onTap: (){
         Navigator.push(context, MaterialPageRoute(
-            builder: (context) => MusicPlayer(song)
+            builder: (context) => MusicPlayer(songs, index)
         ));
       },
     ),
@@ -486,10 +486,9 @@ Widget buildRowCustomFreeMovieCard(BuildContext context,String typeName, List<Fr
   );
 }
 
-
 Widget getCustomFreeMovieRowItem(BuildContext context,FreeMovie movie){
   return Container(
-    padding: EdgeInsets.only(left:5.0),
+    padding: EdgeInsets.only(left:5.0,right:5.0),
     child: GestureDetector(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -573,6 +572,9 @@ Widget buildRowMovieCard1(BuildContext context,String typeName,Widget page, List
 }
 
 Widget buildRowMovieCard2(BuildContext context,String typeName,Widget page, List<TopMovie> movieList){
+  if(movieList == null){
+    return Container();
+  }
   return Column(
     crossAxisAlignment: CrossAxisAlignment.center,
     children: <Widget>[
@@ -1061,7 +1063,24 @@ Widget buildRowBookCard4(BuildContext context,String typeName, List<Widget> book
     children: <Widget>[
       Padding(
         padding: EdgeInsets.only(top:5.0,left: 5.0,bottom: 10.0,right: 5.0),
-        child: Text(" $typeName",style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0,)),
+        child: Row(
+          children: <Widget>[
+            Text(" $typeName",style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0,)),
+//            GestureDetector(
+//              child: Row(
+//                children: <Widget>[
+//                  Text("换一换",style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.0,color: Colors.blue)),
+//                  Icon(Icons.refresh,color: Colors.blue,)
+//                ],
+//              ),
+//              onTap: (){
+//                if(bookList.length > 6){
+//                  bookList = bookList.sublist(6, size+6);
+//                }
+//              },
+//            )
+          ],
+        ),
       ),
       GridView.count(
         primary: false,

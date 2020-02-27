@@ -1651,6 +1651,15 @@ String getAvatarPath(String source){
     case "游戏日报":
       imageStr = "https://tva2.sinaimg.cn/crop.0.0.750.750.180/006tj9UJjw8f67ump82wtj30ku0kugm1.jpg";
       break;
+    case "中国天气网":
+      imageStr = "https://tvax2.sinaimg.cn/crop.85.71.836.836.180/594fb883ly1fu2an764y0j20sg0sgac4.jpg";
+      break;
+    case "健康时报":
+      imageStr = "https://tva2.sinaimg.cn/crop.0.0.600.600.180/541ca444jw8eyz4wr96d6j20go0gotag.jpg";
+      break;
+    case "沈阳晚报":
+      imageStr = "https://tvax3.sinaimg.cn/crop.0.0.996.996.180/4c582bffly8flwmjk8ntuj20ro0rojsk.jpg";
+      break;
     case "道哥说车":
       imageStr = "https://timg01.bdimg.com/timg?pacompress&imgtype=1&sec=1439619614&autorotate=1&di=e0d2c3cc39a06cbc827556aeb831b62f&quality=90&size=b870_10000&src=http%3A%2F%2Fbos.nj.bpc.baidu.com%2Fv1%2Fmediaspot%2F5f2332137370b28d5f21d2076e1c916e.jpeg";
       break;

@@ -56,7 +56,7 @@ class _BottomNavigatorState extends State<BottomNavigator> {
 
   Widget _buildAppbar(){
     var appBar = AppBar(
-      //backgroundColor: Colors.red,
+      //backgroundColor: Color(0xFFFAFAFA),
       leading: Builder(builder: (context){
         return IconButton(
           icon: Icon(Icons.dehaze,color: Colors.white,),
@@ -121,7 +121,7 @@ class _BottomNavigatorState extends State<BottomNavigator> {
         ],
       ),
       //抽屉也可以使用AppBar中的leading属性来实现
-      drawer:DrawerPage(),
+      //drawer:DrawerPage(),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (int index){

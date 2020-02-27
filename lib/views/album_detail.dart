@@ -120,7 +120,7 @@ class _AlbumDetailPageState extends State<AlbumDetailPage> {
                   child: tile,
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => MusicPlayer(songList[index])
+                        builder: (context) => MusicPlayer(songList,index)
                     ));
                   },
                 );

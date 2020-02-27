@@ -139,7 +139,7 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
                   ListView.builder(
                     itemCount: hotSongs?.length??0,
                     itemBuilder: (context,index){
-                      return getSongs(index);
+                      return getSongs(hotSongs, index);
                     }
                   ),
                   ListView.builder(
@@ -178,7 +178,7 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
     );
   }
 
-  Widget getSongs(int index){
+  Widget getSongs(List<Song> hotSongs, int index){
     Song song = hotSongs[index];
     var tile = ListTile(
       leading: ClipRRect(
@@ -207,7 +207,7 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> with TickerProvider
       child: tile,
       onTap: (){
         Navigator.push(context, MaterialPageRoute(
-            builder: (context) => MusicPlayer(song)
+            builder: (context) => MusicPlayer(hotSongs, index)
         ));
       },
     );
