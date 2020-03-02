@@ -167,7 +167,7 @@ const RELATED_SONG = "http://musicapi.leanapp.cn/simi/song?id=347230";
 // 具体mp3地址
 const MP3_URL = "https://music.163.com/song/media/outer/url?id=";
 // 歌词
-const LYRICS_URL = "https://music.jeeas.cn/v1/lyric?id=1412242872";
+const LYRICS_URL = "https://music.jeeas.cn/v1/lyric?id=";
 // 歌曲详情
 const SONG_DETAIL_URL = "http://musicapi.leanapp.cn/song/detail?ids=347230";
 // 相似歌单

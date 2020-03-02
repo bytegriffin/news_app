@@ -48,13 +48,13 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
   bool get wantKeepAlive => true;
 
   _buildFreeMovies(){
+    freeMovieList.add(FreeMovie("34966347",PageType.Movie,"罗马：幕后纪实","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2585822823.webp","https://mu.qqxy100.com/ts/2/69669908052443136/index.m3u8"));
+    freeMovieList.add(FreeMovie("27000084",PageType.Movie,"变身特工","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2577340942.webp","https://mu.qqxy100.com/ts/2/75312383106482176/index.m3u8"));
+    freeMovieList.add(FreeMovie("27080656",PageType.Movie,"普罗米亚","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2546169134.webp","https://youku.haokzy-tudou.com/ppvod/b9YIwrMh.m3u8"));
     freeMovieList.add(FreeMovie("30434174",PageType.Movie,"遗愿清单","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2555841251.webp","https://youku.haokzy-tudou.com/ppvod/TRNLZdzO.m3u8"));
     freeMovieList.add(FreeMovie("30257175",PageType.Movie,"燃烧女子的肖像","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2584308261.webp","https://youku.haokzy-tudou.com/ppvod/pTP65xJL.m3u8"));
     freeMovieList.add(FreeMovie("30241298",PageType.Movie,"南山的部长们","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2581888792.webp","https://hallo.sc2yun.com/vod/hls/1582382365084_naann0f8nn8t.m3u8"));
-    freeMovieList.add(FreeMovie("34453138",PageType.Movie,"第92届奥斯卡颁奖典礼","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2584156190.webp","https://tv1.youkutv.cc/2020/02/11/p8h7IzfECIPX1Q6l/playlist.m3u8"));
-    freeMovieList.add(FreeMovie("30329892",PageType.Movie,"航海王：狂热行动","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2570039912.webp","https://youku.haokzy-tudou.com/ppvod/jsFEkdYf.m3u8"));
-    freeMovieList.add(FreeMovie("30252495",PageType.Movie,"1917","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2570243317.webp","https://youku.haokzy-tudou.com/ppvod/k71LPzr8.m3u8"));
-  }
+ }
 
   _getMovies(){
     //最新电影

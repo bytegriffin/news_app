@@ -10,6 +10,7 @@ import '../views/artist_detail.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../util/toast_util.dart';
 import '../components/over_scroll_behavior.dart';
+import 'lyric_widget.dart';
 
 enum PlayerState { stopped, playing, paused }
 
@@ -34,6 +35,7 @@ class _MusicPlayerState extends State<MusicPlayer> with TickerProviderStateMixin
   PlayerMode mode;
   int curIndex = 0;
   int playListState = 0;//0表示循环列表，1表示单曲循环，2表示随机播放
+  int switchIndex = 0;// 切换歌词页面
 
   AudioPlayerState audioPlayerState = AudioPlayerState.STOPPED;
   Duration _duration;
@@ -58,6 +60,8 @@ class _MusicPlayerState extends State<MusicPlayer> with TickerProviderStateMixin
 
   _MusicPlayerState(this._songs, this.curIndex, this.mode);
   String mp3;
+  StreamController<String> _streamController = StreamController<String>.broadcast();
+  Stream<String> get curPositionStream => _streamController.stream;
 
   @override
   void initState() {
@@ -71,6 +75,10 @@ class _MusicPlayerState extends State<MusicPlayer> with TickerProviderStateMixin
     _stylusAnimation = Tween<double>(begin: -0.03, end: -0.10).animate(_stylusController);
 
     _play();
+  }
+
+  void sinkProgress(int m){
+    _streamController.sink.add('$m-${_duration.inMilliseconds}');
   }
 
   void _initAudioPlayer() {
@@ -97,6 +105,7 @@ class _MusicPlayerState extends State<MusicPlayer> with TickerProviderStateMixin
     _positionSubscription =
         _audioPlayer.onAudioPositionChanged.listen((p) => setState(() {
           _position = p;
+          sinkProgress(p.inMilliseconds > _duration.inMilliseconds ? _duration.inMilliseconds : p.inMilliseconds);
         }));
 
     _playerCompleteSubscription =
@@ -134,6 +143,7 @@ class _MusicPlayerState extends State<MusicPlayer> with TickerProviderStateMixin
     _audioPlayer.stop();
     audioPlayerState = AudioPlayerState.STOPPED;
     controller.dispose();
+    _streamController.close();
     _stylusController.dispose();
     _durationSubscription?.cancel();
     _positionSubscription?.cancel();
@@ -173,22 +183,25 @@ class _MusicPlayerState extends State<MusicPlayer> with TickerProviderStateMixin
               return new SimpleDialog(
                 title: new Text('请选择要查看的歌手'),
                 children: curSong.artists.map((artist){
-                  return  new SimpleDialogOption(
-                    child: ListTile(
-                      leading: ClipRRect(
-                        borderRadius: BorderRadius.circular(5.0),
-                        child: CircleAvatar( // 个人头像
-                            radius: 20,
-                            backgroundImage: AssetImage('assets/avatar.jpg')
+                  return  ScrollConfiguration(
+                    behavior: OverScrollBehavior(),
+                    child: SimpleDialogOption(
+                      child: ListTile(
+                        leading: ClipRRect(
+                          borderRadius: BorderRadius.circular(5.0),
+                          child: CircleAvatar( // 个人头像
+                              radius: 20,
+                              backgroundImage: AssetImage('assets/avatar.jpg')
+                          ),
                         ),
+                        title: Text(artist.name),
                       ),
-                      title: Text(artist.name),
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => new ArtistDetailPage(artist.id)
+                        ));
+                      },
                     ),
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (context) => new ArtistDetailPage(artist.id)
-                      ));
-                    },
                   );
                 }).toList()
               );
@@ -237,44 +250,24 @@ class _MusicPlayerState extends State<MusicPlayer> with TickerProviderStateMixin
       ),
       body: Container(
         color: Color(0xFF383838),
-        child: Stack(
-          children: <Widget>[
-            Align(
-              alignment: Alignment.topCenter,
-              child: Container(
-                margin: EdgeInsets.only(top: ScreenUtil().setWidth(150)),
-                child: RotationTransition(
-                  turns: controller,
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: <Widget>[
-                      ClipRRect(
-                          borderRadius: BorderRadius.circular(280.0),
-                          child: Image.asset("assets/record.jpg",width: ScreenUtil().setWidth(580),height: ScreenUtil().setHeight(580),)
-                      ),
-                      CircleAvatar(
-                        radius: 100.0,
-                        backgroundImage:  NetworkImage(curSong?.picUrl??curSong?.album?.picUrl??defaultCastImage,),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Align(
-              child: RotationTransition(
-                turns: _stylusAnimation,
-                alignment: Alignment(
-                    -1 +  (ScreenUtil().setWidth(45 * 2) / (ScreenUtil().setWidth(293))),
-                    -1 + (ScreenUtil().setWidth(45 * 2) / (ScreenUtil().setHeight(504)))),
-                child: Image.asset( 'assets/stylus.png',
-                  width: ScreenUtil().setWidth(220),
-                  height: ScreenUtil().setHeight(340.8),
-                ),
-              ),
-              alignment: Alignment(0.25, -1),
-            ),
-          ],
+        child: GestureDetector(
+          behavior: HitTestBehavior.translucent,
+          onTap: (){
+            setState(() {
+              if(switchIndex == 0){
+                switchIndex = 1;
+              }else{
+                switchIndex = 0;
+              }
+            });
+          },
+          child: IndexedStack(
+            index: switchIndex,
+            children: <Widget>[
+              _buildPlaySongPage(),
+              LyricPage(curSong,_audioPlayer, curPositionStream),
+            ],
+          ),
         ),
       ),
       bottomSheet: Container(
@@ -291,85 +284,8 @@ class _MusicPlayerState extends State<MusicPlayer> with TickerProviderStateMixin
                 style: new TextStyle(fontWeight: FontWeight.bold,fontSize: 14,color: Colors.redAccent),
               ),
             ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.only(left: 10),
-                  child: Text(
-                    _position != null
-                        ? '${_positionText ?? ''}'
-                        : _duration != null ? _durationText : '',
-                    style: TextStyle(fontSize: 14.0,color: Colors.white),
-                  ),
-                ),
-                Expanded(
-                  child: Slider(
-                    inactiveColor: Colors.white70,
-                    activeColor: Colors.white,
-                    onChanged: (v) {
-                      final position = v * (_duration == null ? 0 : _duration.inMilliseconds??0.0);
-                      _audioPlayer
-                          .seek(Duration(milliseconds: position.round()));
-                    },
-                    value: (_position != null &&
-                        _duration != null &&
-                        _position.inMilliseconds > 0 &&
-                        _position.inMilliseconds < _duration.inMilliseconds)
-                        ? _position.inMilliseconds / _duration.inMilliseconds
-                        : 0.0,
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(right: 10),
-                  child: Text(
-                    _position != null
-                        ? '${_durationText ?? ''}'
-                        : _duration != null ? _durationText : '',
-                    style: TextStyle(fontSize: 14.0,color: Colors.white),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                IconButton(
-                    onPressed: _setPlayList,
-                    iconSize: 50.0,
-                    icon: Icon(IconData(playListState ==0? 0xe66c : playListState ==1? 0xe66d : playListState ==2 ? 0xe60d : 0xe66c, fontFamily: 'iconfont'),size: 30,),
-                    color: Colors.white
-                ),
-                IconButton(
-                    onPressed: _prePlay,
-                    iconSize: 50.0,
-                    icon: Icon(IconData(0xe78a, fontFamily: 'iconfont'),size: 30,),
-                    color: Colors.white
-                ),
-                IconButton(
-                    onPressed: _isPlaying ? _pause : _play,
-                    iconSize: 50.0,
-                    icon: _isPlaying ? Icon(IconData(0xe629, fontFamily: 'iconfont'),size: 50,) : Icon(IconData(0xe61b, fontFamily: 'iconfont'),size: 50,) ,
-                    color: Colors.white
-                ),
-                IconButton(
-                    onPressed: _nextPlay,
-                    iconSize: 50.0,
-                    icon: Icon(IconData(0xe7a5, fontFamily: 'iconfont'),size: 30,),
-                    color: Colors.white
-                ),
-                IconButton(
-                    onPressed: _showSongList,
-                    iconSize: 50.0,
-                    icon: Icon(IconData(0xe655, fontFamily: 'iconfont'),size: 30,),
-                    color: Colors.white
-                ),
-              ],
-            ),
+            _buildProgressBar(),
+            _buildBottomButton(),
             Container(height: 15,)
           ],
         ),
@@ -377,6 +293,136 @@ class _MusicPlayerState extends State<MusicPlayer> with TickerProviderStateMixin
     );
   }
 
+  Widget _buildPlaySongPage(){
+    return Stack(
+      children: <Widget>[
+        Align(
+          alignment: Alignment.topCenter,
+          child: Container(
+            margin: EdgeInsets.only(top: ScreenUtil().setWidth(150)),
+            child: RotationTransition(
+              turns: controller,
+              child: Stack(
+                alignment: Alignment.center,
+                children: <Widget>[
+                  ClipRRect(
+                      borderRadius: BorderRadius.circular(280.0),
+                      child: Image.asset("assets/record.jpg",width: ScreenUtil().setWidth(580),height: ScreenUtil().setHeight(580),)
+                  ),
+                  CircleAvatar(
+                    radius: 98.0,
+                    backgroundImage:  NetworkImage(curSong?.picUrl??curSong?.album?.picUrl??defaultCastImage,),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
+        Align(
+          child: RotationTransition(
+            turns: _stylusAnimation,
+            alignment: Alignment(
+                -1 +  (ScreenUtil().setWidth(45 * 2) / (ScreenUtil().setWidth(293))),
+                -1 + (ScreenUtil().setWidth(45 * 2) / (ScreenUtil().setHeight(504)))),
+            child: Image.asset( 'assets/stylus.png',
+              width: ScreenUtil().setWidth(220),
+              height: ScreenUtil().setHeight(340.8),
+            ),
+          ),
+          alignment: Alignment(0.25, -1),
+        ),
+      ],
+    );
+  }
+
+  // 进度条
+  Widget _buildProgressBar(){
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Container(
+          padding: EdgeInsets.only(left: 10),
+          child: Text(
+            _position != null
+                ? '${_positionText ?? ''}'
+                : _duration != null ? _durationText : '',
+            style: TextStyle(fontSize: 14.0,color: Colors.white),
+          ),
+        ),
+        Expanded(
+          child: Slider(
+            inactiveColor: Colors.white70,
+            activeColor: Colors.white,
+            onChanged: (v) {
+              final position = v * (_duration == null ? 0 : _duration.inMilliseconds??0.0);
+              _audioPlayer
+                  .seek(Duration(milliseconds: position.round()));
+            },
+            value: (_position != null &&
+                _duration != null &&
+                _position.inMilliseconds > 0 &&
+                _position.inMilliseconds < _duration.inMilliseconds)
+                ? _position.inMilliseconds / _duration.inMilliseconds
+                : 0.0,
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.only(right: 10),
+          child: Text(
+            _position != null
+                ? '${_durationText ?? ''}'
+                : _duration != null ? _durationText : '',
+            style: TextStyle(fontSize: 14.0,color: Colors.white),
+          ),
+        ),
+      ],
+    );
+  }
+
+  // 底部按钮
+  Widget _buildBottomButton(){
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        IconButton(
+            onPressed: _setPlayList,
+            iconSize: 50.0,
+            icon: Icon(IconData(playListState ==0? 0xe66c : playListState ==1? 0xe66d : playListState ==2 ? 0xe60d : 0xe66c, fontFamily: 'iconfont'),size: 30,),
+            color: Colors.white
+        ),
+        IconButton(
+            onPressed: _prePlay,
+            iconSize: 50.0,
+            icon: Icon(IconData(0xe78a, fontFamily: 'iconfont'),size: 30,),
+            color: Colors.white
+        ),
+        IconButton(
+            onPressed: _isPlaying ? _pause : _play,
+            iconSize: 50.0,
+            icon: _isPlaying ? Icon(IconData(0xe629, fontFamily: 'iconfont'),size: 50,) : Icon(IconData(0xe61b, fontFamily: 'iconfont'),size: 50,) ,
+            color: Colors.white
+        ),
+        IconButton(
+            onPressed: _nextPlay,
+            iconSize: 50.0,
+            icon: Icon(IconData(0xe7a5, fontFamily: 'iconfont'),size: 30,),
+            color: Colors.white
+        ),
+        IconButton(
+            onPressed: _showSongList,
+            iconSize: 50.0,
+            icon: Icon(IconData(0xe655, fontFamily: 'iconfont'),size: 30,),
+            color: Colors.white
+        ),
+      ],
+    );
+  }
+
+  // 底部弹出播放列表菜单
   void _showSongList(){
     showModalBottomSheet(
       context: context,
@@ -384,50 +430,58 @@ class _MusicPlayerState extends State<MusicPlayer> with TickerProviderStateMixin
         borderRadius: BorderRadius.circular(20.0),
       ),
       builder: (BuildContext context) {
-        return Container(
-          //color: Colors.transparent,
-          //height: 220,
-          margin: EdgeInsets.only(left: 10, right: 10,),
-          decoration: BoxDecoration(
-            color: Colors.white, // 底色
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: Colors.white, width: 10.5),
-          ),
-          child: new Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.only(
-                    top: ScreenUtil().setHeight(20),
-                    left: ScreenUtil().setWidth(20),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Text("当前播放   ",style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold,decoration: TextDecoration.none)),
-                    Text("(${_songs.length})     ",style: TextStyle(fontSize: 18.0,fontWeight: FontWeight.normal,decoration: TextDecoration.none)),
-                    Text("${playListState==0? "循环列表": playListState==1? "单曲循环": "随机播放"}",style: TextStyle(fontSize: 18.0,fontWeight: FontWeight.normal,decoration: TextDecoration.none)),
-                  ],
-                ),
+        return StatefulBuilder(
+          builder:(context1, setBottomSheetState) {// setBottomSheetState是bottomsheet中的状态设置
+            return Container(
+              //color: Colors.transparent,
+              //height: 220,
+              margin: EdgeInsets.only(left: 10, right: 10,),
+              decoration: BoxDecoration(
+                color: Colors.white, // 底色
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: Colors.white, width: 10.5),
               ),
-              Expanded(
-                child: ScrollConfiguration(
-                  behavior: OverScrollBehavior(),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: _songs.asMap().keys.map((index) =>_buildSongItem(index)).toList(),
+              child: new Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(
+                      top: ScreenUtil().setHeight(20),
+                      left: ScreenUtil().setWidth(20),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Text("当前播放   ",style: TextStyle(fontSize: 20.0,color: Colors.black,fontWeight: FontWeight.bold,decoration: TextDecoration.none)),
+                        Text("(${_songs.length})     ",style: TextStyle(fontSize: 18.0,fontWeight: FontWeight.normal,decoration: TextDecoration.none)),
+                        Text("${playListState==0? "循环列表": playListState==1? "单曲循环": "随机播放"}",style: TextStyle(fontSize: 18.0,fontWeight: FontWeight.normal,decoration: TextDecoration.none)),
+                      ],
                     ),
                   ),
-                ),
+                  Expanded(
+                    child: ScrollConfiguration(
+                      behavior: OverScrollBehavior(),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: _songs.asMap().keys.map((index) =>
+                             _buildSongItem(setBottomSheetState,index)
+                          ).toList(),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            );
+          },
         );
       });
   }
 
+  Color selectedColor;
 
-  Widget _buildSongItem(int index){
+  // 播放列表项
+  Widget _buildSongItem(StateSetter setBottomSheetState, int index){
     var aa = ListTile(
       title:  Row(
         children: <Widget>[
@@ -439,13 +493,13 @@ class _MusicPlayerState extends State<MusicPlayer> with TickerProviderStateMixin
           Text(" - " ,style: TextStyle(color: index==curIndex? Colors.red : Colors.black ,fontSize: 18.0,decoration: TextDecoration.none)),
           Expanded(
             child: Text(_songs[index]?.artistNames??"", overflow: TextOverflow.ellipsis, maxLines: 1,
-                style: TextStyle(fontSize: 16.0,color: index==curIndex? Colors.red : Colors.grey,fontStyle: FontStyle.normal,decoration: TextDecoration.none)),
+                style: TextStyle(fontSize: 16.0,color: index==curIndex? Colors.red : Colors.black,fontStyle: FontStyle.normal,decoration: TextDecoration.none)),
           ),
         ],
       ),
-      contentPadding: EdgeInsets.all(5.0),
       onTap: () {
-        setState(() {
+        setBottomSheetState(() {
+          selectedColor = Colors.black;
           curIndex = index;
           curSong = _songs[index];
         });
@@ -460,7 +514,7 @@ class _MusicPlayerState extends State<MusicPlayer> with TickerProviderStateMixin
   }
 
 //  List<Song> _oldSongs;
-
+  // 播放列表格式
   void _setPlayList(){
     setState(() {
       if(playListState == 0){

@@ -15,9 +15,17 @@ class _CustomFreeMovieListPageState extends State<CustomFreeMovieListPage> {
   List<FreeMovie> freeMovieList= List<FreeMovie>();
 
   _buildFreeMovies(){
+    freeMovieList.add(FreeMovie("34966347",PageType.Movie,"罗马：幕后纪实","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2585822823.webp","https://mu.qqxy100.com/ts/2/69669908052443136/index.m3u8"));
+    freeMovieList.add(FreeMovie("30128985",PageType.Movie,"勇敢者游戏2：再战巅峰","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2575911093.webp","https://mu.qqxy100.com/ts/2/75383873038450688/index.m3u8"));
+    freeMovieList.add(FreeMovie("27000084",PageType.Movie,"变身特工","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2577340942.webp","https://mu.qqxy100.com/ts/2/75312383106482176/index.m3u8"));
+    freeMovieList.add(FreeMovie("27080656",PageType.Movie,"普罗米亚","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2546169134.webp","https://youku.haokzy-tudou.com/ppvod/b9YIwrMh.m3u8"));
     freeMovieList.add(FreeMovie("30434174",PageType.Movie,"遗愿清单","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2555841251.webp","https://youku.haokzy-tudou.com/ppvod/TRNLZdzO.m3u8"));
     freeMovieList.add(FreeMovie("30257175",PageType.Movie,"燃烧女子的肖像","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2584308261.webp","https://youku.haokzy-tudou.com/ppvod/pTP65xJL.m3u8"));
     freeMovieList.add(FreeMovie("30241298",PageType.Movie,"南山的部长们","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2581888792.webp","https://hallo.sc2yun.com/vod/hls/1582382365084_naann0f8nn8t.m3u8"));
+    freeMovieList.add(FreeMovie("27062638",PageType.Movie,"剧场版 吹响！上低音号～誓言的终章～ 劇場版","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2542569367.webp","https://mu.qqxy100.com/ts/2/50745249420541952/index.m3u8"));
+    freeMovieList.add(FreeMovie("27132510",PageType.Movie,"教宗的承继","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2567299222.webp","https://mu.qqxy100.com/ts/2/50040349824909312/index.m3u8"));
+    freeMovieList.add(FreeMovie("25842038",PageType.Movie,"理查德·朱维尔的哀歌","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2578705064.webp","https://mu.qqxy100.com/ts/2/62036042315726848/index.m3u8"));
+    freeMovieList.add(FreeMovie("33424345",PageType.Movie,"紫罗兰永恒花园外传：永远与自动手记人偶","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2578722076.webp","https://mu.qqxy100.com/ts/2/56694808487395328/index.m3u8"));
     freeMovieList.add(FreeMovie("34453138",PageType.Movie,"第92届奥斯卡颁奖典礼","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2584156190.webp","https://tv1.youkutv.cc/2020/02/11/p8h7IzfECIPX1Q6l/playlist.m3u8"));
     freeMovieList.add(FreeMovie("30329892",PageType.Movie,"航海王：狂热行动","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2570039912.webp","https://youku.haokzy-tudou.com/ppvod/jsFEkdYf.m3u8"));
     freeMovieList.add(FreeMovie("30252495",PageType.Movie,"1917","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2570243317.webp","https://youku.haokzy-tudou.com/ppvod/k71LPzr8.m3u8"));
@@ -27,17 +35,20 @@ class _CustomFreeMovieListPageState extends State<CustomFreeMovieListPage> {
     freeMovieList.add(FreeMovie("6538866",PageType.Movie,"极速车王","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2568792942.webp","https://youku.haokzy-tudou.com/ppvod/LkEdxNf9.m3u8"));
     freeMovieList.add(FreeMovie("25887288",PageType.Movie,"冰雪奇缘2","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2572847101.webp","https://youku.haokzy-tudou.com/ppvod/HF7UZpnv.m3u8"));
     freeMovieList.add(FreeMovie("4202982",PageType.Movie,"冰雪奇缘","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2166640945.webp","https://youku.haokzy-tudou.com/ppvod/zAdbVzTG.m3u8"));
+    freeMovieList.add(FreeMovie("30241102",PageType.Movie,"行骗天下JP：浪漫篇","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2549891899.webp","https://mu.qqxy100.com/ts/2/44113326925414400/index.m3u8"));
+    freeMovieList.add(FreeMovie("33415943",PageType.Movie,"我失去了身体","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2553909340.webp","https://mu.qqxy100.com/ts/2/42484110580514816/index.m3u8"));
     freeMovieList.add(FreeMovie("27000981",PageType.Movie,"多力特的奇幻冒险","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2580751143.webp","https://youku.haokzy-tudou.com/ppvod/H5uCHgxW.m3u8"));
     freeMovieList.add(FreeMovie("30209084",PageType.Movie,"对不起，我们错过了你","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2572138412.webp","https://youku.haokzy-tudou.com/ppvod/dEVLzsON.m3u8"));
     freeMovieList.add(FreeMovie("34907421",PageType.Movie,"美利坚女士","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2580967404.webp","https://tv1.youkutv.cc/2020/02/01/KGwg74T06AGLGHM3/playlist.m3u8"));
     freeMovieList.add(FreeMovie("26348103",PageType.Movie,"小妇人","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2575325937.webp","https://youku.haokzy-tudou.com/ppvod/eE5NTMRm.m3u8"));
     freeMovieList.add(FreeMovie("34797487",PageType.Movie,"发之恋","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2583987514.webp","https://tv1.youkutv.cc/2020/02/11/ANOWUP6YIemNhmPX/playlist.m3u8"));
+    freeMovieList.add(FreeMovie("30329902",PageType.Movie,"青春期猪头少年不做怀梦少女的梦","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2565422819.webp","https://mu.qqxy100.com/ts/2/57187504742203392/index.m3u8"));
     freeMovieList.add(FreeMovie("30331965",PageType.Movie,"东京食尸鬼 真人版2","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2553264096.webp","https://tv1.youkutv.cc/2020/02/14/rkeq5hZNtZaRvhEN/playlist.m3u8"));
-//    freeMovieList.add(FreeMovie("27073179",PageType.Movie,"邻里美好的一天","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2579889073.webp","https://youku.cdn7-okzy.com/20200205/17003_1534e294/1000k/hls/index.m3u8"));
+    freeMovieList.add(FreeMovie("27073179",PageType.Movie,"邻里美好的一天","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2579889073.webp","https://mu.qqxy100.com/ts/2/54077081893470208/index.m3u8"));
     freeMovieList.add(FreeMovie("30462527",PageType.Movie,"基督圣体","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2567988621.webp","https://tv1.youkutv.cc/2020/02/06/qSXBW7GdhiiYi0Dq/playlist.m3u8"));
     freeMovieList.add(FreeMovie("30129008",PageType.Movie,"宝贝男孩","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2568099437.webp","https://tv.youkutv.cc/2020/01/29/TUMMl5urKGOPptGq/playlist.m3u8"));
     freeMovieList.add(FreeMovie("4301043",PageType.Movie,"传染病","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p1213203384.webp","https://youku.haokzy-tudou.com/ppvod/asjyrjOD.m3u8"));
-//    freeMovieList.add(FreeMovie("30289194",PageType.Movie,"爆炸新闻","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2571554907.webp","https://youku.cdn10-okzy.com/20200112/12203_69c6243d/1000k/hls/index.m3u8"));
+    freeMovieList.add(FreeMovie("30289194",PageType.Movie,"爆炸新闻","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2571554907.webp","https://mu.qqxy100.com/ts/2/58444645935349760/index.m3u8"));
     freeMovieList.add(FreeMovie("30331959",PageType.Movie,"黑水","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2569450232.webp","https://youku.haokzy-tudou.com/ppvod/hcL2pnRz.m3u8"));
     freeMovieList.add(FreeMovie("26858510",PageType.Movie,"克劳斯：圣诞节的秘密 Klaus","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2570825762.webp","https://youku.haokzy-tudou.com/ppvod/vA74tBbz.m3u8"));
     freeMovieList.add(FreeMovie("26786669",PageType.Movie,"决战中途岛","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2573582192.webp","https://youku.haokzy-tudou.com/ppvod/HmZTkPxP.m3u8"));
@@ -52,6 +63,7 @@ class _CustomFreeMovieListPageState extends State<CustomFreeMovieListPage> {
     freeMovieList.add(FreeMovie("30327842",PageType.Movie,"82年生的金智英","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2578045524.webp","https://youku.haokzy-tudou.com/ppvod/fhLte5FN.m3u8"));
     freeMovieList.add(FreeMovie("27087724",PageType.Movie,"好莱坞往事","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2551119672.webp","https://youku.haokzy-tudou.com/ppvod/GchvsIPV.m3u8"));
     freeMovieList.add(FreeMovie("26426056",PageType.Movie,"沉睡魔咒2","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2570105165.webp","https://youku.haokzy-tudou.com/ppvod/IBUkLScM.m3u8"));
+    freeMovieList.add(FreeMovie("30327897",PageType.Movie,"漫长的告别","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2546226109.webp","https://mu.qqxy100.com/ts/2/45214317905182720/index.m3u8"));
     freeMovieList.add(FreeMovie("30271841",PageType.Movie,"多哥","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2575882765.webp","https://youku.haokzy-tudou.com/ppvod/2mNcpO98.m3u8"));
     freeMovieList.add(FreeMovie("27002635",PageType.Movie,"唐顿庄园","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2575400017.webp","https://youku.haokzy-tudou.com/ppvod/8EZvxIyB.m3u8"));
     freeMovieList.add(FreeMovie("30334073",PageType.Movie,"调音师","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2551995207.webp","https://youku.haokzy-tudou.com/ppvod/JkvezV4x.m3u8"));
@@ -73,11 +85,8 @@ class _CustomFreeMovieListPageState extends State<CustomFreeMovieListPage> {
     freeMovieList.add(FreeMovie("2998270",PageType.Movie,"大侦探福尔摩斯","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p1078047854.webp","https://youku.haokzy-tudou.com/ppvod/BmE1oMQE.m3u8"));
     freeMovieList.add(FreeMovie("4051753",PageType.Movie,"大侦探福尔摩斯2：诡影游戏","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p1327387815.webp","https://youku.haokzy-tudou.com/ppvod/Ar2WwjTN.m3u8"));
     freeMovieList.add(FreeMovie("26419637",PageType.Movie,"误杀瞒天记","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2574266567.webp","https://youku.haokzy-tudou.com/ppvod/WoVWMsDZ.m3u8"));
-
-
-
-
-
+    freeMovieList.add(FreeMovie("25863940",PageType.Movie,"预告犯","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2232713173.webp","https://mu.qqxy100.com/ts/2/51056351274598400/index.m3u8"));
+    freeMovieList.add(FreeMovie("26387939",PageType.Movie,"摔跤吧！爸爸","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2457983084.webp","https://mu.qqxy100.com/ts/2/33013198743404544/index.m3u8"));
     freeMovieList.add(FreeMovie("26636712",PageType.Movie,"蚁人2：黄蜂女现身","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2529389608.webp","https://youku.haokzy-tudou.com/ppvod/xse7Nph4.m3u8"));
     freeMovieList.add(FreeMovie("1866473",PageType.Movie,"蚁人","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2266823371.webp","https://youku.haokzy-tudou.com/ppvod/1gFBmcol.m3u8"));
     freeMovieList.add(FreeMovie("3878007",PageType.Movie,"海王","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2541280047.webp","https://youku.haokzy-tudou.com/ppvod/Uz62YShX.m3u8"));
@@ -108,6 +117,60 @@ class _CustomFreeMovieListPageState extends State<CustomFreeMovieListPage> {
     freeMovieList.add(FreeMovie("1309021",PageType.Movie,"康斯坦丁","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p907374250.webp","https://youku.haokzy-tudou.com/ppvod/us5uhmUA.m3u8"));
     freeMovieList.add(FreeMovie("1292052",PageType.Movie,"肖申克的救赎","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p480747492.webp","https://youku.haokzy-tudou.com/ppvod/wSJ3frKv.m3u8"));
     freeMovieList.add(FreeMovie("1292063",PageType.Movie,"美丽人生","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2578474613.webp","https://cdn.zypbo.com/20180826/Gwfqdx4H/index.m3u8"));
+    freeMovieList.add(FreeMovie("1292001",PageType.Movie,"海上钢琴师","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2574551676.webp","https://mu.qqxy100.com/ts/2/28741269777809408/index.m3u8"));
+    freeMovieList.add(FreeMovie("2131459",PageType.Movie,"机器人总动员","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1461851991.webp","https://mu.qqxy100.com/ts/2/14818771046760448/index.m3u8"));
+    freeMovieList.add(FreeMovie("1292064",PageType.Movie,"楚门的世界","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p479682972.webp","https://vip.okokbo.com/20171212/7GDybnna/800kb/hls/index.m3u8"));
+    freeMovieList.add(FreeMovie("2129039",PageType.Movie,"飞屋环游记","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p485887754.webp","https://mu.qqxy100.com/ts/2/70382404950294528/index.m3u8"));
+    freeMovieList.add(FreeMovie("1291583",PageType.Movie,"天空之城","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p1446261379.webp","https://mu.qqxy100.com/ts/2/39634130069094400/index.m3u8"));
+    freeMovieList.add(FreeMovie("21937445",PageType.Movie,"辩护人","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2158166535.webp","https://mu.qqxy100.com/ts/2/39895632437051392/index.m3u8"));
+    freeMovieList.add(FreeMovie("1292224",PageType.Movie,"飞越疯人院","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p792238287.webp","https://mu.qqxy100.com/ts/2/50730105634291712/index.m3u8"));
+    freeMovieList.add(FreeMovie("27191405",PageType.Movie,"进击的巨人剧场版：觉醒的咆哮","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2531265461.webp","https://mu.qqxy100.com/ts/2/57458276060626944/index.m3u8"));
+    freeMovieList.add(FreeMovie("1303021",PageType.Movie,"小鞋子","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2173580536.webp","https://mu.qqxy100.com/ts/2/37255452009955328/index.m3u8"));
+    freeMovieList.add(FreeMovie("3008247",PageType.Movie,"穿条纹睡衣的男孩","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1473670352.webp","https://mu.qqxy100.com/ts/2/14796938557784064/index.m3u8"));
+    freeMovieList.add(FreeMovie("1780330",PageType.Movie,"致命魔术","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p480383375.webp","https://mu.qqxy100.com/ts/2/37878467441721344/index.m3u8"));
+    freeMovieList.add(FreeMovie("25777512",PageType.Movie,"要听神明的话","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2207809849.webp","https://mu.qqxy100.com/ts/2/40652329367633920/index.m3u8"));
+    freeMovieList.add(FreeMovie("1292223",PageType.Movie,"七宗罪","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p457631605.webp","https://mu.qqxy100.com/ts/2/54147103592546304/index.m3u8"));
+    freeMovieList.add(FreeMovie("1292343",PageType.Movie,"蝴蝶效应","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2209066019.webp","https://mu.qqxy100.com/ts/2/54377089184301056/index.m3u8"));
+    freeMovieList.add(FreeMovie("25958717",PageType.Movie,"海蒂和爷爷","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2554525534.webp","https://mu.qqxy100.com/ts/2/47830384188063744/index.m3u8"));
+    freeMovieList.add(FreeMovie("1297359",PageType.Movie,"幽灵公主","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p1613191025.webp","https://mu.qqxy100.com/ts/2/39636712288157696/index.m3u8"));
+    freeMovieList.add(FreeMovie("6985810",PageType.Movie,"狩猎","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p1546987967.webp","https://mu.qqxy100.com/ts/2/38521545684942848/index.m3u8"));
+    freeMovieList.add(FreeMovie("26799731",PageType.Movie,"请以你的名字呼唤我","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2505525050.webp","https://mu.qqxy100.com/ts/2/45070266304299008/index.m3u8"));
+    freeMovieList.add(FreeMovie("10777687",PageType.Movie,"7号房的礼物","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p1816276065.webp","https://mu.qqxy100.com/ts/2/56989951157338112/index.m3u8"));
+    freeMovieList.add(FreeMovie("3072124",PageType.Movie,"玛丽和马克思","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2162822165.webp","https://mu.qqxy100.com/ts/2/35760881790877696/index.m3u8"));
+    freeMovieList.add(FreeMovie("21360417",PageType.Movie,"恐怖直播","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2016930906.webp","https://mu.qqxy100.com/ts/2/39157131961696256/index.m3u8"));
+    freeMovieList.add(FreeMovie("11026735",PageType.Movie,"超能陆战队","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2224568669.webp","https://mu.qqxy100.com/ts/2/53305324706201600/index.m3u8"));
+    freeMovieList.add(FreeMovie("10577869",PageType.Movie,"时空恋旅人","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2070153774.webp","https://mu.qqxy100.com/ts/2/39200386510225408/index.m3u8"));
+    freeMovieList.add(FreeMovie("1295399",PageType.Movie,"七武士","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2572674785.webp","https://mu.qqxy100.com/ts/2/49685501883449344/index.m3u8"));
+    freeMovieList.add(FreeMovie("6307447",PageType.Movie,"被解救的姜戈","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p1959232369.webp","https://mu.qqxy100.com/ts/2/14798155241488384/index.m3u8"));
+    freeMovieList.add(FreeMovie("1293318",PageType.Movie,"萤火虫之墓","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p1157334208.webp","https://mu.qqxy100.com/ts/2/39638511971729409/index.m3u8"));
+    freeMovieList.add(FreeMovie("24750126",PageType.Movie,"荒蛮故事","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2231250054.webp","https://mu.qqxy100.com/ts/2/50733121225621504/index.m3u8"));
+    freeMovieList.add(FreeMovie("4920389",PageType.Movie,"头号玩家","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2516578307.webp","https://mu.qqxy100.com/ts/2/49359529753706496/index.m3u8"));
+    freeMovieList.add(FreeMovie("26874505",PageType.Movie,"人生果实","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2544912792.webp","https://mu.qqxy100.com/ts/2/42839733570633728/index.m3u8"));
+    freeMovieList.add(FreeMovie("10533913",PageType.Movie,"头脑特工队","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2266293606.webp","https://mu.qqxy100.com/ts/2/14822283558256640/index.m3u8"));
+    freeMovieList.add(FreeMovie("1309163",PageType.Movie,"恋恋笔记本","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p483604864.webp","https://mu.qqxy100.com/ts/2/54377250551758848/index.m3u8"));
+    freeMovieList.add(FreeMovie("26787574",PageType.Movie,"奇迹男孩","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2507709428.webp","https://mu.qqxy100.com/ts/2/34423591940390912/index.m3u8"));
+    freeMovieList.add(FreeMovie("10808442",PageType.Movie,"爱在午夜降临前","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2074715729.webp","https://mu.qqxy100.com/ts/2/50008568467816448/index.m3u8"));
+    freeMovieList.add(FreeMovie("3075287",PageType.Movie,"源代码","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p988260245.webp","https://mu.qqxy100.com/ts/2/38787160626692096/index.m3u8"));
+    freeMovieList.add(FreeMovie("1422063",PageType.Movie,"最终幻想7：圣子降临","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2221176547.webp","https://mu.qqxy100.com/ts/2/38519643370946560/index.m3u8"));
+    freeMovieList.add(FreeMovie("26762709",PageType.Movie,"最终幻想15：王者之剑","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2436217927.webp","https://mu.qqxy100.com/ts/2/41784169587539968/index.m3u8"));
+    freeMovieList.add(FreeMovie("1298744",PageType.Movie,"十二猴子","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p627041570.webp","https://mu.qqxy100.com/ts/2/37286663986085888/index.m3u8"));
+    freeMovieList.add(FreeMovie("1300618",PageType.Movie,"空中监狱","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2356027791.webp","https://mu.qqxy100.com/ts/2/33008986798161920/index.m3u8"));
+    freeMovieList.add(FreeMovie("6146955",PageType.Movie,"寿司之神","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1779492381.webp","https://mu.qqxy100.com/ts/2/47178923204673536/index.m3u8"));
+    freeMovieList.add(FreeMovie("27024903",PageType.Movie,"天才枪手","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2501863104.webp","https://mu.qqxy100.com/ts/2/33294089906552832/index.m3u8"));
+    freeMovieList.add(FreeMovie("4023638",PageType.Movie,"国王的演讲","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p768879237.webp","https://mu.qqxy100.com/ts/2/38852148087226368/index.m3u8"));
+    freeMovieList.add(FreeMovie("1418752",PageType.Movie,"万能钥匙","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p810384382.webp","https://mu.qqxy100.com/ts/2/59741571540582400/index.m3u8"));
+    freeMovieList.add(FreeMovie("6791750",PageType.Movie,"起风了","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p1998028598.webp","https://mu.qqxy100.com/ts/2/39636231830634496/index.m3u8"));
+    freeMovieList.add(FreeMovie("11584016",PageType.Movie,"与神同行：罪与罚","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2500130777.webp","https://mu.qqxy100.com/ts/2/34704330359570432/index.m3u8"));
+    freeMovieList.add(FreeMovie("1291585",PageType.Movie,"风之谷","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1917567652.webp","https://mu.qqxy100.com/ts/2/39634806476111872/index.m3u8"));
+    freeMovieList.add(FreeMovie("3011051",PageType.Movie,"恐怖游轮","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p462470694.webp","https://mu.qqxy100.com/ts/2/55143384351768576/index.m3u8"));
+    freeMovieList.add(FreeMovie("2297265",PageType.Movie,"浪潮","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1344888983.webp","https://mu.qqxy100.com/ts/2/71419489144537088/index.m3u8"));
+    freeMovieList.add(FreeMovie("3054150",PageType.Movie,"非洲猫科","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1286333470.webp","https://mu.qqxy100.com/ts/2/51208828598878208/index.m3u8"));
+    freeMovieList.add(FreeMovie("7059671",PageType.Movie,"最佳出价","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2039855496.webp","https://mu.qqxy100.com/ts/2/39560557463863296/index.m3u8"));
+    freeMovieList.add(FreeMovie("25954475",PageType.Movie,"聚焦","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2263822658.webp","https://mu.qqxy100.com/ts/2/42298978187870208/index.m3u8"));
+    freeMovieList.add(FreeMovie("1291568",PageType.Movie,"东京物语","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p1925331564.webp","https://mu.qqxy100.com/ts/2/49684903612121088/index.m3u8"));
+    freeMovieList.add(FreeMovie("1293374",PageType.Movie,"热天午后","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2100141196.webp","https://mu.qqxy100.com/ts/2/48353763638902784/index.m3u8"));
+    freeMovieList.add(FreeMovie("1293908",PageType.Movie,"城市之光","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2170238828.webp","https://mu.qqxy100.com/ts/2/49479098854014976/index.m3u8"));
+    freeMovieList.add(FreeMovie("1300267",PageType.Movie,"乱世佳人","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1963126880.webp","https://mu.qqxy100.com/ts/2/50467746277752832/index.m3u8"));
   }
 
   @override

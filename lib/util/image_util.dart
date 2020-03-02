@@ -1660,6 +1660,204 @@ String getAvatarPath(String source){
     case "沈阳晚报":
       imageStr = "https://tvax3.sinaimg.cn/crop.0.0.996.996.180/4c582bffly8flwmjk8ntuj20ro0rojsk.jpg";
       break;
+    case "易车网":
+      imageStr = "https://cambrian-images.cdn.bcebos.com/d6c0a03199732d4e366dff448785a840_1538659367511.jpeg";
+      break;
+    case "51CTO":
+      imageStr = "https://tva1.sinaimg.cn/crop.0.0.500.500.180/65d922fcjw8euu3s17hlej20dw0dwtao.jpg";
+      break;
+    case "AI科技大本营":
+      imageStr = "https://tva1.sinaimg.cn/crop.0.0.2000.2000.180/006DuBEdjw8fazq0aity8j31jk1jkwhl.jpg";
+      break;
+    case "有钱花":
+      imageStr = "https://tvax4.sinaimg.cn/crop.6.3.189.189.180/006yCyC0ly8g9n400uttsj305k05k0su.jpg";
+      break;
+    case "弱电智能化工程2018":
+      imageStr = "https://pic.rmb.bdstatic.com/e0dc7130bb27b2b2cfe6835553a16e06.jpeg";
+      break;
+    case "牛科技网":
+      imageStr = "https://tvax2.sinaimg.cn/crop.0.0.250.250.180/006KffOYly8ff88sq3awtj306y06yjsb.jpg";
+      break;
+    case "云科技时代":
+      imageStr = "https://pic.rmb.bdstatic.com/3f813eea42aae3a4a287cab0000ef228.jpeg";
+      break;
+    case "王智远":
+      imageStr = "https://cambrian-images.cdn.bcebos.com/b263e14235f4c7ffec9fc7c6ecadb741_1539677826740.jpeg";
+      break;
+    case "老蔡看市":
+      imageStr = "https://pic.rmb.bdstatic.com/f307afcf515cb89c636d893f84ecf309.jpeg";
+      break;
+    case "21世纪经济报道":
+      imageStr = "https://tva3.sinaimg.cn/crop.0.0.399.399.180/626ece26tw1e7cvq3vd41j20b40b4mxt.jpg";
+      break;
+    case "中国金融信息网":
+      imageStr = "https://tvax4.sinaimg.cn/crop.0.0.791.791.180/6d3988f2ly8g1p6ochh92j20lz0m8abk.jpg";
+      break;
+    case "中国水利网":
+      imageStr = "https://pic.rmb.bdstatic.com/c101709b5ef138637d7a391140691d80.jpeg";
+      break;
+    case "浙江在线":
+      imageStr = "https://tva1.sinaimg.cn/crop.37.53.310.310.180/77c0a2b8gw1eledfn29x4j20b40b4jrp.jpg";
+      break;
+    case "女性之声":
+      imageStr = "https://tvax3.sinaimg.cn/crop.75.16.356.356.180/a33ae70bly8g8fd9h4612j20dw0avdh5.jpg";
+      break;
+    case "西城数据":
+      imageStr = "https://pic.rmb.bdstatic.com/096517ce33cb0523d8c4abd964a34e94.jpeg";
+      break;
+    case "凤凰大健康":
+      imageStr = "https://tvax3.sinaimg.cn/crop.12.12.1068.1068.180/0081eK7xly8g9ifwlce3kj30u00u0atk.jpg";
+      break;
+    case "快点温州":
+      imageStr = "https://tvax3.sinaimg.cn/crop.0.0.921.921.180/006Zcny2ly8gbh4xq9zw6j30pl0plwun.jpg";
+      break;
+    case "安徽海豚播报":
+      imageStr = "https://pic.rmb.bdstatic.com/72174fd2e7dbc70a32153c6bedbc2f98.jpeg";
+      break;
+    case "人民网安徽":
+      imageStr = "https://tva4.sinaimg.cn/crop.0.0.179.179.180/bfa357e7gw1eswnxa46xzj2050050jrn.jpg";
+      break;
+    case "公安主持人":
+      imageStr = "https://tva2.sinaimg.cn/crop.0.0.180.180.180/654a7245jw1e8qgp5bmzyj2050050aa8.jpg";
+      break;
+    case "公安主持人":
+      imageStr = "https://tva2.sinaimg.cn/crop.0.0.180.180.180/654a7245jw1e8qgp5bmzyj2050050aa8.jpg";
+      break;
+    case "经讯":
+      imageStr = "https://pic.rmb.bdstatic.com/a7620e7a323af69e1df96b7465df9cdd.png";
+      break;
+    case "求是网":
+      imageStr = "https://tvax2.sinaimg.cn/crop.0.0.500.500.180/b1489af7ly8fs3jv7bgw3j20dw0dw0u5.jpg";
+      break;
+    case "行车视线":
+      imageStr = "https://tvax1.sinaimg.cn/crop.0.0.1242.1242.180/0075ZvfIly8fsph0x38ojj30yi0yin04.jpg";
+      break;
+    case "柏铭":
+      imageStr = "https://pic.rmb.bdstatic.com/bb757d41e611fb7634962cd6092fa997.jpeg";
+      break;
+    case "笨笨侃体育":
+      imageStr = "https://pic.rmb.bdstatic.com/ef1c744a394e868240a3633e107155f1.png";
+      break;
+    case "深几度":
+      imageStr = "https://pic.rmb.bdstatic.com/85080634bfb2ba5490ce1ad3762d6642.jpeg";
+      break;
+    case "西西侃球":
+      imageStr = "https://pic.rmb.bdstatic.com/9c19ad23732b23ae0d625b4b5bf71c3d.jpeg";
+      break;
+    case "西安大交通发布":
+      imageStr = "https://pic.rmb.bdstatic.com/9643b1d005feafbd76541da1f34997db.jpeg";
+      break;
+    case "李成东":
+      imageStr = "https://pic.rmb.bdstatic.com/1a007cfa736e02068b4dd8746735c60e.jpeg";
+      break;
+    case "辽宁卫视":
+      imageStr = "https://tva3.sinaimg.cn/crop.25.0.228.228.180/6a9a5967jw8ez1fk2vh7wj207u06ct8t.jpg";
+      break;
+    case "图说汽车":
+      imageStr = "https://tvax3.sinaimg.cn/crop.0.0.1002.1002.180/006tOzNjly8fyfs83y1ixj30ru0ruwfz.jpg";
+      break;
+    case "市井觅食记":
+      imageStr = "https://pic.rmb.bdstatic.com/e8ad1110a0c5634fc7918e55537ef817.jpeg";
+      break;
+    case "推哥说科技":
+      imageStr = "https://pic.rmb.bdstatic.com/5649afe80e97fc590b680954979110e9.jpeg";
+      break;
+    case "仰卧撑":
+      imageStr = "https://pic.rmb.bdstatic.com/685ed2754070888200f6cc6314855f61.png";
+      break;
+    case "李俊慧":
+      imageStr = "https://pic.rmb.bdstatic.com/8946d4bd246a991c35b761f004f971d1.jpeg";
+      break;
+    case "北京丰台官方发布":
+      imageStr = "https://cambrian-images.cdn.bcebos.com/a2a1bdcb0570e65c69c02c5da1efa5a1_1530079872351.jpeg";
+      break;
+    case "孙永杰":
+      imageStr = "https://tva3.sinaimg.cn/crop.51.153.568.568.180/4cab48bajw8evn5550u3rj20iz0sgjui.jpg";
+      break;
+    case "燃财经":
+      imageStr = "https://tvax3.sinaimg.cn/crop.239.240.601.601.180/0078kWaWly8g0qrhm5je2j30u00u2aas.jpg";
+      break;
+    case "红星深度":
+      imageStr = "https://pic.rmb.bdstatic.com/d882b8d93b19c5220605ed18162fa5a0.png";
+      break;
+    case "福州发布":
+      imageStr = "https://tva2.sinaimg.cn/crop.0.0.179.179.180/9d4c645dgw1evevihy0caj2050050glu.jpg";
+      break;
+    case "北京海淀":
+      imageStr = "https://cambrian-images.cdn.bcebos.com/7bb8c0ab2c0e6c618c905bfd280ee622_1537419583565.jpeg";
+      break;
+    case "戴建业":
+      imageStr = "https://himg.bdimg.com/sys/portrait/item/a6546461696a69616e796535361461.jpg";
+      break;
+    case "温州发布":
+      imageStr = "https://cambrian-images.cdn.bcebos.com/c9f49c848e3d4030fa4625a21e6ab52f_1521601162700.jpeg";
+      break;
+    case "中国科普网":
+      imageStr = "https://tvax3.sinaimg.cn/crop.168.18.444.444.180/d193c628ly8franjat5gaj20m80dwt8x.jpg";
+      break;
+    case "李迅雷":
+      imageStr = "https://tva3.sinaimg.cn/crop.0.0.180.180.180/6b840657jw1e8qgp5bmzyj2050050aa8.jpg";
+      break;
+    case "芒果TV":
+      imageStr = "https://timg01.bdimg.com/timg?pacompress&imgtype=0&sec=1439619614&di=b91e3348ca39b552d882074d9c2f3ebf&quality=90&size=b870_10000&src=http%3A%2F%2Fbos.nj.bpc.baidu.com%2Fv1%2Fmediaspot%2F854703dac1fa2b761789b726ec3e2845.jpeg";
+      break;
+    case "婚姻与家庭":
+      imageStr = "https://timg01.bdimg.com/timg?pacompress=&imgtype=0&sec=1439619614&autorotate=1&di=4aed4e8121b59937551ebf909fe778e2&quality=90&size=b200_200&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2F407b006246212ad2e850d67eaed4a92e.jpeg";
+      break;
+    case "四川妇联":
+      imageStr = "https://timg01.bdimg.com/timg?pacompress&imgtype=1&sec=1439619614&autorotate=1&di=b21925d6da2ea6666d9d3c56756fce5d&quality=100&size=b204_10008&cut_x=0&cut_y=0&cut_w=204&cut_h=204&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Fce34f78b2e22f75f212e6556a3426416.jpeg";
+      break;
+    case "新京报传媒研究":
+      imageStr = "https://timg01.bdimg.com/timg?pacompress=&imgtype=0&sec=1439619614&autorotate=1&di=27b8e38de64a63ea218b65a4ff90995d&quality=90&size=b200_200&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2F815154e63275cf033c0de9c2cf0f6ec8.jpeg";
+      break;
+    case "天天汽车APP":
+      imageStr = "https://timg01.bdimg.com/timg?pacompress&imgtype=0&sec=1439619614&autorotate=1&di=c8668d4550fdfce0aef00a7ccba1f8b8&quality=90&size=b200_200&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2F02f223ec4c28ea0545883dcbb44a9ec0.jpeg";
+      break;
+    case "军工圈":
+      imageStr = "https://timg01.bdimg.com/timg?pacompress=&imgtype=0&sec=1439619614&autorotate=1&di=65c311f1c7db0cf7a94d4df7a47e4122&quality=90&size=b200_200&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2F9cf6da782c67c14e86ac46d068a25465.jpeg";
+      break;
+    case "BWC中文网":
+      imageStr = "https://timg01.bdimg.com/timg?%3Fpa=&imgtype=3&sec=1439619614&di=a2cf027a34003ba9d750874d482b7b68&quality=100&size=f200_200&src=http%3A%2F%2Fmsp.baidu.com%2Fv1%2Fmediaspot%2Fa14628f0-e211-11e6-a93b-7bd5c037ab74.png";
+      break;
+    case "冰川思想库":
+      imageStr = "https://timg01.bdimg.com/timg?pacompress&imgtype=0&sec=1439619614&di=4957141888d12fdc147c8e57bb2b601c&quality=90&size=b870_10000&src=http%3A%2F%2Fbos.nj.bpc.baidu.com%2Fv1%2Fmediaspot%2F2bd02f05cba5a4184a405c6398a5537a.jpeg";
+      break;
+    case "肖磊看市i":
+      imageStr = "https://timg01.bdimg.com/timg?pacompress=&imgtype=0&sec=1439619614&autorotate=1&di=46a5492c5f0b0c12f620211b6467c085&quality=90&size=b200_200&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2F34327e7ef2e28302584b0c4c7cddc478.jpeg";
+      break;
+    case "搜达足球":
+      imageStr = "https://tva2.sinaimg.cn/crop.0.0.180.180.180/4ffbcf0ajw1e8qgp5bmzyj2050050aa8.jpg";
+      break;
+    case "8彩虹画室":
+      imageStr = "https://timg01.bdimg.com/timg?pacompress&imgtype=0&sec=1439619614&autorotate=1&di=cd807c229f009e6289c2771f31a6486d&quality=90&size=b200_200&src=http%3A%2F%2Fbos.nj.bpc.baidu.com%2Fv1%2Fmediaspot%2F898622cdc234c2c8c5ae6d52b92a1f7d.jpeg";
+      break;
+    case "氧气是个地铁":
+      imageStr = "https://timg01.bdimg.com/timg?pacompress=&imgtype=0&sec=1439619614&autorotate=1&di=bd12b3318f36adfcf5af7e092ee5f077&quality=90&size=b200_200&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Fc80ff3c4682775343e7f344d825a53de.jpeg";
+      break;
+    case "小谈食刻":
+      imageStr = "https://timg01.bdimg.com/timg?pacompress&imgtype=1&sec=1439619614&autorotate=1&di=a225188de6ce7585dac359a7258cbd4a&quality=100&size=b461_10052&cut_x=2&cut_y=0&cut_w=461&cut_h=461&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Fdf71afa787bc942bef835029fecf6ed5.jpeg";
+      break;
+    case "王者情报局":
+      imageStr = "https://timg01.bdimg.com/timg?pacompress&imgtype=0&sec=1439619614&autorotate=1&di=2926e167b1aa76f15761554a7da28a8e&quality=90&size=b200_200&src=http%3A%2F%2Fbos.nj.bpc.baidu.com%2Fv1%2Fmediaspot%2F0c18051a93201f2474b1983185c98bdd.jpeg";
+      break;
+    case "图说光影":
+      imageStr = "https://timg01.bdimg.com/timg?pacompress=&imgtype=0&sec=1439619614&di=7d2a1a3eea3a857d04b7a22552a5f72c&quality=90&size=b200_200&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Ffda3d77a6a89a453ff13db7282d0afcb.jpeg";
+      break;
+    case "总财":
+      imageStr = "https://timg01.bdimg.com/timg?pacompress=&imgtype=0&sec=1439619614&di=ffc7ef5131522e51ae7b9bde3f3def7f&quality=90&size=b870_10000&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Ff402502e51ea1514eb64a4e4d5d02d14.jpeg";
+      break;
+    case "金投网":
+      imageStr = "https://timg01.bdimg.com/timg?pacompress=&imgtype=3&sec=1439619614&di=e6250483918ee9ee424ea5bb5e19b988&quality=90&size=b870_10000&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2F5b89669ebe8548b1bcc010e78170accc.png";
+      break;
+    case "ALENG":
+      imageStr = "https://timg01.bdimg.com/timg?pacompress&imgtype=1&sec=1439619614&autorotate=1&di=3b8b3aa5eefa884483d507993896b50d&quality=100&size=b346_10017&cut_x=5&cut_y=0&cut_w=346&cut_h=346&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2F008c0ced63a2e574d2c739c4c2c0ff24.jpeg";
+      break;
+    case "Excel学习世界":
+      imageStr = "https://timg01.bdimg.com/timg?pacompress&imgtype=1&sec=1439619614&autorotate=1&di=c775678fa079f95273d7b867d320122f&quality=100&size=b319_10080&cut_x=434&cut_y=140&cut_w=319&cut_h=319&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2F3fc3c9a571e44b5e4e923a5e2217f89b.jpeg";
+      break;
+    case "劲彪新闻客户端":
+      imageStr = "https://timg01.bdimg.com/timg?pacompress&imgtype=0&sec=1439619614&autorotate=1&di=2178b67e662af0839a23e147ee255bd0&quality=100&size=b912_10008&cut_x=0&cut_y=0&cut_w=912&cut_h=912&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Ffd04f2ef6000b28169b0f660c79ef0d3.png";
+      break;
     case "道哥说车":
       imageStr = "https://timg01.bdimg.com/timg?pacompress&imgtype=1&sec=1439619614&autorotate=1&di=e0d2c3cc39a06cbc827556aeb831b62f&quality=90&size=b870_10000&src=http%3A%2F%2Fbos.nj.bpc.baidu.com%2Fv1%2Fmediaspot%2F5f2332137370b28d5f21d2076e1c916e.jpeg";
       break;
