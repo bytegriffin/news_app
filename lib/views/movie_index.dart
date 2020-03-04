@@ -11,7 +11,7 @@ import 'top_movie_list.dart';
 import '../net/http_router.dart';
 import '../models/swiper_movie.dart';
 import '../models/free_movie.dart';
-import 'custom_free_movie_list.dart';
+import 'custom_free_movie_index.dart';
 
 // 电影首页
 class MovieIndexPage extends StatefulWidget {
@@ -156,7 +156,7 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
           _buildSwiper(),
           _buildButton(),
           buildRowMovieCard1(context,"最新电影",MovieListPage("最新电影",TopMovieType.NewMovie), generateDefaultHotMovieList()),
-          buildRowMovieCard1(context,"免费观影",CustomFreeMovieListPage(), generateDefaultFreeMovieList()),
+          buildRowMovieCard1(context,"免费电影",CustomFreeMovieIndexPage(), generateDefaultFreeMovieList()),
           buildRowMovieCard1(context,"热门电视剧",MovieListPage("热门电视剧",TopMovieType.TV), generateDefaultHotTvList()),
           buildRowMovieCard2(context,"热门综艺",MovieListPage("热门综艺",TopMovieType.Ent), hotEntList),
           Container(height: 20,),
@@ -267,7 +267,7 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
             onTap: (){
               Navigator.push(context, MaterialPageRoute(
 //                  builder: (context) => FreeMovieListPage()
-                  builder: (context) => CustomFreeMovieListPage()
+                  builder: (context) => CustomFreeMovieIndexPage()
               ));
             },
           ),

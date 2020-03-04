@@ -386,6 +386,9 @@ class _BookDetailPageState extends State<BookDetailPage> {
         || book.salesPrice == "0.0" || book.salesPrice == "0.00"){
       text = "免费阅读";
     }
+    if(book.eBookId == null || book.title == null){
+      return Container();
+    }
     return MaterialButton(
       minWidth: 110,
       colorBrightness: Brightness.dark,

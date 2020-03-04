@@ -51,6 +51,12 @@ class _TopBookListPageState extends State<TopBookListPage> with AutomaticKeepAli
       child: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
+            leading:GestureDetector(
+              child: Icon(Icons.arrow_back),
+              onTap: (){
+                Navigator.of(context).pop();
+              },
+            ),
             actions: <Widget>[
             ],
             backgroundColor: Theme.of(context).primaryColor,

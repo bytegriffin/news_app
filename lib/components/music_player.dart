@@ -140,6 +140,7 @@ class _MusicPlayerState extends State<MusicPlayer> with TickerProviderStateMixin
 
   @override
   void dispose() {
+    _audioPlayer.setReleaseMode(ReleaseMode.RELEASE);
     _audioPlayer.stop();
     audioPlayerState = AudioPlayerState.STOPPED;
     controller.dispose();

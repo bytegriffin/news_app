@@ -745,9 +745,10 @@ Widget _buildMovieRowItem(BuildContext context,TopMovie movie){
       Container(
         padding: EdgeInsets.all(4),
         height: 150,
+        width: 110,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(4.0),
-          child: Image.network(movie.image),
+          child: Image.network(movie.image,fit: BoxFit.fill,),
         ),
       ),
       Expanded(
@@ -1161,19 +1162,21 @@ Widget buildTopWidget(BuildContext context, String topic, List<TopBook> bookList
         )
       ),
       Container(
-        padding: EdgeInsets.only(top:10),
-        height: ScreenUtil().setHeight(610),
+        width:double.infinity,
+        padding: EdgeInsets.all(5),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: bookList.sublist(0, 5).map((book) => _buildListTile(context, book)).toList(),
             ),
             Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: bookList.sublist(5, 10).map((book) => _buildListTile(context, book)).toList(),
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: bookList.sublist(5, bookList.length).map((book) => _buildListTile(context, book)).toList(),
             )
           ],
         ),
@@ -1182,7 +1185,7 @@ Widget buildTopWidget(BuildContext context, String topic, List<TopBook> bookList
   );
   return SizedBox(
     width: ScreenUtil().setWidth(650),
-    height: ScreenUtil().setHeight(750),
+    //height: ScreenUtil().setHeight(750),
     child: Card(
       child: Container(
         decoration: new BoxDecoration(

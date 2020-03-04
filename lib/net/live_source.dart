@@ -205,7 +205,7 @@ const CZX = "http://live.czmarathon.net/AppName/StreamName.m3u8?auth_key=1523524
 //   以下为 港澳台  //
 const AM1 = "http://61.244.22.4/ch3/ch3.live/playelist.m3u8";
 const AM2 = "http://61.244.22.4/ch2/ch2.live/playelist.m3u8";
-const FCT = "http://27.221.116.32/flv.live.xylive.tv/live/00fc.flv";
+const FCT = "http://116.199.5.51:8114/hls/Fsv_chan_hls_se_idx=188&FvSeid=1&Fsv_ctype=LIVES&Fsv_otype=1&Provider_id=0&Pcontent_id=8114.m3u8";
 const YXXW = "http://27.221.116.32/flv.live.xylive.tv/live/youxianxinwen.flv";
 const BSML = "http://ms003.happytv.com.tw/live/OcScNdWHvBx5P4w3/index.m3u8";
 const WXPD = "http://mobile.ccdntech.com/transcoder/_definst_/vod164_Live/live/playlist.m3u8";
@@ -241,7 +241,7 @@ const WSYP = "http://pili-live-hdl.qhmywl.com:80/dsdtv/78c4edcada009192a9b1f8976
 const BDDY = "http://pili-live-hdl.qhmywl.com:80/dsdtv/5e147a8d04ab43725d40e72fd7169952.m3u8";
 const BDYL = "http://pili-live-hdl.qhmywl.com:80/dsdtv/31c5b2c0fa7ac37b2e1447befb076d08.m3u8";
 const BDXJ = "http://pili-live-hdl.qhmywl.com:80/dsdtv/6d7d7a9c22ba9aa4e411e3f7567763d8.m3u8";
-const ZS = "http://pili-live-hdl.qhmywl.com:80/dsdtv/318e4839a23f9ff15e327de9bcb31687.m3u8";
+const ZS = "rtmp://59.124.75.156/sat/tv091";
 const ZSXW = "http://pili-live-hdl.qhmywl.com:80/dsdtv/cf4d66edc142b2f0cc8c71bca56b2268.m3u8";
 const ZSJD = "http://pili-live-hdl.qhmywl.com:80/dsdtv/75249ac8b464466a9c41c669bd27260a.m3u8";
 const LHDY = "http://pili-live-hdl.qhmywl.com:80/dsdtv/0e5dee9e8021ce3b9ec9bb78e9710555.m3u8";
@@ -250,8 +250,9 @@ const LHYP = "http://pili-live-hdl.qhmywl.com:80/dsdtv/b7829653660ec5e84c70e7f3a
 const LHXJ = "http://pili-live-hdl.qhmywl.com:80/dsdtv/b40ec839440a97d24d0aee0c69d186a1.m3u8";
 const LHOX = "http://pili-live-hdl.qhmywl.com:80/dsdtv/046d62141df9366aa54a66b22e095e24.m3u8";
 const LHYJ = "http://pili-live-hdl.qhmywl.com:80/dsdtv/d2e1d697b31906f91d7e19a5f06f64ed.m3u8";
-const TS = "http://pili-live-hdl.qhmywl.com:80/dsdtv/bec346d29d4c665d04db41d28a4e033f.m3u8";
-const HS = "http://pili-live-hdl.qhmywl.com:80/dsdtv/0bdf94d7f68fe3ece32048144cbf9a23.m3u8";
+const TS = "rtmp://59.124.75.156/sat/tv071";
+const HS = "rtmp://59.124.75.156/sat/tv111";
+const MS = "rtmp://59.124.75.156/sat/tv051";
 const FOX = "http://pili-live-hdl.qhmywl.com:80/dsdtv/c2c91afe09bad325929734624c19d07b.m3u8";
 const FOXSPORT = "http://pili-live-hdl.qhmywl.com:80/dsdtv/b00b46e382e81efd9902a848c9b89101.m3u8";
 const FOXSPORT2 = "http://pili-live-hdl.qhmywl.com:80/dsdtv/a726b0d8db38a23435c5c3ba95507d3e.m3u8";
@@ -268,6 +269,11 @@ const HISTORY = "http://pili-live-hdl.qhmywl.com:80/dsdtv/998ce23199bda769000246
 const CINEMAX = "http://pili-live-hdl.qhmywl.com:80/dsdtv/9bece52b2f72795cc2f588f3d9e4eed3.m3u8";
 const CinemaWorld  ="http://pili-live-hdl.qhmywl.com:80/dsdtv/357252de83720e30d40c00bfba69c497.m3u8";
 const AXN = "http://pili-live-hdl.qhmywl.com:80/dsdtv/c762110b3eef8bcccce5863643dd66aa.m3u8";
+const DAHW = "https://tv3.wanfudaluye.com/live/live.m3u8";
+const TVBMZ = "http://116.199.5.52:8114/hls/Fsv_chan_hls_se_idx=12&FvSeid=1&Fsv_ctype=LIVES&Fsv_otype=1&Provider_id=0&Pcontent_id=8114.m3u8";
+const TGPD = "http://liveali.ifeng.com/live/FHZW.m3u8";
+const DA1 = "http://tv1.wanfudaluye.com/live/live.m3u8";
+const DA2 = "https://tv2.wanfudaluye.com/live/live.m3u8";
 
 
 //   以下为 国外  //
@@ -304,6 +310,10 @@ const JBS = "http://uni8rtmp.tulix.tv:1935/shalomtv-pc/smil:shalomtv.smil/master
 const MBC = "rtmp://vod.mpmbc.co.kr/live/encoder-tv";
 const DDNEWS = "https://nicls1-lh.akamaihd.net/i/ddnews_1@409133/index_1_av-p.m3u8?sd=10&rebase=on";
 const MTVLove = "http://unilivemtveu-lh.akamaihd.net/i/mtvno_1@346424/index_3500_av-b.m3u8";
+const NHKhuayu = "https://nhkworld.webcdn.stream.ne.jp/www11/nhkworld-tv/zh/725580/livecom_zh.m3u8";
+const mediacorp8 = "http://d34e90s3s13i7n.cloudfront.net/hls/ch8ctv/master02.m3u8";
+
+
 
 //   以下为 专辑  //
 const ZXC = "https://tx.hls.huya.com/huyalive/94525224-2460685313-10568562945082523648-2789274524-10057-A-0-1_1200.m3u8";

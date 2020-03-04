@@ -1798,6 +1798,39 @@ String getAvatarPath(String source){
     case "李迅雷":
       imageStr = "https://tva3.sinaimg.cn/crop.0.0.180.180.180/6b840657jw1e8qgp5bmzyj2050050aa8.jpg";
       break;
+    case "银川广播电视网":
+      imageStr = "https://tva4.sinaimg.cn/crop.0.0.180.180.180/954e9f40jw1e8qgp5bmzyj2050050aa8.jpg";
+      break;
+    case "汽车网评":
+      imageStr = "https://tva4.sinaimg.cn/crop.0.0.180.180.180/aaedf3a2jw1e8qgp5bmzyj2050050aa8.jpg";
+      break;
+    case "中国科技网":
+      imageStr = "https://tvax4.sinaimg.cn/crop.0.0.996.996.180/9ea7b27cly8fjfywgiy84j20ro0romyh.jpg";
+      break;
+    case "投中网":
+      imageStr = "https://tvax4.sinaimg.cn/crop.0.0.500.500.180/66e4e3ddly1g3h5fo4vbdj20dw0dwaaz.jpg";
+      break;
+    case "安徽共青团":
+      imageStr = "https://tva1.sinaimg.cn/crop.0.0.180.180.180/78d71ddajw1e8qgp5bmzyj2050050aa8.jpg";
+      break;
+    case "汽车头条":
+      imageStr = "https://tvax1.sinaimg.cn/crop.0.1.1476.1476.180/005yozS4ly8fqr83sgunjj3150151taa.jpg";
+      break;
+    case "车东西":
+      imageStr = "https://tvax4.sinaimg.cn/crop.0.0.750.750.180/006WWL8Tly8fv8wxb8cdsj30ku0kuweu.jpg";
+      break;
+    case "懒熊体育":
+      imageStr = "https://tvax4.sinaimg.cn/crop.3.3.396.396.180/005BDeD8ly8g9ycy0lpx1j30b40b4wfg.jpg";
+      break;
+    case "长春晚报":
+      imageStr = "https://timg01.bdimg.com/timg?pacompress&imgtype=0&sec=1439619614&autorotate=1&di=d62ac40273b640a50caa13a77118896e&quality=90&size=b200_200&src=http%3A%2F%2Fbos.nj.bpc.baidu.com%2Fv1%2Fmediaspot%2F52ed157d4255eff2fa50c172a379921e.png";
+      break;
+    case "Tech情报局":
+      imageStr = "https://timg01.bdimg.com/timg?pacompress=&imgtype=0&sec=1439619614&autorotate=1&di=1c7e89c5d78dfe10b5193b2e436bf78b&quality=90&size=b200_200&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Fe770d20e62dbdc00876b05a55bc33e22.png";
+      break;
+    case "游戏驿站":
+      imageStr = "https://timg01.bdimg.com/timg?pacompress=&imgtype=1&sec=1439619614&autorotate=1&di=19790e4875f330f2e696c8203c90e784&quality=90&size=b870_10000&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2F693c9e78793ae45c0feae0b66dae39b8.jpeg";
+      break;
     case "芒果TV":
       imageStr = "https://timg01.bdimg.com/timg?pacompress&imgtype=0&sec=1439619614&di=b91e3348ca39b552d882074d9c2f3ebf&quality=90&size=b870_10000&src=http%3A%2F%2Fbos.nj.bpc.baidu.com%2Fv1%2Fmediaspot%2F854703dac1fa2b761789b726ec3e2845.jpeg";
       break;

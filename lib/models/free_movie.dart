@@ -3,6 +3,14 @@ enum PageType {
   Music,
 }
 
+class FreeTV{
+  String id;
+  String name;
+  String image;
+  List<String> playUrls;
+  FreeTV(this.id, this.name, this.image, this.playUrls);
+}
+
 //免费电影
 class FreeMovie {
   String id;//id值

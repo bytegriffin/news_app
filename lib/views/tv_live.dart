@@ -18,11 +18,33 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
   @override
   bool get wantKeepAlive => true;
 
+  List<Tab> tabs = [
+    Tab(text: 'CCTV'),
+    Tab(text: '卫视'),
+    Tab(text: '地方'),
+    Tab(text: '港澳台'),
+    Tab(text: '国外'),
+    Tab(text: '少儿'),
+    //Tab(text: '专题'),
+  ];
+
+  List<Widget> getTabContents(){
+    return [
+      _buildGrdView(_buildCCTV()),
+      _buildGrdView(_buildWeiShi()),
+      _buildGrdView(_buildLocal()),
+      _buildGrdView(_buildGAT()),
+      _buildGrdView(_buildAbroad()),
+      _buildGrdView(_buildCartoon()),
+      //_buildGrdView(_buildAlbum()),
+    ];
+  }
+
   @override
   void initState(){
     super.initState();
     _controller.setNetworkDataSource(CCTV1_HD, autoPlay: true);
-    tabController = TabController(length: 7, vsync: this);
+    tabController = TabController(length: tabs.length, vsync: this);
   }
 
   @override
@@ -55,15 +77,7 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
                 isScrollable: true,
                 labelColor: getTabColor(context),
                 unselectedLabelColor: getUnselectedLabelColor(),
-                tabs: [
-                  Tab(text: 'CCTV'),
-                  Tab(text: '卫视'),
-                  Tab(text: '地方'),
-                  Tab(text: '港澳台'),
-                  Tab(text: '国外'),
-                  Tab(text: '少儿'),
-                  Tab(text: '专题'),
-                ],
+                tabs: tabs,
                 controller: tabController,
               ))
           ),
@@ -71,15 +85,7 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
             hasScrollBody: true,
             child: TabBarView(
               controller: this.tabController,
-              children: <Widget>[
-                _buildGrdView(_buildCCTV()),
-                _buildGrdView(_buildWeiShi()),
-                _buildGrdView(_buildLocal()),
-                _buildGrdView(_buildGAT()),
-                _buildGrdView(_buildAbroad()),
-                _buildGrdView(_buildCartoon()),
-                _buildGrdView(_buildAlbum()),
-              ],
+              children: getTabContents(),
             ),
           ),
         ],
@@ -356,12 +362,16 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
       _buildButton("澳视葡文", ASPW),
       _buildButton("互动新闻", HDXW),
       _buildButton("唯心頻道", WXPD),
-//      _buildButton("TVB翡翠台", FCT),
+      _buildButton("TVB翡翠", FCT),
+      _buildButton("TVB明珠", TVBMZ),
+      _buildButton("TG频道", TGPD),
       _buildButton("有线新闻", YXXW),
       _buildButton("博斯魅力", BSML),
       _buildButton("澳门1台", AM1),
       _buildButton("澳门2台", AM2),
-
+      _buildButton("大爱I", DA1),
+      _buildButton("大爱II", DA2),
+      _buildButton("大爱海外", DAHW),
 
 //      _buildButton("东森财经", DSCJ),
 //      _buildButton("东森电影", DSDY),
@@ -388,12 +398,13 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
 //      _buildButton("博斯高球1", BSGQ1),
 //      _buildButton("博斯高球2", BSGQ2),
 //      _buildButton("美食星球", MSXQ),
-//      _buildButton("台视", TS),
-//      _buildButton("华视", HS),
+      _buildButton("台视", TS),
+      _buildButton("华视", HS),
+      _buildButton("民视", MS),
 //      _buildButton("公视", GS),
 //      _buildButton("公视二", GS2),
 //      _buildButton("公视三", GS3),
-//      _buildButton("中视", ZS),
+      _buildButton("中视", ZS),
 //      _buildButton("中视新闻", ZSXW),
 //      _buildButton("中视经典", ZSJD),
 //      _buildButton("FOX", FOX),
@@ -433,8 +444,10 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
       _buildButton("ABC News",ABCNews),
       _buildButton("Al Hurra",AlHurra),
       _buildButton("NHK World",NHK),
+      _buildButton("NHK华语视界",NHKhuayu),
       _buildButton("Buffalo",BUFFALO),
       _buildButton("CBS News",CBSNEWS),
+      _buildButton("MediaCorp 8",mediacorp8),
       _buildButton("History 2",History2),
       _buildButton("Newsmax",Newsmax),
       _buildButton("Red Bull TV",REDBULLTV),
