@@ -5,7 +5,7 @@
 
 Android（Beta）版下载：<a href="https://github.com/bytegriffin/news_app/releases/download/%E6%96%B0%E9%97%BBApp-0.5.0-beta/App-0.5.0-beta.apk">点我</a>   
 或者扫描下列二维码：   
-![Image text](https://i.loli.net/2020/03/03/A6DdBhjSXgvO9Hb.png)
+<img src="https://i.loli.net/2020/03/03/A6DdBhjSXgvO9Hb.png" />
 
 
 注：此App的数据来源于互联网，仅用来测试使用。
