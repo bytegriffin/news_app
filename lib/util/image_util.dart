@@ -47,7 +47,7 @@ Widget getCachedImage(String imageSrc,{double width=100,double height=150}){
 
 // 根据发布者获取精准的头像
 String getAvatarPath(String source){
-  String imageStr;
+  String imageStr = defaultCastImage;
   switch(source){
     case "CCTV":
       imageStr = "https://tvax4.sinaimg.cn/crop.0.2.97.97.180/c2b99825ly8fy5zxub7o2j202s02smwy.jpg";
@@ -1821,6 +1821,12 @@ String getAvatarPath(String source){
       break;
     case "懒熊体育":
       imageStr = "https://tvax4.sinaimg.cn/crop.3.3.396.396.180/005BDeD8ly8g9ycy0lpx1j30b40b4wfg.jpg";
+      break;
+    case "正义网":
+      imageStr = "https://tva1.sinaimg.cn/crop.0.0.326.326.180/710c95f3jw8ev7rcivdxpj20930923yx.jpg";
+      break;
+    case "湖北日报":
+      imageStr = "https://tvax1.sinaimg.cn/crop.0.0.512.512.180/a8822ae8ly8g58hqqr031j20e80e8t92.jpg";
       break;
     case "长春晚报":
       imageStr = "https://timg01.bdimg.com/timg?pacompress&imgtype=0&sec=1439619614&autorotate=1&di=d62ac40273b640a50caa13a77118896e&quality=90&size=b200_200&src=http%3A%2F%2Fbos.nj.bpc.baidu.com%2Fv1%2Fmediaspot%2F52ed157d4255eff2fa50c172a379921e.png";

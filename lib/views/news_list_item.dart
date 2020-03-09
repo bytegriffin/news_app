@@ -32,6 +32,7 @@ class NewsListItemPage extends StatelessWidget {
               CircleAvatar(
                 backgroundImage: NetworkImage(getAvatarPath(news.source)),
                 radius: 10.0,
+                backgroundColor: Color(0xffffffff),
               ),
               Text(news.authorName,maxLines: 1,overflow: TextOverflow.fade,),
             ],

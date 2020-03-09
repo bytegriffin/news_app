@@ -25,6 +25,7 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
     Tab(text: '港澳台'),
     Tab(text: '国外'),
     Tab(text: '少儿'),
+    Tab(text: '轮播'),
     //Tab(text: '专题'),
   ];
 
@@ -36,6 +37,7 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
       _buildGrdView(_buildGAT()),
       _buildGrdView(_buildAbroad()),
       _buildGrdView(_buildCartoon()),
+      _buildGrdView(_buildLB()),
       //_buildGrdView(_buildAlbum()),
     ];
   }
@@ -108,6 +110,29 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
           crossAxisSpacing: 5.0,
           childAspectRatio: 11/4 ),
     );
+  }
+
+  List<Widget> _buildLB(){
+    return [
+      _buildButton("家庭剧场", JTJC),
+      _buildButton("经典重温", JDCW),
+      _buildButton("收视冠军", SSGJ),
+      _buildButton("热播电视剧", RBDSJ),
+      _buildButton("名侦探柯南", MZTKN),
+      _buildButton("喜剧大咖", XJDK),
+      _buildButton("相声小品", XSXP),
+      _buildButton("动作电影", DZDY),
+      _buildButton("经典港片", JDGP),
+      _buildButton("哆啦A梦", DLAM),
+      _buildButton("抗战剧场", KZJC),
+      _buildButton("好莱坞大片", HLWJC),
+      _buildButton("老年剧场", LNJC),
+      _buildButton("喜剧电影", XJDY),
+      _buildButton("周末影院", ZMJY),
+      _buildButton("黑帮电影", HBDY),
+      _buildButton("历史秘闻", LSMW),
+      _buildButton("军事观察", JSGC),
+    ];
   }
 
   List<Widget> _buildAlbum(){
@@ -225,7 +250,7 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
       _buildButton("青海卫视", QHWS),
       _buildButton("吉林卫视", JLWS),
       _buildButton("新疆卫视", XJWS),
-      _buildButton("西藏卫视", XJWS),
+      _buildButton("西藏卫视", XZWS),
       _buildButton("海南卫视", LYWS),
       _buildButton("澳亚卫视", AYWS),
       _buildButton("黑龙江卫视",HLJWS_HD),
@@ -279,11 +304,11 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
       _buildButton("芜湖教育",WHJY),
       _buildButton("六安新闻",LAXW),
       _buildButton("六安公共",LAGG),
-      _buildButton("河北都市",HBDS),
+//      _buildButton("河北都市",HBDS),
       _buildButton("河北影视",HeBeiYS),
-      _buildButton("河北公共",HBGG),
-      _buildButton("河北购物",HBGW),
-      _buildButton("河北农民",HBNM),
+//      _buildButton("河北公共",HBGG),
+//      _buildButton("河北购物",HBGW),
+//      _buildButton("河北农民",HBNM),
       _buildButton("衡水新闻",HSXW),
       _buildButton("衡水影视",HSYS),
       _buildButton("黄冈新闻",HGXW),
@@ -465,7 +490,7 @@ class _TvLivePageState extends State<TvLivePage> with TickerProviderStateMixin,A
       mediaController: _controller,
     );
     return Card(
-      margin: EdgeInsets.only(left: 5,right: 5,top: 0,bottom: 0),
+      margin: EdgeInsets.only(left: 0,right: 0,top: 0,bottom: 0),
       child: Container(
         height: 230,
         child: player,

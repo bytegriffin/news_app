@@ -157,25 +157,25 @@ class _MVDetailPageState extends State<MVDetailPage>{
       children: <Widget>[
         Column(
           children: <Widget>[
-            Icon(Icons.thumb_up,size: 30,),
+            Icon(IconData(0xe61c, fontFamily: 'iconfont'),size: 30,),
             Text("${mv?.likeCount??0}")
           ],
         ),
         Column(
           children: <Widget>[
-            Icon(Icons.assistant,size: 30,),
+            Icon(IconData(0xe61e, fontFamily: 'iconfont'),size: 30,),
             Text("${mv?.subCount??0}")
           ],
         ),
         Column(
           children: <Widget>[
-            Icon(Icons.comment,size: 30,),
+            Icon(IconData(0xe64d, fontFamily: 'iconfont'),size: 30,),
             Text("${mv?.commentCount??0}")
           ],
         ),
         Column(
           children: <Widget>[
-            Icon(Icons.share,size: 30,),
+            Icon(IconData(0xe6a3, fontFamily: 'iconfont'),size: 30,),
             Text("${mv?.shareCount??0}")
           ],
         )

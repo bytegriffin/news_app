@@ -55,5 +55,7 @@
     </dict>
     <key>com.apple.security.network.client</key>
     <true/>
+    <key>NSCameraUsageDescription</key>
+    <string>Camera permission is required for barcode scanning.</string>
 </dict>
 </plist>

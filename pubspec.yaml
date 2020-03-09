@@ -38,8 +38,10 @@ dependencies:
   share: ^0.6.3+5
   provider: ^4.0.4
   fluro: ^1.5.2
+  barcode_scan: any
 
  # shared_preferences: ^0.5.6
+ # agora_rtc_engine
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

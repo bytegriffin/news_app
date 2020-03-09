@@ -286,7 +286,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
           ));
         },
         child: Text(
-          '${author??""}',
+          '${author??""}  ',
           softWrap: true,
           overflow: TextOverflow.ellipsis, maxLines: 3,
           style: TextStyle(

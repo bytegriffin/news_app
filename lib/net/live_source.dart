@@ -69,7 +69,7 @@ const JLWS = "rtmp://ivi.bupt.edu.cn:1935/livetv/jltv";
 const NMGWS = "http://117.156.28.21/PLTV/88888888/224/3221225676/index.m3u8";
 const NXWS = "rtmp://ivi.bupt.edu.cn:1935/livetv/nxtv";
 const QHWS = "rtmp://ivi.bupt.edu.cn:1935/livetv/qhtv";
-const XJWS = "http://livehyw2.sobeycache.com/xjtvs/zb01.m3u8";
+const XJWS = "http://ivi.bupt.edu.cn/hls/xjtv.m3u8";
 const XZWS = "http://ivi.bupt.edu.cn/hls/xztv.m3u8";
 const SXRWS = "rtmp://ivi.bupt.edu.cn:1935/livetv/sxrtv";
 const SXWS = "rtmp://ivi.bupt.edu.cn:1935/livetv/sxtv";
@@ -142,7 +142,7 @@ const WHJY = "http://live1.wuhubtv.com/channel4/sd/live.m3u8";
 const LAXW = "http://live.china-latv.com/channel1/sd/live.m3u8";
 const LAGG = "http://live.china-latv.com/channel2/sd/live.m3u8";
 const HBDS = "http://weblive.hebtv.com/live/hbds_lc/index.m3u8";
-const HeBeiYS = "http://weblive.hebtv.com/live/hbys_bq/index.m3u8";
+const HeBeiYS = "http://hbzq.chinashadt.com:1936/live/zaoqiang4.stream_360p/chunklist_w1746419850.m3u8";
 
 const HBGG = "http://weblive.hebtv.com/live/hbgg_bq/index.m3u8";
 const HBGW = "http://weblive.hebtv.com/live/sjgw_bq/index.m3u8";
@@ -173,7 +173,7 @@ const XZXW = "http://183.167.193.45:1935/live/cztvzh/playlist.m3u8";
 const BZXW = "http://stream.bzcm.net/2/sd/live.m3u8";
 const CAZH = "http://chaoan.chaoantv.com:8278/live/chaoanzongyi.m3u8";
 const FZYS = "rtmp://live1.fzntv.cn/live/zohi_fztv2";
-const FZZH = "http://live1.fzntv.cn/live/zohi_fztv1/playlist.m3u8";
+const FZZH = "http://live.zohi.tv/video/s10001-FZTV-1/index.m3u8";
 const BCXW = "http://stream2.jlntv.cn/baicheng1/sd/live.m3u8";
 const XYZH = "http://xiangyang.live.cjyun.org/video/s10125-news_hd/index.m3u8";
 const XSZH = "http://l.cztvcloud.com/channels/lantian/SXxiaoshan1/720p.m3u8";
@@ -314,7 +314,6 @@ const NHKhuayu = "https://nhkworld.webcdn.stream.ne.jp/www11/nhkworld-tv/zh/7255
 const mediacorp8 = "http://d34e90s3s13i7n.cloudfront.net/hls/ch8ctv/master02.m3u8";
 
 
-
 //   以下为 专辑  //
 const ZXC = "https://tx.hls.huya.com/huyalive/94525224-2460685313-10568562945082523648-2789274524-10057-A-0-1_1200.m3u8";
 const MZTKN = "http://baiducdnct.inter.iqiyi.com/tslive/c15_lb_mingzhentankenan_1080p_t10/c15_lb_mingzhentankenan_1080p_t10.m3u8";
@@ -332,6 +331,39 @@ const ST = "https://tx.hls.huya.com/huyalive/29141112-2689675756-115520694088640
 const BIGBANG = "https://tx.hls.huya.com/huyalive/29169025-2686221732-11537234488744476672-2847699168-10057-A-0-1.m3u8";
 const CL = "https://tx.hls.huya.com/huyalive/94525224-2460685722-10568564701724147712-2789253838-10057-A-0-1.m3u8";
 const LYJ = "https://tx.hls.huya.com/huyalive/29169025-2686220018-11537227127170531328-2847699120-10057-A-1524041208-1_1200.m3u8";
+
+//   以下为 专辑  //
+const JTJC = "http://101.72.196.41/r/baiducdnct.inter.iqiyi.com/tslive/c15_lb_jiatingjuchang_1080p_t10/c15_lb_jiatingjuchang_1080p_t10.m3u8";
+const JDCW = "http://101.72.196.41/r/baiducdnct.inter.iqiyi.com/tslive/c16_lb_jingdianjuchang_1080p_t10/c16_lb_jingdianjuchang_1080p_t10.m3u8";
+const SSGJ = "http://101.72.196.41/r/baiducdnct.inter.iqiyi.com/tslive/c15_lb_dajuchongwen_1080p_t10/c15_lb_dajuchongwen_1080p_t10.m3u8";
+const RBDSJ = "http://101.72.196.41/r/baiducdnct.inter.iqiyi.com/tslive/c15_lb_reboju_1080p_t10/c15_lb_reboju_1080p_t10.m3u8";
+const XJDK = "http://101.72.196.41/r/baiducdnct.inter.iqiyi.com/tslive/c15_lb_xijudaka_1080p_t10/c15_lb_xijudaka_1080p_t10.m3u8";
+const XSXP = "http://101.72.196.41/r/baiducdnct.inter.iqiyi.com/tslive/c15_lb_xiangshengxiaopin_1080p_t10/c15_lb_xiangshengxiaopin_1080p_t10.m3u8";
+const DZDY = "http://101.72.196.41/r/baiducdnct.inter.iqiyi.com/tslive/c16_lb_dongzuodianying_1080p_t10/c16_lb_dongzuodianying_1080p_t10.m3u8";
+const JDGP = "http://101.72.196.41/r/baiducdnct.inter.iqiyi.com/tslive/c15_lb_jingdianguangpian_1080p_t10/c15_lb_jingdianguangpian_1080p_t10.m3u8";
+const DLAM = "http://101.72.196.41/r/baiducdnct.inter.iqiyi.com/tslive/c15_lb_duolaameng_1080p_t10/c15_lb_duolaameng_1080p_t10.m3u8";
+const KZJC = "http://101.72.196.41/r/baiducdnct.inter.iqiyi.com/tslive/c15_lb_kangzhanjuchang_1080p_t10/c15_lb_kangzhanjuchang_1080p_t10.m3u8";
+const HLWJC = "http://101.72.196.41/r/baiducdnct.inter.iqiyi.com/tslive/c15_lb_xijudaka_1080p_t10/c15_lb_xijudaka_1080p_t10.m3u8";
+const LNJC = "http://101.72.196.41/r/baiducdnct.inter.iqiyi.com/tslive/c15_lb_laonianjuchang_1080p_t10/c15_lb_laonianjuchang_1080p_t10.m3u8";
+const XJDY = "http://101.72.196.41/r/baiducdnct.inter.iqiyi.com/tslive/c16_lb_xijudianying_1080p_t10/c16_lb_xijudianying_1080p_t10.m3u8";
+const ZMJY = "http://101.72.196.41/r/baiducdnct.inter.iqiyi.com/tslive/c15_lb_xijudaka_1080p_t10/c15_lb_xijudaka_1080p_t10.m3u8";
+const HBDY = "http://101.72.196.41/r/baiducdnct.inter.iqiyi.com/tslive/c16_lb_heibangdianying_1080p_t10/c16_lb_heibangdianying_1080p_t10.m3u8";
+const LSMW = "http://101.72.196.41/r/baiducdnct.inter.iqiyi.com/tslive/c15_lb_lishimiwen_1080p_t10/c15_lb_lishimiwen_1080p_t10.m3u8";
+const JSGC = "http://101.72.196.41/r/baiducdnct.inter.iqiyi.com/tslive/c16_lb_junshinew_1080p_t10/c16_lb_junshinew_1080p_t10.m3u8";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

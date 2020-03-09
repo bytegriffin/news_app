@@ -161,6 +161,7 @@ class _MusicIndexPageState extends State<MusicIndexPage> with AutomaticKeepAlive
           _buildSwiper(),
           _buildButton(),
           buildRowSongCard(context,"推荐新音乐",SongListPage("推荐新音乐",topNewMusicImage, recNewMusicList), generateDefaultRecNewMusicList()),
+          Container(height: 20,),
           buildRowAlbumCard(context,"推荐新专辑",AlbumListPage("推荐新专辑",topNewMusicImage, recNewAlbumList), generateDefaultRecNewAlbumList()),
           Container(height: 20,),
           buildRowArtistCard(context,"推荐歌手", artistList),

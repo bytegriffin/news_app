@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:barcode_scan/barcode_scan.dart';
+import 'package:flutter/services.dart';
 
 // 左侧抽屉栏
 class DrawerPage extends StatefulWidget {
@@ -7,6 +9,32 @@ class DrawerPage extends StatefulWidget {
 }
 
 class _DrawerPageState extends State<DrawerPage> {
+
+  String barcode="";
+
+  Future _scan() async {
+    try {
+      String barcode = await BarcodeScanner.scan();
+      setState(() {
+        return this.barcode = barcode;
+      });
+    } on PlatformException catch (e) {
+      if (e.code == BarcodeScanner.CameraAccessDenied) {
+        setState(() {
+          return this.barcode = '未授予APP相机权限!';
+        });
+      } else {
+        setState(() {
+          return this.barcode = '扫码错误: $e';
+        });
+      }
+    } on FormatException {
+      setState(() => this.barcode =
+      '进入扫码页面后未扫码直接返回');
+    } catch (e) {
+      setState(() => this.barcode = '扫码错误: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +69,12 @@ class _DrawerPageState extends State<DrawerPage> {
           ListTile(
             title: Text('我的收藏', textAlign: TextAlign.left,),
             leading: Icon(Icons.favorite,  size: 22.0,),
+          ),
+          ListTile(
+            title: Text('扫码', textAlign: TextAlign.left,),
+            subtitle: Text("${barcode}"),
+            leading: Icon(Icons.photo_camera,  size: 22.0,),
+            onTap: _scan,
           ),
           ListTile(
             title: Text('设置', textAlign: TextAlign.left,),

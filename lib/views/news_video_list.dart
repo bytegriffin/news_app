@@ -137,7 +137,8 @@ class _NewsVideoListPageState extends State<NewsVideoListPage> with AutomaticKee
                       children: <Widget>[
                         CircleAvatar(
                           radius: 10.0,
-                          backgroundImage: NetworkImage(getAvatarPath(datas[index].source))
+                          backgroundImage: NetworkImage(getAvatarPath(datas[index].source)),
+                          backgroundColor: Color(0xffffffff),
                         ),
                         Text(' ',style: TextStyle(fontSize:18),),
                         Text(datas[index].authorName,

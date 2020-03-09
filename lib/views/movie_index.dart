@@ -48,11 +48,11 @@ class _MovieIndexPageState extends State<MovieIndexPage> with AutomaticKeepAlive
   bool get wantKeepAlive => true;
 
   _buildFreeMovies(){
-    freeMovieList.add(FreeMovie("34966347",PageType.Movie,"罗马：幕后纪实","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2585822823.webp","https://mu.qqxy100.com/ts/2/69669908052443136/index.m3u8"));
-    freeMovieList.add(FreeMovie("27000084",PageType.Movie,"变身特工","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2577340942.webp","https://mu.qqxy100.com/ts/2/75312383106482176/index.m3u8"));
-    freeMovieList.add(FreeMovie("27080656",PageType.Movie,"普罗米亚","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2546169134.webp","https://youku.haokzy-tudou.com/ppvod/b9YIwrMh.m3u8"));
-    freeMovieList.add(FreeMovie("30434174",PageType.Movie,"遗愿清单","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2555841251.webp","https://youku.haokzy-tudou.com/ppvod/TRNLZdzO.m3u8"));
-    freeMovieList.add(FreeMovie("30257175",PageType.Movie,"燃烧女子的肖像","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2584308261.webp","https://youku.haokzy-tudou.com/ppvod/pTP65xJL.m3u8"));
+    freeMovieList.add(FreeMovie("25905044",PageType.Movie,"刺猬索尼克","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2581703367.webp","https://s2.jxtvsb.com/2020/03/07/g6V4MDR3er8Q9du2/index.m3u8"));
+    freeMovieList.add(FreeMovie("30160393",PageType.Movie,"哈莉·奎因：猛禽小队","https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2575974437.webp","https://v3.szjal.cn/20200308/9pDBprOJ/index.m3u8"));
+    freeMovieList.add(FreeMovie("27000084",PageType.Movie,"变身特工","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2577340942.webp","https://v3.szjal.cn/20200307/3EnAmov2/index.m3u8"));
+    freeMovieList.add(FreeMovie("27080656",PageType.Movie,"普罗米亚","https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2546169134.webp","https://tv1.youkutv.cc/2020/02/06/eHmnGiFPDVfE1ZrN/playlist.m3u8"));
+    freeMovieList.add(FreeMovie("30257175",PageType.Movie,"燃烧女子的肖像","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2584308261.webp","https://youku.com-ok-56.com/20191218/20838_c8c7eaf0/index.m3u8"));
     freeMovieList.add(FreeMovie("30241298",PageType.Movie,"南山的部长们","https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2581888792.webp","https://hallo.sc2yun.com/vod/hls/1582382365084_naann0f8nn8t.m3u8"));
  }
 

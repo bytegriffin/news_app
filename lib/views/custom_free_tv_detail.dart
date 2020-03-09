@@ -147,13 +147,8 @@ class _CustomFreeTVDetailPageState extends State<CustomFreeTVDetailPage>{
 
   Widget _buildIjkPlayer() {
     return Card(
-        margin: EdgeInsets.only(left: 5,right: 5,top: 0,bottom: 0),
-        child: Container(
-          height: 230,
-          child: IjkPlayer(
-            mediaController: _controller,
-          ),
-        )
+        margin: EdgeInsets.only(left: 0,right: 0,top: 0,bottom: 5),
+        child: IjkPlayer(mediaController: _controller,)
     );
   }
 

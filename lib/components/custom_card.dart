@@ -411,8 +411,10 @@ Widget getArtistRowItem(BuildContext context,Artist artist){
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           CircleAvatar(
-              radius: 40.0,
-              backgroundImage: NetworkImage(artist?.picUrl??defaultMusicImage)
+            //child: Image.network(defaultMusicImage, fit: BoxFit.contain,),
+            radius: 40.0,
+            backgroundImage: NetworkImage(artist.picUrl),
+            backgroundColor: Color(0xffffffff),
           ),
           Container(
             alignment: Alignment.center,
@@ -996,6 +998,10 @@ Widget buildRowBookCard3(BuildContext context,String typeName,Widget page, List<
 }
 
 Widget _buildBookRowItem(BuildContext context,Book book){
+  Widget goPage = BookDetailPage(book);
+  if(book.isBundle){
+    goPage = BundleBookDetailPage(book);
+  }
   var row = Row(
     children: <Widget>[
       Container(
@@ -1052,7 +1058,7 @@ Widget _buildBookRowItem(BuildContext context,Book book){
     ),
     onTap: (){
       Navigator.push(context, MaterialPageRoute(
-        builder: (context) => BookDetailPage(book)
+        builder: (context) => goPage
       ));
     },
   );
@@ -1223,21 +1229,21 @@ Widget _buildListTile(BuildContext context, TopBook topBook){
       cc,
       text,
       Container(
-        padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+        padding: EdgeInsets.symmetric(horizontal: 5,vertical: 5),
         child: Image.network(image,width: ScreenUtil().setWidth(60),),
       ),
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-              width: ScreenUtil().setWidth(170),
-              child: Text(topBook.title,maxLines: 2,overflow: TextOverflow.ellipsis,style:
-              TextStyle(fontSize: 14,fontWeight: FontWeight.bold,))
+            width: ScreenUtil().setWidth(160),
+            child: Text(topBook.title,maxLines: 2,overflow: TextOverflow.ellipsis,style:
+            TextStyle(fontSize: 14,fontWeight: FontWeight.bold,))
           ),
           Container(
-              width: ScreenUtil().setWidth(170),
-              child: Text(topBook.authors,maxLines: 1,overflow: TextOverflow.ellipsis,style:
-                   TextStyle(fontSize: 13,fontWeight: FontWeight.normal,))
+            width: ScreenUtil().setWidth(160),
+            child: Text(topBook.authors,maxLines: 1,overflow: TextOverflow.ellipsis,style:
+                 TextStyle(fontSize: 13,fontWeight: FontWeight.normal,))
           ),
         ],
       ),

@@ -47,6 +47,7 @@ class _BookIndexPageState extends State<BookIndexPage> with AutomaticKeepAliveCl
 
   List<Book> yssjBookList= List.generate(6, (index) {
     return Book("","",defaultBookImage,"", false);
+
   });
 
   List<Book> zxtjBookList= List.generate(6, (index) {

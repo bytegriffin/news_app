@@ -47,8 +47,22 @@ class _CustomFreeMovieDetailPageState extends State<CustomFreeMovieDetailPage>{
     },errorCallBack: (error){
       print(error);
     });
+    String playUrl = widget.freeMovie.playUrl;
+    if(!playUrl.contains("://")){
+      HttpClient.get("https://ios.xiaoxiaoapps.com/vod/reqplay/"+playUrl+"?playindex=1", (result){
+        setState(() {
+          playUrl = result['data']['httpurl'];
+          print(playUrl);
+          print("------");
+          _controller.setNetworkDataSource(playUrl,autoPlay: true);
+        });
+      },errorCallBack: (error){
+        print(error);
+      });
+    }else {
+      _controller.setNetworkDataSource(playUrl,autoPlay: true);
+    }
 
-    _controller.setNetworkDataSource(widget.freeMovie.playUrl, autoPlay: true);
   }
 
   @override
@@ -120,7 +134,7 @@ class _CustomFreeMovieDetailPageState extends State<CustomFreeMovieDetailPage>{
 
   Widget _buildIjkPlayer() {
     return Card(
-        margin: EdgeInsets.only(left: 5,right: 5,top: 0,bottom: 0),
+        margin: EdgeInsets.only(left: 0,right: 0,top: 0,bottom: 5),
         child: Container(
           height: 230,
           child: IjkPlayer(

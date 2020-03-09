@@ -52,30 +52,30 @@ class _AlbumListPageState extends State<AlbumListPage> {
               crossAxisCount:3,
               mainAxisSpacing:0.0,
               crossAxisSpacing:0.0,
-              childAspectRatio: 7 / 10,
+              childAspectRatio: 3 / 5,
             ),
             delegate: SliverChildBuilderDelegate(
                   (BuildContext context, int index) {
                 return GestureDetector(
                   child: Container(
-                      margin: EdgeInsets.all(5),
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(5.0),
-                              child: getCachedImage(albumList[index].picUrl+""),
-                            ),
-                            height: 140,
-                            width: 140,
+                    margin: EdgeInsets.all(5),
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(5.0),
+                            child: getCachedImage(albumList[index].picUrl+""),
                           ),
-                          Text(albumList[index].name, overflow: TextOverflow.ellipsis, maxLines: 1,
-                              style: TextStyle(fontSize: 16.0,color: getTextColor(context),decoration: TextDecoration.none)),
-                          Text(albumList[index].artistName, overflow: TextOverflow.ellipsis, maxLines: 1,
-                              style: TextStyle(fontStyle: FontStyle.normal,fontWeight: FontWeight.w400,fontSize: 14.0,
-                                  color: getTextColor(context),decoration: TextDecoration.none)),
-                        ],
-                      )
+                          height: 140,
+                          width: 140,
+                        ),
+                        Text(albumList[index].name, overflow: TextOverflow.ellipsis, maxLines: 1,
+                            style: TextStyle(fontSize: 16.0,color: getTextColor(context),decoration: TextDecoration.none)),
+                        Text(albumList[index].artistName, overflow: TextOverflow.ellipsis, maxLines: 1,
+                            style: TextStyle(fontStyle: FontStyle.normal,fontWeight: FontWeight.w400,fontSize: 14.0,
+                                color: getTextColor(context),decoration: TextDecoration.none)),
+                      ],
+                    )
                   ),//getMovieRatingWidget(movie?.rate??"0.0")
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(

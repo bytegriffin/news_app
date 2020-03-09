@@ -313,6 +313,7 @@ class _MusicPlayerState extends State<MusicPlayer> with TickerProviderStateMixin
                   CircleAvatar(
                     radius: 98.0,
                     backgroundImage:  NetworkImage(curSong?.picUrl??curSong?.album?.picUrl??defaultCastImage,),
+                    backgroundColor: Color(0xffffffff),
                   )
                 ],
               ),
